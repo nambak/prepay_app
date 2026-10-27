@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>공통 컴포넌트 · prepay-app</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#F2F4F6;color:#191F28;font-family:'Noto Sans KR',sans-serif}
+a{color:inherit;text-decoration:none}
+code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:13px;background:#FFFFFF;border-radius:6px;padding:2px 6px}
+</style>
+</head>
+<body>
+<div style="max-width:1000px;margin:0 auto;padding:48px 20px 80px;display:flex;flex-direction:column;gap:40px">
+
+<header style="display:flex;flex-direction:column;gap:10px">
+<a href="../index.html" style="font-size:14px;color:#4E5968">← 화면 목록</a>
+<h1 style="margin:0;font-size:32px;font-weight:700;letter-spacing:-0.6px">공통 컴포넌트</h1>
+<p style="margin:0;font-size:15px;line-height:1.6;color:#4E5968">여러 화면에서 같이 쓰는 부품이에요. <code>components/components.js</code> 한 곳에서 정의하고, 화면에서는 태그만 씁니다. 여기를 고치면 모든 화면에 함께 반영돼요.</p>
+</header>
+
+<section aria-labelledby="t-tab" style="display:flex;flex-direction:column;gap:14px">
+<h2 id="t-tab" style="margin:0;font-size:20px;font-weight:700">하단 탭바 <code>&lt;app-tab-bar tab="…"&gt;</code></h2>
+<p style="margin:0;font-size:14px;color:#4E5968">tab = home · shop · wallet · like · my. 최상위 화면 5곳(홈, 가게찾기, 내 가게, 찜, 마이)에만 붙여요.</p>
+<div style="display:flex;flex-direction:column;gap:12px;align-items:flex-start">
+<app-tab-bar tab="home"></app-tab-bar>
+<app-tab-bar tab="wallet"></app-tab-bar>
+<app-tab-bar tab="my"></app-tab-bar>
+</div>
+</section>
+
+<section aria-labelledby="t-row" style="display:flex;flex-direction:column;gap:14px">
+<h2 id="t-row" style="margin:0;font-size:20px;font-weight:700">가게 목록 행 <code>&lt;store-row&gt;</code></h2>
+<p style="margin:0;font-size:14px;color:#4E5968">속성: store, cat, area, rate, dist, likes, liked(y|n), value(y|n, 가성비 가게 표시), tone(a~d), kind(cafe·food·bakery·beauty·shop), href</p>
+<div style="width:390px;box-sizing:border-box;background:#FFFFFF;border-radius:24px;padding:4px 20px">
+<div style="border-bottom:1px solid #F2F4F6"><store-row store="하루카페 강남점" cat="카페" area="서울시 행복구" rate="30%" dist="88m" likes="999" liked="y" value="y" tone="a" kind="cafe"></store-row></div>
+<div style="border-bottom:1px solid #F2F4F6"><store-row store="행복식당 1" cat="한식" area="행복구 하늘동" rate="15%" dist="240m" likes="128" liked="n" value="n" tone="b" kind="food"></store-row></div>
+<div style="border-bottom:1px solid #F2F4F6"><store-row store="아침베이커리" cat="디저트·베이커리" area="행복구 행복동" rate="10%" dist="410m" likes="64" liked="n" value="y" tone="c" kind="bakery"></store-row></div>
+<div style="border-bottom:1px solid #F2F4F6"><store-row store="하늘헤어 행복점" cat="헤어" area="행복구 행복동" rate="30%" dist="320m" likes="412" liked="n" value="y" tone="d" kind="beauty"></store-row></div>
+<store-row store="정성반찬가게" cat="반찬" area="행복구 사랑동" rate="20%" dist="650m" likes="128" liked="n" value="y" tone="a" kind="shop"></store-row>
+</div>
+</section>
+
+<section aria-labelledby="t-tile" style="display:flex;flex-direction:column;gap:14px">
+<h2 id="t-tile" style="margin:0;font-size:20px;font-weight:700">가게 타일 <code>&lt;store-tile&gt;</code></h2>
+<p style="margin:0;font-size:14px;color:#4E5968">홈의 가로 목록에 써요. 속성은 store-row와 같고 area, likes, value는 쓰지 않아요.</p>
+<div style="display:flex;gap:12px;flex-wrap:wrap">
+<store-tile store="하루카페 강남점" cat="카페" dist="88m" rate="30%" tone="a" kind="cafe" liked="y"></store-tile>
+<store-tile store="행복식당 1" cat="한식" dist="240m" rate="15%" tone="b" kind="food"></store-tile>
+<store-tile store="아침베이커리" cat="디저트·베이커리" dist="410m" rate="10%" tone="c" kind="bakery"></store-tile>
+<store-tile store="봄꽃집" cat="꽃" dist="1.1km" rate="15%" tone="d" kind="shop"></store-tile>
+</div>
+</section>
+
+</div>
+<script src="components.js"></script>
+</body>
+</html>

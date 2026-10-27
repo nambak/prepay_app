@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>06-02 개인에게 공유 · prepay-app</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+a{color:inherit;text-decoration:none}a:hover{color:inherit}
+</style>
+<link rel="stylesheet" href="../../assets/preview.css">
+</head>
+<body>
+<div style="width:390px;height:1240px;box-sizing:border-box;background:#FFFFFF;font-family:'Noto Sans KR',sans-serif;color:#191F28;display:flex;flex-direction:column;overflow:hidden;position:relative">
+
+<header style="flex:none;height:56px;position:relative;display:flex;align-items:center;justify-content:space-between;padding:0 4px">
+<a href="06-01-share-form.html" aria-label="뒤로 가기" style="width:44px;height:44px;display:flex;align-items:center;justify-content:center;color:#191F28"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></a>
+<h1 style="position:absolute;left:60px;right:60px;margin:0;text-align:center;font-size:17px;font-weight:700">캐시 공유</h1>
+<span style="width:44px;height:44px;display:block"></span>
+</header>
+
+<main style="flex:1;min-height:0;overflow:hidden;display:flex;flex-direction:column">
+<div style="padding:8px 20px 20px">
+<section aria-label="공유할 가게" style="background:#F2F4F6;border-radius:20px;padding:16px 20px;display:flex;align-items:center;gap:12px">
+<div style="flex:none;width:40px;height:40px;border-radius:12px;background:#EEF2FF;color:#3A55B0;display:flex;align-items:center;justify-content:center"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 3v8M5 3v5a2 2 0 004 0V3M7 11v10"/><path d="M17 3c-2 1.5-3 4-3 7h3v11"/></svg></div>
+<div style="flex:1;min-width:0;display:flex;flex-direction:column;gap:2px">
+<span style="font-size:15px;font-weight:700">행복식당 1</span>
+<span style="display:flex;align-items:center;gap:2px;font-size:13px;color:#636D7A">공유할 수 있는 캐시<button type="button" aria-label="공유 가능 캐시 설명 보기" style="width:28px;height:28px;border:0;background:transparent;padding:0;display:flex;align-items:center;justify-content:center;color:#8B95A1;cursor:pointer"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 7.8h.01"/></svg></button></span>
+</div>
+<span style="flex:none;font-size:17px;font-weight:700;font-variant-numeric:tabular-nums">150,000 캐시</span>
+</section>
+</div>
+
+<span aria-hidden="true" style="flex:none;height:8px;background:#F2F4F6;display:block"></span>
+
+<section aria-labelledby="to-t" style="padding:20px 20px 24px;display:flex;flex-direction:column">
+<h2 id="to-t" style="margin:0 0 12px;font-size:18px;font-weight:700">받는 분</h2>
+<div style="background:#F2F4F6;border-radius:20px;padding:16px;display:flex;align-items:center;gap:12px">
+<span aria-hidden="true" style="flex:none;width:44px;height:44px;border-radius:22px;background:#FFFFFF;color:#4E5968;display:flex;align-items:center;justify-content:center"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8.5" r="3.8"/><path d="M4.5 20a7.5 7.5 0 0115 0"/></svg></span>
+<div style="flex:1;min-width:0;display:flex;flex-direction:column;gap:2px">
+<span style="font-size:16px;font-weight:700">김*나</span>
+<span style="font-size:14px;color:#636D7A;font-variant-numeric:tabular-nums">010-****-5678</span>
+</div>
+<a href="06-01-share-form.html" style="flex:none;height:44px;padding:0 4px;display:flex;align-items:center;font-size:14px;font-weight:500;color:#4E5968;text-decoration:underline">다시 찾기</a>
+</div>
+<p style="margin:8px 0 0;font-size:13px;color:#636D7A">받는 분 정보가 맞는지 확인해 주세요</p>
+</section>
+
+<span aria-hidden="true" style="flex:none;height:8px;background:#F2F4F6;display:block"></span>
+
+<section aria-labelledby="amt-t" style="padding:20px 20px 24px;display:flex;flex-direction:column">
+<h2 id="amt-t" style="margin:0 0 12px;font-size:18px;font-weight:700">보낼 캐시</h2>
+<label style="display:flex;align-items:baseline;gap:6px;border-bottom:2px solid #191F28;padding-bottom:8px">
+<span style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)">보낼 캐시</span>
+<input type="text" inputmode="numeric" value="10,000" style="flex:1;min-width:0;border:0;background:transparent;padding:0;font-family:inherit;font-size:28px;font-weight:700;letter-spacing:-0.5px;color:#191F28;outline:none;font-variant-numeric:tabular-nums">
+<span style="font-size:18px;font-weight:700">캐시</span>
+</label>
+<div role="group" aria-label="금액 빠르게 더하기" style="display:flex;gap:8px;margin-top:16px">
+<button type="button" style="height:36px;border:0;border-radius:18px;background:#F2F4F6;padding:0 14px;font-family:inherit;font-size:14px;font-weight:500;color:#191F28;cursor:pointer">+1만</button>
+<button type="button" style="height:36px;border:0;border-radius:18px;background:#F2F4F6;padding:0 14px;font-family:inherit;font-size:14px;font-weight:500;color:#191F28;cursor:pointer">+5만</button>
+<button type="button" style="height:36px;border:0;border-radius:18px;background:#F2F4F6;padding:0 14px;font-family:inherit;font-size:14px;font-weight:500;color:#191F28;cursor:pointer">전액</button>
+</div>
+<div style="display:flex;justify-content:space-between;align-items:baseline;margin-top:16px;font-size:13px">
+<span style="color:#636D7A">공유할 수 있는 캐시</span>
+<span style="font-weight:700;font-variant-numeric:tabular-nums">150,000 캐시</span>
+</div>
+</section>
+
+<span aria-hidden="true" style="flex:none;height:8px;background:#F2F4F6;display:block"></span>
+
+<section aria-labelledby="card-t" style="padding:20px 20px 24px;display:flex;flex-direction:column">
+<h2 id="card-t" style="margin:0 0 4px;font-size:18px;font-weight:700">메시지 카드</h2>
+<div style="height:52px;display:flex;align-items:center;justify-content:space-between">
+<span style="font-size:15px">메시지 카드 함께 보내기</span>
+<button type="button" aria-pressed="true" aria-label="메시지 카드 함께 보내기" style="width:48px;height:28px;border-radius:14px;border:0;background:#191F28;padding:3px;display:flex;justify-content:flex-end;cursor:pointer"><span style="width:22px;height:22px;border-radius:11px;background:#FFFFFF;display:block"></span></button>
+</div>
+<div role="group" aria-label="카드 디자인" style="display:flex;gap:10px;margin-top:12px">
+<button type="button" aria-pressed="true" aria-label="라벤더 카드" style="flex:none;width:96px;height:64px;border:0;border-radius:14px;background:#F1EFFA;padding:0;position:relative;overflow:hidden;outline:2px solid #191F28;outline-offset:2px;cursor:pointer"><span aria-hidden="true" style="position:absolute;right:-10px;top:-12px;width:44px;height:44px;border-radius:22px;background:#CEC6F0;display:block"></span><span aria-hidden="true" style="position:absolute;left:12px;bottom:-14px;width:30px;height:30px;border-radius:15px;background:#CEC6F0;display:block"></span></button>
+<button type="button" aria-pressed="false" aria-label="피치 카드" style="flex:none;width:96px;height:64px;border:0;border-radius:14px;background:#FFF1E8;padding:0;position:relative;overflow:hidden;cursor:pointer"><span aria-hidden="true" style="position:absolute;right:-10px;top:-12px;width:44px;height:44px;border-radius:22px;background:#FFDCC7;display:block"></span><span aria-hidden="true" style="position:absolute;left:12px;bottom:-14px;width:30px;height:30px;border-radius:15px;background:#FFDCC7;display:block"></span></button>
+<button type="button" aria-pressed="false" aria-label="민트 카드" style="flex:none;width:96px;height:64px;border:0;border-radius:14px;background:#ECF7EF;padding:0;position:relative;overflow:hidden;cursor:pointer"><span aria-hidden="true" style="position:absolute;right:-10px;top:-12px;width:44px;height:44px;border-radius:22px;background:#CBE9D4;display:block"></span><span aria-hidden="true" style="position:absolute;left:12px;bottom:-14px;width:30px;height:30px;border-radius:15px;background:#CBE9D4;display:block"></span></button>
+</div>
+<label style="display:flex;flex-direction:column;gap:6px;margin-top:16px">
+<span style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)">메시지</span>
+<textarea maxlength="100" style="height:96px;box-sizing:border-box;border:0;border-radius:14px;background:#F2F4F6;padding:14px 16px;font-family:inherit;font-size:15px;line-height:1.5;color:#191F28;resize:none;outline:none">행복한 하루 보내세요!</textarea>
+<span style="align-self:flex-end;font-size:12px;color:#636D7A;font-variant-numeric:tabular-nums">12/100</span>
+</label>
+</section>
+
+<span aria-hidden="true" style="flex:none;height:8px;background:#F2F4F6;display:block"></span>
+
+<section aria-label="유의사항과 동의" style="padding:8px 20px 20px;display:flex;flex-direction:column">
+<button type="button" aria-expanded="false" style="height:56px;border:0;background:transparent;padding:0;display:flex;align-items:center;justify-content:space-between;font-family:inherit;font-size:15px;font-weight:700;color:#191F28;cursor:pointer">공유캐시 유의사항<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#636D7A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button>
+<label style="display:flex;align-items:center;gap:12px;min-height:44px;font-size:15px;border-top:1px solid #F2F4F6;padding-top:8px"><input type="checkbox" checked style="flex:none;width:22px;height:22px;margin:0;accent-color:#191F28">보낼 캐시와 유의사항을 확인했어요 (필수)</label>
+</section>
+</main>
+
+<div style="flex:none;padding:12px 20px 34px;background:#FFFFFF;border-top:1px solid #E5E8EB">
+<a href="06-04-share-done.html" style="height:56px;border-radius:16px;background:#DA2F2E;color:#FFFFFF;font-size:17px;font-weight:700;display:flex;align-items:center;justify-content:center">10,000 캐시 보내기</a>
+</div>
+</div>
+</body>
+</html>

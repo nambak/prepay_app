@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>09-09 환경설정 · prepay-app</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+a{color:inherit;text-decoration:none}a:hover{color:inherit}
+</style>
+<link rel="stylesheet" href="../../assets/preview.css">
+</head>
+<body>
+<div style="width:390px;height:1140px;box-sizing:border-box;background:#F2F4F6;font-family:'Noto Sans KR',sans-serif;color:#191F28;display:flex;flex-direction:column;overflow:hidden;position:relative">
+
+<header style="flex:none;height:56px;position:relative;display:flex;align-items:center;justify-content:space-between;padding:0 4px">
+<a href="09-01-my.html" aria-label="뒤로 가기" style="width:44px;height:44px;display:flex;align-items:center;justify-content:center;color:#191F28"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></a>
+<h1 style="position:absolute;left:60px;right:60px;margin:0;text-align:center;font-size:17px;font-weight:700">환경설정</h1>
+<span style="width:44px;height:44px;display:block"></span>
+</header>
+
+<main style="flex:1;min-height:0;overflow:hidden;display:flex;flex-direction:column;padding:0 0 24px">
+
+<section aria-labelledby="s-login" style="flex:none">
+<h2 id="s-login" style="margin:0;padding:12px 20px 8px;font-size:13px;font-weight:500;color:#636D7A">로그인</h2>
+<div style="margin:0 16px;background:#FFFFFF;border-radius:20px;display:flex;flex-direction:column">
+<div style="min-height:64px;box-sizing:border-box;padding:12px 20px;display:flex;align-items:center;gap:12px">
+<span id="t-auto" style="flex:1;font-size:16px">자동 로그인</span>
+<button type="button" aria-pressed="true" aria-labelledby="t-auto" style="flex:none;width:48px;height:28px;border-radius:14px;border:0;background:#191F28;padding:3px;display:flex;justify-content:flex-end;cursor:pointer"><span style="width:22px;height:22px;border-radius:11px;background:#FFFFFF;display:block"></span></button>
+</div>
+</div>
+</section>
+
+<section aria-labelledby="s-money" style="flex:none">
+<h2 id="s-money" style="margin:0;padding:20px 20px 8px;font-size:13px;font-weight:500;color:#636D7A">캐시 알림</h2>
+<div style="margin:0 16px;background:#FFFFFF;border-radius:20px;display:flex;flex-direction:column">
+<div style="min-height:64px;box-sizing:border-box;padding:12px 20px;display:flex;align-items:center;gap:12px">
+<div style="flex:1;min-width:0;display:flex;flex-direction:column;gap:2px"><span id="t-m1" style="font-size:16px">차감 완료 알림</span><span style="font-size:13px;color:#636D7A">캐시를 쓰면 알려 드려요</span></div>
+<button type="button" aria-pressed="true" aria-labelledby="t-m1" style="flex:none;width:48px;height:28px;border-radius:14px;border:0;background:#191F28;padding:3px;display:flex;justify-content:flex-end;cursor:pointer"><span style="width:22px;height:22px;border-radius:11px;background:#FFFFFF;display:block"></span></button>
+</div>
+<div style="min-height:64px;box-sizing:border-box;padding:12px 20px;display:flex;align-items:center;gap:12px;border-top:1px solid #F2F4F6">
+<div style="flex:1;min-width:0;display:flex;flex-direction:column;gap:2px"><span id="t-m2" style="font-size:16px">공유캐시 알림</span><span style="font-size:13px;color:#636D7A">공유캐시가 바뀌면 알려 드려요</span></div>
+<button type="button" aria-pressed="true" aria-labelledby="t-m2" style="flex:none;width:48px;height:28px;border-radius:14px;border:0;background:#191F28;padding:3px;display:flex;justify-content:flex-end;cursor:pointer"><span style="width:22px;height:22px;border-radius:11px;background:#FFFFFF;display:block"></span></button>
+</div>
+<div style="min-height:64px;box-sizing:border-box;padding:12px 20px;display:flex;align-items:center;gap:12px;border-top:1px solid #F2F4F6">
+<div style="flex:1;min-width:0;display:flex;flex-direction:column;gap:2px"><span id="t-m3" style="font-size:16px">서비스캐시 알림</span><span style="font-size:13px;color:#636D7A">서비스캐시를 받으면 알려 드려요</span></div>
+<button type="button" aria-pressed="true" aria-labelledby="t-m3" style="flex:none;width:48px;height:28px;border-radius:14px;border:0;background:#191F28;padding:3px;display:flex;justify-content:flex-end;cursor:pointer"><span style="width:22px;height:22px;border-radius:11px;background:#FFFFFF;display:block"></span></button>
+</div>
+</div>
+</section>
+
+<section aria-labelledby="s-group" style="flex:none">
+<h2 id="s-group" style="margin:0;padding:20px 20px 8px;font-size:13px;font-weight:500;color:#636D7A">그룹</h2>
+<div style="margin:0 16px;background:#FFFFFF;border-radius:20px;display:flex;flex-direction:column">
+<div style="min-height:64px;box-sizing:border-box;padding:12px 20px;display:flex;align-items:center;gap:12px">
+<div style="flex:1;min-width:0;display:flex;flex-direction:column;gap:2px"><span id="t-g1" style="font-size:16px">그룹 공유캐시 알림</span><span style="font-size:13px;color:#636D7A">그룹 공유캐시가 바뀌면 알려 드려요</span></div>
+<button type="button" aria-pressed="true" aria-labelledby="t-g1" style="flex:none;width:48px;height:28px;border-radius:14px;border:0;background:#191F28;padding:3px;display:flex;justify-content:flex-end;cursor:pointer"><span style="width:22px;height:22px;border-radius:11px;background:#FFFFFF;display:block"></span></button>
+</div>
+<div style="min-height:64px;box-sizing:border-box;padding:12px 20px;display:flex;align-items:center;gap:12px;border-top:1px solid #F2F4F6">
+<div style="flex:1;min-width:0;display:flex;flex-direction:column;gap:2px"><span id="t-g2" style="font-size:16px">그룹원 소식</span><span style="font-size:13px;color:#636D7A">그룹원이 바뀌면 알려 드려요 · 22~08시엔 보내지 않아요</span></div>
+<button type="button" aria-pressed="false" aria-labelledby="t-g2" style="flex:none;width:48px;height:28px;border-radius:14px;border:0;background:#D1D6DB;padding:3px;display:flex;justify-content:flex-start;cursor:pointer"><span style="width:22px;height:22px;border-radius:11px;background:#FFFFFF;display:block"></span></button>
+</div>
+</div>
+</section>
+
+<section aria-labelledby="s-service" style="flex:none">
+<h2 id="s-service" style="margin:0;padding:20px 20px 8px;font-size:13px;font-weight:500;color:#636D7A">서비스 알림</h2>
+<div style="margin:0 16px;background:#FFFFFF;border-radius:20px;display:flex;flex-direction:column">
+<div style="min-height:64px;box-sizing:border-box;padding:12px 20px;display:flex;align-items:center;gap:12px">
+<div style="flex:1;min-width:0;display:flex;flex-direction:column;gap:2px"><span id="t-s1" style="font-size:16px">리뷰 작성 요청</span><span style="font-size:13px;color:#636D7A">22~08시엔 보내지 않아요</span></div>
+<button type="button" aria-pressed="true" aria-labelledby="t-s1" style="flex:none;width:48px;height:28px;border-radius:14px;border:0;background:#191F28;padding:3px;display:flex;justify-content:flex-end;cursor:pointer"><span style="width:22px;height:22px;border-radius:11px;background:#FFFFFF;display:block"></span></button>
+</div>
+<div style="min-height:64px;box-sizing:border-box;padding:12px 20px;display:flex;align-items:center;gap:12px;border-top:1px solid #F2F4F6">
+<div style="flex:1;min-width:0;display:flex;flex-direction:column;gap:2px"><span id="t-s2" style="font-size:16px">답글 알림</span><span style="font-size:13px;color:#636D7A">내 글에 답글이 달리면 알려 드려요 · 22~08시엔 보내지 않아요</span></div>
+<button type="button" aria-pressed="true" aria-labelledby="t-s2" style="flex:none;width:48px;height:28px;border-radius:14px;border:0;background:#191F28;padding:3px;display:flex;justify-content:flex-end;cursor:pointer"><span style="width:22px;height:22px;border-radius:11px;background:#FFFFFF;display:block"></span></button>
+</div>
+</div>
+</section>
+
+<section aria-labelledby="s-benefit" style="flex:none">
+<h2 id="s-benefit" style="margin:0;padding:20px 20px 8px;font-size:13px;font-weight:500;color:#636D7A">혜택 알림</h2>
+<div style="margin:0 16px;background:#FFFFFF;border-radius:20px;display:flex;flex-direction:column">
+<div style="min-height:64px;box-sizing:border-box;padding:12px 20px;display:flex;align-items:center;gap:12px">
+<div style="flex:1;min-width:0;display:flex;flex-direction:column;gap:2px"><span id="t-b1" style="font-size:16px">이벤트·혜택 알림</span><span style="font-size:13px;color:#636D7A">광고성 정보 수신 동의에 따른 알림이에요</span></div>
+<button type="button" aria-pressed="false" aria-labelledby="t-b1" style="flex:none;width:48px;height:28px;border-radius:14px;border:0;background:#D1D6DB;padding:3px;display:flex;justify-content:flex-start;cursor:pointer"><span style="width:22px;height:22px;border-radius:11px;background:#FFFFFF;display:block"></span></button>
+</div>
+</div>
+</section>
+
+<section aria-label="앱 정보" style="flex:none;margin:24px 16px 0;background:#FFFFFF;border-radius:20px;display:flex;flex-direction:column">
+<div style="min-height:64px;box-sizing:border-box;padding:12px 20px;display:flex;align-items:center;gap:12px">
+<div style="flex:1;min-width:0;display:flex;flex-direction:column;gap:2px"><span style="font-size:16px">버전 정보</span><span style="font-size:13px;color:#636D7A">최신 버전을 쓰고 있어요</span></div>
+<span style="font-size:15px;color:#4E5968;font-variant-numeric:tabular-nums">1.0.6</span>
+</div>
+</section>
+
+<div style="flex:none;margin:12px 16px 0;background:#FFFFFF;border-radius:20px">
+<button type="button" style="width:100%;height:56px;border:0;background:transparent;padding:0 20px;display:flex;align-items:center;font-family:inherit;font-size:16px;font-weight:500;color:#4E5968;cursor:pointer">로그아웃</button>
+</div>
+
+</main>
+</div>
+</body>
+</html>

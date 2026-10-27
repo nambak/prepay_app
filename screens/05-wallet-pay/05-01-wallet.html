@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>05-01 즐겨찾는 가게 · prepay-app</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+a{color:inherit;text-decoration:none}a:hover{color:inherit}
+</style>
+<link rel="stylesheet" href="../../assets/preview.css">
+</head>
+<body>
+<div style="width:390px;height:1480px;box-sizing:border-box;background:#F2F4F6;font-family:'Noto Sans KR',sans-serif;color:#191F28;display:flex;flex-direction:column;overflow:hidden">
+
+<header style="flex:none;height:64px;box-sizing:border-box;padding:8px 8px 0 20px;display:flex;align-items:center;justify-content:space-between">
+<nav aria-label="즐겨찾는 가게와 그룹 전환" style="display:flex;align-items:center;gap:18px">
+<a href="05-01-wallet.html" aria-current="page" style="font-size:24px;font-weight:700;color:#191F28">즐겨찾는 가게</a>
+<a href="../08-group/08-01-groups.html" style="font-size:24px;font-weight:700;color:#8B95A1">그룹</a>
+</nav>
+<a href="05-02-qr.html" aria-label="QR로 쓰기" style="width:44px;height:44px;display:flex;align-items:center;justify-content:center;color:#191F28">
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="4" width="6" height="6" rx="1.2"/><rect x="14" y="4" width="6" height="6" rx="1.2"/><rect x="4" y="14" width="6" height="6" rx="1.2"/><path d="M14 14h2.5v2.5H14zM17.5 17.5H20V20h-2.5zM14 19.5h1.5M19.5 14H20"/></svg>
+</a>
+</header>
+
+<main style="flex:1;min-height:0;overflow:hidden;display:flex;flex-direction:column;gap:12px;padding:8px 0 24px">
+
+<section aria-label="캐시 잔액" style="margin:0 16px;background:#FFFFFF;border-radius:24px;padding:24px 20px 12px;display:flex;flex-direction:column">
+<div style="display:flex;align-items:center;gap:4px">
+<span style="font-size:14px;color:#4E5968">쓸 수 있는 캐시</span>
+<button type="button" aria-label="캐시 종류 설명 보기" style="width:28px;height:28px;border:0;background:transparent;padding:0;display:flex;align-items:center;justify-content:center;color:#8B95A1;cursor:pointer"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 7.8h.01"/></svg></button>
+</div>
+<div style="display:flex;align-items:baseline;gap:6px;margin-top:2px">
+<span style="font-size:32px;font-weight:700;letter-spacing:-0.8px;font-variant-numeric:tabular-nums">500,000</span>
+<span style="font-size:18px;font-weight:700">캐시</span>
+</div>
+<span style="font-size:13px;color:#4E5968;margin-top:6px">즐겨찾는 가게에서 지금까지 <b style="font-weight:700;color:#191F28">32,500원</b> 아꼈어요</span>
+<div aria-hidden="true" style="display:flex;gap:3px;height:8px;margin:20px 0 8px">
+<span style="flex:64;background:#EE3E3D;border-radius:4px;display:block"></span>
+<span style="flex:30;background:#6E5DA8;border-radius:4px;display:block"></span>
+<span style="flex:6;background:#F2A14A;border-radius:4px;display:block"></span>
+</div>
+<a href="../07-cash-history/07-01-history.html" style="height:48px;display:flex;align-items:center;gap:10px;font-size:15px">
+<span style="width:8px;height:8px;border-radius:4px;background:#EE3E3D;display:block"></span><span style="flex:1">충전캐시</span><span style="font-weight:700;font-variant-numeric:tabular-nums">320,000</span>
+<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#8B95A1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg>
+</a>
+<a href="../07-cash-history/07-06-shared-cash.html" style="height:48px;display:flex;align-items:center;gap:10px;font-size:15px;border-top:1px solid #F2F4F6">
+<span style="width:8px;height:8px;border-radius:4px;background:#6E5DA8;display:block"></span><span style="flex:1">공유캐시</span><span style="font-weight:700;font-variant-numeric:tabular-nums">150,000</span>
+<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#8B95A1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg>
+</a>
+<a href="../07-cash-history/07-07-service-cash.html" style="height:48px;display:flex;align-items:center;gap:10px;font-size:15px;border-top:1px solid #F2F4F6">
+<span style="width:8px;height:8px;border-radius:4px;background:#F2A14A;display:block"></span><span style="flex:1">서비스캐시</span><span style="font-weight:700;font-variant-numeric:tabular-nums">30,000</span>
+<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#8B95A1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg>
+</a>
+</section>
+
+<section aria-label="가게 목록" style="display:flex;flex-direction:column;gap:12px;margin-top:12px">
+<div style="margin:0 20px;display:flex;gap:20px;border-bottom:1px solid #E5E8EB">
+<a href="05-01-wallet.html" aria-current="page" style="height:44px;display:flex;align-items:center;gap:4px;font-size:16px;font-weight:700;color:#191F28;border-bottom:2px solid #191F28;margin-bottom:-1px">이용 중인 가게 <span style="color:#636D7A;font-weight:500">5</span></a>
+<a href="05-08-past-stores.html" style="height:44px;display:flex;align-items:center;gap:4px;font-size:16px;font-weight:500;color:#636D7A">이전 가게 2</a>
+</div>
+<label style="margin:0 16px;height:48px;border-radius:14px;background:#FFFFFF;display:flex;align-items:center;gap:8px;padding:0 14px;color:#636D7A">
+<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg>
+<span style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)">가게 검색</span>
+<input type="search" placeholder="가게 이름으로 찾기" style="flex:1;border:0;background:transparent;font-family:inherit;font-size:15px;color:#191F28;outline:none">
+</label>
+
+<article style="margin:0 16px;background:#FFFFFF;border-radius:24px;padding:20px;display:flex;flex-direction:column;gap:16px">
+<div style="display:flex;align-items:center;gap:12px">
+<div style="flex:none;width:48px;height:48px;border-radius:14px;background:#EEF2FF;color:#3A55B0;display:flex;align-items:center;justify-content:center"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 3v8M5 3v5a2 2 0 004 0V3M7 11v10"/><path d="M17 3c-2 1.5-3 4-3 7h3v11"/></svg></div>
+<a href="../04-store-charge/04-01-store.html" style="flex:1;min-width:0;display:flex;flex-direction:column;gap:2px">
+<h2 style="margin:0;font-size:17px;font-weight:700">행복식당 1</h2>
+<span style="font-size:13px;color:#636D7A">12번째 방문 · 8,400원 아낌</span>
+</a>
+<a href="#" aria-label="행복식당 1에 전화 걸기" style="flex:none;width:44px;height:44px;border-radius:22px;background:#F2F4F6;display:flex;align-items:center;justify-content:center;color:#191F28"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 005 5L15 13l5 2v4a2 2 0 01-2 2A16 16 0 013 6a2 2 0 012-2z"/></svg></a>
+</div>
+<div style="display:flex;justify-content:space-between;align-items:baseline">
+<span style="font-size:14px;color:#4E5968">쓸 수 있는 캐시</span>
+<span style="font-size:22px;font-weight:700;letter-spacing:-0.4px;font-variant-numeric:tabular-nums">280,000 <span style="font-size:15px">캐시</span></span>
+</div>
+<div style="display:flex;gap:8px">
+<a href="05-03-pay-sheet.html" style="flex:1.5;height:48px;border-radius:14px;background:#DA2F2E;color:#FFFFFF;font-size:16px;font-weight:700;display:flex;align-items:center;justify-content:center">쓰기</a>
+<a href="../04-store-charge/04-05-charge-sheet.html" style="flex:1;height:48px;border-radius:14px;background:#F2F4F6;color:#191F28;font-size:15px;font-weight:500;display:flex;align-items:center;justify-content:center">충전</a>
+<a href="../06-share/06-01-share-form.html" style="flex:1;height:48px;border-radius:14px;background:#F2F4F6;color:#191F28;font-size:15px;font-weight:500;display:flex;align-items:center;justify-content:center">공유</a>
+</div>
+<div style="border-top:1px solid #F2F4F6;display:flex;flex-direction:column">
+<button type="button" aria-expanded="true" style="height:48px;border:0;background:transparent;padding:0;display:flex;align-items:center;justify-content:space-between;font-family:inherit;font-size:15px;font-weight:700;color:#191F28;cursor:pointer">캐시 상세<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#636D7A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 15l6-6 6 6"/></svg></button>
+<div style="display:flex;flex-direction:column;gap:12px;font-size:14px">
+<div style="display:flex;align-items:center;gap:8px"><span style="width:8px;height:8px;border-radius:4px;background:#EE3E3D;display:block"></span><span style="flex:1;color:#4E5968">충전캐시</span><span style="font-size:12px;color:#4E5968;background:#F2F4F6;border-radius:6px;padding:2px 6px">D-365</span><span style="width:96px;text-align:right;font-weight:500;font-variant-numeric:tabular-nums">150,000</span></div>
+<div style="display:flex;align-items:center;gap:8px"><span style="width:8px;height:8px;border-radius:4px;background:#6E5DA8;display:block"></span><span style="flex:1;color:#4E5968">공유캐시</span><span style="font-size:12px;color:#4E5968;background:#F2F4F6;border-radius:6px;padding:2px 6px">D-100</span><span style="width:96px;text-align:right;font-weight:500;font-variant-numeric:tabular-nums">100,000</span></div>
+<div style="display:flex;align-items:center;gap:8px"><span style="width:8px;height:8px;border-radius:4px;background:#F2A14A;display:block"></span><span style="flex:1;color:#4E5968">서비스캐시</span><span style="font-size:12px;color:#4E5968;background:#F2F4F6;border-radius:6px;padding:2px 6px">D-365</span><span style="width:96px;text-align:right;font-weight:500;font-variant-numeric:tabular-nums">30,000</span></div>
+</div>
+<div style="margin-top:20px;display:flex;flex-direction:column;gap:4px">
+<div style="display:flex;align-items:center;justify-content:space-between">
+<span style="font-size:15px;font-weight:700">내가 공유한 캐시</span>
+<div role="group" aria-label="공유 방향" style="display:flex;background:#F2F4F6;border-radius:10px;padding:3px">
+<button type="button" aria-pressed="true" style="height:30px;border:0;border-radius:8px;background:#FFFFFF;padding:0 10px;font-family:inherit;font-size:13px;font-weight:700;color:#191F28;cursor:pointer">보낸</button>
+<button type="button" aria-pressed="false" style="height:30px;border:0;border-radius:8px;background:transparent;padding:0 10px;font-family:inherit;font-size:13px;font-weight:500;color:#4E5968;cursor:pointer">받은</button>
+</div>
+</div>
+<span style="font-size:13px;color:#636D7A">끄면 상대방이 이 가게에서 공유캐시를 쓸 수 없어요</span>
+<div style="display:flex;flex-direction:column;margin-top:6px">
+<div style="height:52px;display:flex;align-items:center;gap:10px"><span style="font-size:12px;font-weight:500;color:#4E5968;background:#F2F4F6;border-radius:6px;padding:2px 6px">개인</span><span style="flex:1;font-size:15px">김하나</span><span style="font-size:15px;font-weight:500;font-variant-numeric:tabular-nums">20,000</span><button type="button" aria-pressed="true" aria-label="김하나 공유 사용" style="width:48px;height:28px;border-radius:14px;border:0;background:#191F28;padding:3px;display:flex;justify-content:flex-end;cursor:pointer"><span style="width:22px;height:22px;border-radius:11px;background:#FFFFFF;display:block"></span></button></div>
+<div style="height:52px;display:flex;align-items:center;gap:10px"><span style="font-size:12px;font-weight:500;color:#4E5968;background:#F2F4F6;border-radius:6px;padding:2px 6px">개인</span><span style="flex:1;font-size:15px">이철수</span><span style="font-size:15px;font-weight:500;font-variant-numeric:tabular-nums">10,000</span><button type="button" aria-pressed="true" aria-label="이철수 공유 사용" style="width:48px;height:28px;border-radius:14px;border:0;background:#191F28;padding:3px;display:flex;justify-content:flex-end;cursor:pointer"><span style="width:22px;height:22px;border-radius:11px;background:#FFFFFF;display:block"></span></button></div>
+<div style="height:52px;display:flex;align-items:center;gap:10px"><span style="font-size:12px;font-weight:500;color:#4E5968;background:#F2F4F6;border-radius:6px;padding:2px 6px">개인</span><span style="flex:1;font-size:15px;color:#636D7A">박영희</span><span style="font-size:15px;font-weight:500;color:#636D7A;font-variant-numeric:tabular-nums">20,000</span><button type="button" aria-pressed="false" aria-label="박영희 공유 사용" style="width:48px;height:28px;border-radius:14px;border:0;background:#D1D6DB;padding:3px;display:flex;justify-content:flex-start;cursor:pointer"><span style="width:22px;height:22px;border-radius:11px;background:#FFFFFF;display:block"></span></button></div>
+<div style="height:52px;display:flex;align-items:center;gap:10px"><span style="font-size:12px;font-weight:500;color:#5A4A95;background:#F1EFFA;border-radius:6px;padding:2px 6px">그룹</span><span style="flex:1;font-size:15px">우리 팀</span><span style="font-size:15px;font-weight:500;font-variant-numeric:tabular-nums">50,000</span><button type="button" aria-pressed="true" aria-label="우리 팀 공유 사용" style="width:48px;height:28px;border-radius:14px;border:0;background:#191F28;padding:3px;display:flex;justify-content:flex-end;cursor:pointer"><span style="width:22px;height:22px;border-radius:11px;background:#FFFFFF;display:block"></span></button></div>
+</div>
+</div>
+</div>
+</article>
+
+<article style="margin:0 16px;background:#FFFFFF;border-radius:24px;padding:20px;display:flex;flex-direction:column;gap:16px">
+<div style="display:flex;align-items:center;gap:12px">
+<div style="flex:none;width:48px;height:48px;border-radius:14px;background:#FFF1E8;color:#A34B12;display:flex;align-items:center;justify-content:center"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 9h11v5a5 5 0 01-5 5h-1a5 5 0 01-5-5z"/><path d="M16 10h1.5a2.5 2.5 0 010 5H16"/><path d="M8.5 3.5v3M12.5 3.5v3"/></svg></div>
+<a href="../04-store-charge/04-01-store.html" style="flex:1;min-width:0;display:flex;flex-direction:column;gap:2px">
+<h2 style="margin:0;font-size:17px;font-weight:700">하루카페2</h2>
+<span style="font-size:13px;color:#636D7A">3번째 방문 · 2,500원 아낌</span>
+</a>
+<a href="#" aria-label="하루카페2에 전화 걸기" style="flex:none;width:44px;height:44px;border-radius:22px;background:#F2F4F6;display:flex;align-items:center;justify-content:center;color:#191F28"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 005 5L15 13l5 2v4a2 2 0 01-2 2A16 16 0 013 6a2 2 0 012-2z"/></svg></a>
+</div>
+<div style="display:flex;justify-content:space-between;align-items:baseline">
+<span style="font-size:14px;color:#4E5968">쓸 수 있는 캐시</span>
+<span style="font-size:22px;font-weight:700;letter-spacing:-0.4px;font-variant-numeric:tabular-nums">100,000 <span style="font-size:15px">캐시</span></span>
+</div>
+<div style="display:flex;gap:8px">
+<a href="05-03-pay-sheet.html" style="flex:1.5;height:48px;border-radius:14px;background:#DA2F2E;color:#FFFFFF;font-size:16px;font-weight:700;display:flex;align-items:center;justify-content:center">쓰기</a>
+<a href="../04-store-charge/04-05-charge-sheet.html" style="flex:1;height:48px;border-radius:14px;background:#F2F4F6;color:#191F28;font-size:15px;font-weight:500;display:flex;align-items:center;justify-content:center">충전</a>
+<a href="../06-share/06-01-share-form.html" style="flex:1;height:48px;border-radius:14px;background:#F2F4F6;color:#191F28;font-size:15px;font-weight:500;display:flex;align-items:center;justify-content:center">공유</a>
+</div>
+<button type="button" aria-expanded="false" style="height:44px;border:0;border-top:1px solid #F2F4F6;background:transparent;padding:0;display:flex;align-items:center;justify-content:space-between;font-family:inherit;font-size:15px;font-weight:700;color:#191F28;cursor:pointer">캐시 상세<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#636D7A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button>
+</article>
+</section>
+</main>
+
+<app-tab-bar tab="wallet"></app-tab-bar>
+</div>
+<script src="../../components/components.js"></script>
+</body>
+</html>

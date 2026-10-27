@@ -1,0 +1,86 @@
+/*
+ * prepay-app 디자인 토큰
+ *
+ * 화면 시안(screens/)은 디자인 캔버스에서 옮겨 온 것이라 값이 인라인으로 들어 있어요.
+ * 실제 앱을 구현할 때는 이 변수를 기준으로 쓰고, 값이 바뀌면 tokens.json 도 함께 고쳐 주세요.
+ */
+:root {
+  /* 글자 */
+  --font-family: 'Pretendard', 'Noto Sans KR', -apple-system, sans-serif;
+  --text-primary: #191F28;   /* 잉크: 본문, 제목, 금액 */
+  --text-secondary: #4E5968; /* 보조 설명 */
+  --text-muted: #636D7A;     /* 날짜, 캡션, 비활성 탭 */
+  --icon-muted: #8B95A1;     /* 화살표, 정보 아이콘 (작은 글자에는 쓰지 않음) */
+
+  /* 바탕과 선 */
+  --bg-page: #F2F4F6;        /* 목록·허브 화면 바탕 */
+  --bg-surface: #FFFFFF;     /* 카드, 폼 화면 바탕 */
+  --bg-field: #F2F4F6;       /* 입력창, 보조 버튼 */
+  --border: #E5E8EB;         /* 구분선 */
+  --border-inner: #F2F4F6;   /* 흰 카드 안쪽 구분선 */
+  --dim: rgba(25, 31, 40, 0.5); /* 시트·다이얼로그 뒤 어둡게 */
+
+  /* 브랜드와 주요 버튼 (빨강은 한 화면에 한 곳) */
+  --brand-red: #EE3E3D;      /* 로고, 충전캐시 점·막대 (장식용) */
+  --button-red: #DA2F2E;     /* 주요 버튼 배경, 흰 글자 대비 4.7:1 */
+  --text-danger: #D42A2A;    /* 할인 금액, 오류, 삭제 */
+  --discount-bg: #FFF0F0;    /* 할인 배지 */
+  --discount-text: #C42726;
+
+  /* 캐시 종류 */
+  --cash-charge: #EE3E3D;
+  --cash-shared: #6E5DA8;
+  --cash-shared-bg: #F1EFFA;
+  --cash-shared-text: #5A4A95;
+  --cash-service: #F2A14A;
+  --cash-service-bg: #FFF4E6;
+  --cash-service-text: #A35A00;
+
+  /* 상태 */
+  --success-text: #2C7445;
+  --success-bg: #ECF7EF;
+  --toggle-on: #191F28;
+  --toggle-off: #D1D6DB;
+
+  /* 업종 썸네일 (배경 / 아이콘) */
+  --tone-a-bg: #FFF1E8; --tone-a-fg: #A34B12;
+  --tone-b-bg: #EEF2FF; --tone-b-fg: #3A55B0;
+  --tone-c-bg: #ECF7EF; --tone-c-fg: #2C7445;
+  --tone-d-bg: #F3EFFC; --tone-d-fg: #5E46A6;
+
+  /* 글자 크기 */
+  --fs-balance: 32px;        /* 잔액, Bold, 자간 -0.8px */
+  --fs-title: 24px;          /* 화면 큰 제목, Bold */
+  --fs-section: 18px;        /* 섹션 제목, Bold */
+  --fs-card-title: 17px;     /* 카드 제목, 앱바 제목, Bold */
+  --fs-body: 15px;           /* 본문 (입력값 16px) */
+  --fs-secondary: 13px;      /* 보조 */
+  --fs-badge: 12px;          /* 배지, Medium. 12px 미만은 쓰지 않음 */
+
+  /* 모서리 */
+  --radius-card-lg: 24px;
+  --radius-card: 20px;
+  --radius-card-sm: 16px;
+  --radius-field: 14px;
+  --radius-button: 16px;     /* 하단 56px 버튼 */
+  --radius-button-sm: 14px;  /* 카드 안 48px 버튼 */
+  --radius-chip: 18px;
+  --radius-badge: 6px;
+  --radius-sheet: 28px;
+
+  /* 간격과 크기 */
+  --gutter: 20px;            /* 화면 좌우 여백 */
+  --card-margin: 16px;       /* 카드 좌우 여백 */
+  --gap-xs: 8px;
+  --gap-sm: 12px;
+  --gap-md: 16px;
+  --gap-lg: 20px;
+  --gap-xl: 24px;
+  --touch-target: 44px;
+  --button-height: 56px;
+  --button-height-sm: 48px;
+  --field-height: 52px;
+  --chip-height: 36px;
+  --app-bar-height: 56px;
+  --tab-bar-height: 84px;
+}

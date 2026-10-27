@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>05-04 메뉴 골라서 쓰기 · prepay-app</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+a{color:inherit;text-decoration:none}a:hover{color:inherit}
+</style>
+<link rel="stylesheet" href="../../assets/preview.css">
+</head>
+<body>
+<div style="width:390px;height:1060px;box-sizing:border-box;background:#FFFFFF;font-family:'Noto Sans KR',sans-serif;color:#191F28;display:flex;flex-direction:column;overflow:hidden;position:relative">
+
+<header style="flex:none;height:56px;position:relative;display:flex;align-items:center;justify-content:space-between;padding:0 4px">
+<a href="05-03-pay-sheet.html" aria-label="뒤로 가기" style="width:44px;height:44px;display:flex;align-items:center;justify-content:center;color:#191F28"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></a>
+<h1 style="position:absolute;left:60px;right:60px;margin:0;text-align:center;font-size:17px;font-weight:700">메뉴 골라서 쓰기</h1>
+<span style="width:44px;height:44px;display:block"></span>
+</header>
+
+<main style="flex:1;min-height:0;overflow:hidden;display:flex;flex-direction:column">
+<p style="margin:0;padding:8px 20px 12px;font-size:15px;font-weight:700">행복식당 1 <span style="color:#636D7A;font-weight:500">· 13번째 이용</span></p>
+
+<div style="margin:0 20px;background:#F2F4F6;border-radius:16px;padding:14px;display:flex;gap:8px;align-items:flex-start;font-size:13px;line-height:1.5;color:#4E5968">
+<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#636D7A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex:none;margin-top:1px"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 7.8h.01"/></svg>
+<span>가게가 등록한 메뉴와 가격이에요. 금액은 다음 단계에서 바꿀 수 있어요.</span>
+</div>
+
+<div role="group" aria-label="메뉴 분류" style="display:flex;gap:8px;padding:20px 20px 8px">
+<button type="button" aria-pressed="true" style="height:36px;border:0;border-radius:18px;background:#191F28;padding:0 14px;font-family:inherit;font-size:14px;font-weight:500;color:#FFFFFF;cursor:pointer">대표 메뉴</button>
+<button type="button" aria-pressed="false" style="height:36px;border:0;border-radius:18px;background:#F2F4F6;padding:0 14px;font-family:inherit;font-size:14px;font-weight:500;color:#191F28;cursor:pointer">SET 메뉴</button>
+<button type="button" aria-pressed="false" style="height:36px;border:0;border-radius:18px;background:#F2F4F6;padding:0 14px;font-family:inherit;font-size:14px;font-weight:500;color:#191F28;cursor:pointer">찌개</button>
+<button type="button" aria-pressed="false" style="height:36px;border:0;border-radius:18px;background:#F2F4F6;padding:0 14px;font-family:inherit;font-size:14px;font-weight:500;color:#191F28;cursor:pointer">볶음</button>
+</div>
+
+<ul aria-label="메뉴 목록" style="list-style:none;margin:0;padding:0 20px;display:flex;flex-direction:column">
+<li style="min-height:96px;box-sizing:border-box;padding:16px 0;display:flex;align-items:center;gap:14px;border-bottom:1px solid #F2F4F6">
+<div style="flex:none;width:64px;height:64px;border-radius:16px;background:#EEF2FF;color:#3A55B0;display:flex;align-items:center;justify-content:center"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 3v8M5 3v5a2 2 0 004 0V3M7 11v10"/><path d="M17 3c-2 1.5-3 4-3 7h3v11"/></svg></div>
+<div style="flex:1;min-width:0;display:flex;flex-direction:column;gap:2px">
+<span style="font-size:16px;font-weight:700">돼지고기 김치찌개</span>
+<span style="font-size:13px;color:#636D7A">메인 메뉴 + 공깃밥</span>
+<span style="font-size:15px;font-weight:700;margin-top:2px;font-variant-numeric:tabular-nums">9,900원</span>
+</div>
+<button type="button" aria-label="돼지고기 김치찌개 담기" style="flex:none;height:36px;border:0;border-radius:10px;background:#F2F4F6;padding:0 14px;font-family:inherit;font-size:14px;font-weight:500;color:#191F28;cursor:pointer">담기</button>
+</li>
+
+<li style="min-height:96px;box-sizing:border-box;padding:16px 0;display:flex;align-items:center;gap:14px;border-bottom:1px solid #F2F4F6">
+<div style="flex:none;width:64px;height:64px;border-radius:16px;background:#EEF2FF;color:#3A55B0;display:flex;align-items:center;justify-content:center"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 3v8M5 3v5a2 2 0 004 0V3M7 11v10"/><path d="M17 3c-2 1.5-3 4-3 7h3v11"/></svg></div>
+<div style="flex:1;min-width:0;display:flex;flex-direction:column;gap:2px">
+<span style="font-size:16px;font-weight:700">순두부찌개</span>
+<span style="font-size:13px;color:#636D7A">메인 메뉴 + 공깃밥</span>
+<span style="font-size:15px;font-weight:700;margin-top:2px;font-variant-numeric:tabular-nums">9,900원</span>
+</div>
+<div role="group" aria-label="순두부찌개 수량" style="flex:none;height:40px;border-radius:12px;background:#F2F4F6;display:flex;align-items:center">
+<button type="button" aria-label="수량 줄이기" style="width:40px;height:40px;border:0;background:transparent;padding:0;display:flex;align-items:center;justify-content:center;color:#191F28;cursor:pointer"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/></svg></button>
+<span style="min-width:28px;text-align:center;font-size:16px;font-weight:700;font-variant-numeric:tabular-nums">1</span>
+<button type="button" aria-label="수량 늘리기" style="width:40px;height:40px;border:0;background:transparent;padding:0;display:flex;align-items:center;justify-content:center;color:#191F28;cursor:pointer"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></button>
+</div>
+</li>
+
+<li style="min-height:96px;box-sizing:border-box;padding:16px 0;display:flex;align-items:center;gap:14px;border-bottom:1px solid #F2F4F6">
+<div style="flex:none;width:64px;height:64px;border-radius:16px;background:#EEF2FF;color:#3A55B0;display:flex;align-items:center;justify-content:center"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 3v8M5 3v5a2 2 0 004 0V3M7 11v10"/><path d="M17 3c-2 1.5-3 4-3 7h3v11"/></svg></div>
+<div style="flex:1;min-width:0;display:flex;flex-direction:column;gap:2px">
+<span style="font-size:16px;font-weight:700">된장찌개</span>
+<span style="font-size:13px;color:#636D7A">메인 메뉴 + 공깃밥</span>
+<span style="font-size:15px;font-weight:700;margin-top:2px;font-variant-numeric:tabular-nums">8,900원</span>
+</div>
+<div role="group" aria-label="된장찌개 수량" style="flex:none;height:40px;border-radius:12px;background:#F2F4F6;display:flex;align-items:center">
+<button type="button" aria-label="수량 줄이기" style="width:40px;height:40px;border:0;background:transparent;padding:0;display:flex;align-items:center;justify-content:center;color:#191F28;cursor:pointer"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/></svg></button>
+<span style="min-width:28px;text-align:center;font-size:16px;font-weight:700;font-variant-numeric:tabular-nums">1</span>
+<button type="button" aria-label="수량 늘리기" style="width:40px;height:40px;border:0;background:transparent;padding:0;display:flex;align-items:center;justify-content:center;color:#191F28;cursor:pointer"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></button>
+</div>
+</li>
+
+<li style="min-height:96px;box-sizing:border-box;padding:16px 0;display:flex;align-items:center;gap:14px;border-bottom:1px solid #F2F4F6">
+<div style="flex:none;width:64px;height:64px;border-radius:16px;background:#EEF2FF;color:#3A55B0;display:flex;align-items:center;justify-content:center"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 3v8M5 3v5a2 2 0 004 0V3M7 11v10"/><path d="M17 3c-2 1.5-3 4-3 7h3v11"/></svg></div>
+<div style="flex:1;min-width:0;display:flex;flex-direction:column;gap:2px">
+<span style="font-size:16px;font-weight:700;line-height:1.4">SET1 김치찌개 + 제육볶음 + 공깃밥</span>
+<span style="font-size:13px;color:#636D7A;line-height:1.4">찌개와 볶음을 함께 즐기는 든든한 세트</span>
+<span style="font-size:15px;font-weight:700;margin-top:2px;font-variant-numeric:tabular-nums">17,300원</span>
+</div>
+<button type="button" aria-label="SET1 담기" style="flex:none;height:36px;border:0;border-radius:10px;background:#F2F4F6;padding:0 14px;font-family:inherit;font-size:14px;font-weight:500;color:#191F28;cursor:pointer">담기</button>
+</li>
+
+<li style="min-height:96px;box-sizing:border-box;padding:16px 0;display:flex;align-items:center;gap:14px;border-bottom:1px solid #F2F4F6">
+<div style="flex:none;width:64px;height:64px;border-radius:16px;background:#EEF2FF;color:#3A55B0;display:flex;align-items:center;justify-content:center"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 3v8M5 3v5a2 2 0 004 0V3M7 11v10"/><path d="M17 3c-2 1.5-3 4-3 7h3v11"/></svg></div>
+<div style="flex:1;min-width:0;display:flex;flex-direction:column;gap:2px">
+<span style="font-size:16px;font-weight:700;line-height:1.4">SET2 순두부찌개 + 제육볶음 + 공깃밥</span>
+<span style="font-size:13px;color:#636D7A;line-height:1.4">찌개와 볶음을 함께 즐기는 든든한 세트</span>
+<span style="font-size:15px;font-weight:700;margin-top:2px;font-variant-numeric:tabular-nums">17,300원</span>
+</div>
+<button type="button" aria-label="SET2 담기" style="flex:none;height:36px;border:0;border-radius:10px;background:#F2F4F6;padding:0 14px;font-family:inherit;font-size:14px;font-weight:500;color:#191F28;cursor:pointer">담기</button>
+</li>
+</ul>
+
+<p style="margin:0;padding:16px 20px 24px;font-size:13px;line-height:1.55;color:#636D7A">메뉴 사진은 연출된 이미지로 실제와 다를 수 있어요 · 등록 메뉴가 달라 생긴 문제는 즐겨찾는 가게가 책임지지 않아요</p>
+</main>
+
+<div style="flex:none;background:#FFFFFF;border-top:1px solid #E5E8EB;padding:12px 20px 34px;display:flex;flex-direction:column;gap:12px">
+<div style="display:flex;justify-content:space-between;align-items:baseline">
+<span style="font-size:14px;color:#4E5968">메뉴 2개</span>
+<span style="font-size:18px;font-weight:700;font-variant-numeric:tabular-nums">합계 18,800원</span>
+</div>
+<a href="05-05-pay-confirm.html" style="height:56px;border-radius:16px;background:#DA2F2E;color:#FFFFFF;font-size:17px;font-weight:700;display:flex;align-items:center;justify-content:center">18,800 캐시 쓰기</a>
+</div>
+</div>
+</body>
+</html>

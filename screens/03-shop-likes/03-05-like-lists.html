@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>03-05 찜 리스트 관리 · prepay-app</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+a{color:inherit;text-decoration:none}a:hover{color:inherit}
+</style>
+<link rel="stylesheet" href="../../assets/preview.css">
+</head>
+<body>
+<div style="width:390px;height:844px;box-sizing:border-box;background:#F2F4F6;font-family:'Noto Sans KR',sans-serif;color:#191F28;display:flex;flex-direction:column;overflow:hidden;position:relative">
+
+<header style="flex:none;height:56px;position:relative;display:flex;align-items:center;justify-content:space-between;padding:0 4px">
+<a href="03-04-likes.html" aria-label="뒤로 가기" style="width:44px;height:44px;display:flex;align-items:center;justify-content:center;color:#191F28"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></a>
+<h1 style="position:absolute;left:60px;right:60px;margin:0;text-align:center;font-size:17px;font-weight:700">찜 리스트 관리</h1>
+<span style="width:44px;height:44px;display:block"></span>
+</header>
+
+<main style="flex:1;min-height:0;overflow:hidden;display:flex;flex-direction:column">
+
+<p style="flex:none;margin:0;padding:12px 20px 16px;font-size:13px;color:#636D7A">리스트를 눌러 이름을 바꾸거나 지울 수 있어요</p>
+
+<ul aria-label="찜 리스트" style="flex:none;list-style:none;margin:0 16px;padding:8px 8px 8px 20px;background:#FFFFFF;border-radius:24px;display:flex;flex-direction:column">
+
+<li style="height:64px;display:flex;align-items:center;gap:12px">
+<span style="flex:none;width:40px;height:40px;border-radius:12px;background:#FFF1E8;color:#A34B12;display:flex;align-items:center;justify-content:center"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20s-7.5-4.6-7.5-10.2A4.3 4.3 0 0112 7.2a4.3 4.3 0 017.5 2.6C19.5 15.4 12 20 12 20z"/></svg></span>
+<span style="flex:1;min-width:0;display:flex;flex-direction:column;gap:2px">
+<span style="display:flex;align-items:center;gap:6px"><span style="font-size:16px;font-weight:700">기본 리스트</span><span style="font-size:12px;font-weight:500;color:#4E5968;background:#F2F4F6;border-radius:6px;padding:2px 6px">기본</span></span>
+<span style="font-size:13px;color:#636D7A">가게 5곳</span>
+</span>
+<button type="button" aria-label="기본 리스트 이름 바꾸기" style="flex:none;width:44px;height:44px;border:0;background:transparent;padding:0;display:flex;align-items:center;justify-content:center;color:#636D7A;cursor:pointer"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20h4L19 9l-4-4L4 16z"/></svg></button>
+<span aria-hidden="true" style="flex:none;width:44px;height:44px;display:block"></span>
+</li>
+
+<li style="height:64px;display:flex;align-items:center;gap:12px;border-top:1px solid #F2F4F6">
+<span style="flex:none;width:40px;height:40px;border-radius:12px;background:#EEF2FF;color:#3A55B0;display:flex;align-items:center;justify-content:center"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20s-7.5-4.6-7.5-10.2A4.3 4.3 0 0112 7.2a4.3 4.3 0 017.5 2.6C19.5 15.4 12 20 12 20z"/></svg></span>
+<span style="flex:1;min-width:0;display:flex;flex-direction:column;gap:2px">
+<span style="font-size:16px;font-weight:700">강남 맛집</span>
+<span style="font-size:13px;color:#636D7A">가게 4곳</span>
+</span>
+<button type="button" aria-label="강남 맛집 이름 바꾸기" style="flex:none;width:44px;height:44px;border:0;background:transparent;padding:0;display:flex;align-items:center;justify-content:center;color:#636D7A;cursor:pointer"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20h4L19 9l-4-4L4 16z"/></svg></button>
+<button type="button" aria-label="강남 맛집 삭제" style="flex:none;width:44px;height:44px;border:0;background:transparent;padding:0;display:flex;align-items:center;justify-content:center;color:#636D7A;cursor:pointer"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 7h14M10 11v6M14 11v6M6 7l1 13h10l1-13M9 7V4h6v3"/></svg></button>
+</li>
+
+<li style="height:64px;display:flex;align-items:center;gap:12px;border-top:1px solid #F2F4F6">
+<span style="flex:none;width:40px;height:40px;border-radius:12px;background:#ECF7EF;color:#2C7445;display:flex;align-items:center;justify-content:center"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20s-7.5-4.6-7.5-10.2A4.3 4.3 0 0112 7.2a4.3 4.3 0 017.5 2.6C19.5 15.4 12 20 12 20z"/></svg></span>
+<span style="flex:1;min-width:0;display:flex;flex-direction:column;gap:2px">
+<span style="font-size:16px;font-weight:700">송파 맛집</span>
+<span style="font-size:13px;color:#636D7A">가게 2곳</span>
+</span>
+<button type="button" aria-label="송파 맛집 이름 바꾸기" style="flex:none;width:44px;height:44px;border:0;background:transparent;padding:0;display:flex;align-items:center;justify-content:center;color:#636D7A;cursor:pointer"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20h4L19 9l-4-4L4 16z"/></svg></button>
+<button type="button" aria-label="송파 맛집 삭제" style="flex:none;width:44px;height:44px;border:0;background:transparent;padding:0;display:flex;align-items:center;justify-content:center;color:#636D7A;cursor:pointer"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 7h14M10 11v6M14 11v6M6 7l1 13h10l1-13M9 7V4h6v3"/></svg></button>
+</li>
+
+<li style="height:64px;display:flex;align-items:center;gap:12px;border-top:1px solid #F2F4F6">
+<span style="flex:none;width:40px;height:40px;border-radius:12px;background:#F3EFFC;color:#5E46A6;display:flex;align-items:center;justify-content:center"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20s-7.5-4.6-7.5-10.2A4.3 4.3 0 0112 7.2a4.3 4.3 0 017.5 2.6C19.5 15.4 12 20 12 20z"/></svg></span>
+<span style="flex:1;min-width:0;display:flex;flex-direction:column;gap:2px">
+<span style="font-size:16px;font-weight:700">댕댕이 맛집</span>
+<span style="font-size:13px;color:#636D7A">가게 1곳</span>
+</span>
+<button type="button" aria-label="댕댕이 맛집 이름 바꾸기" style="flex:none;width:44px;height:44px;border:0;background:transparent;padding:0;display:flex;align-items:center;justify-content:center;color:#636D7A;cursor:pointer"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20h4L19 9l-4-4L4 16z"/></svg></button>
+<button type="button" aria-label="댕댕이 맛집 삭제" style="flex:none;width:44px;height:44px;border:0;background:transparent;padding:0;display:flex;align-items:center;justify-content:center;color:#636D7A;cursor:pointer"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 7h14M10 11v6M14 11v6M6 7l1 13h10l1-13M9 7V4h6v3"/></svg></button>
+</li>
+
+<li style="height:64px;display:flex;align-items:center;gap:12px;border-top:1px solid #F2F4F6">
+<span style="flex:none;width:40px;height:40px;border-radius:12px;background:#F2F4F6;color:#8B95A1;display:flex;align-items:center;justify-content:center"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20s-7.5-4.6-7.5-10.2A4.3 4.3 0 0112 7.2a4.3 4.3 0 017.5 2.6C19.5 15.4 12 20 12 20z"/></svg></span>
+<span style="flex:1;min-width:0;display:flex;flex-direction:column;gap:2px">
+<span style="font-size:16px;font-weight:700">새 리스트</span>
+<span style="font-size:13px;color:#636D7A">가게 없음</span>
+</span>
+<button type="button" aria-label="새 리스트 이름 바꾸기" style="flex:none;width:44px;height:44px;border:0;background:transparent;padding:0;display:flex;align-items:center;justify-content:center;color:#636D7A;cursor:pointer"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20h4L19 9l-4-4L4 16z"/></svg></button>
+<button type="button" aria-label="새 리스트 삭제" style="flex:none;width:44px;height:44px;border:0;background:transparent;padding:0;display:flex;align-items:center;justify-content:center;color:#636D7A;cursor:pointer"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 7h14M10 11v6M14 11v6M6 7l1 13h10l1-13M9 7V4h6v3"/></svg></button>
+</li>
+
+</ul>
+
+<div style="flex:none;padding:12px 16px 0">
+<button type="button" style="width:100%;height:52px;border:0;border-radius:16px;background:#FFFFFF;display:flex;align-items:center;justify-content:center;gap:6px;font-family:inherit;font-size:16px;font-weight:500;color:#191F28;cursor:pointer"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>새 리스트 만들기</button>
+</div>
+
+<section aria-labelledby="howto-t" style="flex:none;margin:24px 16px 0;background:#FFFFFF;border-radius:20px;padding:20px;display:flex;flex-direction:column;gap:12px">
+<h2 id="howto-t" style="margin:0;font-size:16px;font-weight:700">리스트에 가게를 담으려면</h2>
+<ol style="list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:12px">
+<li style="display:flex;align-items:center;gap:12px">
+<span aria-hidden="true" style="flex:none;width:32px;height:32px;border-radius:16px;background:#F2F4F6;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700">1</span>
+<span style="display:flex;flex-direction:column;gap:2px"><span style="font-size:15px;font-weight:500">가게의 하트를 길게 눌러요</span><span style="font-size:13px;color:#636D7A">가게찾기, 찜한 가게 어디서든 돼요</span></span>
+</li>
+<li style="display:flex;align-items:center;gap:12px">
+<span aria-hidden="true" style="flex:none;width:32px;height:32px;border-radius:16px;background:#F2F4F6;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700">2</span>
+<span style="display:flex;flex-direction:column;gap:2px"><span style="font-size:15px;font-weight:500">담을 리스트를 골라요</span><span style="font-size:13px;color:#636D7A">한 가게를 여러 리스트에 담을 수 있어요</span></span>
+</li>
+</ol>
+</section>
+
+<section aria-labelledby="guide-t" style="flex:none;padding:20px 20px 0;display:flex;flex-direction:column;gap:8px">
+<h2 id="guide-t" style="margin:0;font-size:13px;font-weight:500;color:#636D7A">알아두면 좋아요</h2>
+<ul style="margin:0;padding:0 0 0 18px;display:flex;flex-direction:column;gap:4px;font-size:13px;line-height:1.5;color:#636D7A">
+<li>기본 리스트는 이름만 바꿀 수 있고 지울 수 없어요.</li>
+<li>리스트를 지워도 찜한 가게는 기본 리스트에 남아요.</li>
+</ul>
+</section>
+
+</main>
+</div>
+</body>
+</html>

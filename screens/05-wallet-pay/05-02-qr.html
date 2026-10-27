@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>05-02 QR로 쓰기 · prepay-app</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+a{color:inherit;text-decoration:none}a:hover{color:inherit}
+</style>
+<link rel="stylesheet" href="../../assets/preview.css">
+</head>
+<body>
+<div style="width:390px;height:844px;box-sizing:border-box;background:#191F28;font-family:'Noto Sans KR',sans-serif;color:#FFFFFF;display:flex;flex-direction:column;overflow:hidden;position:relative">
+
+<header style="flex:none;height:56px;position:relative;display:flex;align-items:center;justify-content:space-between;padding:0 4px">
+<a href="05-01-wallet.html" aria-label="닫기" style="width:44px;height:44px;display:flex;align-items:center;justify-content:center;color:#FFFFFF"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></a>
+<h1 style="position:absolute;left:60px;right:60px;margin:0;text-align:center;font-size:17px;font-weight:700;color:#FFFFFF">QR로 쓰기</h1>
+<span style="width:44px;height:44px;display:block"></span>
+</header>
+
+<main style="flex:1;min-height:0;overflow:hidden;display:flex;flex-direction:column;padding:12px 0 24px">
+<div role="group" aria-label="QR 종류" style="flex:none;margin:0 24px;display:flex;background:#2B323D;border-radius:12px;padding:4px">
+<button type="button" aria-pressed="true" style="flex:1;height:40px;border:0;border-radius:9px;background:#FFFFFF;font-family:inherit;font-size:15px;font-weight:700;color:#191F28;cursor:pointer">내 QR</button>
+<button type="button" aria-pressed="false" style="flex:1;height:40px;border:0;border-radius:9px;background:transparent;font-family:inherit;font-size:15px;font-weight:500;color:#C5CBD3;cursor:pointer">그룹 QR</button>
+</div>
+
+<div style="flex:1;min-height:0;display:flex;flex-direction:column;justify-content:center;gap:28px">
+<section aria-labelledby="qr-t" style="margin:0 24px;background:#FFFFFF;border-radius:28px;padding:28px 24px;display:flex;flex-direction:column;align-items:center;color:#191F28">
+<h2 id="qr-t" style="margin:0;font-size:17px;font-weight:700">김하나 님의 QR</h2>
+<svg width="220" height="220" viewBox="0 0 25 25" role="img" aria-label="결제용 QR 코드" shape-rendering="crispEdges" style="display:block;margin-top:20px">
+<rect x="0" y="0" width="7" height="7" fill="#191F28"/><rect x="1" y="1" width="5" height="5" fill="#FFFFFF"/><rect x="2" y="2" width="3" height="3" fill="#191F28"/>
+<rect x="18" y="0" width="7" height="7" fill="#191F28"/><rect x="19" y="1" width="5" height="5" fill="#FFFFFF"/><rect x="20" y="2" width="3" height="3" fill="#191F28"/>
+<rect x="0" y="18" width="7" height="7" fill="#191F28"/><rect x="1" y="19" width="5" height="5" fill="#FFFFFF"/><rect x="2" y="20" width="3" height="3" fill="#191F28"/>
+<rect x="16" y="16" width="5" height="5" fill="#191F28"/><rect x="17" y="17" width="3" height="3" fill="#FFFFFF"/><rect x="18" y="18" width="1" height="1" fill="#191F28"/>
+<g fill="#191F28">
+<rect x="9" y="0" width="1" height="1"/><rect x="11" y="0" width="2" height="1"/><rect x="12" y="1" width="1" height="1"/><rect x="14" y="1" width="1" height="1"/>
+<rect x="9" y="2" width="1" height="2"/><rect x="15" y="2" width="1" height="1"/><rect x="10" y="3" width="1" height="1"/><rect x="13" y="3" width="2" height="1"/>
+<rect x="11" y="5" width="1" height="1"/><rect x="14" y="5" width="1" height="2"/><rect x="9" y="6" width="1" height="1"/><rect x="16" y="6" width="1" height="1"/>
+<rect x="0" y="9" width="1" height="1"/><rect x="2" y="9" width="2" height="1"/><rect x="5" y="10" width="1" height="1"/><rect x="1" y="12" width="1" height="1"/>
+<rect x="3" y="13" width="1" height="2"/><rect x="6" y="15" width="1" height="1"/><rect x="9" y="9" width="1" height="1"/><rect x="10" y="11" width="1" height="1"/>
+<rect x="12" y="10" width="2" height="1"/><rect x="13" y="12" width="1" height="1"/><rect x="11" y="14" width="1" height="1"/><rect x="15" y="9" width="1" height="1"/>
+<rect x="16" y="13" width="1" height="1"/><rect x="14" y="15" width="1" height="1"/><rect x="18" y="10" width="1" height="2"/><rect x="20" y="9" width="1" height="1"/>
+<rect x="22" y="11" width="1" height="1"/><rect x="24" y="12" width="1" height="1"/><rect x="19" y="14" width="2" height="1"/><rect x="23" y="15" width="1" height="1"/>
+<rect x="22" y="16" width="1" height="1"/><rect x="9" y="18" width="1" height="1"/><rect x="12" y="19" width="1" height="1"/><rect x="10" y="21" width="2" height="1"/>
+<rect x="13" y="23" width="1" height="1"/><rect x="15" y="22" width="1" height="1"/><rect x="22" y="18" width="1" height="1"/><rect x="23" y="20" width="1" height="1"/>
+<rect x="21" y="22" width="1" height="1"/><rect x="24" y="24" width="1" height="1"/><rect x="18" y="23" width="1" height="1"/><rect x="16" y="24" width="1" height="1"/>
+<rect x="11" y="17" width="1" height="1"/>
+</g>
+</svg>
+<div style="margin-top:16px;display:flex;align-items:center;gap:2px">
+<span style="font-size:14px;color:#4E5968">남은 시간 <span style="font-weight:500;font-variant-numeric:tabular-nums">02:48</span></span>
+<button type="button" aria-label="QR 새로 고침" style="width:44px;height:44px;border:0;background:transparent;padding:0;display:flex;align-items:center;justify-content:center;color:#4E5968;cursor:pointer"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 11a8 8 0 10-2 6"/><path d="M20 5v6h-6"/></svg></button>
+</div>
+<p style="margin:2px 0 0;font-size:14px;color:#636D7A">가게 사장님께 이 화면을 보여 주세요</p>
+</section>
+
+<section aria-label="전화번호로 쓰기" style="margin:0 24px;display:flex;flex-direction:column;align-items:center;gap:8px">
+<p style="margin:0;font-size:13px;color:#C5CBD3">QR이 안 되면 전화번호로 쓸 수 있어요</p>
+<div style="display:flex;align-items:center;gap:12px">
+<span style="font-size:20px;font-weight:700;color:#FFFFFF;letter-spacing:-0.2px;font-variant-numeric:tabular-nums">010-1234-5678</span>
+<button type="button" aria-label="전화번호 복사" style="height:44px;border:0;border-radius:12px;background:#2B323D;padding:0 12px;display:flex;align-items:center;gap:4px;font-family:inherit;font-size:14px;font-weight:500;color:#FFFFFF;cursor:pointer"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M15 9V6a2 2 0 00-2-2H6a2 2 0 00-2 2v7a2 2 0 002 2h3"/></svg>복사</button>
+</div>
+</section>
+</div>
+</main>
+</div>
+</body>
+</html>

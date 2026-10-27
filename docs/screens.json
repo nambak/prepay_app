@@ -1,0 +1,762 @@
+[
+  {
+    "id": "01-01",
+    "name": "스플래시",
+    "page": "p1",
+    "group": "01 시작·계정",
+    "file": "screens/01-account/01-01-splash.html",
+    "w": 390,
+    "h": 844,
+    "source": "A01_Splash.dc.html"
+  },
+  {
+    "id": "01-02",
+    "name": "로그인",
+    "page": "p1",
+    "group": "01 시작·계정",
+    "file": "screens/01-account/01-02-login.html",
+    "w": 390,
+    "h": 844,
+    "source": "A02_Login.dc.html"
+  },
+  {
+    "id": "01-03",
+    "name": "아이디 찾기",
+    "page": "p1",
+    "group": "01 시작·계정",
+    "file": "screens/01-account/01-03-find-id.html",
+    "w": 390,
+    "h": 844,
+    "source": "A03_FindId.dc.html"
+  },
+  {
+    "id": "01-04",
+    "name": "아이디 찾기 결과",
+    "page": "p1",
+    "group": "01 시작·계정",
+    "file": "screens/01-account/01-04-find-id-result.html",
+    "w": 390,
+    "h": 844,
+    "source": "A04_FindIdResult.dc.html"
+  },
+  {
+    "id": "01-05",
+    "name": "비밀번호 찾기",
+    "page": "p1",
+    "group": "01 시작·계정",
+    "file": "screens/01-account/01-05-find-pw.html",
+    "w": 390,
+    "h": 844,
+    "source": "A05_FindPw.dc.html"
+  },
+  {
+    "id": "01-06",
+    "name": "비밀번호 재설정",
+    "page": "p1",
+    "group": "01 시작·계정",
+    "file": "screens/01-account/01-06-reset-pw.html",
+    "w": 390,
+    "h": 844,
+    "source": "A06_ResetPw.dc.html"
+  },
+  {
+    "id": "01-07",
+    "name": "회원가입 유형",
+    "page": "p1",
+    "group": "01 시작·계정",
+    "file": "screens/01-account/01-07-join-type.html",
+    "w": 390,
+    "h": 844,
+    "source": "A07_JoinType.dc.html"
+  },
+  {
+    "id": "01-08",
+    "name": "약관 동의",
+    "page": "p1",
+    "group": "01 시작·계정",
+    "file": "screens/01-account/01-08-join-terms.html",
+    "w": 390,
+    "h": 844,
+    "source": "A08_JoinTerms.dc.html"
+  },
+  {
+    "id": "01-09",
+    "name": "본인인증",
+    "page": "p1",
+    "group": "01 시작·계정",
+    "file": "screens/01-account/01-09-join-verify.html",
+    "w": 390,
+    "h": 844,
+    "source": "A09_JoinVerify.dc.html"
+  },
+  {
+    "id": "01-10",
+    "name": "정보 입력",
+    "page": "p1",
+    "group": "01 시작·계정",
+    "file": "screens/01-account/01-10-join-info.html",
+    "w": 390,
+    "h": 844,
+    "source": "A10_JoinInfo.dc.html"
+  },
+  {
+    "id": "01-11",
+    "name": "법인 정보 입력",
+    "page": "p1",
+    "group": "01 시작·계정",
+    "file": "screens/01-account/01-11-join-corp.html",
+    "w": 390,
+    "h": 1060,
+    "source": "A11_JoinCorp.dc.html"
+  },
+  {
+    "id": "01-12",
+    "name": "가입 완료",
+    "page": "p1",
+    "group": "01 시작·계정",
+    "file": "screens/01-account/01-12-join-done.html",
+    "w": 390,
+    "h": 844,
+    "source": "A12_JoinDone.dc.html"
+  },
+  {
+    "id": "02-01",
+    "name": "홈",
+    "page": "p2",
+    "group": "02 홈·알림·검색",
+    "file": "screens/02-home/02-01-home.html",
+    "w": 390,
+    "h": 2000,
+    "source": "B01_Home.dc.html"
+  },
+  {
+    "id": "02-02",
+    "name": "전체 메뉴",
+    "page": "p2",
+    "group": "02 홈·알림·검색",
+    "file": "screens/02-home/02-02-home-menu.html",
+    "w": 390,
+    "h": 844,
+    "source": "B02_HomeMenu.dc.html"
+  },
+  {
+    "id": "02-03",
+    "name": "테마 가게 전체보기",
+    "page": "p2",
+    "group": "02 홈·알림·검색",
+    "file": "screens/02-home/02-03-rank-list.html",
+    "w": 390,
+    "h": 844,
+    "source": "B03_RankList.dc.html"
+  },
+  {
+    "id": "02-04",
+    "name": "프랜차이즈",
+    "page": "p2",
+    "group": "02 홈·알림·검색",
+    "file": "screens/02-home/02-04-franchise.html",
+    "w": 390,
+    "h": 844,
+    "source": "B04_Franchise.dc.html"
+  },
+  {
+    "id": "02-05",
+    "name": "지역 설정",
+    "page": "p2",
+    "group": "02 홈·알림·검색",
+    "file": "screens/02-home/02-05-region-sheet.html",
+    "w": 390,
+    "h": 844,
+    "source": "B05_RegionSheet.dc.html"
+  },
+  {
+    "id": "02-06",
+    "name": "알림센터",
+    "page": "p2",
+    "group": "02 홈·알림·검색",
+    "file": "screens/02-home/02-06-notifications.html",
+    "w": 390,
+    "h": 844,
+    "source": "B06_Notifications.dc.html"
+  },
+  {
+    "id": "02-07",
+    "name": "검색",
+    "page": "p2",
+    "group": "02 홈·알림·검색",
+    "file": "screens/02-home/02-07-search.html",
+    "w": 390,
+    "h": 844,
+    "source": "B08_Search.dc.html"
+  },
+  {
+    "id": "02-08",
+    "name": "검색 결과",
+    "page": "p2",
+    "group": "02 홈·알림·검색",
+    "file": "screens/02-home/02-08-search-result.html",
+    "w": 390,
+    "h": 844,
+    "source": "B09_SearchResult.dc.html"
+  },
+  {
+    "id": "03-01",
+    "name": "가게찾기",
+    "page": "p3",
+    "group": "03 가게찾기·찜",
+    "file": "screens/03-shop-likes/03-01-shop.html",
+    "w": 390,
+    "h": 844,
+    "source": "C01_Shop.dc.html"
+  },
+  {
+    "id": "03-02",
+    "name": "지도로 찾기",
+    "page": "p3",
+    "group": "03 가게찾기·찜",
+    "file": "screens/03-shop-likes/03-02-map.html",
+    "w": 390,
+    "h": 844,
+    "source": "C02_Map.dc.html"
+  },
+  {
+    "id": "03-03",
+    "name": "업종 필터",
+    "page": "p3",
+    "group": "03 가게찾기·찜",
+    "file": "screens/03-shop-likes/03-03-filter.html",
+    "w": 390,
+    "h": 844,
+    "source": "C03_Filter.dc.html"
+  },
+  {
+    "id": "03-04",
+    "name": "찜한 가게",
+    "page": "p3",
+    "group": "03 가게찾기·찜",
+    "file": "screens/03-shop-likes/03-04-likes.html",
+    "w": 390,
+    "h": 844,
+    "source": "I01_Likes.dc.html"
+  },
+  {
+    "id": "03-05",
+    "name": "찜 리스트 관리",
+    "page": "p3",
+    "group": "03 가게찾기·찜",
+    "file": "screens/03-shop-likes/03-05-like-lists.html",
+    "w": 390,
+    "h": 844,
+    "source": "I02_LikeLists.dc.html"
+  },
+  {
+    "id": "04-01",
+    "name": "가게 상세 · 충전상품",
+    "page": "p4",
+    "group": "04 가게상세·충전",
+    "file": "screens/04-store-charge/04-01-store.html",
+    "w": 390,
+    "h": 1520,
+    "source": "D01_Store.dc.html"
+  },
+  {
+    "id": "04-02",
+    "name": "가게 상세 · 메뉴",
+    "page": "p4",
+    "group": "04 가게상세·충전",
+    "file": "screens/04-store-charge/04-02-store-menu.html",
+    "w": 390,
+    "h": 1160,
+    "source": "D02_StoreMenu.dc.html"
+  },
+  {
+    "id": "04-03",
+    "name": "가게 상세 · 가게소개",
+    "page": "p4",
+    "group": "04 가게상세·충전",
+    "file": "screens/04-store-charge/04-03-store-info.html",
+    "w": 390,
+    "h": 1240,
+    "source": "D03_StoreInfo.dc.html"
+  },
+  {
+    "id": "04-04",
+    "name": "가게 상세 · 리뷰",
+    "page": "p4",
+    "group": "04 가게상세·충전",
+    "file": "screens/04-store-charge/04-04-store-review.html",
+    "w": 390,
+    "h": 1240,
+    "source": "D04_StoreReview.dc.html"
+  },
+  {
+    "id": "04-05",
+    "name": "충전 상품 선택",
+    "page": "p4",
+    "group": "04 가게상세·충전",
+    "file": "screens/04-store-charge/04-05-charge-sheet.html",
+    "w": 390,
+    "h": 844,
+    "source": "D05_ChargeSheet.dc.html"
+  },
+  {
+    "id": "04-06",
+    "name": "원하는 금액 충전",
+    "page": "p4",
+    "group": "04 가게상세·충전",
+    "file": "screens/04-store-charge/04-06-custom-amount.html",
+    "w": 390,
+    "h": 844,
+    "source": "D06_CustomAmount.dc.html"
+  },
+  {
+    "id": "04-07",
+    "name": "충전 결제",
+    "page": "p4",
+    "group": "04 가게상세·충전",
+    "file": "screens/04-store-charge/04-07-checkout.html",
+    "w": 390,
+    "h": 1380,
+    "source": "D07_Checkout.dc.html"
+  },
+  {
+    "id": "04-08",
+    "name": "충전 완료",
+    "page": "p4",
+    "group": "04 가게상세·충전",
+    "file": "screens/04-store-charge/04-08-charge-done.html",
+    "w": 390,
+    "h": 844,
+    "source": "D09_ChargeDone.dc.html"
+  },
+  {
+    "id": "05-01",
+    "name": "즐겨찾는 가게",
+    "page": "p5",
+    "group": "05 즐겨찾는 가게·차감",
+    "file": "screens/05-wallet-pay/05-01-wallet.html",
+    "w": 390,
+    "h": 1480,
+    "source": "E01_Wallet.dc.html"
+  },
+  {
+    "id": "05-02",
+    "name": "QR로 쓰기",
+    "page": "p5",
+    "group": "05 즐겨찾는 가게·차감",
+    "file": "screens/05-wallet-pay/05-02-qr.html",
+    "w": 390,
+    "h": 844,
+    "source": "E02_QR.dc.html"
+  },
+  {
+    "id": "05-03",
+    "name": "금액 입력해서 쓰기",
+    "page": "p5",
+    "group": "05 즐겨찾는 가게·차감",
+    "file": "screens/05-wallet-pay/05-03-pay-sheet.html",
+    "w": 390,
+    "h": 844,
+    "source": "E03_PaySheet.dc.html"
+  },
+  {
+    "id": "05-04",
+    "name": "메뉴 골라서 쓰기",
+    "page": "p5",
+    "group": "05 즐겨찾는 가게·차감",
+    "file": "screens/05-wallet-pay/05-04-pay-menu.html",
+    "w": 390,
+    "h": 1060,
+    "source": "E04_PayMenu.dc.html"
+  },
+  {
+    "id": "05-05",
+    "name": "사용 내용 확인",
+    "page": "p5",
+    "group": "05 즐겨찾는 가게·차감",
+    "file": "screens/05-wallet-pay/05-05-pay-confirm.html",
+    "w": 390,
+    "h": 844,
+    "source": "E05_PayConfirm.dc.html"
+  },
+  {
+    "id": "05-06",
+    "name": "사용 완료",
+    "page": "p5",
+    "group": "05 즐겨찾는 가게·차감",
+    "file": "screens/05-wallet-pay/05-06-pay-done.html",
+    "w": 390,
+    "h": 844,
+    "source": "E06_PayDone.dc.html"
+  },
+  {
+    "id": "05-07",
+    "name": "프랜차이즈 지점 선택",
+    "page": "p5",
+    "group": "05 즐겨찾는 가게·차감",
+    "file": "screens/05-wallet-pay/05-07-branch.html",
+    "w": 390,
+    "h": 844,
+    "source": "E07_Branch.dc.html"
+  },
+  {
+    "id": "05-08",
+    "name": "이전 가게",
+    "page": "p5",
+    "group": "05 즐겨찾는 가게·차감",
+    "file": "screens/05-wallet-pay/05-08-past-stores.html",
+    "w": 390,
+    "h": 844,
+    "source": "E08_PastStores.dc.html"
+  },
+  {
+    "id": "06-01",
+    "name": "받는 분 찾기",
+    "page": "p6",
+    "group": "06 공유하기",
+    "file": "screens/06-share/06-01-share-form.html",
+    "w": 390,
+    "h": 960,
+    "source": "F01_ShareForm.dc.html"
+  },
+  {
+    "id": "06-02",
+    "name": "개인에게 공유",
+    "page": "p6",
+    "group": "06 공유하기",
+    "file": "screens/06-share/06-02-share-found.html",
+    "w": 390,
+    "h": 1240,
+    "source": "F02_ShareFound.dc.html"
+  },
+  {
+    "id": "06-03",
+    "name": "그룹에 공유",
+    "page": "p6",
+    "group": "06 공유하기",
+    "file": "screens/06-share/06-03-share-group.html",
+    "w": 390,
+    "h": 1100,
+    "source": "F03_ShareGroup.dc.html"
+  },
+  {
+    "id": "06-04",
+    "name": "공유 완료",
+    "page": "p6",
+    "group": "06 공유하기",
+    "file": "screens/06-share/06-04-share-done.html",
+    "w": 390,
+    "h": 844,
+    "source": "F04_ShareDone.dc.html"
+  },
+  {
+    "id": "06-05",
+    "name": "메시지 카드",
+    "page": "p6",
+    "group": "06 공유하기",
+    "file": "screens/06-share/06-05-message-card.html",
+    "w": 390,
+    "h": 844,
+    "source": "F05_MessageCard.dc.html"
+  },
+  {
+    "id": "07-01",
+    "name": "충전캐시 결제내역",
+    "page": "p7",
+    "group": "07 캐시 내역",
+    "file": "screens/07-cash-history/07-01-history.html",
+    "w": 390,
+    "h": 1180,
+    "source": "G01_History.dc.html"
+  },
+  {
+    "id": "07-02",
+    "name": "가게 이용내역",
+    "page": "p7",
+    "group": "07 캐시 내역",
+    "file": "screens/07-cash-history/07-02-usage.html",
+    "w": 390,
+    "h": 1120,
+    "source": "G02_Usage.dc.html"
+  },
+  {
+    "id": "07-03",
+    "name": "이용 메뉴 보기",
+    "page": "p7",
+    "group": "07 캐시 내역",
+    "file": "screens/07-cash-history/07-03-used-menu.html",
+    "w": 390,
+    "h": 844,
+    "source": "G03_UsedMenu.dc.html"
+  },
+  {
+    "id": "07-04",
+    "name": "결제 상세",
+    "page": "p7",
+    "group": "07 캐시 내역",
+    "file": "screens/07-cash-history/07-04-pay-detail.html",
+    "w": 390,
+    "h": 844,
+    "source": "G04_PayDetail.dc.html"
+  },
+  {
+    "id": "07-05",
+    "name": "환불 신청",
+    "page": "p7",
+    "group": "07 캐시 내역",
+    "file": "screens/07-cash-history/07-05-refund-apply.html",
+    "w": 390,
+    "h": 1420,
+    "source": "G06_RefundApply.dc.html"
+  },
+  {
+    "id": "07-06",
+    "name": "공유캐시",
+    "page": "p7",
+    "group": "07 캐시 내역",
+    "file": "screens/07-cash-history/07-06-shared-cash.html",
+    "w": 390,
+    "h": 1060,
+    "source": "G07_SharedMoney.dc.html"
+  },
+  {
+    "id": "07-07",
+    "name": "서비스캐시",
+    "page": "p7",
+    "group": "07 캐시 내역",
+    "file": "screens/07-cash-history/07-07-service-cash.html",
+    "w": 390,
+    "h": 844,
+    "source": "G08_ServiceMoney.dc.html"
+  },
+  {
+    "id": "08-01",
+    "name": "그룹 목록",
+    "page": "p8",
+    "group": "08 그룹",
+    "file": "screens/08-group/08-01-groups.html",
+    "w": 390,
+    "h": 960,
+    "source": "H01_Groups.dc.html"
+  },
+  {
+    "id": "08-02",
+    "name": "그룹 상세",
+    "page": "p8",
+    "group": "08 그룹",
+    "file": "screens/08-group/08-02-group-detail.html",
+    "w": 390,
+    "h": 1380,
+    "source": "H02_GroupDetail.dc.html"
+  },
+  {
+    "id": "08-03",
+    "name": "그룹 전체 내역",
+    "page": "p8",
+    "group": "08 그룹",
+    "file": "screens/08-group/08-03-group-history.html",
+    "w": 390,
+    "h": 1160,
+    "source": "H03_GroupHistory.dc.html"
+  },
+  {
+    "id": "08-04",
+    "name": "그룹 공지사항",
+    "page": "p8",
+    "group": "08 그룹",
+    "file": "screens/08-group/08-04-group-notice.html",
+    "w": 390,
+    "h": 844,
+    "source": "H04_GroupNotice.dc.html"
+  },
+  {
+    "id": "08-05",
+    "name": "그룹 설정",
+    "page": "p8",
+    "group": "08 그룹",
+    "file": "screens/08-group/08-05-group-settings.html",
+    "w": 390,
+    "h": 1180,
+    "source": "H05_GroupSettings.dc.html"
+  },
+  {
+    "id": "08-06",
+    "name": "그룹원 관리",
+    "page": "p8",
+    "group": "08 그룹",
+    "file": "screens/08-group/08-06-group-members.html",
+    "w": 390,
+    "h": 844,
+    "source": "H06_GroupMembers.dc.html"
+  },
+  {
+    "id": "08-07",
+    "name": "그룹 만들기 · 이름",
+    "page": "p8",
+    "group": "08 그룹",
+    "file": "screens/08-group/08-07-create-name.html",
+    "w": 390,
+    "h": 844,
+    "source": "H07_CreateName.dc.html"
+  },
+  {
+    "id": "08-08",
+    "name": "그룹 만들기 · 관계",
+    "page": "p8",
+    "group": "08 그룹",
+    "file": "screens/08-group/08-08-create-relation.html",
+    "w": 390,
+    "h": 844,
+    "source": "H08_CreateRelation.dc.html"
+  },
+  {
+    "id": "08-09",
+    "name": "그룹 만들기 · 초대",
+    "page": "p8",
+    "group": "08 그룹",
+    "file": "screens/08-group/08-09-create-invite.html",
+    "w": 390,
+    "h": 1100,
+    "source": "H09_CreateInvite.dc.html"
+  },
+  {
+    "id": "08-10",
+    "name": "그룹 만들기 완료",
+    "page": "p8",
+    "group": "08 그룹",
+    "file": "screens/08-group/08-10-create-done.html",
+    "w": 390,
+    "h": 844,
+    "source": "H10_CreateDone.dc.html"
+  },
+  {
+    "id": "09-01",
+    "name": "마이",
+    "page": "p9",
+    "group": "09 마이페이지",
+    "file": "screens/09-my/09-01-my.html",
+    "w": 390,
+    "h": 1300,
+    "source": "J01_My.dc.html"
+  },
+  {
+    "id": "09-02",
+    "name": "결제내역",
+    "page": "p9",
+    "group": "09 마이페이지",
+    "file": "screens/09-my/09-02-payments.html",
+    "w": 390,
+    "h": 1060,
+    "source": "J02_Payments.dc.html"
+  },
+  {
+    "id": "09-03",
+    "name": "환불내역",
+    "page": "p9",
+    "group": "09 마이페이지",
+    "file": "screens/09-my/09-03-refunds.html",
+    "w": 390,
+    "h": 1000,
+    "source": "J03_Refunds.dc.html"
+  },
+  {
+    "id": "09-04",
+    "name": "가게이용 리뷰",
+    "page": "p9",
+    "group": "09 마이페이지",
+    "file": "screens/09-my/09-04-reviews.html",
+    "w": 390,
+    "h": 1060,
+    "source": "J05_Reviews.dc.html"
+  },
+  {
+    "id": "09-05",
+    "name": "리뷰 쓰기",
+    "page": "p9",
+    "group": "09 마이페이지",
+    "file": "screens/09-my/09-05-write-review.html",
+    "w": 390,
+    "h": 1400,
+    "source": "J06_WriteReview.dc.html"
+  },
+  {
+    "id": "09-06",
+    "name": "포인트",
+    "page": "p9",
+    "group": "09 마이페이지",
+    "file": "screens/09-my/09-06-points.html",
+    "w": 390,
+    "h": 960,
+    "source": "J07_Points.dc.html"
+  },
+  {
+    "id": "09-07",
+    "name": "쿠폰",
+    "page": "p9",
+    "group": "09 마이페이지",
+    "file": "screens/09-my/09-07-coupons.html",
+    "w": 390,
+    "h": 844,
+    "source": "J08_Coupons.dc.html"
+  },
+  {
+    "id": "09-08",
+    "name": "회원정보 수정",
+    "page": "p9",
+    "group": "09 마이페이지",
+    "file": "screens/09-my/09-08-profile.html",
+    "w": 390,
+    "h": 1360,
+    "source": "J09_Profile.dc.html"
+  },
+  {
+    "id": "09-09",
+    "name": "환경설정",
+    "page": "p9",
+    "group": "09 마이페이지",
+    "file": "screens/09-my/09-09-settings.html",
+    "w": 390,
+    "h": 1140,
+    "source": "J10_Settings.dc.html"
+  },
+  {
+    "id": "09-10",
+    "name": "1:1 문의",
+    "page": "p9",
+    "group": "09 마이페이지",
+    "file": "screens/09-my/09-10-inquiry.html",
+    "w": 390,
+    "h": 844,
+    "source": "J11_Inquiry.dc.html"
+  },
+  {
+    "id": "09-11",
+    "name": "가게 추천",
+    "page": "p9",
+    "group": "09 마이페이지",
+    "file": "screens/09-my/09-11-recommend.html",
+    "w": 390,
+    "h": 844,
+    "source": "J13_Recommend.dc.html"
+  },
+  {
+    "id": "09-12",
+    "name": "자주 묻는 질문",
+    "page": "p9",
+    "group": "09 마이페이지",
+    "file": "screens/09-my/09-12-faq.html",
+    "w": 390,
+    "h": 844,
+    "source": "J14_FAQ.dc.html"
+  },
+  {
+    "id": "09-13",
+    "name": "오류 화면",
+    "page": "p9",
+    "group": "09 마이페이지",
+    "file": "screens/09-my/09-13-error.html",
+    "w": 390,
+    "h": 844,
+    "source": "J15_Error.dc.html"
+  }
+]

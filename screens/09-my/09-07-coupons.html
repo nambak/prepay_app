@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>09-07 쿠폰 · prepay-app</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+a{color:inherit;text-decoration:none}a:hover{color:inherit}
+</style>
+<link rel="stylesheet" href="../../assets/preview.css">
+</head>
+<body>
+<div style="width:390px;height:844px;box-sizing:border-box;background:#F2F4F6;font-family:'Noto Sans KR',sans-serif;color:#191F28;display:flex;flex-direction:column;overflow:hidden;position:relative">
+
+<header style="flex:none;height:56px;position:relative;display:flex;align-items:center;justify-content:space-between;padding:0 4px">
+<a href="09-01-my.html" aria-label="뒤로 가기" style="width:44px;height:44px;display:flex;align-items:center;justify-content:center;color:#191F28"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></a>
+<h1 style="position:absolute;left:60px;right:60px;margin:0;text-align:center;font-size:17px;font-weight:700">쿠폰</h1>
+<span style="width:44px;height:44px;display:block"></span>
+</header>
+
+<div style="flex:none;padding:12px 20px;display:flex;gap:8px">
+<label style="flex:1;min-width:0;height:52px;box-sizing:border-box;border-radius:14px;background:#FFFFFF;display:flex;align-items:center;padding:0 16px">
+<span style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)">쿠폰 번호</span>
+<input type="text" placeholder="쿠폰 번호를 입력해 주세요" style="flex:1;min-width:0;border:0;background:transparent;font-family:inherit;font-size:16px;color:#191F28;outline:none">
+</label>
+<button type="button" style="flex:none;height:52px;border:0;border-radius:14px;background:#191F28;padding:0 18px;font-family:inherit;font-size:15px;font-weight:500;color:#FFFFFF;cursor:pointer">등록</button>
+</div>
+
+<div style="flex:none;margin:4px 20px 0;display:flex;gap:20px;border-bottom:1px solid #E5E8EB">
+<button type="button" aria-pressed="true" style="height:44px;border:0;border-bottom:2px solid #191F28;margin-bottom:-1px;background:transparent;padding:0;display:flex;align-items:center;gap:4px;font-family:inherit;font-size:16px;font-weight:700;color:#191F28;cursor:pointer">쓸 수 있는 쿠폰 <span style="color:#636D7A;font-weight:500">2</span></button>
+<button type="button" aria-pressed="false" style="height:44px;border:0;background:transparent;padding:0;display:flex;align-items:center;font-family:inherit;font-size:16px;font-weight:500;color:#636D7A;cursor:pointer">지난 쿠폰</button>
+</div>
+
+<main style="flex:1;min-height:0;overflow:hidden;display:flex;flex-direction:column;gap:12px;padding:16px 0 24px">
+
+<div style="flex:none;display:flex;flex-direction:column;gap:8px">
+<article style="position:relative;margin:0 16px;background:#FFFFFF;border-radius:20px;display:flex">
+<div style="flex:1;min-width:0;padding:20px;display:flex;flex-direction:column;gap:4px">
+<span style="font-size:22px;font-weight:700;letter-spacing:-0.4px;font-variant-numeric:tabular-nums">1,000원 할인</span>
+<h2 style="margin:2px 0 0;font-size:14px;font-weight:400;line-height:1.5">[가게 쿠폰] 하루카페 강남점 1천 원 쿠폰</h2>
+<span style="font-size:13px;color:#636D7A;font-variant-numeric:tabular-nums">2026.12.31 24시까지</span>
+</div>
+<div style="position:relative;flex:none;width:72px;border-left:1.5px dashed #E5E8EB;display:flex;align-items:center;justify-content:center">
+<span aria-hidden="true" style="position:absolute;top:-8px;left:-9px;width:16px;height:16px;border-radius:8px;background:#F2F4F6;display:block"></span>
+<span aria-hidden="true" style="position:absolute;bottom:-8px;left:-9px;width:16px;height:16px;border-radius:8px;background:#F2F4F6;display:block"></span>
+<button type="button" aria-expanded="true" style="height:44px;border:0;background:transparent;padding:0 6px;font-family:inherit;font-size:13px;color:#4E5968;text-decoration:underline;cursor:pointer">사용 조건</button>
+</div>
+</article>
+<div style="margin:0 16px;background:#FFFFFF;border-radius:16px;padding:14px;font-size:13px;line-height:1.55;color:#4E5968">[쿠폰 사용 조건을 입력해 주세요]</div>
+</div>
+
+<article style="flex:none;position:relative;margin:0 16px;background:#FFFFFF;border-radius:20px;display:flex">
+<div style="flex:1;min-width:0;padding:20px;display:flex;flex-direction:column;gap:4px">
+<span style="font-size:22px;font-weight:700;letter-spacing:-0.4px;font-variant-numeric:tabular-nums">5% 할인</span>
+<h2 style="margin:2px 0 0;font-size:14px;font-weight:400;line-height:1.5">[전체 쿠폰] 충전 할인 쿠폰</h2>
+<span style="font-size:13px;color:#636D7A;font-variant-numeric:tabular-nums">2026.11.30 24시까지</span>
+</div>
+<div style="position:relative;flex:none;width:72px;border-left:1.5px dashed #E5E8EB;display:flex;align-items:center;justify-content:center">
+<span aria-hidden="true" style="position:absolute;top:-8px;left:-9px;width:16px;height:16px;border-radius:8px;background:#F2F4F6;display:block"></span>
+<span aria-hidden="true" style="position:absolute;bottom:-8px;left:-9px;width:16px;height:16px;border-radius:8px;background:#F2F4F6;display:block"></span>
+<button type="button" aria-expanded="false" style="height:44px;border:0;background:transparent;padding:0 6px;font-family:inherit;font-size:13px;color:#4E5968;text-decoration:underline;cursor:pointer">사용 조건</button>
+</div>
+</article>
+
+<ul style="flex:none;margin:8px 0 0;padding:0 20px 0 38px;display:flex;flex-direction:column;gap:4px;font-size:13px;line-height:1.55;color:#636D7A">
+<li>쿠폰은 충전할 때 결제 화면에서 고를 수 있어요.</li>
+<li>기간이 지난 쿠폰은 '지난 쿠폰'에서 볼 수 있어요.</li>
+</ul>
+
+</main>
+</div>
+</body>
+</html>

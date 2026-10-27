@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>04-07 충전 결제 · prepay-app</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+a{color:inherit;text-decoration:none}a:hover{color:inherit}
+</style>
+<link rel="stylesheet" href="../../assets/preview.css">
+</head>
+<body>
+<div style="width:390px;height:1380px;box-sizing:border-box;background:#F2F4F6;font-family:'Noto Sans KR',sans-serif;color:#191F28;display:flex;flex-direction:column;overflow:hidden;position:relative">
+
+<header style="flex:none;height:56px;position:relative;display:flex;align-items:center;justify-content:space-between;padding:0 4px;background:#F2F4F6">
+<a href="04-05-charge-sheet.html" aria-label="뒤로 가기" style="width:44px;height:44px;display:flex;align-items:center;justify-content:center;color:#191F28"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></a>
+<h1 style="position:absolute;left:60px;right:60px;margin:0;text-align:center;font-size:17px;font-weight:700">캐시 충전</h1>
+<span style="width:44px;height:44px;display:block"></span>
+</header>
+
+<main style="flex:1;min-height:0;overflow:hidden;display:flex;flex-direction:column;gap:12px;padding:8px 0 24px">
+
+<section aria-label="충전 상품" style="margin:0 16px;background:#FFFFFF;border-radius:24px;padding:20px;display:flex;flex-direction:column">
+<div style="display:flex;align-items:center;gap:12px">
+<div aria-hidden="true" style="flex:none;width:44px;height:44px;border-radius:14px;background:#FFF1E8;color:#A34B12;display:flex;align-items:center;justify-content:center"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 9h11v5a5 5 0 01-5 5h-1a5 5 0 01-5-5z"/><path d="M16 10h1.5a2.5 2.5 0 010 5H16"/><path d="M8.5 3.5v3M12.5 3.5v3"/></svg></div>
+<div style="flex:1;min-width:0;display:flex;flex-direction:column;gap:2px">
+<h2 style="margin:0;font-size:17px;font-weight:700">하루카페 강남점</h2>
+<span style="font-size:13px;color:#636D7A">카페 · 서울시 행복구</span>
+</div>
+</div>
+<div style="margin-top:20px;padding-top:16px;border-top:1px solid #F2F4F6;display:flex;flex-direction:column">
+<h3 style="margin:0 0 4px;font-size:15px;font-weight:700">충전 상품</h3>
+<div style="min-height:48px;display:flex;align-items:center;gap:8px;font-size:15px">
+<span style="flex:1;font-variant-numeric:tabular-nums">50,000 캐시 × 1</span>
+<span style="font-size:12px;font-weight:500;color:#C42726;background:#FFF0F0;border-radius:6px;padding:2px 7px">5% 할인</span>
+<span style="width:84px;text-align:right;font-weight:700;font-variant-numeric:tabular-nums">47,500원</span>
+</div>
+<div style="min-height:48px;display:flex;align-items:center;gap:8px;font-size:15px;border-top:1px solid #F2F4F6">
+<span style="flex:1;font-variant-numeric:tabular-nums">100,000 캐시 × 1</span>
+<span style="font-size:12px;font-weight:500;color:#C42726;background:#FFF0F0;border-radius:6px;padding:2px 7px">20% 할인</span>
+<span style="width:84px;text-align:right;font-weight:700;font-variant-numeric:tabular-nums">80,000원</span>
+</div>
+</div>
+</section>
+
+<section aria-labelledby="pt-t" style="margin:0 16px;background:#FFFFFF;border-radius:24px;padding:20px;display:flex;flex-direction:column;gap:12px">
+<div style="display:flex;align-items:center;justify-content:space-between">
+<h3 id="pt-t" style="margin:0;font-size:15px;font-weight:700">포인트</h3>
+<span style="font-size:14px;color:#4E5968;font-variant-numeric:tabular-nums">보유 15,000P</span>
+</div>
+<div style="display:flex;gap:8px">
+<label style="flex:1;min-width:0;height:52px;box-sizing:border-box;border-radius:14px;background:#F2F4F6;padding:0 16px;display:flex;align-items:center;gap:6px">
+<span style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)">사용할 포인트</span>
+<input type="text" inputmode="numeric" value="0" style="flex:1;min-width:0;width:100%;border:0;background:transparent;padding:0;font-family:inherit;font-size:16px;color:#191F28;text-align:right;outline:none;font-variant-numeric:tabular-nums">
+<span style="flex:none;font-size:16px;color:#4E5968">P</span>
+</label>
+<button type="button" style="flex:none;height:52px;border:0;border-radius:14px;background:#F2F4F6;padding:0 16px;font-family:inherit;font-size:15px;font-weight:500;color:#191F28;cursor:pointer">모두 쓰기</button>
+</div>
+</section>
+
+<section aria-label="쿠폰과 결제 수단" style="margin:0 16px;background:#FFFFFF;border-radius:24px;padding:8px 20px;display:flex;flex-direction:column">
+<button type="button" aria-label="쿠폰 고르기" style="width:100%;min-height:64px;border:0;background:transparent;padding:0;display:flex;align-items:center;gap:12px;font-family:inherit;color:#191F28;text-align:left;cursor:pointer">
+<span aria-hidden="true" style="flex:none;width:40px;height:40px;border-radius:12px;background:#F2F4F6;display:flex;align-items:center;justify-content:center"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h16v3a2 2 0 000 4v3H4v-3a2 2 0 000-4z"/><path d="M14 8v8"/></svg></span>
+<span style="flex:1;min-width:0;display:flex;flex-direction:column;gap:2px">
+<span style="font-size:15px;font-weight:700">쿠폰 선택</span>
+<span style="font-size:13px;color:#636D7A">쓸 수 있는 쿠폰 1장 / 전체 3장</span>
+</span>
+<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#8B95A1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg>
+</button>
+<button type="button" aria-label="결제 수단 고르기" style="width:100%;min-height:64px;border:0;border-top:1px solid #F2F4F6;background:transparent;padding:0;display:flex;align-items:center;gap:12px;font-family:inherit;color:#191F28;text-align:left;cursor:pointer">
+<span aria-hidden="true" style="flex:none;width:40px;height:40px;border-radius:12px;background:#F2F4F6;display:flex;align-items:center;justify-content:center"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="8"/><path d="M9.5 9.5h4a1.75 1.75 0 010 3.5h-3a1.75 1.75 0 000 3.5h4M12 8v1.5M12 16.5V18"/></svg></span>
+<span style="flex:1;min-width:0;display:flex;flex-direction:column;gap:2px">
+<span style="font-size:15px;font-weight:700">결제 수단</span>
+<span style="font-size:13px;color:#636D7A">신용·체크카드</span>
+</span>
+<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#8B95A1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg>
+</button>
+</section>
+
+<section aria-labelledby="sum-t" style="margin:0 16px;background:#FFFFFF;border-radius:24px;padding:20px;display:flex;flex-direction:column">
+<h3 id="sum-t" style="margin:0 0 12px;font-size:15px;font-weight:700">결제 금액</h3>
+<dl style="margin:0;display:flex;flex-direction:column;gap:12px">
+<div style="display:flex;align-items:center;justify-content:space-between"><dt style="font-size:14px;color:#4E5968">충전 캐시</dt><dd style="margin:0;font-size:15px;font-weight:500;font-variant-numeric:tabular-nums">150,000 캐시</dd></div>
+<div style="display:flex;align-items:center;justify-content:space-between"><dt style="font-size:14px;color:#4E5968">상품 금액</dt><dd style="margin:0;font-size:15px;font-weight:500;font-variant-numeric:tabular-nums">150,000원</dd></div>
+<div style="display:flex;align-items:center;justify-content:space-between"><dt style="font-size:14px;color:#4E5968">할인 금액</dt><dd style="margin:0;font-size:15px;font-weight:500;color:#D42A2A;font-variant-numeric:tabular-nums">−22,500원</dd></div>
+<div style="display:flex;align-items:center;justify-content:space-between"><dt style="font-size:14px;color:#4E5968">포인트</dt><dd style="margin:0;font-size:15px;font-weight:500;font-variant-numeric:tabular-nums">−0P</dd></div>
+<div style="display:flex;align-items:center;justify-content:space-between"><dt style="font-size:14px;color:#4E5968">쿠폰 할인</dt><dd style="margin:0;font-size:15px;font-weight:500;font-variant-numeric:tabular-nums">−0원</dd></div>
+</dl>
+<div style="margin-top:16px;padding-top:16px;border-top:1px solid #F2F4F6;display:flex;align-items:center;justify-content:space-between">
+<span style="font-size:16px;font-weight:700">최종 결제 금액</span>
+<span style="font-size:24px;font-weight:700;letter-spacing:-0.6px;font-variant-numeric:tabular-nums">127,500원</span>
+</div>
+</section>
+
+<section aria-labelledby="guide-t" style="margin:0 16px;background:#FFFFFF;border-radius:24px;padding:20px;display:flex;flex-direction:column;gap:10px">
+<h3 id="guide-t" style="margin:0;font-size:15px;font-weight:700">캐시 이용 안내</h3>
+<ul style="margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:6px;font-size:14px;line-height:1.6;color:#4E5968">
+<li style="display:flex;gap:8px"><span aria-hidden="true" style="flex:none;width:4px;height:4px;border-radius:2px;background:#8B95A1;margin-top:10px;display:block"></span><span>충전한 캐시는 이 가게에서만 쓸 수 있어요.</span></li>
+<li style="display:flex;gap:8px"><span aria-hidden="true" style="flex:none;width:4px;height:4px;border-radius:2px;background:#8B95A1;margin-top:10px;display:block"></span><span>결제일로부터 7일 안에, 캐시를 쓰기 전이면 결제를 취소할 수 있어요.</span></li>
+<li style="display:flex;gap:8px"><span aria-hidden="true" style="flex:none;width:4px;height:4px;border-radius:2px;background:#8B95A1;margin-top:10px;display:block"></span><span>그 뒤에는 쓴 캐시와 환불 수수료 10%를 빼고 환불해 드려요.</span></li>
+</ul>
+<a href="#" style="align-self:flex-start;min-height:44px;display:flex;align-items:center;gap:2px;font-size:14px;font-weight:500;color:#4E5968">자세히 보기<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></a>
+</section>
+
+<div style="margin:0 20px">
+<label style="display:flex;align-items:center;gap:12px;min-height:44px;font-size:15px;font-weight:500"><input type="checkbox" checked style="width:22px;height:22px;margin:0;accent-color:#191F28">이용 안내를 확인했어요 (필수)</label>
+</div>
+
+</main>
+
+<div style="flex:none;padding:12px 20px 34px;background:#FFFFFF">
+<a href="04-08-charge-done.html" style="height:56px;border-radius:16px;background:#DA2F2E;color:#FFFFFF;font-size:17px;font-weight:700;display:flex;align-items:center;justify-content:center;font-variant-numeric:tabular-nums">127,500원 결제하기</a>
+</div>
+</div>
+</body>
+</html>

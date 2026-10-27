@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>05-08 이전 가게 · prepay-app</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+a{color:inherit;text-decoration:none}a:hover{color:inherit}
+</style>
+<link rel="stylesheet" href="../../assets/preview.css">
+</head>
+<body>
+<div style="width:390px;height:844px;box-sizing:border-box;background:#F2F4F6;font-family:'Noto Sans KR',sans-serif;color:#191F28;display:flex;flex-direction:column;overflow:hidden;position:relative">
+
+<header style="flex:none;height:64px;box-sizing:border-box;padding:8px 8px 0 20px;display:flex;align-items:center;justify-content:space-between">
+<nav aria-label="즐겨찾는 가게와 그룹 전환" style="display:flex;align-items:center;gap:18px">
+<a href="05-01-wallet.html" aria-current="page" style="font-size:24px;font-weight:700;color:#191F28">즐겨찾는 가게</a>
+<a href="../08-group/08-01-groups.html" style="font-size:24px;font-weight:700;color:#8B95A1">그룹</a>
+</nav>
+<a href="05-02-qr.html" aria-label="QR로 쓰기" style="width:44px;height:44px;display:flex;align-items:center;justify-content:center;color:#191F28">
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="4" width="6" height="6" rx="1.2"/><rect x="14" y="4" width="6" height="6" rx="1.2"/><rect x="4" y="14" width="6" height="6" rx="1.2"/><path d="M14 14h2.5v2.5H14zM17.5 17.5H20V20h-2.5zM14 19.5h1.5M19.5 14H20"/></svg>
+</a>
+</header>
+
+<main style="flex:1;min-height:0;overflow:hidden;display:flex;flex-direction:column;gap:12px;padding:8px 0 24px">
+
+<a href="05-01-wallet.html" style="margin:0 16px;background:#FFFFFF;border-radius:20px;padding:16px 20px;display:flex;align-items:center;gap:8px">
+<span style="flex:1;min-width:0;display:flex;flex-direction:column;gap:2px">
+<span style="font-size:13px;color:#4E5968">쓸 수 있는 캐시</span>
+<span style="font-size:20px;font-weight:700;letter-spacing:-0.4px;font-variant-numeric:tabular-nums">500,000 캐시</span>
+</span>
+<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#8B95A1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg>
+</a>
+
+<section aria-label="가게 목록" style="display:flex;flex-direction:column;gap:12px;margin-top:12px">
+<div style="margin:0 20px;display:flex;gap:20px;border-bottom:1px solid #E5E8EB">
+<a href="05-01-wallet.html" style="height:44px;display:flex;align-items:center;gap:4px;font-size:16px;font-weight:500;color:#636D7A">이용 중인 가게 5</a>
+<a href="05-08-past-stores.html" aria-current="page" style="height:44px;display:flex;align-items:center;gap:4px;font-size:16px;font-weight:700;color:#191F28;border-bottom:2px solid #191F28;margin-bottom:-1px">이전 가게 <span style="color:#636D7A;font-weight:500">2</span></a>
+</div>
+<p style="margin:0;padding:0 20px;font-size:13px;line-height:1.5;color:#636D7A">캐시를 모두 쓴 가게예요. 다시 충전하면 이용 중인 가게로 옮겨져요.</p>
+
+<article style="margin:0 16px;background:#FFFFFF;border-radius:24px;padding:20px;display:flex;flex-direction:column;gap:16px">
+<div style="display:flex;align-items:center;gap:12px">
+<div style="flex:none;width:48px;height:48px;border-radius:14px;background:#EEF2FF;color:#3A55B0;display:flex;align-items:center;justify-content:center"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 3v8M5 3v5a2 2 0 004 0V3M7 11v10"/><path d="M17 3c-2 1.5-3 4-3 7h3v11"/></svg></div>
+<a href="../04-store-charge/04-01-store.html" style="flex:1;min-width:0;display:flex;flex-direction:column;gap:2px">
+<h2 style="margin:0;font-size:17px;font-weight:700">행복식당 3</h2>
+<span style="font-size:13px;line-height:1.45;color:#636D7A">누적 할인 12,000원<br>마지막 이용 2026.08.14</span>
+</a>
+<button type="button" aria-label="가게 메뉴" style="flex:none;width:44px;height:44px;border:0;background:transparent;padding:0;display:flex;align-items:center;justify-content:center;color:#636D7A;cursor:pointer"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="5.5" r="1.2" fill="currentColor"/><circle cx="12" cy="12" r="1.2" fill="currentColor"/><circle cx="12" cy="18.5" r="1.2" fill="currentColor"/></svg></button>
+</div>
+<div style="display:flex;justify-content:space-between;align-items:baseline">
+<span style="font-size:14px;color:#4E5968">쓸 수 있는 캐시</span>
+<span style="font-size:18px;font-weight:700;color:#636D7A;font-variant-numeric:tabular-nums">0 캐시</span>
+</div>
+<a href="../04-store-charge/04-05-charge-sheet.html" style="height:48px;border-radius:14px;background:#F2F4F6;color:#191F28;font-size:15px;font-weight:500;display:flex;align-items:center;justify-content:center">다시 충전하기</a>
+</article>
+
+<article style="margin:0 16px;background:#FFFFFF;border-radius:24px;padding:20px;display:flex;flex-direction:column;gap:16px">
+<div style="display:flex;align-items:center;gap:12px">
+<div style="flex:none;width:48px;height:48px;border-radius:14px;background:#F3EFFC;color:#5E46A6;display:flex;align-items:center;justify-content:center"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 8h14l-1 12H6z"/><path d="M9 8V6.5a3 3 0 016 0V8"/></svg></div>
+<a href="../04-store-charge/04-01-store.html" style="flex:1;min-width:0;display:flex;flex-direction:column;gap:2px">
+<h2 style="margin:0;font-size:17px;font-weight:700">봄꽃집</h2>
+<span style="font-size:13px;line-height:1.45;color:#636D7A">누적 할인 4,500원<br>마지막 이용 2026.06.02</span>
+</a>
+<button type="button" aria-label="가게 메뉴" style="flex:none;width:44px;height:44px;border:0;background:transparent;padding:0;display:flex;align-items:center;justify-content:center;color:#636D7A;cursor:pointer"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="5.5" r="1.2" fill="currentColor"/><circle cx="12" cy="12" r="1.2" fill="currentColor"/><circle cx="12" cy="18.5" r="1.2" fill="currentColor"/></svg></button>
+</div>
+<div style="display:flex;justify-content:space-between;align-items:baseline">
+<span style="font-size:14px;color:#4E5968">쓸 수 있는 캐시</span>
+<span style="font-size:18px;font-weight:700;color:#636D7A;font-variant-numeric:tabular-nums">0 캐시</span>
+</div>
+<a href="../04-store-charge/04-05-charge-sheet.html" style="height:48px;border-radius:14px;background:#F2F4F6;color:#191F28;font-size:15px;font-weight:500;display:flex;align-items:center;justify-content:center">다시 충전하기</a>
+</article>
+</section>
+</main>
+
+<app-tab-bar tab="wallet"></app-tab-bar>
+</div>
+<script src="../../components/components.js"></script>
+</body>
+</html>

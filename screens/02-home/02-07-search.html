@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>02-07 검색 · prepay-app</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+a{color:inherit;text-decoration:none}a:hover{color:inherit}
+</style>
+<link rel="stylesheet" href="../../assets/preview.css">
+</head>
+<body>
+<div style="width:390px;height:844px;box-sizing:border-box;background:#FFFFFF;font-family:'Noto Sans KR',sans-serif;color:#191F28;display:flex;flex-direction:column;overflow:hidden;position:relative">
+
+<header style="flex:none;height:64px;box-sizing:border-box;display:flex;align-items:center;gap:4px;padding:0 16px 0 4px">
+<a href="02-01-home.html" aria-label="뒤로 가기" style="flex:none;width:44px;height:44px;display:flex;align-items:center;justify-content:center;color:#191F28"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></a>
+<label style="flex:1;min-width:0;height:48px;box-sizing:border-box;border:1.5px solid #191F28;border-radius:14px;background:#FFFFFF;display:flex;align-items:center;gap:8px;padding:0 14px;color:#191F28">
+<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg>
+<span style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)">가게 찾기</span>
+<input type="search" placeholder="가게 이름이나 해시태그로 찾기" style="flex:1;min-width:0;border:0;background:transparent;font-family:inherit;font-size:15px;color:#191F28;outline:none">
+</label>
+</header>
+
+<main style="flex:1;min-height:0;overflow:hidden;display:flex;flex-direction:column">
+
+<section aria-labelledby="recent-t" style="flex:none;padding:20px 20px 0;display:flex;flex-direction:column;gap:12px">
+<div style="display:flex;align-items:center;justify-content:space-between;min-height:44px">
+<h2 id="recent-t" style="margin:0;font-size:18px;font-weight:700">최근 검색어</h2>
+<button type="button" style="height:44px;border:0;background:transparent;padding:0;font-family:inherit;font-size:14px;color:#636D7A;cursor:pointer">전체 삭제</button>
+</div>
+<div style="display:flex;flex-wrap:wrap;gap:8px">
+<span style="height:36px;box-sizing:border-box;border-radius:18px;background:#F2F4F6;padding:0 4px 0 14px;display:flex;align-items:center;gap:2px;font-size:14px;font-weight:500"><a href="02-08-search-result.html" style="height:36px;display:flex;align-items:center">커피</a><button type="button" aria-label="커피 삭제" style="width:28px;height:28px;border:0;border-radius:14px;background:transparent;padding:0;display:flex;align-items:center;justify-content:center;color:#636D7A;cursor:pointer"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button></span>
+<span style="height:36px;box-sizing:border-box;border-radius:18px;background:#F2F4F6;padding:0 4px 0 14px;display:flex;align-items:center;gap:2px;font-size:14px;font-weight:500"><a href="02-08-search-result.html" style="height:36px;display:flex;align-items:center">하루카페</a><button type="button" aria-label="하루카페 삭제" style="width:28px;height:28px;border:0;border-radius:14px;background:transparent;padding:0;display:flex;align-items:center;justify-content:center;color:#636D7A;cursor:pointer"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button></span>
+<span style="height:36px;box-sizing:border-box;border-radius:18px;background:#F2F4F6;padding:0 4px 0 14px;display:flex;align-items:center;gap:2px;font-size:14px;font-weight:500"><a href="02-08-search-result.html" style="height:36px;display:flex;align-items:center">김밥</a><button type="button" aria-label="김밥 삭제" style="width:28px;height:28px;border:0;border-radius:14px;background:transparent;padding:0;display:flex;align-items:center;justify-content:center;color:#636D7A;cursor:pointer"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button></span>
+<span style="height:36px;box-sizing:border-box;border-radius:18px;background:#F2F4F6;padding:0 4px 0 14px;display:flex;align-items:center;gap:2px;font-size:14px;font-weight:500"><a href="02-08-search-result.html" style="height:36px;display:flex;align-items:center">#가성비</a><button type="button" aria-label="#가성비 삭제" style="width:28px;height:28px;border:0;border-radius:14px;background:transparent;padding:0;display:flex;align-items:center;justify-content:center;color:#636D7A;cursor:pointer"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button></span>
+</div>
+</section>
+
+<section aria-labelledby="suggest-t" style="flex:none;padding:28px 20px 0;display:flex;flex-direction:column;gap:12px">
+<h2 id="suggest-t" style="margin:0;font-size:18px;font-weight:700">추천 검색어</h2>
+<div style="display:flex;flex-wrap:wrap;gap:8px">
+<a href="02-08-search-result.html" style="height:36px;border-radius:18px;background:#F2F4F6;padding:0 14px;display:flex;align-items:center;font-size:14px;font-weight:500">#커피가 맛있어요</a>
+<a href="02-08-search-result.html" style="height:36px;border-radius:18px;background:#F2F4F6;padding:0 14px;display:flex;align-items:center;font-size:14px;font-weight:500">#가성비가 좋아요</a>
+<a href="02-08-search-result.html" style="height:36px;border-radius:18px;background:#F2F4F6;padding:0 14px;display:flex;align-items:center;font-size:14px;font-weight:500">#사진 찍기 좋아요</a>
+<a href="02-08-search-result.html" style="height:36px;border-radius:18px;background:#F2F4F6;padding:0 14px;display:flex;align-items:center;font-size:14px;font-weight:500">#단체 방문</a>
+</div>
+</section>
+
+<div aria-hidden="true" style="flex:none;height:8px;background:#F2F4F6;margin-top:28px"></div>
+
+<section aria-labelledby="popular-t" style="flex:none;padding:24px 20px 0;display:flex;flex-direction:column;gap:4px">
+<h2 id="popular-t" style="margin:0;font-size:18px;font-weight:700">인기 검색어</h2>
+<span style="font-size:12px;color:#636D7A">최근 이용자들이 많이 찾았어요 · 10.27 12:00 기준</span>
+<div style="display:flex;gap:16px;margin-top:12px">
+<ol style="flex:1;min-width:0;list-style:none;margin:0;padding:0;display:flex;flex-direction:column">
+<li><a href="02-08-search-result.html" style="height:48px;display:flex;align-items:center;gap:14px;font-size:15px"><span style="width:16px;font-weight:700;color:#191F28;font-variant-numeric:tabular-nums">1</span>커피</a></li>
+<li><a href="02-08-search-result.html" style="height:48px;display:flex;align-items:center;gap:14px;font-size:15px"><span style="width:16px;font-weight:700;color:#191F28;font-variant-numeric:tabular-nums">2</span>김밥</a></li>
+<li><a href="02-08-search-result.html" style="height:48px;display:flex;align-items:center;gap:14px;font-size:15px"><span style="width:16px;font-weight:700;color:#191F28;font-variant-numeric:tabular-nums">3</span>빵집</a></li>
+<li><a href="02-08-search-result.html" style="height:48px;display:flex;align-items:center;gap:14px;font-size:15px"><span style="width:16px;font-weight:700;color:#636D7A;font-variant-numeric:tabular-nums">4</span>샐러드</a></li>
+<li><a href="02-08-search-result.html" style="height:48px;display:flex;align-items:center;gap:14px;font-size:15px"><span style="width:16px;font-weight:700;color:#636D7A;font-variant-numeric:tabular-nums">5</span>치킨</a></li>
+</ol>
+<ol start="6" style="flex:1;min-width:0;list-style:none;margin:0;padding:0;display:flex;flex-direction:column">
+<li><a href="02-08-search-result.html" style="height:48px;display:flex;align-items:center;gap:14px;font-size:15px"><span style="width:16px;font-weight:700;color:#636D7A;font-variant-numeric:tabular-nums">6</span>헤어</a></li>
+<li><a href="02-08-search-result.html" style="height:48px;display:flex;align-items:center;gap:14px;font-size:15px"><span style="width:16px;font-weight:700;color:#636D7A;font-variant-numeric:tabular-nums">7</span>떡볶이</a></li>
+<li><a href="02-08-search-result.html" style="height:48px;display:flex;align-items:center;gap:14px;font-size:15px"><span style="width:16px;font-weight:700;color:#636D7A;font-variant-numeric:tabular-nums">8</span>브런치</a></li>
+<li><a href="02-08-search-result.html" style="height:48px;display:flex;align-items:center;gap:14px;font-size:15px"><span style="width:16px;font-weight:700;color:#636D7A;font-variant-numeric:tabular-nums">9</span>반찬</a></li>
+<li><a href="02-08-search-result.html" style="height:48px;display:flex;align-items:center;gap:14px;font-size:15px"><span style="width:16px;font-weight:700;color:#636D7A;font-variant-numeric:tabular-nums">10</span>꽃집</a></li>
+</ol>
+</div>
+</section>
+
+<section aria-labelledby="viewed-t" style="flex:none;padding:28px 0 0 20px;display:flex;flex-direction:column;gap:12px">
+<h2 id="viewed-t" style="margin:0;font-size:18px;font-weight:700">최근 본 가게</h2>
+<div style="display:flex;gap:12px;flex-wrap:nowrap;overflow:hidden">
+<a href="../04-store-charge/04-01-store.html" style="flex:none;width:76px;display:flex;flex-direction:column;align-items:center;gap:6px">
+<span style="width:64px;height:64px;border-radius:18px;background:#FFF1E8;color:#A34B12;display:flex;align-items:center;justify-content:center"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 9h11v5a5 5 0 01-5 5h-1a5 5 0 01-5-5z"/><path d="M16 10h1.5a2.5 2.5 0 010 5H16"/><path d="M8.5 3.5v3M12.5 3.5v3"/></svg></span>
+<span style="width:76px;font-size:13px;text-align:center;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">하루카페 강남점</span>
+</a>
+<a href="../04-store-charge/04-01-store.html" style="flex:none;width:76px;display:flex;flex-direction:column;align-items:center;gap:6px">
+<span style="width:64px;height:64px;border-radius:18px;background:#EEF2FF;color:#3A55B0;display:flex;align-items:center;justify-content:center"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 3v8M5 3v5a2 2 0 004 0V3M7 11v10"/><path d="M17 3c-2 1.5-3 4-3 7h3v11"/></svg></span>
+<span style="width:76px;font-size:13px;text-align:center;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">행복식당 1</span>
+</a>
+<a href="../04-store-charge/04-01-store.html" style="flex:none;width:76px;display:flex;flex-direction:column;align-items:center;gap:6px">
+<span style="width:64px;height:64px;border-radius:18px;background:#ECF7EF;color:#2C7445;display:flex;align-items:center;justify-content:center"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19h16v-5H4z"/><path d="M4 14c1.3 1 2.7 1 4 0s2.7-1 4 0 2.7 1 4 0 2.7-1 4 0"/><path d="M8 10V7.5M12 10V5.5M16 10V7.5"/></svg></span>
+<span style="width:76px;font-size:13px;text-align:center;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">아침베이커리</span>
+</a>
+<a href="../04-store-charge/04-01-store.html" style="flex:none;width:76px;display:flex;flex-direction:column;align-items:center;gap:6px">
+<span style="width:64px;height:64px;border-radius:18px;background:#F3EFFC;color:#5E46A6;display:flex;align-items:center;justify-content:center"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="6.5" cy="7" r="2.5"/><circle cx="6.5" cy="17" r="2.5"/><path d="M8.6 8.4L20 18M8.6 15.6L20 6"/></svg></span>
+<span style="width:76px;font-size:13px;text-align:center;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">하늘헤어</span>
+</a>
+<a href="../04-store-charge/04-01-store.html" style="flex:none;width:76px;display:flex;flex-direction:column;align-items:center;gap:6px">
+<span style="width:64px;height:64px;border-radius:18px;background:#FFF1E8;color:#A34B12;display:flex;align-items:center;justify-content:center"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 8h14l-1 12H6z"/><path d="M9 8V6.5a3 3 0 016 0V8"/></svg></span>
+<span style="width:76px;font-size:13px;text-align:center;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">정성반찬가게</span>
+</a>
+</div>
+</section>
+
+</main>
+</div>
+</body>
+</html>

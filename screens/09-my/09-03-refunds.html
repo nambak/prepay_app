@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>09-03 환불내역 · prepay-app</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+a{color:inherit;text-decoration:none}a:hover{color:inherit}
+</style>
+<link rel="stylesheet" href="../../assets/preview.css">
+</head>
+<body>
+<div style="width:390px;height:1000px;box-sizing:border-box;background:#F2F4F6;font-family:'Noto Sans KR',sans-serif;color:#191F28;display:flex;flex-direction:column;overflow:hidden;position:relative">
+
+<header style="flex:none;height:56px;position:relative;display:flex;align-items:center;justify-content:space-between;padding:0 4px">
+<a href="09-01-my.html" aria-label="뒤로 가기" style="width:44px;height:44px;display:flex;align-items:center;justify-content:center;color:#191F28"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></a>
+<h1 style="position:absolute;left:60px;right:60px;margin:0;text-align:center;font-size:17px;font-weight:700">환불내역</h1>
+<span style="width:44px;height:44px;display:block"></span>
+</header>
+
+<main style="flex:1;min-height:0;overflow:hidden;display:flex;flex-direction:column;gap:12px;padding:4px 0 0">
+
+<div style="flex:none;display:flex;align-items:center;gap:4px;padding:0 8px 0 16px">
+<button type="button" style="height:44px;border:0;background:transparent;padding:0 4px;display:flex;align-items:center;gap:6px;font-family:inherit;font-size:16px;font-weight:700;color:#191F28;cursor:pointer"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="5" width="16" height="15" rx="2"/><path d="M4 10h16M9 3v4M15 3v4"/></svg>2026년 10월<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#636D7A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button>
+<span style="flex:1"></span>
+<button type="button" aria-label="가게 이름으로 찾기" style="width:44px;height:44px;border:0;background:transparent;padding:0;display:flex;align-items:center;justify-content:center;color:#191F28;cursor:pointer"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg></button>
+<button type="button" style="height:44px;border:0;background:transparent;padding:0 8px;display:flex;align-items:center;gap:2px;font-family:inherit;font-size:14px;font-weight:500;color:#4E5968;cursor:pointer">최신 순<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button>
+</div>
+
+<article style="flex:none;margin:0 16px;background:#FFFFFF;border-radius:20px;padding:18px 20px;display:flex;flex-direction:column;gap:14px">
+<div style="display:flex;align-items:flex-start;gap:8px">
+<div style="flex:1;display:flex;flex-direction:column;gap:2px"><h2 style="margin:0;font-size:17px;font-weight:700">행복식당 1</h2><span style="font-size:13px;color:#636D7A;font-variant-numeric:tabular-nums">주문 87654321</span></div>
+<span style="flex:none;font-size:12px;font-weight:500;color:#4E5968;background:#F2F4F6;border-radius:6px;padding:2px 7px">환불 완료</span>
+</div>
+<div style="border-top:1px solid #F2F4F6;padding-top:14px;display:flex;flex-direction:column;gap:10px;font-size:14px">
+<div style="display:flex;justify-content:space-between"><span style="color:#636D7A">충전 캐시</span><span style="font-variant-numeric:tabular-nums">150,000 캐시</span></div>
+<div style="display:flex;justify-content:space-between"><span style="color:#636D7A">원 결제 금액</span><span style="font-variant-numeric:tabular-nums">128,000원</span></div>
+<div style="display:flex;justify-content:space-between"><span style="color:#636D7A">이미 쓴 캐시</span><span style="font-variant-numeric:tabular-nums">−78,000 캐시</span></div>
+<div style="display:flex;justify-content:space-between"><span style="color:#636D7A">환불 수수료</span><span style="font-variant-numeric:tabular-nums">−5,000원</span></div>
+</div>
+<div style="border-top:1px solid #E5E8EB;padding-top:14px;display:flex;flex-direction:column;gap:10px;font-size:14px">
+<div style="display:flex;justify-content:space-between;align-items:baseline"><span style="font-size:15px;font-weight:500">최종 환불 금액</span><span style="font-size:17px;font-weight:700;font-variant-numeric:tabular-nums">45,000원</span></div>
+<div style="display:flex;justify-content:space-between"><span style="color:#636D7A">환불 신청</span><span style="font-variant-numeric:tabular-nums">2026.10.01 12:00</span></div>
+<div style="display:flex;justify-content:space-between"><span style="color:#636D7A">환불 완료</span><span style="font-variant-numeric:tabular-nums">2026.10.02 12:00</span></div>
+</div>
+</article>
+
+<article style="flex:none;margin:0 16px;background:#FFFFFF;border-radius:20px;padding:18px 20px;display:flex;flex-direction:column;gap:14px">
+<div style="display:flex;align-items:flex-start;gap:8px">
+<div style="flex:1;display:flex;flex-direction:column;gap:2px"><h2 style="margin:0;font-size:17px;font-weight:700">하루카페2</h2><span style="font-size:13px;color:#636D7A;font-variant-numeric:tabular-nums">주문 09815234</span></div>
+<span style="flex:none;font-size:12px;font-weight:500;color:#A35A00;background:#FFF4E6;border-radius:6px;padding:2px 7px">환불 진행 중</span>
+</div>
+<div style="border-top:1px solid #F2F4F6;padding-top:14px;display:flex;flex-direction:column;gap:10px;font-size:14px">
+<div style="display:flex;justify-content:space-between"><span style="color:#636D7A">충전 캐시</span><span style="font-variant-numeric:tabular-nums">100,000 캐시</span></div>
+<div style="display:flex;justify-content:space-between"><span style="color:#636D7A">원 결제 금액</span><span style="font-variant-numeric:tabular-nums">80,000원</span></div>
+<div style="display:flex;justify-content:space-between"><span style="color:#636D7A">이미 쓴 캐시</span><span style="font-variant-numeric:tabular-nums">−50,000 캐시</span></div>
+<div style="display:flex;justify-content:space-between"><span style="color:#636D7A">환불 수수료</span><span style="font-variant-numeric:tabular-nums">−3,000원</span></div>
+</div>
+<div style="border-top:1px solid #E5E8EB;padding-top:14px;display:flex;flex-direction:column;gap:10px;font-size:14px">
+<div style="display:flex;justify-content:space-between;align-items:baseline"><span style="font-size:15px;font-weight:500">최종 환불 금액</span><span style="font-size:17px;font-weight:700;font-variant-numeric:tabular-nums">27,000원</span></div>
+<div style="display:flex;justify-content:space-between"><span style="color:#636D7A">환불 신청</span><span style="font-variant-numeric:tabular-nums">2026.10.27 12:00</span></div>
+<div style="display:flex;justify-content:space-between"><span style="color:#636D7A">환불 완료</span><span style="font-weight:500;color:#A35A00">처리 중이에요</span></div>
+</div>
+</article>
+
+<article style="flex:none;margin:0 16px;background:#FFFFFF;border-radius:20px;padding:18px 20px;display:flex;flex-direction:column;gap:14px">
+<div style="display:flex;align-items:flex-start;gap:8px">
+<div style="flex:1;display:flex;flex-direction:column;gap:2px"><h2 style="margin:0;font-size:17px;font-weight:700">행복샌드위치 중앙점</h2><span style="font-size:13px;color:#636D7A;font-variant-numeric:tabular-nums">주문 11223355</span></div>
+<span style="flex:none;font-size:12px;font-weight:500;color:#4E5968;background:#F2F4F6;border-radius:6px;padding:2px 7px">환불 완료</span>
+</div>
+<div style="border-top:1px solid #F2F4F6;padding-top:14px;display:flex;flex-direction:column;gap:10px;font-size:14px">
+<div style="display:flex;justify-content:space-between"><span style="color:#636D7A">충전 캐시</span><span style="font-variant-numeric:tabular-nums">120,000 캐시</span></div>
+<div style="display:flex;justify-content:space-between"><span style="color:#636D7A">원 결제 금액</span><span style="font-variant-numeric:tabular-nums">102,000원</span></div>
+<div style="display:flex;justify-content:space-between"><span style="color:#636D7A">이미 쓴 캐시</span><span style="font-variant-numeric:tabular-nums">−60,000 캐시</span></div>
+<div style="display:flex;justify-content:space-between"><span style="color:#636D7A">환불 수수료</span><span style="font-variant-numeric:tabular-nums">−4,000원</span></div>
+</div>
+</article>
+
+</main>
+
+<p style="flex:none;margin:0;padding:16px 20px 34px;background:#F2F4F6;border-top:1px solid #E5E8EB;display:flex;gap:8px;align-items:flex-start;font-size:13px;line-height:1.55;color:#636D7A"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex:none;margin-top:2px"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 7.8h.01"/></svg><span>환불 금액은 신청일로부터 영업일 기준 [N]일 안에 등록한 계좌로 들어가요.</span></p>
+</div>
+</body>
+</html>

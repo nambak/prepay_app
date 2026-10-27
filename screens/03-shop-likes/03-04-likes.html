@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>03-04 찜한 가게 · prepay-app</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+a{color:inherit;text-decoration:none}a:hover{color:inherit}
+</style>
+<link rel="stylesheet" href="../../assets/preview.css">
+</head>
+<body>
+<div style="width:390px;height:844px;box-sizing:border-box;background:#F2F4F6;font-family:'Noto Sans KR',sans-serif;color:#191F28;display:flex;flex-direction:column;overflow:hidden;position:relative">
+
+<header style="flex:none;height:64px;box-sizing:border-box;padding:8px 8px 0 20px;display:flex;align-items:center;justify-content:space-between">
+<h1 style="margin:0;font-size:24px;font-weight:700">찜한 가게</h1>
+<a href="03-05-like-lists.html" aria-label="찜 리스트 관리" style="width:44px;height:44px;display:flex;align-items:center;justify-content:center;color:#191F28"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M12 3v2.5M12 18.5V21M3 12h2.5M18.5 12H21M5.6 5.6l1.8 1.8M16.6 16.6l1.8 1.8M5.6 18.4l1.8-1.8M16.6 7.4l1.8-1.8"/></svg></a>
+</header>
+
+<main style="flex:1;min-height:0;overflow:hidden;display:flex;flex-direction:column">
+
+<div role="group" aria-label="찜 리스트" style="flex:none;display:flex;gap:8px;flex-wrap:nowrap;overflow:hidden;padding:8px 20px 0">
+<button type="button" aria-pressed="true" style="flex:none;height:36px;border:0;border-radius:18px;background:#191F28;padding:0 14px;font-family:inherit;font-size:14px;font-weight:500;color:#FFFFFF;cursor:pointer;white-space:nowrap">전체 12</button>
+<button type="button" aria-pressed="false" style="flex:none;height:36px;border:0;border-radius:18px;background:#FFFFFF;padding:0 14px;font-family:inherit;font-size:14px;font-weight:500;color:#191F28;cursor:pointer;white-space:nowrap">기본 리스트 5</button>
+<button type="button" aria-pressed="false" style="flex:none;height:36px;border:0;border-radius:18px;background:#FFFFFF;padding:0 14px;font-family:inherit;font-size:14px;font-weight:500;color:#191F28;cursor:pointer;white-space:nowrap">강남 맛집 4</button>
+<button type="button" aria-pressed="false" style="flex:none;height:36px;border:0;border-radius:18px;background:#FFFFFF;padding:0 14px;font-family:inherit;font-size:14px;font-weight:500;color:#191F28;cursor:pointer;white-space:nowrap">송파 맛집 2</button>
+<button type="button" aria-pressed="false" style="flex:none;height:36px;border:0;border-radius:18px;background:#FFFFFF;padding:0 14px;font-family:inherit;font-size:14px;font-weight:500;color:#191F28;cursor:pointer;white-space:nowrap">댕댕이 맛집 1</button>
+</div>
+
+<p style="flex:none;margin:16px 16px 0;background:#FFFFFF;border-radius:16px;padding:12px 16px;display:flex;align-items:center;gap:10px;font-size:13px;line-height:1.5;color:#4E5968">
+<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#636D7A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex:none"><path d="M12 20s-7.5-4.6-7.5-10.2A4.3 4.3 0 0112 7.2a4.3 4.3 0 017.5 2.6C19.5 15.4 12 20 12 20z"/></svg>
+하트를 길게 누르면 담을 리스트를 고를 수 있어요
+</p>
+
+<div style="flex:none;display:flex;align-items:center;justify-content:space-between;padding:12px 12px 4px 20px">
+<span style="font-size:14px;color:#636D7A">가게 <b style="font-weight:700;color:#191F28">12</b>곳</span>
+<button type="button" style="height:44px;border:0;background:transparent;padding:0 4px;display:flex;align-items:center;gap:2px;font-family:inherit;font-size:14px;color:#4E5968;cursor:pointer">가까운 순<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button>
+</div>
+
+<section aria-label="찜한 가게 목록" style="flex:none;margin:0 16px;background:#FFFFFF;border-radius:24px;padding:0 20px;display:flex;flex-direction:column">
+<store-row store="행복샌드위치 중앙점" cat="샐러드" area="서울시 행복구" rate="10%" dist="120m" likes="342" liked="y" value="y" tone="c" kind="food" href="../04-store-charge/04-01-store.html"></store-row>
+<div aria-hidden="true" style="height:1px;background:#F2F4F6"></div>
+<store-row store="하루카페 강남점" cat="카페" area="서울시 행복구" rate="30%" dist="260m" likes="999" liked="y" value="y" tone="a" kind="cafe" href="../04-store-charge/04-01-store.html"></store-row>
+<div aria-hidden="true" style="height:1px;background:#F2F4F6"></div>
+<store-row store="하늘헤어" cat="헤어" area="서울시 행복구" rate="15%" dist="480m" likes="188" liked="y" value="n" tone="d" kind="beauty" href="../04-store-charge/04-01-store.html"></store-row>
+<div aria-hidden="true" style="height:1px;background:#F2F4F6"></div>
+<store-row store="정성반찬가게" cat="반찬" area="서울시 행복구" rate="5%" dist="950m" likes="56" liked="y" value="n" tone="b" kind="shop" href="../04-store-charge/04-01-store.html"></store-row>
+<div aria-hidden="true" style="height:1px;background:#F2F4F6"></div>
+<store-row store="아침베이커리" cat="디저트·베이커리" area="서울시 행복구" rate="20%" dist="1.2km" likes="421" liked="y" value="y" tone="c" kind="bakery" href="../04-store-charge/04-01-store.html"></store-row>
+</section>
+
+</main>
+
+<app-tab-bar tab="like"></app-tab-bar>
+</div>
+<script src="../../components/components.js"></script>
+</body>
+</html>

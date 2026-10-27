@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>04-03 가게 상세 · 가게소개 · prepay-app</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+a{color:inherit;text-decoration:none}a:hover{color:inherit}
+</style>
+<link rel="stylesheet" href="../../assets/preview.css">
+</head>
+<body>
+<div style="width:390px;height:1240px;box-sizing:border-box;background:#FFFFFF;font-family:'Noto Sans KR',sans-serif;color:#191F28;display:flex;flex-direction:column;overflow:hidden;position:relative">
+
+<header style="flex:none;height:56px;position:relative;display:flex;align-items:center;justify-content:space-between;padding:0 4px;background:#FFFFFF">
+<a href="../02-home/02-01-home.html" aria-label="뒤로 가기" style="width:44px;height:44px;display:flex;align-items:center;justify-content:center;color:#191F28"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></a>
+<h1 style="position:absolute;left:60px;right:60px;margin:0;text-align:center;font-size:17px;font-weight:700">하루카페 강남점</h1>
+<button type="button" aria-label="가게 공유하기" style="width:44px;height:44px;border:0;background:transparent;padding:0;display:flex;align-items:center;justify-content:center;color:#191F28;cursor:pointer"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="6" cy="12" r="2.5"/><circle cx="18" cy="6" r="2.5"/><circle cx="18" cy="18" r="2.5"/><path d="M8.2 10.8l7.6-3.6M8.2 13.2l7.6 3.6"/></svg></button>
+</header>
+
+<nav aria-label="가게 상세 탭" style="flex:none;height:48px;box-sizing:border-box;display:flex;background:#FFFFFF;border-bottom:1px solid #E5E8EB">
+<a href="04-01-store.html" style="flex:1;display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:500;color:#636D7A">충전상품</a>
+<a href="04-02-store-menu.html" style="flex:1;display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:500;color:#636D7A">메뉴</a>
+<a href="04-03-store-info.html" aria-current="page" style="flex:1;display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:700;color:#191F28;border-bottom:2px solid #191F28;margin-bottom:-1px">가게소개</a>
+<a href="04-04-store-review.html" style="flex:1;display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:500;color:#636D7A">리뷰 999+</a>
+</nav>
+
+<main style="flex:1;min-height:0;overflow:hidden;background:#FFFFFF;display:flex;flex-direction:column">
+
+<section style="flex:none;padding:20px 20px 20px;display:flex;flex-direction:column;gap:12px">
+<h2 style="margin:0;font-size:18px;line-height:1.4;font-weight:700">가게 키워드</h2>
+<ul style="margin:0;padding:0;list-style:none;display:flex;flex-wrap:wrap;gap:8px">
+<li style="height:32px;border-radius:16px;background:#F2F4F6;padding:0 12px;display:flex;align-items:center;font-size:14px;font-weight:500">#트렌디</li>
+<li style="height:32px;border-radius:16px;background:#F2F4F6;padding:0 12px;display:flex;align-items:center;font-size:14px;font-weight:500">#스페셜 데이</li>
+<li style="height:32px;border-radius:16px;background:#F2F4F6;padding:0 12px;display:flex;align-items:center;font-size:14px;font-weight:500">#데이트에 딱</li>
+</ul>
+</section>
+
+<div aria-hidden="true" style="flex:none;height:8px;background:#F2F4F6"></div>
+
+<section style="flex:none;padding:20px 20px 20px;display:flex;flex-direction:column;gap:14px">
+<h2 style="margin:0;font-size:18px;line-height:1.4;font-weight:700">편의 시설</h2>
+<ul style="margin:0;padding:0;list-style:none;display:grid;grid-template-columns:1fr 1fr;row-gap:10px;column-gap:16px">
+<li style="display:flex;align-items:center;gap:8px;font-size:14px;line-height:22px"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2C7445" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>주차 가능</li>
+<li style="display:flex;align-items:center;gap:8px;font-size:14px;line-height:22px"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2C7445" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>발레 파킹</li>
+<li style="display:flex;align-items:center;gap:8px;font-size:14px;line-height:22px"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2C7445" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>단체석</li>
+<li style="display:flex;align-items:center;gap:8px;font-size:14px;line-height:22px"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2C7445" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>프라이빗 룸</li>
+<li style="display:flex;align-items:center;gap:8px;font-size:14px;line-height:22px"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2C7445" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>방문 포장</li>
+<li style="display:flex;align-items:center;gap:8px;font-size:14px;line-height:22px"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2C7445" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>배달 접수</li>
+<li style="display:flex;align-items:center;gap:8px;font-size:14px;line-height:22px"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2C7445" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>예약 가능</li>
+<li style="display:flex;align-items:center;gap:8px;font-size:14px;line-height:22px"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2C7445" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>대관 가능</li>
+<li style="display:flex;align-items:center;gap:8px;font-size:14px;line-height:22px"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2C7445" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>키즈 환영</li>
+<li style="display:flex;align-items:center;gap:8px;font-size:14px;line-height:22px"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2C7445" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>반려동물 동반</li>
+<li style="display:flex;align-items:center;gap:8px;font-size:14px;line-height:22px"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2C7445" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>무선 인터넷</li>
+<li style="display:flex;align-items:center;gap:8px;font-size:14px;line-height:22px"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2C7445" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>장애인 편의시설</li>
+</ul>
+</section>
+
+<div aria-hidden="true" style="flex:none;height:8px;background:#F2F4F6"></div>
+
+<section style="flex:none;padding:20px 20px 20px;display:flex;flex-direction:column">
+<h2 style="margin:0;font-size:18px;line-height:1.4;font-weight:700">가게 소개</h2>
+<p style="margin:12px 0 0;font-size:15px;line-height:1.65">안녕하세요, 하루카페 강남점이에요. 일상 속 편안한 커피를 지향하는 로스터리 브랜드로, 직접 로스팅한 원두로 내리는 브루잉 커피가 대표 메뉴예요.</p>
+<div aria-hidden="true" style="margin-top:16px;display:flex;justify-content:space-between">
+<div style="width:104px;height:104px;border-radius:16px;background:#F2F4F6;color:#8B95A1;display:flex;align-items:center;justify-content:center"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="5" width="16" height="14" rx="2"/><circle cx="9" cy="10" r="1.5"/><path d="M4 17l5-4 4 3 3-2 4 3"/></svg></div>
+<div style="width:104px;height:104px;border-radius:16px;background:#F2F4F6;color:#8B95A1;display:flex;align-items:center;justify-content:center"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="5" width="16" height="14" rx="2"/><circle cx="9" cy="10" r="1.5"/><path d="M4 17l5-4 4 3 3-2 4 3"/></svg></div>
+<div style="width:104px;height:104px;border-radius:16px;background:#F2F4F6;color:#8B95A1;display:flex;align-items:center;justify-content:center"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="5" width="16" height="14" rx="2"/><circle cx="9" cy="10" r="1.5"/><path d="M4 17l5-4 4 3 3-2 4 3"/></svg></div>
+</div>
+<span style="margin-top:8px;font-size:13px;color:#636D7A;font-variant-numeric:tabular-nums">사진 1/5</span>
+</section>
+
+<div aria-hidden="true" style="flex:none;height:8px;background:#F2F4F6"></div>
+
+<section style="flex:none;padding:20px 20px 20px;display:flex;flex-direction:column;gap:12px">
+<h2 style="margin:0;font-size:18px;line-height:1.4;font-weight:700">가게 정보</h2>
+<dl style="margin:0;display:flex;flex-direction:column;gap:10px">
+<div style="display:flex;gap:12px"><dt style="flex:none;width:72px;font-size:14px;line-height:23px;color:#636D7A">운영 시간</dt><dd style="margin:0;font-size:15px;line-height:23px;font-variant-numeric:tabular-nums">평일 10:00 ~ 22:00<br>토요일 10:00 ~ 22:00</dd></div>
+<div style="display:flex;gap:12px"><dt style="flex:none;width:72px;font-size:14px;line-height:23px;color:#636D7A">휴무일</dt><dd style="margin:0;font-size:15px;line-height:23px">매주 월요일, 공휴일</dd></div>
+<div style="display:flex;gap:12px"><dt style="flex:none;width:72px;font-size:14px;line-height:23px;color:#636D7A">전화번호</dt><dd style="margin:0;font-size:15px;line-height:23px;font-variant-numeric:tabular-nums">02-1234-5678</dd></div>
+</dl>
+</section>
+
+<div aria-hidden="true" style="flex:none;height:8px;background:#F2F4F6"></div>
+
+<section style="flex:none;padding:20px 20px 24px;display:flex;flex-direction:column">
+<h2 style="margin:0;font-size:18px;line-height:1.4;font-weight:700">가게 위치</h2>
+<div style="margin-top:4px;display:flex;align-items:center;justify-content:space-between;gap:8px">
+<span style="font-size:15px;line-height:1.5">서울시 행복구 행복로 123 1층</span>
+<button type="button" aria-label="주소 복사" style="flex:none;height:44px;border:0;background:transparent;padding:0 2px;display:flex;align-items:center;gap:4px;font-family:inherit;font-size:14px;font-weight:500;color:#4E5968;cursor:pointer"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M15 9V6a2 2 0 00-2-2H6a2 2 0 00-2 2v7a2 2 0 002 2h3"/></svg>복사</button>
+</div>
+<span style="font-size:14px;line-height:1.5;color:#4E5968">행복역 3번 출구에서 3분</span>
+<div aria-hidden="true" style="margin-top:14px;height:160px;border-radius:16px;overflow:hidden;background:#EEF0F3">
+<svg width="350" height="160" viewBox="0 0 350 160" fill="none" aria-hidden="true" style="display:block">
+<rect x="18" y="12" width="84" height="56" rx="6" fill="#E5E8EB"/>
+<rect x="176" y="10" width="62" height="58" rx="6" fill="#E5E8EB"/>
+<rect x="268" y="112" width="70" height="38" rx="6" fill="#E5E8EB"/>
+<rect x="26" y="114" width="80" height="40" rx="6" fill="#E5E8EB"/>
+<path d="M0 94L350 80" stroke="#FFFFFF" stroke-width="14"/>
+<path d="M134 0L150 160" stroke="#FFFFFF" stroke-width="10"/>
+<path d="M262 0L246 160" stroke="#FFFFFF" stroke-width="8"/>
+<path d="M150 128L350 138" stroke="#FFFFFF" stroke-width="6"/>
+<path d="M0 34L134 42" stroke="#FFFFFF" stroke-width="6"/>
+<path d="M198 46c0 11-15 24-15 24s-15-13-15-24a15 15 0 0130 0z" fill="#191F28" transform="translate(13 12)"/>
+<circle cx="196" cy="57" r="5.5" fill="#FFFFFF"/>
+</svg>
+</div>
+<button type="button" style="margin-top:12px;height:48px;border:0;border-radius:14px;background:#F2F4F6;color:#191F28;font-family:inherit;font-size:15px;font-weight:500;display:flex;align-items:center;justify-content:center;gap:6px;cursor:pointer"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 4L3 6v14l6-2 6 2 6-2V4l-6 2z"/><path d="M9 4v14M15 6v14"/></svg>길찾기</button>
+</section>
+
+<div aria-hidden="true" style="flex:none;height:8px;background:#F2F4F6"></div>
+
+<section style="flex:none;padding:20px 20px 16px;display:flex;flex-direction:column;gap:12px">
+<h2 style="margin:0;font-size:18px;line-height:1.4;font-weight:700">사업자 정보</h2>
+<dl style="margin:0;display:flex;flex-direction:column;gap:8px">
+<div style="display:flex;gap:12px"><dt style="flex:none;width:100px;font-size:14px;line-height:22px;color:#636D7A">상호명</dt><dd style="margin:0;font-size:15px;line-height:22px">하루카페 강남점</dd></div>
+<div style="display:flex;gap:12px"><dt style="flex:none;width:100px;font-size:14px;line-height:22px;color:#636D7A">대표자</dt><dd style="margin:0;font-size:15px;line-height:22px">홍길동</dd></div>
+<div style="display:flex;gap:12px"><dt style="flex:none;width:100px;font-size:14px;line-height:22px;color:#636D7A">사업자 주소</dt><dd style="margin:0;font-size:15px;line-height:22px">서울시 행복구 행복로 123 1층</dd></div>
+<div style="display:flex;gap:12px"><dt style="flex:none;width:100px;font-size:14px;line-height:22px;color:#636D7A">사업자등록번호</dt><dd style="margin:0;font-size:15px;line-height:22px;font-variant-numeric:tabular-nums">000-00-00000</dd></div>
+</dl>
+</section>
+
+<a href="#" style="flex:none;height:56px;margin:0 20px;border-top:1px solid #F2F4F6;display:flex;align-items:center;justify-content:space-between;font-size:15px;color:#4E5968">가게 정보가 다르다면 알려 주세요<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#8B95A1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></a>
+
+</main>
+
+<div style="flex:none;padding:12px 20px 34px;background:#FFFFFF;border-top:1px solid #E5E8EB;display:flex;gap:8px">
+<button type="button" aria-label="찜하기" aria-pressed="false" style="flex:none;width:56px;height:56px;border:0;border-radius:16px;background:#F2F4F6;padding:0;display:flex;align-items:center;justify-content:center;color:#191F28;cursor:pointer"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20s-7.5-4.6-7.5-10.2A4.3 4.3 0 0112 7.2a4.3 4.3 0 017.5 2.6C19.5 15.4 12 20 12 20z"/></svg></button>
+<a href="04-05-charge-sheet.html" style="flex:1;height:56px;border-radius:16px;background:#DA2F2E;color:#FFFFFF;font-size:17px;font-weight:700;display:flex;align-items:center;justify-content:center">충전하기</a>
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>02-08 검색 결과 · prepay-app</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+a{color:inherit;text-decoration:none}a:hover{color:inherit}
+</style>
+<link rel="stylesheet" href="../../assets/preview.css">
+</head>
+<body>
+<div style="width:390px;height:844px;box-sizing:border-box;background:#F2F4F6;font-family:'Noto Sans KR',sans-serif;color:#191F28;display:flex;flex-direction:column;overflow:hidden;position:relative">
+
+<div style="flex:none;background:#FFFFFF;display:flex;flex-direction:column;padding-bottom:12px">
+<header style="height:64px;box-sizing:border-box;display:flex;align-items:center;gap:4px;padding:0 16px 0 4px">
+<a href="02-07-search.html" aria-label="뒤로 가기" style="flex:none;width:44px;height:44px;display:flex;align-items:center;justify-content:center;color:#191F28"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></a>
+<div style="flex:1;min-width:0;height:48px;box-sizing:border-box;border-radius:14px;background:#F2F4F6;display:flex;align-items:center;gap:8px;padding:0 4px 0 14px;color:#191F28">
+<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg>
+<label style="flex:1;min-width:0;display:flex">
+<span style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)">가게 찾기</span>
+<input type="search" value="커피" style="flex:1;min-width:0;border:0;background:transparent;font-family:inherit;font-size:15px;color:#191F28;outline:none">
+</label>
+<button type="button" aria-label="검색어 지우기" style="flex:none;width:40px;height:40px;border:0;background:transparent;padding:0;display:flex;align-items:center;justify-content:center;cursor:pointer"><span style="width:20px;height:20px;border-radius:10px;background:#8B95A1;color:#FFFFFF;display:flex;align-items:center;justify-content:center"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></span></button>
+</div>
+</header>
+<div style="display:flex;align-items:center;gap:6px;padding:4px 12px 0 20px">
+<div role="group" aria-label="업종 구분" style="display:flex;gap:6px">
+<button type="button" aria-pressed="true" style="height:36px;border:0;border-radius:18px;background:#191F28;padding:0 14px;font-family:inherit;font-size:14px;font-weight:500;color:#FFFFFF;cursor:pointer">All</button>
+<button type="button" aria-pressed="false" style="height:36px;border:0;border-radius:18px;background:#F2F4F6;padding:0 14px;font-family:inherit;font-size:14px;font-weight:500;color:#191F28;cursor:pointer">FOOD</button>
+<button type="button" aria-pressed="false" style="height:36px;border:0;border-radius:18px;background:#F2F4F6;padding:0 14px;font-family:inherit;font-size:14px;font-weight:500;color:#191F28;cursor:pointer">LIFE</button>
+</div>
+<a href="../03-shop-likes/03-03-filter.html" aria-label="업종 필터" style="margin-left:auto;flex:none;width:44px;height:44px;display:flex;align-items:center;justify-content:center;color:#191F28"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h9M17 7h3M4 17h3M11 17h9"/><circle cx="15" cy="7" r="2"/><circle cx="9" cy="17" r="2"/></svg></a>
+</div>
+</div>
+
+<main style="flex:1;min-height:0;overflow:hidden;display:flex;flex-direction:column">
+
+<div style="flex:none;display:flex;align-items:center;gap:12px;padding:12px 12px 8px 20px">
+<h1 style="margin:0;font-size:15px;font-weight:700">검색 결과 <span style="font-variant-numeric:tabular-nums">24</span>곳</h1>
+<label style="margin-left:auto;display:flex;align-items:center;gap:6px;min-height:44px;font-size:14px;color:#4E5968"><input type="checkbox" style="width:20px;height:20px;margin:0;accent-color:#191F28">찜한 가게만</label>
+<button type="button" style="height:44px;border:0;background:transparent;padding:0 4px;display:flex;align-items:center;gap:2px;font-family:inherit;font-size:14px;color:#4E5968;cursor:pointer">가까운 순<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button>
+</div>
+
+<section aria-label="검색 결과 목록" style="flex:none;margin:0 16px;background:#FFFFFF;border-radius:24px;padding:0 20px;display:flex;flex-direction:column">
+<store-row store="하루카페 강남점" cat="카페" area="서울시 행복구" rate="30%" dist="88m" likes="999" liked="y" value="y" tone="a" kind="cafe" href="../04-store-charge/04-01-store.html"></store-row>
+<div aria-hidden="true" style="height:1px;background:#F2F4F6"></div>
+<store-row store="하루카페2" cat="카페" area="서울시 행복구" rate="20%" dist="320m" likes="476" liked="n" value="n" tone="b" kind="cafe" href="../04-store-charge/04-01-store.html"></store-row>
+<div aria-hidden="true" style="height:1px;background:#F2F4F6"></div>
+<store-row store="아침베이커리" cat="디저트·베이커리" area="서울시 행복구" rate="15%" dist="540m" likes="231" liked="n" value="n" tone="c" kind="bakery" href="../04-store-charge/04-01-store.html"></store-row>
+<div aria-hidden="true" style="height:1px;background:#F2F4F6"></div>
+<store-row store="하루카페 행복점" cat="카페" area="서울시 행복구" rate="10%" dist="870m" likes="64" liked="n" value="y" tone="d" kind="cafe" href="../04-store-charge/04-01-store.html"></store-row>
+<div aria-hidden="true" style="height:1px;background:#F2F4F6"></div>
+<store-row store="행복샌드위치 중앙점" cat="샐러드" area="서울시 행복구" rate="5%" dist="1.1km" likes="12" liked="n" value="n" tone="a" kind="food" href="../04-store-charge/04-01-store.html"></store-row>
+<div aria-hidden="true" style="height:1px;background:#F2F4F6"></div>
+<store-row store="하루카페 사랑점" cat="카페" area="서울시 행복구" rate="15%" dist="1.2km" likes="38" liked="n" value="n" tone="b" kind="cafe" href="../04-store-charge/04-01-store.html"></store-row>
+</section>
+
+</main>
+</div>
+<script src="../../components/components.js"></script>
+</body>
+</html>

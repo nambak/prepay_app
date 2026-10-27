@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>01-06 비밀번호 재설정 · prepay-app</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+a{color:inherit;text-decoration:none}a:hover{color:inherit}
+</style>
+<link rel="stylesheet" href="../../assets/preview.css">
+</head>
+<body>
+<div style="width:390px;height:844px;box-sizing:border-box;background:#FFFFFF;font-family:'Noto Sans KR',sans-serif;color:#191F28;display:flex;flex-direction:column;overflow:hidden;position:relative">
+
+<header style="flex:none;height:56px;position:relative;display:flex;align-items:center;justify-content:space-between;padding:0 4px">
+<a href="01-05-find-pw.html" aria-label="뒤로 가기" style="width:44px;height:44px;display:flex;align-items:center;justify-content:center;color:#191F28"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></a>
+<h1 style="position:absolute;left:60px;right:60px;margin:0;text-align:center;font-size:17px;font-weight:700">비밀번호 재설정</h1>
+<span style="width:44px;height:44px;display:block"></span>
+</header>
+
+<main style="flex:1;min-height:0;overflow:hidden;display:flex;flex-direction:column">
+<h2 style="margin:0;padding:8px 20px 28px;font-size:24px;line-height:1.4;font-weight:700">새 비밀번호를<br>입력해 주세요</h2>
+
+<form style="margin:0;padding:0 20px;display:flex;flex-direction:column;gap:24px">
+<label style="display:flex;flex-direction:column;gap:8px">
+<span style="font-size:14px;font-weight:500;color:#4E5968">아이디</span>
+<input type="email" readonly value="hana@email.com" style="height:52px;box-sizing:border-box;border:1.5px solid transparent;border-radius:14px;background:#F2F4F6;padding:0 16px;font-family:inherit;font-size:16px;color:#4E5968;outline:none">
+</label>
+
+<div style="display:flex;flex-direction:column;gap:10px">
+<label style="display:flex;flex-direction:column;gap:8px">
+<span style="font-size:14px;font-weight:500;color:#4E5968">새 비밀번호 *</span>
+<input type="password" autocomplete="new-password" value="abcd1234" required style="height:52px;box-sizing:border-box;border:1.5px solid #191F28;border-radius:14px;background:#FFFFFF;padding:0 16px;font-family:inherit;font-size:16px;color:#191F28;outline:none">
+</label>
+<div style="display:flex;flex-wrap:wrap;gap:12px">
+<span style="display:flex;align-items:center;gap:4px;font-size:13px;color:#2C7445"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>영문 포함</span>
+<span style="display:flex;align-items:center;gap:4px;font-size:13px;color:#2C7445"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>숫자 포함</span>
+<span style="display:flex;align-items:center;gap:4px;font-size:13px;color:#2C7445"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>8~15자</span>
+</div>
+</div>
+
+<div style="display:flex;flex-direction:column;gap:8px">
+<label style="display:flex;flex-direction:column;gap:8px">
+<span style="font-size:14px;font-weight:500;color:#4E5968">비밀번호 확인 *</span>
+<input type="password" autocomplete="new-password" value="abcd1234" required style="height:52px;box-sizing:border-box;border:1.5px solid transparent;border-radius:14px;background:#F2F4F6;padding:0 16px;font-family:inherit;font-size:16px;color:#191F28;outline:none">
+</label>
+<span style="display:flex;align-items:center;gap:4px;font-size:13px;color:#2C7445"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>비밀번호가 일치해요</span>
+</div>
+</form>
+
+</main>
+
+<div style="flex:none;padding:12px 20px 34px;background:#FFFFFF">
+<a href="01-02-login.html" style="height:56px;border-radius:16px;background:#DA2F2E;color:#FFFFFF;font-size:17px;font-weight:700;display:flex;align-items:center;justify-content:center">변경하기</a>
+</div>
+</div>
+</body>
+</html>

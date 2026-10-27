@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>04-04 가게 상세 · 리뷰 · prepay-app</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+a{color:inherit;text-decoration:none}a:hover{color:inherit}
+</style>
+<link rel="stylesheet" href="../../assets/preview.css">
+</head>
+<body>
+<div style="width:390px;height:1240px;box-sizing:border-box;background:#FFFFFF;font-family:'Noto Sans KR',sans-serif;color:#191F28;display:flex;flex-direction:column;overflow:hidden;position:relative">
+
+<header style="flex:none;height:56px;position:relative;display:flex;align-items:center;justify-content:space-between;padding:0 4px;background:#FFFFFF">
+<a href="../02-home/02-01-home.html" aria-label="뒤로 가기" style="width:44px;height:44px;display:flex;align-items:center;justify-content:center;color:#191F28"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></a>
+<h1 style="position:absolute;left:60px;right:60px;margin:0;text-align:center;font-size:17px;font-weight:700">하루카페 강남점</h1>
+<button type="button" aria-label="가게 공유하기" style="width:44px;height:44px;border:0;background:transparent;padding:0;display:flex;align-items:center;justify-content:center;color:#191F28;cursor:pointer"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="6" cy="12" r="2.5"/><circle cx="18" cy="6" r="2.5"/><circle cx="18" cy="18" r="2.5"/><path d="M8.2 10.8l7.6-3.6M8.2 13.2l7.6 3.6"/></svg></button>
+</header>
+
+<nav aria-label="가게 상세 탭" style="flex:none;height:48px;box-sizing:border-box;display:flex;background:#FFFFFF;border-bottom:1px solid #E5E8EB">
+<a href="04-01-store.html" style="flex:1;display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:500;color:#636D7A">충전상품</a>
+<a href="04-02-store-menu.html" style="flex:1;display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:500;color:#636D7A">메뉴</a>
+<a href="04-03-store-info.html" style="flex:1;display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:500;color:#636D7A">가게소개</a>
+<a href="04-04-store-review.html" aria-current="page" style="flex:1;display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:700;color:#191F28;border-bottom:2px solid #191F28;margin-bottom:-1px">리뷰 999+</a>
+</nav>
+
+<main style="flex:1;min-height:0;overflow:hidden;background:#FFFFFF;display:flex;flex-direction:column">
+
+<section style="flex:none;padding:20px 20px 24px;display:flex;flex-direction:column">
+<div style="display:flex;align-items:baseline;justify-content:space-between">
+<h2 style="margin:0;font-size:18px;line-height:1.4;font-weight:700">이런 점이 좋았어요</h2>
+<span style="font-size:13px;color:#636D7A;font-variant-numeric:tabular-nums">리뷰 1,240개 기준</span>
+</div>
+<ul style="margin:14px 0 0;padding:0;list-style:none;display:flex;flex-direction:column;gap:8px">
+<li style="position:relative;height:40px;border-radius:10px;background:#F2F4F6;overflow:hidden">
+<span aria-hidden="true" style="position:absolute;left:0;top:0;bottom:0;width:100%;background:#E5E8EB;display:block"></span>
+<span style="position:relative;height:40px;padding:0 14px;display:flex;align-items:center;justify-content:space-between;font-size:14px"><span>커피가 맛있어요</span><span style="font-weight:700;font-variant-numeric:tabular-nums">312</span></span>
+</li>
+<li style="position:relative;height:40px;border-radius:10px;background:#F2F4F6;overflow:hidden">
+<span aria-hidden="true" style="position:absolute;left:0;top:0;bottom:0;width:80%;background:#E5E8EB;display:block"></span>
+<span style="position:relative;height:40px;padding:0 14px;display:flex;align-items:center;justify-content:space-between;font-size:14px"><span>가성비가 좋아요</span><span style="font-weight:700;font-variant-numeric:tabular-nums">248</span></span>
+</li>
+<li style="position:relative;height:40px;border-radius:10px;background:#F2F4F6;overflow:hidden">
+<span aria-hidden="true" style="position:absolute;left:0;top:0;bottom:0;width:61%;background:#E5E8EB;display:block"></span>
+<span style="position:relative;height:40px;padding:0 14px;display:flex;align-items:center;justify-content:space-between;font-size:14px"><span>사진 찍기 좋아요</span><span style="font-weight:700;font-variant-numeric:tabular-nums">190</span></span>
+</li>
+<li style="position:relative;height:40px;border-radius:10px;background:#F2F4F6;overflow:hidden">
+<span aria-hidden="true" style="position:absolute;left:0;top:0;bottom:0;width:38%;background:#E5E8EB;display:block"></span>
+<span style="position:relative;height:40px;padding:0 14px;display:flex;align-items:center;justify-content:space-between;font-size:14px"><span>특별한 메뉴가 있어요</span><span style="font-weight:700;font-variant-numeric:tabular-nums">120</span></span>
+</li>
+<li style="position:relative;height:40px;border-radius:10px;background:#F2F4F6;overflow:hidden">
+<span aria-hidden="true" style="position:absolute;left:0;top:0;bottom:0;width:31%;background:#E5E8EB;display:block"></span>
+<span style="position:relative;height:40px;padding:0 14px;display:flex;align-items:center;justify-content:space-between;font-size:14px"><span>친절해요</span><span style="font-weight:700;font-variant-numeric:tabular-nums">98</span></span>
+</li>
+<li style="position:relative;height:40px;border-radius:10px;background:#F2F4F6;overflow:hidden">
+<span aria-hidden="true" style="position:absolute;left:0;top:0;bottom:0;width:13%;background:#E5E8EB;display:block"></span>
+<span style="position:relative;height:40px;padding:0 14px;display:flex;align-items:center;justify-content:space-between;font-size:14px"><span>단체 방문에 좋아요</span><span style="font-weight:700;font-variant-numeric:tabular-nums">40</span></span>
+</li>
+</ul>
+</section>
+
+<div aria-hidden="true" style="flex:none;height:8px;background:#F2F4F6"></div>
+
+<section style="flex:none;display:flex;flex-direction:column">
+<div style="padding:20px 20px 4px;display:flex;flex-direction:column;gap:4px">
+<h2 style="margin:0;font-size:18px;line-height:1.4;font-weight:700">고객 리뷰 <span style="font-variant-numeric:tabular-nums">999+</span></h2>
+<div style="display:flex;align-items:center;justify-content:space-between">
+<label style="display:flex;align-items:center;gap:8px;min-height:44px;font-size:14px;font-weight:500"><input type="checkbox" style="width:20px;height:20px;margin:0;accent-color:#191F28">사진 리뷰만</label>
+<button type="button" style="height:44px;border:0;background:transparent;padding:0;display:flex;align-items:center;gap:2px;font-family:inherit;font-size:14px;font-weight:500;color:#4E5968;cursor:pointer">최신 순<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button>
+</div>
+</div>
+
+<article style="margin:0 20px;padding:16px 0 24px;border-top:1px solid #F2F4F6;display:flex;flex-direction:column;gap:12px">
+<div style="display:flex;align-items:center;gap:10px">
+<span aria-hidden="true" style="flex:none;width:36px;height:36px;border-radius:18px;background:#F2F4F6;color:#4E5968;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700">김</span>
+<div style="flex:1;min-width:0;display:flex;flex-direction:column">
+<h3 style="margin:0;font-size:15px;line-height:1.4;font-weight:700">김*나</h3>
+<span style="font-size:13px;color:#636D7A;font-variant-numeric:tabular-nums">2번째 방문 · 26.10.03</span>
+</div>
+<button type="button" aria-label="리뷰 메뉴" style="flex:none;width:44px;height:44px;margin-right:-12px;border:0;background:transparent;padding:0;display:flex;align-items:center;justify-content:center;color:#8B95A1;cursor:pointer"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="5.5" r="1.2" fill="currentColor"/><circle cx="12" cy="12" r="1.2" fill="currentColor"/><circle cx="12" cy="18.5" r="1.2" fill="currentColor"/></svg></button>
+</div>
+<div aria-hidden="true" style="display:flex;gap:8px">
+<div style="width:96px;height:96px;border-radius:14px;background:#F2F4F6;color:#8B95A1;display:flex;align-items:center;justify-content:center"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="5" width="16" height="14" rx="2"/><circle cx="9" cy="10" r="1.5"/><path d="M4 17l5-4 4 3 3-2 4 3"/></svg></div>
+<div style="width:96px;height:96px;border-radius:14px;background:#F2F4F6;color:#8B95A1;display:flex;align-items:center;justify-content:center"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="5" width="16" height="14" rx="2"/><circle cx="9" cy="10" r="1.5"/><path d="M4 17l5-4 4 3 3-2 4 3"/></svg></div>
+<div style="width:96px;height:96px;border-radius:14px;background:#F2F4F6;color:#8B95A1;display:flex;align-items:center;justify-content:center"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="5" width="16" height="14" rx="2"/><circle cx="9" cy="10" r="1.5"/><path d="M4 17l5-4 4 3 3-2 4 3"/></svg></div>
+</div>
+<div style="display:flex;flex-direction:column;align-items:flex-start">
+<p style="margin:0;font-size:15px;line-height:1.6">인테리어가 예뻐서 사진이 잘 나와요. 커피도 진하고 맛있어서 자주 오게 됐어요.</p>
+<button type="button" style="height:32px;border:0;background:transparent;padding:0;font-family:inherit;font-size:14px;font-weight:500;color:#636D7A;cursor:pointer">더보기</button>
+</div>
+<ul style="margin:0;padding:0;list-style:none;display:flex;flex-wrap:wrap;gap:6px">
+<li style="height:28px;border-radius:14px;background:#F2F4F6;padding:0 10px;display:flex;align-items:center;font-size:13px;color:#4E5968">커피가 맛있어요</li>
+<li style="height:28px;border-radius:14px;background:#F2F4F6;padding:0 10px;display:flex;align-items:center;font-size:13px;color:#4E5968">사진 찍기 좋아요</li>
+</ul>
+<div style="background:#F2F4F6;border-radius:16px;padding:14px;display:flex;flex-direction:column;gap:4px">
+<span style="font-size:13px;font-weight:700">사장님</span>
+<p style="margin:0;font-size:14px;line-height:1.55;color:#4E5968">찾아 주셔서 감사해요. 언제든 또 들러 주세요!</p>
+</div>
+</article>
+
+<article style="margin:0 20px;padding:16px 0 24px;border-top:1px solid #F2F4F6;display:flex;flex-direction:column;gap:12px">
+<div style="display:flex;align-items:center;gap:10px">
+<span aria-hidden="true" style="flex:none;width:36px;height:36px;border-radius:18px;background:#F2F4F6;color:#4E5968;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700">박</span>
+<div style="flex:1;min-width:0;display:flex;flex-direction:column">
+<h3 style="margin:0;font-size:15px;line-height:1.4;font-weight:700">박*영</h3>
+<span style="font-size:13px;color:#636D7A;font-variant-numeric:tabular-nums">1번째 방문 · 26.09.28</span>
+</div>
+<button type="button" aria-label="리뷰 메뉴" style="flex:none;width:44px;height:44px;margin-right:-12px;border:0;background:transparent;padding:0;display:flex;align-items:center;justify-content:center;color:#8B95A1;cursor:pointer"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="5.5" r="1.2" fill="currentColor"/><circle cx="12" cy="12" r="1.2" fill="currentColor"/><circle cx="12" cy="18.5" r="1.2" fill="currentColor"/></svg></button>
+</div>
+<p style="margin:0;font-size:15px;line-height:1.6">가격 대비 양이 넉넉해요. 충전해 두고 자주 오려고요.</p>
+<ul style="margin:0;padding:0;list-style:none;display:flex;flex-wrap:wrap;gap:6px">
+<li style="height:28px;border-radius:14px;background:#F2F4F6;padding:0 10px;display:flex;align-items:center;font-size:13px;color:#4E5968">가성비가 좋아요</li>
+</ul>
+</article>
+
+<article style="margin:0 20px;padding:16px 0 24px;border-top:1px solid #F2F4F6;display:flex;flex-direction:column;gap:12px">
+<div style="display:flex;align-items:center;gap:10px">
+<span aria-hidden="true" style="flex:none;width:36px;height:36px;border-radius:18px;background:#F2F4F6;color:#4E5968;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700">이</span>
+<div style="flex:1;min-width:0;display:flex;flex-direction:column">
+<h3 style="margin:0;font-size:15px;line-height:1.4;font-weight:700">이*수</h3>
+<span style="font-size:13px;color:#636D7A;font-variant-numeric:tabular-nums">5번째 방문 · 26.09.21</span>
+</div>
+<button type="button" aria-label="리뷰 메뉴" style="flex:none;width:44px;height:44px;margin-right:-12px;border:0;background:transparent;padding:0;display:flex;align-items:center;justify-content:center;color:#8B95A1;cursor:pointer"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="5.5" r="1.2" fill="currentColor"/><circle cx="12" cy="12" r="1.2" fill="currentColor"/><circle cx="12" cy="18.5" r="1.2" fill="currentColor"/></svg></button>
+</div>
+<div aria-hidden="true" style="display:flex;gap:8px">
+<div style="width:96px;height:96px;border-radius:14px;background:#F2F4F6;color:#8B95A1;display:flex;align-items:center;justify-content:center"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="5" width="16" height="14" rx="2"/><circle cx="9" cy="10" r="1.5"/><path d="M4 17l5-4 4 3 3-2 4 3"/></svg></div>
+</div>
+<p style="margin:0;font-size:15px;line-height:1.6">생딸기라떼가 진짜 딸기 맛이 나요. 시즌마다 들르게 돼요.</p>
+</article>
+</section>
+
+</main>
+
+<div style="flex:none;padding:12px 20px 34px;background:#FFFFFF;border-top:1px solid #E5E8EB;display:flex;gap:8px">
+<button type="button" aria-label="찜하기" aria-pressed="false" style="flex:none;width:56px;height:56px;border:0;border-radius:16px;background:#F2F4F6;padding:0;display:flex;align-items:center;justify-content:center;color:#191F28;cursor:pointer"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20s-7.5-4.6-7.5-10.2A4.3 4.3 0 0112 7.2a4.3 4.3 0 017.5 2.6C19.5 15.4 12 20 12 20z"/></svg></button>
+<a href="04-05-charge-sheet.html" style="flex:1;height:56px;border-radius:16px;background:#DA2F2E;color:#FFFFFF;font-size:17px;font-weight:700;display:flex;align-items:center;justify-content:center">충전하기</a>
+</div>
+</div>
+</body>
+</html>

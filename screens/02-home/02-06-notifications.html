@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>02-06 알림센터 · prepay-app</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+a{color:inherit;text-decoration:none}a:hover{color:inherit}
+</style>
+<link rel="stylesheet" href="../../assets/preview.css">
+</head>
+<body>
+<div style="width:390px;height:844px;box-sizing:border-box;background:#F2F4F6;font-family:'Noto Sans KR',sans-serif;color:#191F28;display:flex;flex-direction:column;overflow:hidden;position:relative">
+
+<header style="flex:none;height:56px;position:relative;display:flex;align-items:center;justify-content:space-between;padding:0 4px">
+<a href="02-01-home.html" aria-label="뒤로 가기" style="width:44px;height:44px;display:flex;align-items:center;justify-content:center;color:#191F28"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></a>
+<h1 style="position:absolute;left:60px;right:60px;margin:0;text-align:center;font-size:17px;font-weight:700">알림센터</h1>
+<button type="button" style="position:relative;height:44px;min-width:44px;border:0;background:transparent;padding:0 12px;font-family:inherit;font-size:15px;font-weight:500;color:#191F28;cursor:pointer">편집</button>
+</header>
+
+<div style="flex:none;margin:0 20px;display:flex;gap:20px;border-bottom:1px solid #E5E8EB">
+<button type="button" aria-pressed="true" style="height:44px;border:0;border-bottom:2px solid #191F28;margin-bottom:-1px;background:transparent;padding:0;font-family:inherit;font-size:16px;font-weight:700;color:#191F28;cursor:pointer">알림</button>
+<button type="button" aria-pressed="false" style="height:44px;border:0;background:transparent;padding:0;font-family:inherit;font-size:16px;font-weight:500;color:#636D7A;cursor:pointer">공지사항</button>
+<button type="button" aria-pressed="false" style="height:44px;border:0;background:transparent;padding:0;font-family:inherit;font-size:16px;font-weight:500;color:#636D7A;cursor:pointer">이벤트</button>
+</div>
+
+<main style="flex:1;min-height:0;overflow:hidden;display:flex;flex-direction:column">
+<p style="flex:none;margin:0;padding:16px 20px 12px;font-size:14px;color:#4E5968">안 읽은 알림 <b style="font-weight:700;color:#191F28">2</b>개</p>
+
+<ul aria-label="알림 목록" style="flex:none;list-style:none;margin:0;padding:0 16px;display:flex;flex-direction:column;gap:8px">
+
+<li style="position:relative;background:#FFFFFF;border-radius:20px;padding:16px;display:flex;gap:12px">
+<span style="flex:none;width:40px;height:40px;border-radius:20px;background:#F2F4F6;color:#191F28;display:flex;align-items:center;justify-content:center"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="8"/><path d="M9.5 9.5h4a1.75 1.75 0 010 3.5h-3a1.75 1.75 0 000 3.5h4M12 8v1.5M12 16.5V18"/></svg></span>
+<div style="flex:1;min-width:0;display:flex;flex-direction:column;gap:4px;padding-right:12px">
+<h2 style="margin:0;font-size:15px;font-weight:700">캐시를 썼어요</h2>
+<p style="margin:0;font-size:14px;line-height:1.5;color:#4E5968">행복식당 1에서 <span style="font-variant-numeric:tabular-nums">10,000</span> 캐시를 썼어요.</p>
+<span style="font-size:12px;color:#636D7A;font-variant-numeric:tabular-nums">10.28 14:40</span>
+</div>
+<span style="position:absolute;top:18px;right:16px;width:8px;height:8px;border-radius:4px;background:#191F28;display:block"></span>
+<span style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)">안 읽음</span>
+</li>
+
+<li style="position:relative;background:#FFFFFF;border-radius:20px;padding:16px;display:flex;gap:12px">
+<span style="flex:none;width:40px;height:40px;border-radius:20px;background:#F2F4F6;color:#191F28;display:flex;align-items:center;justify-content:center"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3h12v18l-3-2-3 2-3-2-3 2z"/><path d="M9 8h6M9 12h6M9 16h3"/></svg></span>
+<div style="flex:1;min-width:0;display:flex;flex-direction:column;gap:4px;padding-right:12px">
+<h2 style="margin:0;font-size:15px;font-weight:700">충전이 끝났어요</h2>
+<p style="margin:0;font-size:14px;line-height:1.5;color:#4E5968">하루카페 강남점에 <span style="font-variant-numeric:tabular-nums">50,000</span> 캐시가 충전됐어요.<br>쓸 수 있는 캐시 <b style="font-weight:700;color:#191F28;font-variant-numeric:tabular-nums">70,000</b> 캐시</p>
+<a href="../05-wallet-pay/05-01-wallet.html" style="align-self:flex-start;min-height:32px;display:flex;align-items:center;gap:2px;font-size:14px;font-weight:500;color:#191F28">즐겨찾는 가게 보기<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></a>
+<span style="font-size:12px;color:#636D7A;font-variant-numeric:tabular-nums">10.27 11:05</span>
+</div>
+<span style="position:absolute;top:18px;right:16px;width:8px;height:8px;border-radius:4px;background:#191F28;display:block"></span>
+<span style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)">안 읽음</span>
+</li>
+
+<li style="background:#FFFFFF;border-radius:20px;padding:16px;display:flex;gap:12px">
+<span style="flex:none;width:40px;height:40px;border-radius:20px;background:#F2F4F6;color:#191F28;display:flex;align-items:center;justify-content:center"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg></span>
+<div style="flex:1;min-width:0;display:flex;flex-direction:column;gap:4px">
+<h2 style="margin:0;font-size:15px;font-weight:700">공유캐시를 받았어요</h2>
+<p style="margin:0;font-size:14px;line-height:1.5;color:#4E5968">김순이 님이 행복식당 1 공유캐시 <span style="font-variant-numeric:tabular-nums">20,000</span> 캐시를 보냈어요.</p>
+<span style="font-size:12px;color:#636D7A;font-variant-numeric:tabular-nums">10.25 18:20</span>
+</div>
+</li>
+
+<li style="background:#FFFFFF;border-radius:20px;padding:16px;display:flex;gap:12px">
+<span style="flex:none;width:40px;height:40px;border-radius:20px;background:#F2F4F6;color:#191F28;display:flex;align-items:center;justify-content:center"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4l2.4 5 5.6.8-4 3.9 1 5.5-5-2.7-5 2.7 1-5.5-4-3.9 5.6-.8z"/></svg></span>
+<div style="flex:1;min-width:0;display:flex;flex-direction:column;gap:4px">
+<h2 style="margin:0;font-size:15px;font-weight:700">리뷰를 남겨 주세요</h2>
+<p style="margin:0;font-size:14px;line-height:1.5;color:#4E5968">하루카페2 이용은 어떠셨나요? 리뷰를 쓰면 포인트를 드려요.</p>
+<a href="../09-my/09-05-write-review.html" style="align-self:flex-start;min-height:32px;display:flex;align-items:center;gap:2px;font-size:14px;font-weight:500;color:#191F28">리뷰 쓰기<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></a>
+<span style="font-size:12px;color:#636D7A;font-variant-numeric:tabular-nums">10.24 20:10</span>
+</div>
+</li>
+
+<li style="background:#FFFFFF;border-radius:20px;padding:16px;display:flex;gap:12px">
+<span style="flex:none;width:40px;height:40px;border-radius:20px;background:#F2F4F6;color:#191F28;display:flex;align-items:center;justify-content:center"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10v4h3l7 4V6l-7 4z"/><path d="M18 9a4 4 0 010 6"/></svg></span>
+<div style="flex:1;min-width:0;display:flex;flex-direction:column;gap:4px">
+<h2 style="margin:0;font-size:15px;font-weight:700">[공지] 서비스 점검 안내</h2>
+<p style="margin:0;font-size:14px;line-height:1.5;color:#4E5968">10.30 02:00부터 04:00까지 충전과 결제를 잠시 쉬어요.</p>
+<span style="font-size:12px;color:#636D7A;font-variant-numeric:tabular-nums">10.20 09:00</span>
+</div>
+</li>
+
+<li style="background:#FFFFFF;border-radius:20px;padding:16px;display:flex;gap:12px">
+<span style="flex:none;width:40px;height:40px;border-radius:20px;background:#F2F4F6;color:#191F28;display:flex;align-items:center;justify-content:center"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="8"/><path d="M9.5 9.5h4a1.75 1.75 0 010 3.5h-3a1.75 1.75 0 000 3.5h4M12 8v1.5M12 16.5V18"/></svg></span>
+<div style="flex:1;min-width:0;display:flex;flex-direction:column;gap:4px">
+<h2 style="margin:0;font-size:15px;font-weight:700">캐시를 썼어요</h2>
+<p style="margin:0;font-size:14px;line-height:1.5;color:#4E5968">하루카페 강남점에서 <span style="font-variant-numeric:tabular-nums">4,500</span> 캐시를 썼어요.</p>
+<span style="font-size:12px;color:#636D7A;font-variant-numeric:tabular-nums">10.19 08:35</span>
+</div>
+</li>
+
+</ul>
+</main>
+</div>
+</body>
+</html>
