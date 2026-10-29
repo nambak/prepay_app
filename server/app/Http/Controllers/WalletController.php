@@ -24,7 +24,7 @@ class WalletController extends Controller
                     'visit_count' => 12,
                     'saved_won'   => 8400,
                     'items'       => [
-                        ['type' => 'charge', 'amount' => 150000, 'days_left' => 365],
+                        ['type' => 'charge', 'amount' => 100000, 'days_left' => 365],
                         ['type' => 'shared', 'amount' => 100000, 'days_left' => 100],
                         ['type' => 'service', 'amount' => 30000, 'days_left' => 365],
                     ],

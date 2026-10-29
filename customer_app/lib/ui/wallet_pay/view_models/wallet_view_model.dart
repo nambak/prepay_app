@@ -16,12 +16,23 @@ class WalletViewModel extends ChangeNotifier {
 
   String? get expandedStoreId => _expandedStoreId;
 
-  bool get loading => _wallet == null;
+  bool get loading => _wallet == null && !_failed;
+
+  bool _failed = false;
+
+  bool get failed => _failed;
 
   Future<void> load() async {
-    _wallet = await _cashRepository.getWallet();
-    _expandedStoreId =
-        _wallet!.stores.firstOrNull?.id; // 디자인 시안과 같이 첫 가게는 펼쳐 둠.
+    _failed = false;
+    notifyListeners();
+
+    try {
+      _wallet = await _cashRepository.getWallet();
+      _expandedStoreId = _wallet!.stores.firstOrNull?.id;
+    } catch (error) {
+      debugPrint('지갑을 불러오지 못했습니다: $error');
+      _failed = true;
+    }
     notifyListeners();
   }
 

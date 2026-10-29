@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:prepay_app/ui/core/tokens.dart';
 import 'package:prepay_app/ui/core/widgets/app_tab_bar.dart';
 import 'package:prepay_app/ui/wallet_pay/view_models/wallet_view_model.dart';
 import 'package:prepay_app/ui/wallet_pay/widgets/wallet_header.dart';
@@ -23,7 +24,9 @@ class WalletScreen extends StatelessWidget {
           builder: (context, _) {
             final wallet = viewModel.wallet;
             if (wallet == null) {
-              return const Center(child: CircularProgressIndicator());
+              return viewModel.failed
+                  ? _LoadError(onRetry: viewModel.load)
+                  : const Center(child: CircularProgressIndicator());
             }
             return ListView(
               padding: const EdgeInsets.only(bottom: 24),
@@ -46,6 +49,29 @@ class WalletScreen extends StatelessWidget {
             );
           }
         )
+      )
+    );
+  }
+}
+
+class _LoadError extends StatelessWidget {
+  const _LoadError({required this.onRetry});
+
+  final VoidCallback onRetry;
+
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        spacing: 12,
+        children: [
+          Text(
+            '캐시를 불러오지 못했습니다.',
+            style: AppText.body.copyWith(color: AppColors.textSecondary),
+          ),
+          FilledButton(onPressed: onRetry, child: const Text('다시 시도')),
+        ],
       )
     );
   }

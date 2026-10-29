@@ -4,5 +4,14 @@ it('지갑 캐시를 리턴한다', function () {
     $this->getJson('/api/wallet')
         ->assertOk()
         ->assertJsonPath('charge', 320000)
-        ->assertJsonCount(2, 'stores');
+        ->assertJsonCount(2, 'stores')
+        ->assertJsonStructure([
+            'charge', 'shared', 'service', 'saved_won',
+            'stores' => [
+                '*' => [
+                    'id', 'name', 'kind', 'visit_count', 'saved_won',
+                    'items' => ['*' => ['type', 'amount', 'days_left']],
+                ],
+            ],
+        ]);
 });
