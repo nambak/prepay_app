@@ -29,7 +29,7 @@ void main() {
     expect(json['name'], '행복식당');
   });
 
-  test('200이 아니면 예외를 던진다', () async {
+  test('200이 아니면 상태 코드를 담은 예외를 던진다', () async {
     final apiclient = ApiClient(
       baseUrl: 'http://test',
       client: MockClient((_) async => http.Response('', 500)),
@@ -37,7 +37,49 @@ void main() {
 
     await expectLater(
       apiclient.getWallet(),
-      throwsA(isA<http.ClientException>()),
+      throwsA(
+        isA<ApiException>().having((e) => e.statusCode, 'statusCode', 500),
+      ),
     );
+  });
+
+  test('로그인하면 토큰을 돌려주고, 그 뒤 요청에는 토큰을 붙인다', () async {
+    final sent = <http.Request>[];
+    final apiClient = ApiClient(
+      baseUrl: 'http://test',
+      client: MockClient((request) async {
+        sent.add(request);
+        return request.url.path == '/api/login'
+            ? http.Response(jsonEncode({'token': '1|abc'}), 200)
+            : http.Response('{}', 200);
+      }),
+    );
+
+    String email = 'hana@email.com';
+    String password = 'password1234';
+
+    apiClient.token = await apiClient.login(
+        email: email,
+        password: password
+    );
+    await apiClient.getWallet();
+
+    expect(sent[0].method, 'POST');
+    expect(jsonDecode(sent[0].body), {
+      'email': email,
+      'password': password,
+      'device_name': 'customer_app',
+    });
+    expect(sent[0].headers['Authorization'], isNull);
+    expect(sent[1].headers['Authorization'], 'Bearer 1|abc');
+  });
+
+  test('내용이 없는 응답(204)도 오류 없이 받는다', () async {
+    final apiClient = ApiClient(
+      baseUrl: 'http://test',
+      client: MockClient((_) async => http.Response('', 204)),
+    );
+
+    await expectLater(apiClient.logout(), completes);
   });
 }
