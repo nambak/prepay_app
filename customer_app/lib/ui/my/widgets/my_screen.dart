@@ -27,7 +27,7 @@ class MyScreen extends StatelessWidget {
                 height: AppSize.appBar,
                 child: Row(
                   children: [
-                    const Expanded(child: Text('마이', style: AppText.title)),
+                    const Expanded(child: Text('내 정보', style: AppText.title)),
                     IconButton(
                       onPressed: openSettings,
                       tooltip: '환경설정',

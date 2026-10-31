@@ -90,8 +90,8 @@
     { key: 'home', label: '홈', icon: '<path d="M4 11l8-7 8 7"/><path d="M6 9.5V20h12V9.5"/><path d="M10 20v-5h4v5"/>' },
     { key: 'shop', label: '가게찾기', icon: '<path d="M12 21s-7-6.2-7-11a7 7 0 0114 0c0 4.8-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/>' },
     { key: 'wallet', label: '내 가게', icon: '<path d="M4 8h14a2 2 0 012 2v8a2 2 0 01-2 2H6a2 2 0 01-2-2V8z"/><path d="M4 8l11-3.5V8"/><path d="M15.5 14h1.5"/>' },
-    { key: 'like', label: '찜', icon: HEART },
-    { key: 'my', label: '마이', icon: '<circle cx="12" cy="8.5" r="3.8"/><path d="M4.5 20a7.5 7.5 0 0115 0"/>' }
+    { key: 'like', label: '좋아요', icon: HEART },
+    { key: 'my', label: '내 정보', icon: '<circle cx="12" cy="8.5" r="3.8"/><path d="M4.5 20a7.5 7.5 0 0115 0"/>' }
   ];
 
   class AppTabBar extends HTMLElement {
