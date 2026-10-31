@@ -5,4 +5,5 @@ abstract final class Routes {
   static const wallet = '/wallet';
   static const likes = '/likes';
   static const my = '/my';
+  static const settings = '/my/settings';
 }

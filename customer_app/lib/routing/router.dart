@@ -3,6 +3,8 @@ import 'package:prepay_app/data/repositories/auth_repository.dart';
 import 'package:prepay_app/data/services/api_client.dart';
 import 'package:prepay_app/ui/account/view_models/login_view_model.dart';
 import 'package:prepay_app/ui/account/widgets/login_screen.dart';
+import 'package:prepay_app/ui/my/widgets/my_screen.dart';
+import 'package:prepay_app/ui/my/widgets/settings_screen.dart';
 
 import '../data/repositories/point_repository.dart';
 import '../ui/wallet_pay/view_models/wallet_view_model.dart';
@@ -34,14 +36,20 @@ final router = GoRouter(
     GoRoute(
       path: Routes.login,
       builder: (context, state) => LoginScreen(
-        viewModel: LoginViewModel(authRepository: authRepository)
-      )
+        viewModel: LoginViewModel(authRepository: authRepository),
+      ),
     ),
     GoRoute(
       path: Routes.wallet,
       builder: (context, state) => WalletScreen(
         viewModel: WalletViewModel(pointRepository: _pointRepository)..load(),
       ),
+    ),
+    GoRoute(path: Routes.my, builder: (context, state) => const MyScreen()),
+    GoRoute(
+      path: Routes.settings,
+      builder: (context, state) =>
+          SettingsScreen(onLogout: authRepository.logout),
     ),
   ],
 );
