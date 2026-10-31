@@ -46,7 +46,11 @@ class StoreCard extends StatelessWidget {
                         overflow: TextOverflow.ellipsis,
                       ),
                       Text(
-                        '${store.visitCount}번째 방문 · ${formatNumber(store.savedWon)}원 아낌',
+                        // 쓰기 기록이 생기기 전에는 방문 횟수가 0이라 숨긴다.
+                        [
+                          if (store.visitCount > 0) '${store.visitCount}번째 방문',
+                          '${formatNumber(store.savedWon)}원 아낌',
+                        ].join(' · '),
                         style: AppText.secondary.copyWith(
                           color: AppColors.textMuted,
                         ),

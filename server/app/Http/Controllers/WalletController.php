@@ -2,44 +2,65 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\PointLot;
+use App\Models\User;
+use App\PointType;
 use Illuminate\Http\Request;
+use Illuminate\Support\Collection;
 
 class WalletController extends Controller
 {
     /**
-     * DB 생성 전까지 시안(05-01)의 값을 리턴한다. 앱 PointRepository의 더미와 같은 값이다.
+     * 내 가게 탭(05-01): 쓸 수 있는 포인트를 가게별로, 묶음 하나를 한 줄로 돌려준다.
+     *
+     * @return array{charge: int, shared: int, service: int, saved_won: int, stores: array<int, array<string, mixed>>}
      */
-    public function __invoke(Request $request)
+    public function __invoke(Request $request): array
     {
+        /** @var User $user */
+        $user = $request->user();
+
+        // 아낀 금액은 다 썼거나 기한이 지난 충전까지 모두 더한다.
+        $savedWonByStore = $user->pointLots()
+            ->where('type', PointType::Charge)
+            ->groupBy('store_id')
+            ->selectRaw('store_id, sum(amount - paid_won) as saved_won')
+            ->pluck('saved_won', 'store_id')
+            ->map(fn ($savedWon): int => (int) $savedWon);
+
+        $lots = $user->pointLots()->usable()->with('store')->orderBy('expires_on')->get();
+
+        $stores = $lots->groupBy('store_id')
+            ->sortByDesc(fn (Collection $storeLots) => $storeLots->max('created_at'))
+            ->map(function (Collection $storeLots) use ($savedWonByStore) {
+                $store = $storeLots->first()->store;
+
+                return [
+                    'id' => $store->id,
+                    'name' => $store->name,
+                    'kind' => $store->kind,
+                    'visit_count' => 0, // 쓰기 기록이 생기면 센다.
+                    'saved_won' => $savedWonByStore[$store->id] ?? 0,
+                    'items' => $storeLots
+                        ->sortBy(fn (PointLot $lot) => array_search($lot->type, PointType::cases(), true))
+                        ->map(fn (PointLot $lot) => [
+                            'type' => $lot->type,
+                            'amount' => $lot->balance,
+                            'days_left' => $lot->daysLeft(),
+                        ])
+                        ->values()
+                        ->all(),
+                ];
+            })
+            ->values()
+            ->all();
+
         return [
-            'charge'    => 320000,
-            'shared'    => 150000,
-            'service'   => 30000,
-            'saved_won' => 32500,
-            'stores'    => [
-                [
-                    'id'          => 1,
-                    'name'        => '행복식당 1',
-                    'kind'        => 'food',
-                    'visit_count' => 12,
-                    'saved_won'   => 8400,
-                    'items'       => [
-                        ['type' => 'charge', 'amount' => 100000, 'days_left' => 365],
-                        ['type' => 'shared', 'amount' => 100000, 'days_left' => 100],
-                        ['type' => 'service', 'amount' => 30000, 'days_left' => 365],
-                    ],
-                ],
-                [
-                    'id'          => 2,
-                    'name'        => '하루카페2',
-                    'kind'        => 'cafe',
-                    'visit_count' => 3,
-                    'saved_won'   => 2500,
-                    'items'       => [
-                        ['type' => 'charge', 'amount' => 100000, 'days_left' => 365],
-                    ],
-                ],
-            ],
+            'charge' => $lots->where('type', PointType::Charge)->sum(fn (PointLot $lot): int => $lot->balance),
+            'shared' => 0, // 공유 기능을 만들 때 채운다.
+            'service' => $lots->where('type', PointType::Service)->sum(fn (PointLot $lot): int => $lot->balance),
+            'saved_won' => $savedWonByStore->sum(fn (int $savedWon): int => $savedWon),
+            'stores' => $stores,
         ];
     }
 }
