@@ -461,10 +461,10 @@
   },
   {
     "id": "07-01",
-    "name": "충전캐시 결제내역",
+    "name": "충전포인트 결제내역",
     "page": "p7",
-    "group": "07 캐시 내역",
-    "file": "screens/07-cash-history/07-01-history.html",
+    "group": "07 포인트 내역",
+    "file": "screens/07-point-history/07-01-history.html",
     "w": 390,
     "h": 1180,
     "source": "G01_History.dc.html"
@@ -473,8 +473,8 @@
     "id": "07-02",
     "name": "가게 이용내역",
     "page": "p7",
-    "group": "07 캐시 내역",
-    "file": "screens/07-cash-history/07-02-usage.html",
+    "group": "07 포인트 내역",
+    "file": "screens/07-point-history/07-02-usage.html",
     "w": 390,
     "h": 1120,
     "source": "G02_Usage.dc.html"
@@ -483,8 +483,8 @@
     "id": "07-03",
     "name": "이용 메뉴 보기",
     "page": "p7",
-    "group": "07 캐시 내역",
-    "file": "screens/07-cash-history/07-03-used-menu.html",
+    "group": "07 포인트 내역",
+    "file": "screens/07-point-history/07-03-used-menu.html",
     "w": 390,
     "h": 844,
     "source": "G03_UsedMenu.dc.html"
@@ -493,8 +493,8 @@
     "id": "07-04",
     "name": "결제 상세",
     "page": "p7",
-    "group": "07 캐시 내역",
-    "file": "screens/07-cash-history/07-04-pay-detail.html",
+    "group": "07 포인트 내역",
+    "file": "screens/07-point-history/07-04-pay-detail.html",
     "w": 390,
     "h": 844,
     "source": "G04_PayDetail.dc.html"
@@ -503,28 +503,28 @@
     "id": "07-05",
     "name": "환불 신청",
     "page": "p7",
-    "group": "07 캐시 내역",
-    "file": "screens/07-cash-history/07-05-refund-apply.html",
+    "group": "07 포인트 내역",
+    "file": "screens/07-point-history/07-05-refund-apply.html",
     "w": 390,
     "h": 1420,
     "source": "G06_RefundApply.dc.html"
   },
   {
     "id": "07-06",
-    "name": "공유캐시",
+    "name": "공유포인트",
     "page": "p7",
-    "group": "07 캐시 내역",
-    "file": "screens/07-cash-history/07-06-shared-cash.html",
+    "group": "07 포인트 내역",
+    "file": "screens/07-point-history/07-06-shared-point.html",
     "w": 390,
     "h": 1060,
     "source": "G07_SharedMoney.dc.html"
   },
   {
     "id": "07-07",
-    "name": "서비스캐시",
+    "name": "서비스포인트",
     "page": "p7",
-    "group": "07 캐시 내역",
-    "file": "screens/07-cash-history/07-07-service-cash.html",
+    "group": "07 포인트 내역",
+    "file": "screens/07-point-history/07-07-service-point.html",
     "w": 390,
     "h": 844,
     "source": "G08_ServiceMoney.dc.html"
@@ -678,16 +678,6 @@
     "w": 390,
     "h": 1400,
     "source": "J06_WriteReview.dc.html"
-  },
-  {
-    "id": "09-06",
-    "name": "포인트",
-    "page": "p9",
-    "group": "09 마이페이지",
-    "file": "screens/09-my/09-06-points.html",
-    "w": 390,
-    "h": 960,
-    "source": "J07_Points.dc.html"
   },
   {
     "id": "09-07",

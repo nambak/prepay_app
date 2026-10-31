@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>07-06 공유캐시 · prepay-app</title>
+<title>07-06 공유포인트 · prepay-app</title>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&amp;display=swap" rel="stylesheet">
 <style>
 body{margin:0}
@@ -16,30 +16,30 @@ a{color:inherit;text-decoration:none}a:hover{color:inherit}
 
 <header style="flex:none;height:56px;position:relative;display:flex;align-items:center;justify-content:space-between;padding:0 4px">
 <a href="../05-wallet-pay/05-01-wallet.html" aria-label="뒤로 가기" style="width:44px;height:44px;display:flex;align-items:center;justify-content:center;color:#191F28"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></a>
-<h1 style="position:absolute;left:60px;right:60px;margin:0;text-align:center;font-size:17px;font-weight:700">캐시 내역</h1>
+<h1 style="position:absolute;left:60px;right:60px;margin:0;text-align:center;font-size:17px;font-weight:700">포인트 내역</h1>
 <span style="width:44px;height:44px;display:block"></span>
 </header>
 
-<nav aria-label="캐시 종류" style="flex:none;margin:0 20px;display:flex;gap:20px;border-bottom:1px solid #E5E8EB">
-<a href="07-01-history.html" style="height:44px;display:flex;align-items:center;gap:6px;font-size:16px;font-weight:500;color:#636D7A"><span style="width:8px;height:8px;border-radius:4px;background:#EE3E3D;display:block"></span>충전캐시</a>
-<a href="07-06-shared-cash.html" aria-current="page" style="height:44px;display:flex;align-items:center;gap:6px;font-size:16px;font-weight:700;color:#191F28;border-bottom:2px solid #191F28;margin-bottom:-1px"><span style="width:8px;height:8px;border-radius:4px;background:#6E5DA8;display:block"></span>공유캐시</a>
-<a href="07-07-service-cash.html" style="height:44px;display:flex;align-items:center;gap:6px;font-size:16px;font-weight:500;color:#636D7A"><span style="width:8px;height:8px;border-radius:4px;background:#F2A14A;display:block"></span>서비스캐시</a>
+<nav aria-label="포인트 종류" style="flex:none;margin:0 20px;display:flex;gap:20px;border-bottom:1px solid #E5E8EB">
+<a href="07-01-history.html" style="height:44px;display:flex;align-items:center;gap:6px;font-size:16px;font-weight:500;color:#636D7A"><span style="width:8px;height:8px;border-radius:4px;background:#EE3E3D;display:block"></span>충전포인트</a>
+<a href="07-06-shared-point.html" aria-current="page" style="height:44px;display:flex;align-items:center;gap:6px;font-size:16px;font-weight:700;color:#191F28;border-bottom:2px solid #191F28;margin-bottom:-1px"><span style="width:8px;height:8px;border-radius:4px;background:#6E5DA8;display:block"></span>공유포인트</a>
+<a href="07-07-service-point.html" style="height:44px;display:flex;align-items:center;gap:6px;font-size:16px;font-weight:500;color:#636D7A"><span style="width:8px;height:8px;border-radius:4px;background:#F2A14A;display:block"></span>서비스포인트</a>
 </nav>
 
 <main style="flex:1;min-height:0;overflow:hidden;display:flex;flex-direction:column;padding-bottom:24px">
 
-<section aria-label="공유캐시 잔액" style="flex:none;margin:12px 16px;background:#FFFFFF;border-radius:24px;padding:20px;display:flex;flex-direction:column">
+<section aria-label="공유포인트 잔액" style="flex:none;margin:12px 16px;background:#FFFFFF;border-radius:24px;padding:20px;display:flex;flex-direction:column">
 <div style="display:flex;align-items:center;gap:4px">
-<span style="font-size:14px;color:#4E5968">쓸 수 있는 공유캐시</span>
-<button type="button" aria-label="공유캐시 설명 보기" style="width:28px;height:28px;border:0;background:transparent;padding:0;display:flex;align-items:center;justify-content:center;color:#8B95A1;cursor:pointer"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 7.8h.01"/></svg></button>
+<span style="font-size:14px;color:#4E5968">쓸 수 있는 공유포인트</span>
+<button type="button" aria-label="공유포인트 설명 보기" style="width:28px;height:28px;border:0;background:transparent;padding:0;display:flex;align-items:center;justify-content:center;color:#8B95A1;cursor:pointer"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 7.8h.01"/></svg></button>
 </div>
 <div style="display:flex;align-items:baseline;gap:6px;margin-top:2px;line-height:34px">
 <span style="font-size:26px;font-weight:700;letter-spacing:-0.6px;font-variant-numeric:tabular-nums">100,000</span>
-<span style="font-size:16px;font-weight:700">캐시</span>
+<span style="font-size:16px;font-weight:700">P</span>
 </div>
 <div role="group" aria-label="공유 방향" style="display:flex;background:#F2F4F6;border-radius:12px;padding:4px;margin-top:16px">
-<button type="button" aria-pressed="true" style="flex:1;height:40px;border:0;border-radius:9px;background:#FFFFFF;display:flex;align-items:center;justify-content:center;gap:6px;font-family:inherit;font-size:15px;font-weight:700;color:#191F28;cursor:pointer"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg>보낸 캐시</button>
-<button type="button" aria-pressed="false" style="flex:1;height:40px;border:0;border-radius:9px;background:transparent;display:flex;align-items:center;justify-content:center;gap:6px;font-family:inherit;font-size:15px;font-weight:500;color:#4E5968;cursor:pointer"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 7L7 17M15 17H7V9"/></svg>받은 캐시</button>
+<button type="button" aria-pressed="true" style="flex:1;height:40px;border:0;border-radius:9px;background:#FFFFFF;display:flex;align-items:center;justify-content:center;gap:6px;font-family:inherit;font-size:15px;font-weight:700;color:#191F28;cursor:pointer"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg>보낸 포인트</button>
+<button type="button" aria-pressed="false" style="flex:1;height:40px;border:0;border-radius:9px;background:transparent;display:flex;align-items:center;justify-content:center;gap:6px;font-family:inherit;font-size:15px;font-weight:500;color:#4E5968;cursor:pointer"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 7L7 17M15 17H7V9"/></svg>받은 포인트</button>
 </div>
 </section>
 
@@ -56,10 +56,10 @@ a{color:inherit;text-decoration:none}a:hover{color:inherit}
 <article style="margin:0 16px;background:#FFFFFF;border-radius:24px;padding:20px 20px 8px;display:flex;flex-direction:column">
 <div style="display:flex;align-items:center;gap:8px">
 <h2 style="flex:1;margin:0;font-size:16px;line-height:22px;font-weight:700">행복식당 1</h2>
-<span style="font-size:14px;color:#4E5968;font-variant-numeric:tabular-nums">보낸 캐시 80,000</span>
+<span style="font-size:14px;color:#4E5968;font-variant-numeric:tabular-nums">보낸 포인트 80,000</span>
 <button type="button" aria-label="행복식당 1 공유 편집" style="height:44px;border:0;background:transparent;padding:0 0 0 8px;font-family:inherit;font-size:14px;font-weight:500;color:#191F28;text-decoration:underline;cursor:pointer">편집</button>
 </div>
-<span style="font-size:13px;line-height:18px;color:#636D7A">끄면 상대방이 이 가게에서 공유캐시를 쓸 수 없어요</span>
+<span style="font-size:13px;line-height:18px;color:#636D7A">끄면 상대방이 이 가게에서 공유포인트를 쓸 수 없어요</span>
 <ul style="list-style:none;margin:8px 0 0;padding:0;display:flex;flex-direction:column">
 <li style="height:64px;display:flex;align-items:center;gap:10px"><span style="font-size:12px;line-height:18px;font-weight:500;color:#4E5968;background:#F2F4F6;border-radius:6px;padding:2px 6px">개인</span><span style="flex:1;min-width:0;display:flex;flex-direction:column"><span style="font-size:15px;line-height:22px">김하나</span><span style="font-size:12px;line-height:17px;color:#636D7A;font-variant-numeric:tabular-nums">보낸 날 2026.10.17 16:30</span></span><span style="font-size:15px;font-weight:500;font-variant-numeric:tabular-nums">20,000</span><button type="button" aria-pressed="true" aria-label="김하나 공유 사용" style="flex:none;width:48px;height:28px;border-radius:14px;border:0;background:#191F28;padding:3px;display:flex;justify-content:flex-end;cursor:pointer"><span style="width:22px;height:22px;border-radius:11px;background:#FFFFFF;display:block"></span></button></li>
 <li style="height:64px;display:flex;align-items:center;gap:10px;border-top:1px solid #F2F4F6"><span style="font-size:12px;line-height:18px;font-weight:500;color:#4E5968;background:#F2F4F6;border-radius:6px;padding:2px 6px">개인</span><span style="flex:1;min-width:0;display:flex;flex-direction:column"><span style="font-size:15px;line-height:22px">이철수</span><span style="font-size:12px;line-height:17px;color:#636D7A;font-variant-numeric:tabular-nums">보낸 날 2026.10.17 16:30</span></span><span style="font-size:15px;font-weight:500;font-variant-numeric:tabular-nums">10,000</span><button type="button" aria-pressed="true" aria-label="이철수 공유 사용" style="flex:none;width:48px;height:28px;border-radius:14px;border:0;background:#191F28;padding:3px;display:flex;justify-content:flex-end;cursor:pointer"><span style="width:22px;height:22px;border-radius:11px;background:#FFFFFF;display:block"></span></button></li>
@@ -71,10 +71,10 @@ a{color:inherit;text-decoration:none}a:hover{color:inherit}
 <article style="margin:0 16px;background:#FFFFFF;border-radius:24px;padding:20px 20px 8px;display:flex;flex-direction:column">
 <div style="display:flex;align-items:center;gap:8px">
 <h2 style="flex:1;margin:0;font-size:16px;line-height:22px;font-weight:700">하루카페2</h2>
-<span style="font-size:14px;color:#4E5968;font-variant-numeric:tabular-nums">보낸 캐시 30,000</span>
+<span style="font-size:14px;color:#4E5968;font-variant-numeric:tabular-nums">보낸 포인트 30,000</span>
 <button type="button" aria-label="하루카페2 공유 편집" style="height:44px;border:0;background:transparent;padding:0 0 0 8px;font-family:inherit;font-size:14px;font-weight:500;color:#191F28;text-decoration:underline;cursor:pointer">편집</button>
 </div>
-<span style="font-size:13px;line-height:18px;color:#636D7A">끄면 상대방이 이 가게에서 공유캐시를 쓸 수 없어요</span>
+<span style="font-size:13px;line-height:18px;color:#636D7A">끄면 상대방이 이 가게에서 공유포인트를 쓸 수 없어요</span>
 <ul style="list-style:none;margin:8px 0 0;padding:0;display:flex;flex-direction:column">
 <li style="height:64px;display:flex;align-items:center;gap:10px"><span style="font-size:12px;line-height:18px;font-weight:500;color:#4E5968;background:#F2F4F6;border-radius:6px;padding:2px 6px">개인</span><span style="flex:1;min-width:0;display:flex;flex-direction:column"><span style="font-size:15px;line-height:22px">김순이</span><span style="font-size:12px;line-height:17px;color:#636D7A;font-variant-numeric:tabular-nums">보낸 날 2026.10.13 16:30</span></span><span style="font-size:15px;font-weight:500;font-variant-numeric:tabular-nums">30,000</span><button type="button" aria-pressed="true" aria-label="김순이 공유 사용" style="flex:none;width:48px;height:28px;border-radius:14px;border:0;background:#191F28;padding:3px;display:flex;justify-content:flex-end;cursor:pointer"><span style="width:22px;height:22px;border-radius:11px;background:#FFFFFF;display:block"></span></button></li>
 </ul>
@@ -83,10 +83,10 @@ a{color:inherit;text-decoration:none}a:hover{color:inherit}
 <article style="margin:0 16px;background:#FFFFFF;border-radius:24px;padding:20px 20px 8px;display:flex;flex-direction:column">
 <div style="display:flex;align-items:center;gap:8px">
 <h2 style="flex:1;margin:0;font-size:16px;line-height:22px;font-weight:700">행복샌드위치</h2>
-<span style="font-size:14px;color:#4E5968;font-variant-numeric:tabular-nums">보낸 캐시 20,000</span>
+<span style="font-size:14px;color:#4E5968;font-variant-numeric:tabular-nums">보낸 포인트 20,000</span>
 <button type="button" aria-label="행복샌드위치 공유 편집" style="height:44px;border:0;background:transparent;padding:0 0 0 8px;font-family:inherit;font-size:14px;font-weight:500;color:#191F28;text-decoration:underline;cursor:pointer">편집</button>
 </div>
-<span style="font-size:13px;line-height:18px;color:#636D7A">끄면 상대방이 이 가게에서 공유캐시를 쓸 수 없어요</span>
+<span style="font-size:13px;line-height:18px;color:#636D7A">끄면 상대방이 이 가게에서 공유포인트를 쓸 수 없어요</span>
 <ul style="list-style:none;margin:8px 0 0;padding:0;display:flex;flex-direction:column">
 <li style="height:64px;display:flex;align-items:center;gap:10px"><span style="font-size:12px;line-height:18px;font-weight:500;color:#5A4A95;background:#F1EFFA;border-radius:6px;padding:2px 6px">그룹</span><span style="flex:1;min-width:0;display:flex;flex-direction:column"><span style="font-size:15px;line-height:22px">우리 팀</span><span style="font-size:12px;line-height:17px;color:#636D7A;font-variant-numeric:tabular-nums">보낸 날 2026.10.02 11:20</span></span><span style="font-size:15px;font-weight:500;font-variant-numeric:tabular-nums">20,000</span><button type="button" aria-pressed="true" aria-label="우리 팀 공유 사용" style="flex:none;width:48px;height:28px;border-radius:14px;border:0;background:#191F28;padding:3px;display:flex;justify-content:flex-end;cursor:pointer"><span style="width:22px;height:22px;border-radius:11px;background:#FFFFFF;display:block"></span></button></li>
 </ul>

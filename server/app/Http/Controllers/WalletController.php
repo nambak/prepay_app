@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 class WalletController extends Controller
 {
     /**
-     * DB 생성 전까지 시안(05-01)의 값을 리턴한다. 앱 CashRepository의 더미와 같은 값이다.
+     * DB 생성 전까지 시안(05-01)의 값을 리턴한다. 앱 PointRepository의 더미와 같은 값이다.
      */
     public function __invoke(Request $request)
     {

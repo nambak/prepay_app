@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 
-import '../../../domain/models/cash.dart';
+import '../../../domain/models/point.dart';
 import '../../../domain/models/store.dart';
 import '../../core/format.dart';
 import '../../core/icons.dart';
 import '../../core/tokens.dart';
 import '../../core/widgets/app_card.dart';
-import 'cash_detail.dart';
+import 'point_detail.dart';
 
-/// 가게 한 곳의 카드: 가게 정보, 캐시 합계, 쓰기·충전·공유 버튼, 캐시 상세
+/// 가게 한 곳의 카드: 가게 정보, 포인트 합계, 쓰기·충전·공유 버튼, 포인트 상세
 class StoreCard extends StatelessWidget {
   const StoreCard(
       this.store, {
@@ -76,7 +76,7 @@ class StoreCard extends StatelessWidget {
             children: [
               Expanded(
                 child: Text(
-                  '쓸 수 있는 캐시',
+                  '쓸 수 있는 포인트',
                   style: AppText.label.copyWith(color: AppColors.textSecondary),
                 ),
               ),
@@ -84,7 +84,7 @@ class StoreCard extends StatelessWidget {
                 TextSpan(
                   children: [
                     TextSpan(text: formatNumber(store.total)),
-                    const TextSpan(text: ' 캐시', style: TextStyle(fontSize: 15)),
+                    const TextSpan(text: 'P', style: TextStyle(fontSize: 15)),
                   ],
                 ),
                 style: const TextStyle(
@@ -105,7 +105,7 @@ class StoreCard extends StatelessWidget {
               Expanded(flex: 2, child: _CardButton('공유')),
             ],
           ),
-          CashDetail(store, expanded: expanded, onToggle: onToggleDetail),
+          PointDetail(store, expanded: expanded, onToggle: onToggleDetail),
         ],
       ),
     );

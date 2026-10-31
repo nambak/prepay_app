@@ -1,12 +1,12 @@
 import 'store.dart';
 
-enum CashType { charge, shared, service }
+enum PointType { charge, shared, service }
 
-// 캐시 종류 하나의 잔액. 단위는 캐시
-class CashItem {
-  const CashItem(this.type, this.amount, {required this.daysLeft});
+// 포인트 종류 하나의 잔액. 단위는 P
+class PointItem {
+  const PointItem(this.type, this.amount, {required this.daysLeft});
 
-  final CashType type;
+  final PointType type;
   final int amount;
   final int daysLeft; // 유효기간까지 남은 날
 }
@@ -27,7 +27,7 @@ class StoreWallet {
   final StoreKind kind;
   final int visitCount;
   final int savedWon; // 아낀 금액. 단위는 원.
-  final List<CashItem> items;
+  final List<PointItem> items;
 
   int get total => items.fold(0, (sum, item) => sum + item.amount);
 }

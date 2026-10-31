@@ -1,12 +1,12 @@
 import 'package:flutter/foundation.dart';
 
-import '../../../data/repositories/cash_repository.dart';
-import '../../../domain/models/cash.dart';
+import '../../../data/repositories/point_repository.dart';
+import '../../../domain/models/point.dart';
 
 class WalletViewModel extends ChangeNotifier {
-  WalletViewModel({required this._cashRepository});
+  WalletViewModel({required this._pointRepository});
 
-  final CashRepository _cashRepository;
+  final PointRepository _pointRepository;
 
   Wallet? _wallet;
 
@@ -27,7 +27,7 @@ class WalletViewModel extends ChangeNotifier {
     notifyListeners();
 
     try {
-      _wallet = await _cashRepository.getWallet();
+      _wallet = await _pointRepository.getWallet();
       _expandedStoreId = _wallet!.stores.firstOrNull?.id;
     } catch (error) {
       debugPrint('지갑을 불러오지 못했습니다: $error');

@@ -1,15 +1,15 @@
-// 가게 카드 아래 '캐시 상세' 접고 펴기
+// 가게 카드 아래 '포인트 상세' 접고 펴기
 
 import 'package:flutter/material.dart';
-import 'package:prepay_app/domain/models/cash.dart';
+import 'package:prepay_app/domain/models/point.dart';
 import 'package:prepay_app/ui/core/format.dart';
 import 'package:prepay_app/ui/core/icons.dart';
-import 'package:prepay_app/ui/core/widgets/cash_dot.dart';
+import 'package:prepay_app/ui/core/widgets/point_dot.dart';
 
 import '../../core/tokens.dart';
 
-class CashDetail extends StatelessWidget {
-  const CashDetail(
+class PointDetail extends StatelessWidget {
+  const PointDetail(
       this.store, {
         super.key,
         required this.expanded,
@@ -39,7 +39,7 @@ class CashDetail extends StatelessWidget {
                   children: [
                     const Expanded(
                       child: Text(
-                        '캐시 상세',
+                        '포인트 상세',
                         style: TextStyle(fontWeight: FontWeight.w700),
                       ),
                     ),
@@ -62,7 +62,7 @@ class CashDetail extends StatelessWidget {
                   Row(
                     spacing: 8,
                     children: [
-                      CashDot(item.type),
+                      PointDot(item.type),
                       Expanded(
                         child: Text(
                           item.type.label,

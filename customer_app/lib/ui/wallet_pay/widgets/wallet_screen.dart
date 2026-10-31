@@ -67,7 +67,7 @@ class _LoadError extends StatelessWidget {
         spacing: 12,
         children: [
           Text(
-            '캐시를 불러오지 못했습니다.',
+            '포인트를 불러오지 못했어요.',
             style: AppText.body.copyWith(color: AppColors.textSecondary),
           ),
           FilledButton(onPressed: onRetry, child: const Text('다시 시도')),

@@ -1,5 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:prepay_app/data/repositories/cash_repository.dart';
+import 'package:prepay_app/data/repositories/point_repository.dart';
 import 'package:prepay_app/data/services/api_client.dart';
 
 // 실제 로컬 서버에 붙여 보는 테스트.
@@ -19,7 +19,7 @@ void main() {
       );
       addTearDown(apiClient.logout);  // 테스트로 만든 토큰은 지운다.
 
-      final repository = CashRepository(apiClient: apiClient);
+      final repository = PointRepository(apiClient: apiClient);
       await expectLater(repository.getWallet(), completes);
     },
     skip: _baseUrl.isEmpty || _email.isEmpty

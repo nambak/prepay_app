@@ -1,12 +1,12 @@
-// 전체 캐시 합계, 종류별 비율 막대, 종류별 금액
+// 전체 포인트 합계, 종류별 비율 막대, 종류별 금액
 import 'package:flutter/material.dart';
-import 'package:prepay_app/domain/models/cash.dart';
+import 'package:prepay_app/domain/models/point.dart';
 import 'package:prepay_app/ui/core/tokens.dart';
 
 import '../../core/format.dart';
 import '../../core/icons.dart';
 import '../../core/widgets/app_card.dart';
-import '../../core/widgets/cash_dot.dart';
+import '../../core/widgets/point_dot.dart';
 
 class BalanceCard extends StatelessWidget {
   const BalanceCard(this.wallet, {super.key});
@@ -16,9 +16,9 @@ class BalanceCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final parts = [
-      (CashType.charge, wallet.charge),
-      (CashType.shared, wallet.shared),
-      (CashType.service, wallet.service),
+      (PointType.charge, wallet.charge),
+      (PointType.shared, wallet.shared),
+      (PointType.service, wallet.service),
     ];
 
     return AppCard(
@@ -29,12 +29,12 @@ class BalanceCard extends StatelessWidget {
           Row(
             children: [
               Text(
-                '쓸 수 있는 캐시',
+                '쓸 수 있는 포인트',
                 style: AppText.label.copyWith(color: AppColors.textSecondary),
               ),
               IconButton(
-                onPressed: () {}, // TODO: 캐시 종류 설명 시트
-                tooltip: '캐시 종류 설명 보기',
+                onPressed: () {}, // TODO: 포인트 종류 설명 시트
+                tooltip: '포인트 종류 설명 보기',
                 icon: const SvgIcon(
                   AppIcons.info,
                   size: 18,
@@ -52,7 +52,7 @@ class BalanceCard extends StatelessWidget {
                 formatNumber(wallet.total),
                 style: AppText.balance.copyWith(fontFeatures: tabularFigures),
               ),
-              const Text('캐시', style: AppText.section),
+              const Text('P', style: AppText.section),
             ],
           ),
           const SizedBox(height: 6),
@@ -96,7 +96,7 @@ class BalanceCard extends StatelessWidget {
           ),
           for (final (i, (type, amount)) in parts.indexed)
             InkWell(
-              onTap: () {}, // TODO: 캐시 내역
+              onTap: () {}, // TODO: 포인트 내역
               child: Container(
                 height: 48,
                 decoration: i == 0
@@ -109,7 +109,7 @@ class BalanceCard extends StatelessWidget {
                 child: Row(
                   spacing: 10,
                   children: [
-                    CashDot(type),
+                    PointDot(type),
                     Expanded(child: Text(type.label)),
                     Text(
                       formatNumber(amount),

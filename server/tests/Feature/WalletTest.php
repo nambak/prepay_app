@@ -3,7 +3,7 @@
 use App\Models\User;
 use Laravel\Sanctum\Sanctum;
 
-it('지갑 캐시를 리턴한다', function () {
+it('지갑 포인트를 리턴한다', function () {
     Sanctum::actingAs(User::factory()->create());
 
     $this->getJson('/api/wallet')

@@ -21,20 +21,20 @@
   --dim: rgba(25, 31, 40, 0.5); /* 시트·다이얼로그 뒤 어둡게 */
 
   /* 브랜드와 주요 버튼 (빨강은 한 화면에 한 곳) */
-  --brand-red: #EE3E3D;      /* 로고, 충전캐시 점·막대 (장식용) */
+  --brand-red: #EE3E3D;      /* 로고, 충전포인트 점·막대 (장식용) */
   --button-red: #DA2F2E;     /* 주요 버튼 배경, 흰 글자 대비 4.7:1 */
   --text-danger: #D42A2A;    /* 할인 금액, 오류, 삭제 */
   --discount-bg: #FFF0F0;    /* 할인 배지 */
   --discount-text: #C42726;
 
-  /* 캐시 종류 */
-  --cash-charge: #EE3E3D;
-  --cash-shared: #6E5DA8;
-  --cash-shared-bg: #F1EFFA;
-  --cash-shared-text: #5A4A95;
-  --cash-service: #F2A14A;
-  --cash-service-bg: #FFF4E6;
-  --cash-service-text: #A35A00;
+  /* 포인트 종류 */
+  --point-charge: #EE3E3D;
+  --point-shared: #6E5DA8;
+  --point-shared-bg: #F1EFFA;
+  --point-shared-text: #5A4A95;
+  --point-service: #F2A14A;
+  --point-service-bg: #FFF4E6;
+  --point-service-text: #A35A00;
 
   /* 상태 */
   --success-text: #2C7445;

@@ -1,10 +1,10 @@
 import 'package:prepay_app/data/services/api_client.dart';
 
-import '../../domain/models/cash.dart';
+import '../../domain/models/point.dart';
 import '../../domain/models/store.dart';
 
-class CashRepository {
-  CashRepository({required this._apiClient});
+class PointRepository {
+  PointRepository({required this._apiClient});
 
   final ApiClient _apiClient;
 
@@ -34,12 +34,12 @@ StoreWallet _storeFromJson(Map<String, dynamic> json) => StoreWallet(
   savedWon: json['saved_won'] as int,
   items: [
     for (final item in json['items'] as List)
-      _cashItemFromJson(item as Map<String, dynamic>),
+      _pointItemFromJson(item as Map<String, dynamic>),
   ],
 );
 
-CashItem _cashItemFromJson(Map<String, dynamic> json) => CashItem(
-  CashType.values.byName(json['type'] as String),
+PointItem _pointItemFromJson(Map<String, dynamic> json) => PointItem(
+  PointType.values.byName(json['type'] as String),
   json['amount'] as int,
   daysLeft: json['days_left'] as int,
 );

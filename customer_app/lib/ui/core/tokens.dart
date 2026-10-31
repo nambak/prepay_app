@@ -21,13 +21,13 @@ abstract final class AppColors {
   static const discountBg = Color(0xFFFFF0F0);
   static const discountText = Color(0xFFC42726);
 
-  static const cashCharge = Color(0xFFEE3E3D);
-  static const cashShared = Color(0xFF6E5DA8);
-  static const cashSharedBg = Color(0xFFF1EFFA);
-  static const cashSharedText = Color(0xFF5A4A95);
-  static const cashService = Color(0xFFF2A14A);
-  static const cashServiceBg = Color(0xFFFFF4E6);
-  static const cashServiceText = Color(0xFFA35A00);
+  static const pointCharge = Color(0xFFEE3E3D);
+  static const pointShared = Color(0xFF6E5DA8);
+  static const pointSharedBg = Color(0xFFF1EFFA);
+  static const pointSharedText = Color(0xFF5A4A95);
+  static const pointService = Color(0xFFF2A14A);
+  static const pointServiceBg = Color(0xFFFFF4E6);
+  static const pointServiceText = Color(0xFFA35A00);
 
   static const successBg = Color(0xFFECF7EF);
   static const successText = Color(0xFF2C7445);

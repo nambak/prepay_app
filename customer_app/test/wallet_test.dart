@@ -2,7 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter_test/flutter_test.dart';
 import 'package:http/testing.dart';
-import 'package:prepay_app/data/repositories/cash_repository.dart';
+import 'package:prepay_app/data/repositories/point_repository.dart';
 import 'package:prepay_app/data/services/api_client.dart';
 import 'package:prepay_app/domain/models/store.dart';
 import 'package:prepay_app/ui/core/format.dart';
@@ -42,7 +42,7 @@ const _walletJson = {
 };
 
 WalletViewModel _viewModelReturning(http.Response response) => WalletViewModel(
-  cashRepository: CashRepository(
+  pointRepository: PointRepository(
     apiClient: ApiClient(
         baseUrl: 'http://test',
         client: MockClient((_) async => response),
@@ -56,7 +56,7 @@ void main() {
     expect(formatNumber(999), '999');
   });
 
-  test('지갑을 불러오고 캐시 상세를 접고 편다', () async {
+  test('지갑을 불러오고 포인트 상세를 접고 편다', () async {
     // 한글이 들어 있어서 utf8바이트로 응답을 만든다.
     final viewModel = _viewModelReturning(
       http.Response.bytes(utf8.encode(jsonEncode(_walletJson)), 200),

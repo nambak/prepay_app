@@ -4,7 +4,7 @@ import 'package:prepay_app/data/services/api_client.dart';
 import 'package:prepay_app/ui/account/view_models/login_view_model.dart';
 import 'package:prepay_app/ui/account/widgets/login_screen.dart';
 
-import '../data/repositories/cash_repository.dart';
+import '../data/repositories/point_repository.dart';
 import '../ui/wallet_pay/view_models/wallet_view_model.dart';
 import '../ui/wallet_pay/widgets/wallet_screen.dart';
 import 'routes.dart';
@@ -17,7 +17,7 @@ const _apiBaseUrl = String.fromEnvironment(
 // 모든 저장소가 같은 ApiClient를 써야 로그인 토큰이 함께 붙는다.
 final _apiClient = ApiClient(baseUrl: _apiBaseUrl);
 final authRepository = AuthRepository(apiClient: _apiClient);
-final _cashRepository = CashRepository(apiClient: _apiClient);
+final _pointRepository = PointRepository(apiClient: _apiClient);
 
 final router = GoRouter(
   initialLocation: Routes.wallet,
@@ -40,7 +40,7 @@ final router = GoRouter(
     GoRoute(
       path: Routes.wallet,
       builder: (context, state) => WalletScreen(
-        viewModel: WalletViewModel(cashRepository: _cashRepository)..load(),
+        viewModel: WalletViewModel(pointRepository: _pointRepository)..load(),
       ),
     ),
   ],
