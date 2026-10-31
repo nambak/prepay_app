@@ -70,7 +70,7 @@ class _LoadError extends StatelessWidget {
             '포인트를 불러오지 못했어요.',
             style: AppText.body.copyWith(color: AppColors.textSecondary),
           ),
-          FilledButton(onPressed: onRetry, child: const Text('다시 시도')),
+          FilledButton(onPressed: onRetry, child: const Text('다시 불러오기')),
         ],
       )
     );
