@@ -60,7 +60,7 @@ stores (가게 = 포인트를 쓰는 단위)        point_lots (포인트 묶음
 
 ## 6. 테스트 데이터
 
-`php artisan db:seed`는 테스트 계정(`test@example.com`)에 가게 4곳과 포인트를 넣어요. 비밀번호는 `UserFactory`의 기본값이에요.
+`php artisan db:seed`는 관리자 계정(`admin@example.com`)과 고객 앱 테스트 계정(`test@example.com`)을 만들고, 테스트 계정에 가게 4곳과 포인트를 넣어요. 비밀번호는 `DatabaseSeeder`와 `UserFactory`에 있어요.
 `migrate:fresh`는 개발 DB를 지워요. `--env=testing`을 붙여도 `.env.testing`이 없으면 `.env`의 개발 DB를 써요.
 
 ## 7. 아직 정할 것

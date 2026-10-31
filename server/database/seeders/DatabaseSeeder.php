@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Admin;
 use App\Models\PointLot;
 use App\Models\Store;
 use App\Models\User;
@@ -20,9 +21,17 @@ class DatabaseSeeder extends Seeder
     {
         // User::factory(10)->create();
 
+        // 고객 앱 로그인 계정. 비밀번호는 UserFactory 기본값
         $user = User::factory()->create([
             'name' => 'Test User',
             'email' => 'test@example.com',
+        ]);
+
+        // 관리자 웹(/admin) 로그인용. 비밀번호는 테스트의 createAdminAccount()와 같다
+        Admin::create([
+            'name' => '관리자',
+            'email' => 'admin@example.com',
+            'password' => 'password1234',
         ]);
 
         // 테스트 계정의 포인트. 시안 05-01·05-08과 비슷하게 넣는다.
