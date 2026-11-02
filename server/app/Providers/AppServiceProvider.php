@@ -33,9 +33,14 @@ class AppServiceProvider extends ServiceProvider
         // DB에는 UTC로 저장하고, 관리자 웹에서는 한국 시간으로 보여준다.
         FilamentTimezone::set('Asia/Seoul');
 
-        // 로그인 시도 제한: 같은 이메일 + IP로 1분에 5번. 통신사 망은 여려 휴대폰이 IP 하나를 함께 써서 IP만 보지 않는다.
+        // 로그인 시도 제한: 같은 이메일 + IP로 1분에 5번. 통신사 망은 여러 휴대폰이 IP 하나를 함께 써서 IP만 보지 않는다.
         RateLimiter::for('login', function (Request $request) {
-            return Limit::perMinute(5)->by(Str::lower((string)$request->input('email')) . '|' . $request->ip());
+            $email = $request->input('email');
+
+            return Limit::perMinute(5)->by(
+                (is_string($email) ? Str::lower($email) : '')
+                . '|' . $request->ip()
+            );
         });
     }
 

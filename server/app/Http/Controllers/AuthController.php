@@ -22,7 +22,7 @@ class AuthController extends Controller
 
         if (! $user || ! Hash::check($credentials['password'], $user->password)) {
             throw ValidationException::withMessages([
-                'email' => '이메일 또는 비밀번호가 맞지 않습니다.'
+                'email' => '이메일 또는 비밀번호가 맞지 않아요.'
             ]);
         }
 

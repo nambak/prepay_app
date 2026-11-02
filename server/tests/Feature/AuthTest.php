@@ -29,7 +29,7 @@ it('맞는 이메일과 비밀번호면 토큰을 돌려준다', function () {
 it('비밀번호가 틀리면 422와 안내 문구를 돌려준다', function () {
     $this->postJson('/api/login', $this->wrongCredentials)
         ->assertUnprocessable()
-        ->assertJsonValidationErrors(['email' => '이메일 또는 비밀번호가 맞지 않습니다.']);
+        ->assertJsonValidationErrors(['email' => '이메일 또는 비밀번호가 맞지 않아요.']);
 });
 
 it('토큰이 없으면 지갑을 볼 수 없다', function () {
@@ -65,4 +65,9 @@ it('같은 IP라도 다른 이메일은 막지 않는다', function () {
 
 it('Accept 헤더 없이 요청해도 로그인 화면으로 보내지 않고 401을 리턴한다', function () {
     $this->get('/api/wallet')->assertUnauthorized();
+});
+
+it('이메일이 문자열이 아니면 500이 아니라 422를 돌려준다', function () {
+    $this->postJson('/api/login', [...$this->credentials, 'email' => ['hana@example.com']])
+        ->assertUnprocessable();
 });
