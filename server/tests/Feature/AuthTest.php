@@ -47,14 +47,22 @@ it('받은 토큰으로 지갑을 보고, 로그아웃하면 그 토큰은 더�
     $this->withToken($token)->getJson('/api/wallet')->assertUnauthorized();
 });
 
-it('같은 ip에서 1분에 5번 넘게 시도하면 막는다', function () {
-    foreach(range(1, 5) as $i) {
+it('같은 이메일로 1분에 5번 넘게 시도하면 막는다', function () {
+    foreach (range(1, 5) as $i) {
         $this->postJson('/api/login', $this->wrongCredentials)->assertUnprocessable();
     }
 
     $this->postJson('/api/login', $this->wrongCredentials)->assertTooManyRequests();
 });
 
-it ('Accept 헤더 없이 요청해도 로그인 화면으로 보내지 않고 401을 리턴한다', function () {
+it('같은 IP라도 다른 이메일은 막지 않는다', function () {
+    foreach(range(1, 5) as $i) {
+        $this->postJson('/api/login', $this->wrongCredentials)->assertUnprocessable();
+    }
+
+    $this->postJson('/api/login', [...$this->wrongCredentials, 'email' => 'other@example.com'])->assertUnprocessable();
+});
+
+it('Accept 헤더 없이 요청해도 로그인 화면으로 보내지 않고 401을 리턴한다', function () {
     $this->get('/api/wallet')->assertUnauthorized();
 });
