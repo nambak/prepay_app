@@ -27,7 +27,7 @@ Laravel Sanctum의 토큰 방식을 써요. 모든 로그인 방식은 마지막
 
 - **토큰이 필요한 API**: `/api/user`, `/api/wallet`, `/api/logout`은 `auth:sanctum`으로 막아요. 토큰이 없으면 401이에요.
 - **틀린 이메일·틀린 비밀번호**: 같은 문구("이메일 또는 비밀번호가 맞지 않아요.")로 422를 돌려줘요. 어떤 이메일이 가입돼 있는지 밖에서 알 수 없게 하려는 거예요.
-- **시도 제한**: 같은 이메일+IP 조합으로 1분에 5번까지예요. 넘으면 429예요. 통신사 망에서는 여러 휴대폰이 IP 하나를 함께 쓸 수 있어서, IP만 보면 남의 실패 때문에 내가 막혀요. `AppServiceProvider`의 `login` 제한을 `throttle:login`으로 걸어요.
+- **시도 제한**: 같은 이메일+IP 조합으로 1분에 5번까지예요. 넘으면 429예요. 통신사 망에서는 여러 휴대폰이 IP 하나를 함께 쓸 수 있어서, IP만 보면 남의 실패 때문에 내가 막혀요. 대신 같은 IP에서 이메일을 바꿔 가며 시도하는 것은 IP 전체 1분에 30번으로 막아요. 두 제한 모두 `AppServiceProvider`의 `login` 제한에 있고 `throttle:login`으로 걸어요.
 - **토큰 만료**: 지금은 만료 없음(`config/sanctum.php`의 `expiration => null`)이에요. 로그아웃하거나 탈퇴하면 지워요.
 - **앱의 토큰 보관**: 기기의 안전한 저장소(iOS 키체인, Android 키스토어)에 둬요. 앱을 다시 켜도 로그인이 유지돼요.
 
@@ -126,7 +126,7 @@ users (회원 = 사람 한 명)                  social_accounts (로그인 방�
 | 같은 사람을 찾는 기준 | 본인인증 연계정보(CI) | 4장 |
 | 소셜 가입자의 약관·본인인증 | 이메일 가입과 똑같이 둘 다 거쳐요 | 5장 |
 | 탈퇴할 때 남은 포인트 | 탈퇴 화면에서 남은 포인트를 보여 주고, 충전포인트는 환불 신청(07-05)으로 갈 수 있게 해요. 그래도 탈퇴하면 남은 포인트(서비스·공유 포함)는 사라진다는 데 동의받아요 | 선불 충전금 환불 의무는 출시 전에 법무 확인 |
-| 로그인 시도 제한 | 이메일+IP 기준 1분에 5번 | 2장 |
+| 로그인 시도 제한 | 이메일+IP 기준 1분에 5번, IP 전체 1분에 30번 | 2장 |
 
 ## 9. 아직 정할 것
 
@@ -135,4 +135,5 @@ users (회원 = 사람 한 명)                  social_accounts (로그인 방�
 | 본인인증 업체 | 충전 결제 업체(PG)와 함께 정해요. 포트원 같은 결제 중개 서비스는 본인인증도 같이 붙일 수 있어요. [업체명] |
 | 개발자 계정 | 아직 없어요. Apple Developer Program, Google Play Console, Google Cloud OAuth 클라이언트(iOS·Android·서버용), 카카오 디벨로퍼스 |
 | 앱 ID | 개발자 계정을 만들 때 정해요. 지금 iOS `com.unwanted.prepayApp`, Android `com.unwanted.prepay_app`. 스토어 등록 뒤에는 못 바꾸니 iOS·Android를 같은 값으로 맞추길 권해요 |
+| 이메일 같음 규칙 | 지금 SQLite는 글자가 정확히 같아야 회원을 찾아요. `Hana@example.com`으로는 `hana@example.com` 회원이 로그인하지 못해요. 시도 제한은 소문자로 맞춰 세요. 회원가입을 만들거나 MySQL로 옮길 때 저장·조회·시도 제한에 같은 규칙(예: 소문자로 맞추기)을 써요. MySQL 기본 정렬(`utf8mb4_unicode_ci`)은 `háná`와 `hana`를 같게 봐서, 규칙이 다르면 시도 제한을 피할 수 있어요 |
 | 앱 이름 | 스토어 등록 전에 상표를 확인하고 정해요. 지금 앱 안 `PrePay`(`customer_app/lib/ui/core/app_name.dart`), iOS 홈 화면 `Prepay App`(Info.plist), Android 홈 화면 `prepay_app`(AndroidManifest.xml) |

@@ -76,3 +76,13 @@ it('검증 문구를 한국어로 돌려준다', function () {
     $this->postJson('/api/login', [...$this->credentials, 'email' => 'not-an-email'])
         ->assertJsonValidationErrors(['email' => '이메일 형식이 맞지 않아요.']);
 });
+
+it('같은 IP에서 이메일을 바꿔 가며 1분에 30번 넘게 시도하면 막는다', function () {
+    foreach(range(1, 30) as $i) {
+        $this->postJson('/api/login', [...$this->wrongCredentials, 'email' => "user{$i}@example.com"])
+            ->assertUnprocessable();
+    }
+
+    $this->postJson('/api/login', [...$this->wrongCredentials, 'email' => 'user31@example.com'])
+        ->assertTooManyRequests();
+});
