@@ -71,3 +71,8 @@ it('이메일이 문자열이 아니면 500이 아니라 422를 돌려준다', f
     $this->postJson('/api/login', [...$this->credentials, 'email' => ['hana@example.com']])
         ->assertUnprocessable();
 });
+
+it('검증 문구를 한국어로 돌려준다', function () {
+    $this->postJson('/api/login', [...$this->credentials, 'email' => 'not-an-email'])
+        ->assertJsonValidationErrors(['email' => '이메일 형식이 맞지 않아요.']);
+});
