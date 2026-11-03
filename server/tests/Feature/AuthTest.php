@@ -116,3 +116,12 @@ it('포인트 기록이 있어도 탈퇴할 수 있고 포인트 묶음은 남�
 
     expect(PointLot::where('user_id', $user->id)->count())->toBe(1);
 });
+
+it('탈퇴한 회원은 토큰이 남아 있어도 쓸 수 없다', function () {
+    // 탈퇴와 로그인이 동시에 들어와 탈퇴 뒤에 토큰이 생긴 경우
+    $user =User::first();
+    $user->forceFill(['withdrawn_at' => now()])->save();
+    $token = $user->createToken('test')->plainTextToken;
+
+    $this->withToken($token)->getJson('/api/wallet')->assertUnauthorized();
+});
