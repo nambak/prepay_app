@@ -13,11 +13,13 @@ return new class extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('email')->unique();
+            // 탈퇴하면 이름, 이메일, 비밀번호를 비운다. 소셜 가입자도 이메일, 비밀번호가 없다.
+            $table->string('name')->nullable();
+            $table->string('email')->nullable()->unique();
             $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
+            $table->string('password')->nullable();
             $table->rememberToken();
+            $table->timestamp('withdrawn_at')->nullable();
             $table->timestamps();
         });
 

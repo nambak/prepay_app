@@ -12,6 +12,8 @@ use Illuminate\Support\Facades\RateLimiter;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Str;
 use Illuminate\Validation\Rules\Password;
+use Laravel\Sanctum\PersonalAccessToken;
+use Laravel\Sanctum\Sanctum;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -45,6 +47,11 @@ class AppServiceProvider extends ServiceProvider
                     ->by($request->ip()),
             ];
         });
+
+        // 탈퇴한 회원의 토큰은 받지 않는다. 탈퇴와 로그인이 동시에 들어와 탈퇴 뒤에 토큰이 생겨도 쓸 수 없다.
+        Sanctum::authenticateAccessTokensUsing(
+            fn(PersonalAccessToken $token, bool $isValid): bool => $isValid && $token->tokenable->withdrawn_at === null
+        );
     }
 
     /**

@@ -64,12 +64,12 @@ Laravel Sanctum의 토큰 방식을 써요. 모든 로그인 방식은 마지막
 
 ```
 users (회원 = 사람 한 명)                  social_accounts (로그인 방법)
-- id                                      - user_id → users.id (회원 탈퇴 시 함께 삭제)
+- id                                      - user_id → users.id (탈퇴하면 지워요)
 - name        본인인증 이름                 - provider          apple, google, kakao
 - email       이메일 로그인 아이디 (없을 수 있음) - provider_user_id  그 서비스의 고유 번호 (바뀌지 않음)
 - password    (없을 수 있음)                 - email             그 서비스가 알려 준 이메일 (참고용, 없을 수 있음)
 - (본인인증 붙일 때) 휴대폰, 생년월일, 연계정보   - unique(provider, provider_user_id)
-                                          - unique(user_id, provider)
+- withdrawn_at 탈퇴 시각 (탈퇴하면 개인정보를 비움) - unique(user_id, provider)
 ```
 
 | 가입 방법 | `users` | `social_accounts` |
@@ -84,7 +84,7 @@ users (회원 = 사람 한 명)                  social_accounts (로그인 방�
 - **`users.email`은 이메일 로그인 아이디로만 써요.** 소셜 서비스가 준 이메일은 `social_accounts.email`에만 둬요.
 - **비밀번호가 없는 회원**은 비밀번호 로그인이 항상 실패해요(`Hash::check`가 `false`). 따로 막는 코드는 필요 없어요.
 - **관리자**는 `admins` 테이블과 `admin` 가드로 따로 로그인해요. 고객 계정으로는 관리자 웹에 들어갈 수 없어요.
-- `users.email`·`password`를 비울 수 있게 바꾸는 마이그레이션과 `social_accounts` 테이블은 **소셜 로그인을 붙일 때 적용**해요.
+- `users`의 이름·이메일·비밀번호는 **회원 탈퇴를 만들 때** 비울 수 있게 바꿔요. `social_accounts` 테이블은 소셜 로그인을 붙일 때 만들어요.
 
 ## 5. 가입 절차
 
@@ -127,6 +127,7 @@ users (회원 = 사람 한 명)                  social_accounts (로그인 방�
 | 소셜 가입자의 약관·본인인증 | 이메일 가입과 똑같이 둘 다 거쳐요 | 5장 |
 | 탈퇴할 때 남은 포인트 | 탈퇴 화면에서 남은 포인트를 보여 주고, 충전포인트는 환불 신청(07-05)으로 갈 수 있게 해요. 그래도 탈퇴하면 남은 포인트(서비스·공유 포함)는 사라진다는 데 동의받아요 | 선불 충전금 환불 의무는 출시 전에 법무 확인 |
 | 로그인 시도 제한 | 이메일+IP 기준 1분에 5번, IP 전체 1분에 30번 | 2장 |
+| 탈퇴할 때 회원 처리 (2026-11-03) | 회원 행은 지우지 않고 이름·이메일·비밀번호를 비운 뒤 탈퇴 시각을 적어요. 모든 기기의 토큰을 지워요. 포인트 묶음은 그대로 둬서 결제 기록과 사라진 포인트가 남아요. 같은 이메일로 다시 가입할 수 있어요 | 결제 기록 보관 기간(전자상거래법 시행령 6조, 5년)은 출시 전에 법무 확인 |
 
 ## 9. 아직 정할 것
 
@@ -137,3 +138,4 @@ users (회원 = 사람 한 명)                  social_accounts (로그인 방�
 | 앱 ID | 개발자 계정을 만들 때 정해요. 지금 iOS `com.unwanted.prepayApp`, Android `com.unwanted.prepay_app`. 스토어 등록 뒤에는 못 바꾸니 iOS·Android를 같은 값으로 맞추길 권해요 |
 | 이메일 같음 규칙 | 지금 SQLite는 글자가 정확히 같아야 회원을 찾아요. `Hana@example.com`으로는 `hana@example.com` 회원이 로그인하지 못해요. 시도 제한은 소문자로 맞춰 세요. 회원가입을 만들거나 MySQL로 옮길 때 저장·조회·시도 제한에 같은 규칙(예: 소문자로 맞추기)을 써요. MySQL 기본 정렬(`utf8mb4_unicode_ci`)은 `háná`와 `hana`를 같게 봐서, 규칙이 다르면 시도 제한을 피할 수 있어요 |
 | 앱 이름 | 스토어 등록 전에 상표를 확인하고 정해요. 지금 앱 안 `PrePay`(`customer_app/lib/ui/core/app_name.dart`), iOS 홈 화면 `Prepay App`(Info.plist), Android 홈 화면 `prepay_app`(AndroidManifest.xml) |
+| 탈퇴한 사람의 연계정보(CI) | 본인인증을 붙일 때 정해요. 탈퇴하면 바로 비우면 같은 사람이 곧바로 다시 가입할 수 있어요. 남겨 두면 CI가 unique라서 다시 가입하려 할 때 막혀요. 남긴다면 [N]일 |

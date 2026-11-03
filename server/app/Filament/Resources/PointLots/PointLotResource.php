@@ -31,6 +31,7 @@ class PointLotResource extends Resource
             ->columns([
                 TextColumn::make('user.name')
                     ->label('회원')
+                    ->placeholder('탈퇴한 회원')
                     ->searchable(),
                 TextColumn::make('store.name')
                     ->label('가게')

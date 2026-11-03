@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\PointLot;
 use App\Models\User;
 
 beforeEach(function () {
@@ -85,4 +86,42 @@ it('같은 IP에서 이메일을 바꿔 가며 1분에 30번 넘게 시도하면
 
     $this->postJson('/api/login', [...$this->wrongCredentials, 'email' => 'user31@example.com'])
         ->assertTooManyRequests();
+});
+
+it('탈퇴하면 개인정보를 비우고 모든 기기의 토큰을 지운다', function () {
+    $token = $this->postJson('/api/login', $this->credentials)->json('token');
+    $this->postJson('/api/login', [...$this->credentials, 'device_name' => 'other']);
+
+    $this->withToken($token)->deleteJson('/api/user')->assertNoContent();
+
+    $user = User::first();
+    expect($user->name)->toBeNull()
+        ->and($user->email)->toBeNull()
+        ->and($user->password)->toBeNull()
+        ->and($user->withdrawn_at)->not->toBeNull()
+        ->and($user->tokens()->count())->toBe(0);
+
+    // 테스트에서는 앞 요청의 로그인 정보가 남아 있어서 비워줘야 함
+    $this->app['auth']->forgetGuards();
+    $this->withToken($token)->getJson('/api/wallet')->assertUnauthorized();
+    $this->postJson('/api/login', $this->credentials)->assertUnprocessable();
+});
+
+it('포인트 기록이 있어도 탈퇴할 수 있고 포인트 묶음은 남는다', function () {
+    $user = User::first();
+    PointLot::factory()->for($user)->create();
+    $token = $user->createToken('test')->plainTextToken;
+
+    $this->withToken($token)->deleteJson('/api/user')->assertNoContent();
+
+    expect(PointLot::where('user_id', $user->id)->count())->toBe(1);
+});
+
+it('탈퇴한 회원은 토큰이 남아 있어도 쓸 수 없다', function () {
+    // 탈퇴와 로그인이 동시에 들어와 탈퇴 뒤에 토큰이 생긴 경우
+    $user =User::first();
+    $user->forceFill(['withdrawn_at' => now()])->save();
+    $token = $user->createToken('test')->plainTextToken;
+
+    $this->withToken($token)->getJson('/api/wallet')->assertUnauthorized();
 });
