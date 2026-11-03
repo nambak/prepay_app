@@ -3,6 +3,8 @@ import 'package:prepay_app/data/repositories/auth_repository.dart';
 import 'package:prepay_app/data/services/api_client.dart';
 import 'package:prepay_app/ui/account/view_models/login_view_model.dart';
 import 'package:prepay_app/ui/account/widgets/login_screen.dart';
+import 'package:prepay_app/ui/core/widgets/app_tab_bar.dart';
+import 'package:prepay_app/ui/core/widgets/coming_soon_screen.dart';
 import 'package:prepay_app/ui/my/widgets/my_screen.dart';
 import 'package:prepay_app/ui/my/widgets/settings_screen.dart';
 
@@ -51,5 +53,11 @@ final router = GoRouter(
       builder: (context, state) =>
           SettingsScreen(onLogout: authRepository.logout),
     ),
+    // 아직 화면이 없는 탭. 화면을 만들면 목록에서 빼고 GoRoute를 따로 둔다.
+    for (final tab in [AppTab.home, AppTab.shop, AppTab.like])
+      GoRoute(
+        path: tab.path,
+        builder: (context, state) => ComingSoonScreen(tab: tab),
+      ),
   ],
 );
