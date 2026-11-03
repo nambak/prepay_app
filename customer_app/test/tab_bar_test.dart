@@ -5,6 +5,7 @@ import 'package:prepay_app/routing/router.dart';
 import 'package:prepay_app/routing/routes.dart';
 import 'package:prepay_app/ui/core/theme.dart';
 import 'package:prepay_app/ui/core/widgets/app_tab_bar.dart';
+import 'package:prepay_app/ui/core/widgets/coming_soon_screen.dart';
 
 void main() {
   testWidgets('아직 없는 탭을 눌러도 오류 없이 준비 중 화면을 보여준다', (tester) async {
@@ -12,12 +13,18 @@ void main() {
     await authRepository.load();
     router.go(Routes.my);
 
-    await tester.pumpWidget(MaterialApp.router(theme: appTheme, routerConfig: router));
+    await tester.pumpWidget(
+      MaterialApp.router(theme: appTheme, routerConfig: router),
+    );
     for (final tab in [AppTab.home, AppTab.shop, AppTab.like]) {
       await tester.tap(find.text(tab.label).last);
       await tester.pumpAndSettle();
 
       expect(find.text('준비 중이에요'), findsOneWidget);
+      expect(
+        tester.widget<ComingSoonScreen>(find.byType(ComingSoonScreen)).tab,
+        tab,
+      );
     }
   });
 }
