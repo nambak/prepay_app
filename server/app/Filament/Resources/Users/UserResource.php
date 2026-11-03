@@ -15,7 +15,8 @@ use Filament\Tables\Table;
 
 /**
  * 회원 목록: 회원 정보를 바꾸는 기능은 정책이 정해지면 추가한다.
- * 삭제 버튼은 두지 않는다(docs/auth-design.md 6장). 포인트 기록이 있는 회원은 DB도 지우지 못하게 막는다.
+ * 삭제 버튼은 두지 않는다. 포인트 기록이 있는 회원은 DB도 지우지 못하게 막는다.
+ * 탈퇴한 회원은 개인정보를 비웠으니 고치지 않는다.
  */
 class UserResource extends Resource
 {
@@ -46,6 +47,7 @@ class UserResource extends Resource
             ->columns([
                 TextColumn::make('name')
                     ->label('이름')
+                    ->placeholder('탈퇴한 회원')
                     ->searchable(),
                 TextColumn::make('email')
                     ->label('이메일')
@@ -57,7 +59,8 @@ class UserResource extends Resource
             ])
             ->defaultSort('created_at', 'desc')
             ->recordActions([
-                EditAction::make(),
+                EditAction::make()
+                    ->hidden(fn (User $record): bool => $record->withdrawn_at !== null),
             ]);
     }
 

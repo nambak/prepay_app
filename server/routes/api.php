@@ -13,4 +13,6 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('/user', fn(Request $request) => $request->user());
     Route::post('/logout', [AuthController::class, 'logout']);
     Route::get('/wallet', WalletController::class);
+    // 탈퇴: 개인정보를 비우고 모든 기기의 토큰을 지움.
+    Route::delete('/user', [AuthController::class, 'withdraw']);
 });
