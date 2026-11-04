@@ -49,11 +49,27 @@ void main() {
   });
 
   test('토큰이 서버에서 지워져 401이 오면 이 기기도 로그아웃된다', () async {
-    final apiClinet = _apiClient(401);
-    final repository = AuthRepository(apiClient: apiClinet);
+    final apiClient = _apiClient(401);
+    final repository = AuthRepository(apiClient: apiClient);
     await repository.login(email: email, password: password);
 
-    await expectLater(apiClinet.getWallet(), throwsA(isA<ApiException>()));
+    await expectLater(apiClient.getWallet(), throwsA(isA<ApiException>()));
     expect(repository.isLoggedIn, isFalse);
+  });
+
+  test('탈퇴하면 토큰이 지워진다', () async {
+    final repository = AuthRepository(apiClient: _apiClient(200));
+    await repository.login(email: email, password: password);
+
+    await repository.withdraw();
+    expect(repository.isLoggedIn, isFalse);
+  });
+
+  test('서버에서 탈퇴하지 못하면 로그인 상태를 유지한다', () async {
+    final repository = AuthRepository(apiClient: _apiClient(500));
+    await repository.login(email: email, password: password);
+
+    await expectLater(repository.withdraw(), throwsA(isA<ApiException>()));
+    expect(repository.isLoggedIn, isTrue);
   });
 }

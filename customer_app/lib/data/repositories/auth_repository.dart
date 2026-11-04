@@ -41,6 +41,12 @@ class AuthRepository extends ChangeNotifier {
     await _forgetToken();
   }
 
+  // 탈퇴. 로그아웃과 달리 서버에서 실패하면 예외를 그대로 던지고 로그인 상태로 둔다(탈퇴가 안 됐기 때문).
+  Future<void> withdraw() async {
+    await _apiClient.withdraw();
+    await _forgetToken();
+  }
+
   Future<void> _forgetToken() async {
     // 메모리의 토큰부터 지워야 바로 로그인 화면으로 넘어간다. 저장소는 그 다음에 지운다.
     _apiClient.token = null;

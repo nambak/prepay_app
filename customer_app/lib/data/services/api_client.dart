@@ -40,6 +40,8 @@ class ApiClient {
 
   Future<void> logout() => _post('/api/logout');
 
+  Future<void> withdraw() => _delete('/api/user');
+
   Future<Map<String, dynamic>> _get(String path) async => _decode(
     await _client.get(_uri(path), headers: _headers()).timeout(_timeout),
   );
@@ -48,6 +50,10 @@ class ApiClient {
     await _client
         .post(_uri(path), headers: _headers(), body: jsonEncode(body ?? {}))
         .timeout(_timeout),
+  );
+
+  Future<Map<String, dynamic>> _delete(String path) async => _decode(
+    await _client.delete(_uri(path), headers: _headers()).timeout(_timeout),
   );
 
   static const _timeout = Duration(seconds: 10);

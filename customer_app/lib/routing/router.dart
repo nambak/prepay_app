@@ -5,10 +5,12 @@ import 'package:prepay_app/ui/account/view_models/login_view_model.dart';
 import 'package:prepay_app/ui/account/widgets/login_screen.dart';
 import 'package:prepay_app/ui/core/widgets/app_tab_bar.dart';
 import 'package:prepay_app/ui/core/widgets/coming_soon_screen.dart';
+import 'package:prepay_app/ui/my/view_models/withdraw_view_model.dart';
 import 'package:prepay_app/ui/my/widgets/my_screen.dart';
 import 'package:prepay_app/ui/my/widgets/settings_screen.dart';
 
 import '../data/repositories/point_repository.dart';
+import '../ui/my/widgets/withdraw_screen.dart';
 import '../ui/wallet_pay/view_models/wallet_view_model.dart';
 import '../ui/wallet_pay/widgets/wallet_screen.dart';
 import 'routes.dart';
@@ -52,6 +54,15 @@ final router = GoRouter(
       path: Routes.settings,
       builder: (context, state) =>
           SettingsScreen(onLogout: authRepository.logout),
+    ),
+    GoRoute(
+      path: Routes.withdraw,
+      builder: (context, state) => WithdrawScreen(
+        viewModel: WithdrawViewModel(
+          pointRepository: _pointRepository,
+          authRepository: authRepository,
+        )..load(),
+      )
     ),
     // 아직 화면이 없는 탭. 화면을 만들면 목록에서 빼고 GoRoute를 따로 둔다.
     for (final tab in [AppTab.home, AppTab.shop, AppTab.like])
