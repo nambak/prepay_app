@@ -4,6 +4,7 @@ import 'package:prepay_app/ui/core/widgets/app_card.dart';
 
 import '../../core/icons.dart';
 import '../../core/tokens.dart';
+import '../../../routing/routes.dart';
 
 // 환경설정. 지금은 로그아웃만 있다. 알림 설정은 저장할 서버가 생기면 넣는다
 class SettingsScreen extends StatelessWidget {
@@ -54,6 +55,26 @@ class SettingsScreen extends StatelessWidget {
                 ),
               )
             )
+          ),
+          Padding(
+            padding: const EdgeInsets.fromLTRB(AppSpace.gutter, 12, AppSpace.gutter, 0),
+            child: Align(
+              alignment: Alignment.centerLeft,
+              child: TextButton(
+                onPressed: () => context.push(Routes.withdraw),
+                style: TextButton.styleFrom(
+                  minimumSize: const Size(0, AppSize.touchTarget),
+                  foregroundColor: AppColors.textMuted,
+                ),
+                child: Text(
+                  '회원 탈퇴',
+                  style: AppText.secondary.copyWith(
+                    decoration: TextDecoration.underline,
+                    decorationColor: AppColors.textMuted,
+                  )
+                )
+              ),
+            ),
           )
         ],
       )

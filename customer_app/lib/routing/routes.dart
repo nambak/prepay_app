@@ -6,4 +6,5 @@ abstract final class Routes {
   static const likes = '/likes';
   static const my = '/my';
   static const settings = '/my/settings';
+  static const withdraw = '/my/withdraw';
 }
