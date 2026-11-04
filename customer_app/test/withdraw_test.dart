@@ -73,7 +73,7 @@ void main() {
     final deleting = Completer<http.Response>();
     final (viewModel, _) = await _setUp(() => deleting.future);
 
-    // 최소하면 돌아갈 화면이 있어야 해서, 빈 화면 위에 탈퇴 화면을 올린다.
+    // 취소하면 돌아갈 화면이 있어야 해서, 빈 화면 위에 탈퇴 화면을 올린다.
     await tester.pumpWidget(MaterialApp(theme: appTheme, home: const SizedBox()));
     final navigator = tester.state<NavigatorState>(find.byType(Navigator));
     navigator.push(

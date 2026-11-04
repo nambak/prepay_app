@@ -4,7 +4,6 @@ import 'package:prepay_app/ui/my/widgets/remaining_points_card.dart';
 import 'package:prepay_app/ui/my/widgets/withdraw_bottom_bar.dart';
 import 'package:prepay_app/ui/my/widgets/withdraw_notice.dart';
 
-import '../../core/icons.dart';
 import '../../core/tokens.dart';
 
 // 회원 탈퇴
@@ -27,15 +26,6 @@ class WithdrawScreen extends StatelessWidget {
             backgroundColor: AppColors.surface,
             scrolledUnderElevation: 0,
             centerTitle: true,
-            leading: IconButton(
-              onPressed: () => Navigator.maybePop(context),
-              tooltip: '뒤로 가기',
-              icon: const SvgIcon(
-                AppIcons.back,
-                color: AppColors.textPrimary,
-                strokeWidth: 2,
-              ),
-            ),
             title: const Text('회원 탈퇴', style: AppText.cardTitle),
           ),
           body: SafeArea(

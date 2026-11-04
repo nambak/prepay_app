@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:prepay_app/ui/core/widgets/app_card.dart';
 
-import '../../core/icons.dart';
 import '../../core/tokens.dart';
 import '../../../routing/routes.dart';
 
@@ -20,11 +19,6 @@ class SettingsScreen extends StatelessWidget {
         backgroundColor: AppColors.bgPage,
         scrolledUnderElevation: 0,
         centerTitle: true,
-        leading: IconButton(
-          onPressed: () => context.pop(),
-          tooltip: '뒤로 가기',
-          icon: const SvgIcon(AppIcons.back, color: AppColors.textPrimary, strokeWidth: 2),
-        ),
         title: const Text('환경설정', style: AppText.cardTitle),
       ),
       body: ListView(
