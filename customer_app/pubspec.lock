@@ -77,10 +77,10 @@ packages:
     dependency: transitive
     description:
       name: cupertino_ui
-      sha256: a47c4e7c66fd7444a063a602597fceb238f705c3f6b1322bc0053d0a2638ee6e
+      sha256: "369e39a1c5c030a6212589c3da1809920b1c2cfade7b02aade7695bfa4b88c3a"
       url: "https://pub.dev"
     source: hosted
-    version: "1.1.4"
+    version: "1.1.6"
   fake_async:
     dependency: transitive
     description:
@@ -119,7 +119,7 @@ packages:
     source: hosted
     version: "6.0.0"
   flutter_localizations:
-    dependency: transitive
+    dependency: "direct main"
     description: flutter
     source: sdk
     version: "0.0.0"
@@ -193,10 +193,10 @@ packages:
     dependency: "direct main"
     description:
       name: go_router
-      sha256: "07089be6dc124eb9596a51b5e359c657f30a59929287f11b126c2cd13eaaece0"
+      sha256: f1c2d3c2b0b2096b435d7af033dd4e586fa31f51d988c5985e64495cd926d872
       url: "https://pub.dev"
     source: hosted
-    version: "18.1.1"
+    version: "18.1.2"
   hooks:
     dependency: transitive
     description:
@@ -233,10 +233,10 @@ packages:
     dependency: transitive
     description:
       name: jni
-      sha256: d8df6dab6847855512fe44dd9032b0bbe34dda7bf7597e41d30750879779813f
+      sha256: "2e91e6087291affd10b31b6c872f3e3ac7dc5d93b51b5ba485d930c8f08bde6c"
       url: "https://pub.dev"
     source: hosted
-    version: "1.1.1"
+    version: "1.1.2"
   jni_flutter:
     dependency: transitive
     description:
@@ -313,10 +313,10 @@ packages:
     dependency: transitive
     description:
       name: material_ui
-      sha256: e4031746f96c8316864d9b92bce375f1320a36ed56e166307e1e1bda9d90b4ab
+      sha256: a30f5d0625b6b83770f53ca3f7aafd6fd9d147cb3853f54a70668541046fe5d6
       url: "https://pub.dev"
     source: hosted
-    version: "1.8.0"
+    version: "1.10.0"
   meta:
     dependency: transitive
     description:
@@ -510,10 +510,10 @@ packages:
     dependency: transitive
     description:
       name: vector_graphics
-      sha256: "0964703d02677ac8636b4aef95de0b7e816224ff0082908c2c950529cb9a2f5e"
+      sha256: "82885f6ac633044e7a4e4d8d745724a67aa0dc50af5d8a81ec29379f63c29035"
       url: "https://pub.dev"
     source: hosted
-    version: "1.2.4"
+    version: "1.2.6"
   vector_graphics_codec:
     dependency: transitive
     description:
@@ -526,10 +526,10 @@ packages:
     dependency: transitive
     description:
       name: vector_graphics_compiler
-      sha256: "40c92d6de05024a337a6f25feff931e1480c76cb0bb35fc37553c48951526b2f"
+      sha256: "4c9d2e7121eea8b4f160e6e435900a0ae7214cfc97c2d6cf84c25532b789b50d"
       url: "https://pub.dev"
     source: hosted
-    version: "1.3.3"
+    version: "1.3.4"
   vector_math:
     dependency: transitive
     description:
