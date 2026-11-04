@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
 
 import '../../core/tokens.dart';
 import '../../core/widgets/primary_button.dart';
@@ -72,7 +71,8 @@ class _CancelButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return FilledButton(
-      onPressed: () => context.pop(),
+      // PopScope를 따르도록 maybePop을 쓴다. 탈퇴 요청 중에는 닫히지 않는다
+      onPressed: () => Navigator.maybePop(context),
       style: FilledButton.styleFrom(
         minimumSize: const Size.fromHeight(AppSize.button),
         backgroundColor: AppColors.bgField,

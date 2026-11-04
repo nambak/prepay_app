@@ -7,7 +7,7 @@ class WithdrawNotice extends StatelessWidget {
 
   static const _notices = [
     '사라진 포인트는 다시 가입해도 돌아오지 않아요.',
-    '결제 기록은 관련 법에 따라 [N]년 동안 보관한 뒤 지워요.',
+    '결제 기록은 관련 법에서 정한 기간 동안 보관한 뒤 지워요.',
     '탈퇴하면 모든 기기에서 로그아웃돼요.',
   ];
 

@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:prepay_app/data/repositories/auth_repository.dart';
 import 'package:prepay_app/data/repositories/point_repository.dart';
+import 'package:prepay_app/data/services/api_client.dart';
 
 import '../../../domain/models/point.dart';
 
@@ -62,9 +63,14 @@ class WithdrawViewModel extends ChangeNotifier {
     try {
       // 성공하면 라우터가 로그인 상태를 보고 로그인 화면으로 옮긴다.
       await _authRepository.withdraw();
-    } catch (error) {
+    } on ApiException catch (error) {
       debugPrint('탈퇴 실패: $error');
       _error = '탈퇴하지 못했어요. 잠시 후 다시 해 주세요';
+    } catch (error) {
+      // 응답을 받지 못하면 서버에서 탈퇴됐는지 알 수 없다.
+      // 이미 탈퇴됐다면 다시 누를 때 401이 와서 로그인 화면으로 간다.
+      debugPrint('탈퇴 응답 없음: $error');
+      _error = '탈퇴됐는지 확인하지 못했어요. 잠시 후 다시 해 주세요';
     }
 
     _submitting = false;
