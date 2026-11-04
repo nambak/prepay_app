@@ -32,9 +32,8 @@ void main() {
     await tester.tap(find.text('환경설정'));
     await tester.pumpAndSettle();
 
-    expect(
-      find.descendant(of: find.byType(BackButton), matching: find.byType(SvgIcon)),
-      findsOneWidget,
-    );
+    final backIcon = find.descendant(of: find.byType(BackButton), matching: find.byType(SvgIcon));
+    expect(backIcon, findsOneWidget);
+    expect(tester.widget<SvgIcon>(backIcon).paths, AppIcons.back);
   });
 }
