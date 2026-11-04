@@ -748,5 +748,15 @@
     "w": 390,
     "h": 844,
     "source": "J15_Error.dc.html"
+  },
+  {
+    "id": "09-14",
+    "name": "회원 탈퇴",
+    "page": "p9",
+    "group": "09 내 정보",
+    "file": "screens/09-my/09-14-withdraw.html",
+    "w": 390,
+    "h": 844,
+    "source": null
   }
 ]
