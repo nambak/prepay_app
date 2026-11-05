@@ -125,3 +125,10 @@ it('탈퇴한 회원은 토큰이 남아 있어도 쓸 수 없다', function () 
 
     $this->withToken($token)->getJson('/api/wallet')->assertUnauthorized();
 });
+
+it('웹 탈퇴 안내 페이지는 로그인 없이 열린다', function () {
+    $this->get('/account/delete')
+        ->assertOk()
+        ->assertSee('앱에서 탈퇴하기')
+        ->assertSee('탈퇴해도 남는 정보');
+});

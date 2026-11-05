@@ -73,3 +73,18 @@ it('관리자는 포인트 목록에서 회원·가게·남은 포인트를 볼 
         ->assertSee('하루카페2')
         ->assertSee('20,000P');
 });
+
+it('관리자는 웹 탈퇴 요청을 받은 회원을 탈퇴 처리할 수 있다', function () {
+    $this->actingAs(createAdminAccount(), 'admin');
+    $user = User::factory()->create();
+    $user->createToken('app');
+
+    Livewire::test(ManageUsers::class)
+        ->callAction(TestAction::make('withdraw')->table($user))
+        ->assertHasNoActionErrors();
+
+    $user->refresh();
+    expect($user->withdrawn_at)->not->toBeNull()
+        ->and($user->email)->toBeNull()
+        ->and($user->tokens()->count())->toBe(0);
+});
