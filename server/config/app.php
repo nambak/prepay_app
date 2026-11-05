@@ -15,6 +15,9 @@ return [
 
     'name' => env('APP_NAME', 'Laravel'),
 
+    // 웹 탈퇴 안내(/account/delete)에 적는 운영사 이름
+    'company_name' => env('COMPANY_NAME'),
+
     /*
     |--------------------------------------------------------------------------
     | Application Environment

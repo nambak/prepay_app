@@ -5,6 +5,7 @@ namespace App\Filament\Resources\Users;
 use App\Filament\Resources\Users\Pages\ManageUsers;
 use App\Models\User;
 use BackedEnum;
+use Filament\Actions\Action;
 use Filament\Actions\EditAction;
 use Filament\Forms\Components\TextInput;
 use Filament\Resources\Resource;
@@ -12,11 +13,15 @@ use Filament\Schemas\Schema;
 use Filament\Support\Icons\Heroicon;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
+use Illuminate\Support\HtmlString;
 
 /**
  * 회원 목록: 회원 정보를 바꾸는 기능은 정책이 정해지면 추가한다.
  * 삭제 버튼은 두지 않는다. 포인트 기록이 있는 회원은 DB도 지우지 못하게 막는다.
  * 탈퇴한 회원은 개인정보를 비웠으니 고치지 않는다.
+ *
+ * 탈퇴 처리: 웹 탈퇴 요청(/account/delete 안내를 보고 보낸 메일)을 받았을 때,
+ * 본인인지 확인한 뒤 운영자가 누른다.
  */
 class UserResource extends Resource
 {
@@ -61,6 +66,15 @@ class UserResource extends Resource
             ->recordActions([
                 EditAction::make()
                     ->hidden(fn (User $record): bool => $record->withdrawn_at !== null),
+                Action::make('withdraw')
+                    ->label('탈퇴 처리')
+                    ->color('danger')
+                    ->requiresConfirmation()
+                    ->modalHeading('이 회원을 탈퇴 처리할까요?')
+                    ->modalDescription(new HtmlString('이름·이메일·비밀번호를 지우고 모든 기기에서 로그아웃시켜요.<br>남은 포인트는 사라지고 되돌릴 수 없어요.'))
+                    ->modalSubmitActionLabel('탈퇴 처리')
+                    ->hidden(fn (User $record): bool => $record->withdrawn_at !== null)
+                    ->action(fn (User $record) => $record->withdraw()),
             ]);
     }
 
