@@ -7,6 +7,7 @@ use App\Models\Store;
 use App\StoreKind;
 use BackedEnum;
 use Filament\Actions\EditAction;
+use Filament\Forms\Components\Repeater;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Resources\Resource;
@@ -42,6 +43,36 @@ class StoreResource extends Resource
                     ->label('업종')
                     ->options(StoreKind::class)
                     ->required(),
+                TextInput::make('address')
+                    ->label('주소')
+                    ->maxLength(255),
+                TextInput::make('phone')
+                    ->label('전화번호')
+                    ->tel()
+                    ->maxLength(20),
+                // 고객 앱 가게 상세의 충전 상품. 내는 돈은 충전 포인트보다 클 수 없다.
+                Repeater::make('chargeProducts')
+                    ->label('충전 상품')
+                    ->relationship()
+                    ->schema([
+                        TextInput::make('amount')
+                            ->label('충전 포인트')
+                            ->suffix('P')
+                            ->integer()
+                            ->minValue(1)
+                            ->required(),
+                        TextInput::make('price_won')
+                            ->label('내는 돈')
+                            ->suffix('원')
+                            ->integer()
+                            ->minValue(1)
+                            ->lte('amount')
+                            ->required(),
+                    ])
+                    ->columns(2)
+                    ->defaultItems(0)
+                    ->reorderable(false)
+                    ->addActionLabel('충전 상품 추가'),
             ]);
     }
 
