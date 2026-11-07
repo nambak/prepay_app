@@ -6,6 +6,7 @@ use App\Models\PointLot;
 use App\Models\Store;
 use App\Models\User;
 use Filament\Actions\Testing\TestAction;
+use Filament\Forms\Components\Repeater;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Livewire\Livewire;
 
@@ -87,4 +88,38 @@ it('관리자는 웹 탈퇴 요청을 받은 회원을 탈퇴 처리할 수 있�
     expect($user->withdrawn_at)->not->toBeNull()
         ->and($user->email)->toBeNull()
         ->and($user->tokens()->count())->toBe(0);
+});
+
+it('관리자는 가게를 추가하면서 충전 상품을 넣을 수 있다.', function () {
+    $this->actingAs(createAdminAccount(), 'admin');
+    Repeater::fake();
+
+    Livewire::test(ManageStores::class)
+        ->callAction('create', [
+            'name' => '하루카페 강남점',
+            'kind' => 'cafe',
+            'chargeProducts' => [['amount' => 50000, 'price_won' => 47500]],
+        ])
+        ->assertHasNoActionErrors();
+
+    $this->assertDatabaseHas('charge_products', [
+        'store_id' => Store::where('name', '하루카페 강남점')->value('id'),
+        'amount' => 50000,
+        'price_won' => 47500,
+    ]);
+});
+
+it('충전 상품의 내는 돈은 충전 포인트보다 클 수 없다', function () {
+    $this->actingAs(createAdminAccount(), 'admin');
+    Repeater::fake();
+
+    Livewire::test(ManageStores::class)
+        ->callAction('create', [
+            'name' => '하루카페 강남점',
+            'kind' => 'cafe',
+            'chargeProducts' => [['amount' => 50000, 'price_won' => 50001]],
+        ])
+        ->assertHasActionErrors(['chargeProducts.0.price_won' => 'lte']);
+
+    $this->assertDatabaseCount('charge_products', 0);
 });

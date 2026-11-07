@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\StoreController;
 use App\Http\Controllers\WalletController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -13,6 +14,9 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('/user', fn(Request $request) => $request->user());
     Route::post('/logout', [AuthController::class, 'logout']);
     Route::get('/wallet', WalletController::class);
+    Route::get('/stores', [StoreController::class, 'index']);
+    Route::get('/stores/{store}', [StoreController::class, 'show']);
+
     // 탈퇴: 개인정보를 비우고 모든 기기의 토큰을 지움.
     Route::delete('/user', [AuthController::class, 'withdraw']);
 });
