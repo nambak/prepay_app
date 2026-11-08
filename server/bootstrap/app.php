@@ -14,7 +14,7 @@ return Application::configure(basePath: dirname(__DIR__))
     )
     ->withMiddleware(function (Middleware $middleware): void {
         // 고객 로그인은 앱에서만 처리되기 때문에 웹 로그인 화면이 없다. 로그인 화면으로 보내지 않고 401을 리턴한다.
-        $middleware->redirectGuestsTo(fn() => null);
+        $middleware->redirectGuestsTo(fn () => null);
     })
     ->withExceptions(function (Exceptions $exceptions): void {
         $exceptions->shouldRenderJsonWhen(

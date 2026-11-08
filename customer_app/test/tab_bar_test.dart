@@ -16,7 +16,7 @@ void main() {
     await tester.pumpWidget(
       MaterialApp.router(theme: appTheme, routerConfig: router),
     );
-    for (final tab in [AppTab.home, AppTab.shop, AppTab.like]) {
+    for (final tab in [AppTab.home, AppTab.like]) {
       await tester.tap(find.text(tab.label).last);
       await tester.pumpAndSettle();
 

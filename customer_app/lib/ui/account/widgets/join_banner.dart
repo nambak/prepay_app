@@ -1,6 +1,6 @@
-
 import 'package:flutter/material.dart';
-import 'package:prepay_app/ui/core/tokens.dart';
+
+import '../../core/tokens.dart';
 
 // 로그인 화면 아래 회원가입 안내
 class JoinBanner extends StatelessWidget {
@@ -31,7 +31,7 @@ class JoinBanner extends StatelessWidget {
                   '회원가입하고 지금 방문한 가게에서 바로 할인받아 보세요',
                   style: AppText.secondary.copyWith(
                     color: AppColors.textSecondary,
-                  )
+                  ),
                 ),
               ],
             ),
@@ -50,9 +50,9 @@ class JoinBanner extends StatelessWidget {
               '회원가입',
               style: AppText.label.copyWith(fontWeight: FontWeight.w500),
             ),
-          )
+          ),
         ],
-      )
+      ),
     );
   }
 }

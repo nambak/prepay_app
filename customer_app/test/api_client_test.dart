@@ -58,10 +58,7 @@ void main() {
     String email = 'hana@email.com';
     String password = 'password1234';
 
-    apiClient.token = await apiClient.login(
-        email: email,
-        password: password
-    );
+    apiClient.token = await apiClient.login(email: email, password: password);
     await apiClient.getWallet();
 
     expect(sent[0].method, 'POST');

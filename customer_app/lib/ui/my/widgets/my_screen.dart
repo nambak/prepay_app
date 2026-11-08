@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:prepay_app/ui/core/icons.dart';
-import 'package:prepay_app/ui/core/widgets/app_tab_bar.dart';
 
 import '../../../routing/routes.dart';
+import '../../core/icons.dart';
 import '../../core/tokens.dart';
 import '../../core/widgets/app_card.dart';
+import '../../core/widgets/app_tab_bar.dart';
 
 class MyScreen extends StatelessWidget {
   const MyScreen({super.key});
@@ -31,14 +31,22 @@ class MyScreen extends StatelessWidget {
                     IconButton(
                       onPressed: openSettings,
                       tooltip: '환경설정',
-                      icon: const SvgIcon(AppIcons.settings, color: AppColors.textPrimary),
-                    )
+                      icon: const SvgIcon(
+                        AppIcons.settings,
+                        color: AppColors.textPrimary,
+                      ),
+                    ),
                   ],
                 ),
               ),
             ),
             Padding(
-              padding: const EdgeInsets.fromLTRB(AppSpace.gutter, 20, AppSpace.gutter, 8),
+              padding: const EdgeInsets.fromLTRB(
+                AppSpace.gutter,
+                20,
+                AppSpace.gutter,
+                8,
+              ),
               child: Semantics(
                 header: true,
                 child: Text(
@@ -60,23 +68,28 @@ class MyScreen extends StatelessWidget {
                   child: const SizedBox(
                     height: AppSize.button,
                     child: Padding(
-                      padding: EdgeInsets.symmetric(horizontal: AppSpace.gutter),
+                      padding: EdgeInsets.symmetric(
+                        horizontal: AppSpace.gutter,
+                      ),
                       child: Row(
                         children: [
-                          Expanded(
-                            child: Text('환경설정', style: AppText.input),
+                          Expanded(child: Text('환경설정', style: AppText.input)),
+                          SvgIcon(
+                            AppIcons.chevronRight,
+                            size: 18,
+                            color: AppColors.iconMuted,
+                            strokeWidth: 2,
                           ),
-                          SvgIcon(AppIcons.chevronRight, size: 18, color: AppColors.iconMuted, strokeWidth: 2),
                         ],
                       ),
                     ),
-                  )
-                )
+                  ),
+                ),
               ),
-            )
+            ),
           ],
         ),
-      )
+      ),
     );
   }
 }

@@ -1,10 +1,10 @@
 // 전체 포인트 합계, 종류별 비율 막대, 종류별 금액
 import 'package:flutter/material.dart';
-import 'package:prepay_app/domain/models/point.dart';
-import 'package:prepay_app/ui/core/tokens.dart';
 
+import '../../../domain/models/point.dart';
 import '../../core/format.dart';
 import '../../core/icons.dart';
+import '../../core/tokens.dart';
 import '../../core/widgets/app_card.dart';
 import '../../core/widgets/point_dot.dart';
 
@@ -39,8 +39,8 @@ class BalanceCard extends StatelessWidget {
                   AppIcons.info,
                   size: 18,
                   color: AppColors.iconMuted,
-                )
-              )
+                ),
+              ),
             ],
           ),
           Row(
@@ -65,10 +65,10 @@ class BalanceCard extends StatelessWidget {
                   style: const TextStyle(
                     fontWeight: FontWeight.w700,
                     color: AppColors.textPrimary,
-                  )
+                  ),
                 ),
                 const TextSpan(text: ' 아꼈어요'),
-              ]
+              ],
             ),
             style: AppText.secondary.copyWith(color: AppColors.textSecondary),
           ),
@@ -78,21 +78,21 @@ class BalanceCard extends StatelessWidget {
               height: 8,
               child: Row(
                 spacing: 3,
-                  children: [
-                    for (final (type, amount) in parts)
-                      if (amount > 0)
-                        Expanded(
-                          flex: amount,
-                          child: DecoratedBox(
-                            decoration: BoxDecoration(
-                              color: type.color,
-                              borderRadius: BorderRadius.circular(4),
-                            ),
+                children: [
+                  for (final (type, amount) in parts)
+                    if (amount > 0)
+                      Expanded(
+                        flex: amount,
+                        child: DecoratedBox(
+                          decoration: BoxDecoration(
+                            color: type.color,
+                            borderRadius: BorderRadius.circular(4),
                           ),
-                        )
-                  ],
-              )
-            )
+                        ),
+                      ),
+                ],
+              ),
+            ),
           ),
           for (final (i, (type, amount)) in parts.indexed)
             InkWell(
@@ -100,12 +100,12 @@ class BalanceCard extends StatelessWidget {
               child: Container(
                 height: 48,
                 decoration: i == 0
-                  ? null
-                  : const BoxDecoration(
-                    border: Border(
-                      top: BorderSide(color: AppColors.borderInner),
-                    )
-                  ),
+                    ? null
+                    : const BoxDecoration(
+                        border: Border(
+                          top: BorderSide(color: AppColors.borderInner),
+                        ),
+                      ),
                 child: Row(
                   spacing: 10,
                   children: [
@@ -116,20 +116,20 @@ class BalanceCard extends StatelessWidget {
                       style: const TextStyle(
                         fontWeight: FontWeight.w700,
                         fontFeatures: tabularFigures,
-                      )
+                      ),
                     ),
                     const SvgIcon(
                       AppIcons.chevronRight,
                       size: 18,
                       color: AppColors.iconMuted,
                       strokeWidth: 2,
-                    )
+                    ),
                   ],
                 ),
-              )
-            )
+              ),
+            ),
         ],
-      )
+      ),
     );
   }
 }

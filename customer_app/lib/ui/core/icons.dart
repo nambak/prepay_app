@@ -19,6 +19,9 @@ abstract final class AppIcons {
       '<rect x="4" y="4" width="6" height="6" rx="1.2"/><rect x="14" y="4" width="6" height="6" rx="1.2"/><rect x="4" y="14" width="6" height="6" rx="1.2"/><path d="M14 14h2.5v2.5H14zM17.5 17.5H20V20h-2.5zM14 19.5h1.5M19.5 14H20"/>';
   static const info =
       '<circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 7.8h.01"/>';
+  static const location = shop; // 탭바 가게찾기와 같은 모양
+  static const coin =
+      '<circle cx="12" cy="12" r="8"/><path d="M9.5 9.5h4a1.75 1.75 0 010 3.5h-3a1.75 1.75 0 000 3.5h4M12 8v1.5M12 16.5V18"/>';
   static const phone =
       '<path d="M5 4h4l2 5-2.5 1.5a11 11 0 005 5L15 13l5 2v4a2 2 0 01-2 2A16 16 0 013 6a2 2 0 012-2z"/>';
   static const chevronRight = '<path d="M9 6l6 6-6 6"/>';

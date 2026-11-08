@@ -48,8 +48,8 @@ expect()->extend('toBeOne', function () {
 function createAdminAccount()
 {
     return Admin::create([
-        'name'     => '관리자',
-        'email'    => 'admin@example.com',
+        'name' => '관리자',
+        'email' => 'admin@example.com',
         'password' => 'password1234',
     ]);
 }

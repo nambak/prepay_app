@@ -7,4 +7,5 @@ abstract final class Routes {
   static const my = '/my';
   static const settings = '/my/settings';
   static const withdraw = '/my/withdraw';
+  static String store(String id) => '/shop/$id';
 }

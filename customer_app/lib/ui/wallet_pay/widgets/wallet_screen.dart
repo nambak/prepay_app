@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:prepay_app/ui/core/tokens.dart';
-import 'package:prepay_app/ui/core/widgets/app_tab_bar.dart';
-import 'package:prepay_app/ui/wallet_pay/view_models/wallet_view_model.dart';
-import 'package:prepay_app/ui/wallet_pay/widgets/wallet_header.dart';
 
+import '../../core/widgets/app_tab_bar.dart';
+import '../../core/widgets/load_error.dart';
+import '../view_models/wallet_view_model.dart';
 import 'balance_card.dart';
 import 'store_card.dart';
 import 'store_tabs.dart';
+import 'wallet_header.dart';
 
 class WalletScreen extends StatelessWidget {
   const WalletScreen({super.key, required this.viewModel});
@@ -25,7 +25,7 @@ class WalletScreen extends StatelessWidget {
             final wallet = viewModel.wallet;
             if (wallet == null) {
               return viewModel.failed
-                  ? _LoadError(onRetry: viewModel.load)
+                  ? LoadError('포인트를 불러오지 못했어요.', onRetry: viewModel.load)
                   : const Center(child: CircularProgressIndicator());
             }
             return ListView(
@@ -43,36 +43,13 @@ class WalletScreen extends StatelessWidget {
                     store,
                     expanded: viewModel.expandedStoreId == store.id,
                     onToggleDetail: () => viewModel.toggleDetail(store.id),
-                  )
-                ]
+                  ),
+                ],
               ],
             );
-          }
-        )
-      )
-    );
-  }
-}
-
-class _LoadError extends StatelessWidget {
-  const _LoadError({required this.onRetry});
-
-  final VoidCallback onRetry;
-
-  @override
-  Widget build(BuildContext context) {
-    return Center(
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        spacing: 12,
-        children: [
-          Text(
-            '포인트를 불러오지 못했어요.',
-            style: AppText.body.copyWith(color: AppColors.textSecondary),
-          ),
-          FilledButton(onPressed: onRetry, child: const Text('다시 불러오기')),
-        ],
-      )
+          },
+        ),
+      ),
     );
   }
 }

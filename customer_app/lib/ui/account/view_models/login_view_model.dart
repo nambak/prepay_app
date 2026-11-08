@@ -1,6 +1,7 @@
 import 'package:flutter/foundation.dart';
-import 'package:prepay_app/data/repositories/auth_repository.dart';
-import 'package:prepay_app/data/services/api_client.dart';
+
+import '../../../data/repositories/auth_repository.dart';
+import '../../../data/services/api_client.dart';
 
 class LoginViewModel extends ChangeNotifier {
   LoginViewModel({required this._authRepository});

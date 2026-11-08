@@ -30,16 +30,16 @@ Future<(WithdrawViewModel, AuthRepository)> _setUp(
   final apiClient = ApiClient(
     baseUrl: 'http://test',
     client: MockClient(
-        (request) async => request.url.path == '/api/wallet'
+      (request) async => request.url.path == '/api/wallet'
           ? http.Response(jsonEncode(_wallet), 200)
           : deleteUser(),
-    )
+    ),
   );
   final authRepository = AuthRepository(apiClient: apiClient);
   await authRepository.load();
   final viewModel = WithdrawViewModel(
-      pointRepository: PointRepository(apiClient: apiClient),
-      authRepository: authRepository
+    pointRepository: PointRepository(apiClient: apiClient),
+    authRepository: authRepository,
   )..load();
   return (viewModel, authRepository);
 }
@@ -47,11 +47,14 @@ Future<(WithdrawViewModel, AuthRepository)> _setUp(
 void main() {
   testWidgets('남은 포인트를 보여 주고, 동의해야 탈퇴할 수 있다', (tester) async {
     final (viewModel, authRepository) = await _setUp(
-        () async => http.Response('', 204),
+      () async => http.Response('', 204),
     );
 
     await tester.pumpWidget(
-        MaterialApp(theme: appTheme, home: WithdrawScreen(viewModel: viewModel)),
+      MaterialApp(
+        theme: appTheme,
+        home: WithdrawScreen(viewModel: viewModel),
+      ),
     );
     await tester.pumpAndSettle();
     expect(find.text('500,000'), findsOneWidget);
@@ -74,10 +77,14 @@ void main() {
     final (viewModel, _) = await _setUp(() => deleting.future);
 
     // 취소하면 돌아갈 화면이 있어야 해서, 빈 화면 위에 탈퇴 화면을 올린다.
-    await tester.pumpWidget(MaterialApp(theme: appTheme, home: const SizedBox()));
+    await tester.pumpWidget(
+      MaterialApp(theme: appTheme, home: const SizedBox()),
+    );
     final navigator = tester.state<NavigatorState>(find.byType(Navigator));
     navigator.push(
-      MaterialPageRoute<void>(builder: (_) => WithdrawScreen(viewModel: viewModel)),
+      MaterialPageRoute<void>(
+        builder: (_) => WithdrawScreen(viewModel: viewModel),
+      ),
     );
     await tester.pumpAndSettle();
 

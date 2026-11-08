@@ -42,8 +42,8 @@ class User extends Authenticatable
     {
         return [
             'email_verified_at' => 'datetime',
-            'password'          => 'hashed',
-            'withdrawn_at'      => 'datetime',
+            'password' => 'hashed',
+            'withdrawn_at' => 'datetime',
         ];
     }
 
@@ -64,12 +64,12 @@ class User extends Authenticatable
         DB::transaction(function () {
             $this->tokens()->delete();
             $this->forceFill([
-                'name'              => null,
-                'email'             => null,
+                'name' => null,
+                'email' => null,
                 'email_verified_at' => null,
-                'password'          => null,
-                'remember_token'    => null,
-                'withdrawn_at'      => now(),
+                'password' => null,
+                'remember_token' => null,
+                'withdrawn_at' => now(),
             ])->save();
         });
     }
@@ -82,7 +82,7 @@ class User extends Authenticatable
         $initials = Str::initials($this->name, true);
 
         return Str::length($initials) > 1
-            ? Str::substr($initials, 0, 1) . Str::substr($initials, -1)
+            ? Str::substr($initials, 0, 1).Str::substr($initials, -1)
             : $initials;
     }
 }

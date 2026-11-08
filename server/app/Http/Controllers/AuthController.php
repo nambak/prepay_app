@@ -13,16 +13,16 @@ class AuthController extends Controller
     public function login(Request $request): array
     {
         $credentials = $request->validate([
-            'email'       => ['required', 'email'],
-            'password'    => ['required', 'string'],
+            'email' => ['required', 'email'],
+            'password' => ['required', 'string'],
             'device_name' => ['required', 'string', 'max:255'],
         ]);
 
         $user = User::where('email', $credentials['email'])->first();
 
-        if (!$user || !Hash::check($credentials['password'], $user->password)) {
+        if (! $user || ! Hash::check($credentials['password'], $user->password)) {
             throw ValidationException::withMessages([
-                'email' => '이메일 또는 비밀번호가 맞지 않아요.'
+                'email' => '이메일 또는 비밀번호가 맞지 않아요.',
             ]);
         }
 
