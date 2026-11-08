@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
-import '../../account/view_models/login_view_model.dart';
 import '../../core/app_name.dart';
 import '../../core/tokens.dart';
 import '../../core/widgets/labeled_field.dart';
 import '../../core/widgets/primary_button.dart';
+import '../view_models/login_view_model.dart';
 import 'join_banner.dart';
 
 class LoginScreen extends StatefulWidget {
