@@ -20,7 +20,8 @@ return new class extends Migration
             $table->unsignedInteger('amount');
             $table->unsignedInteger('balance');
             $table->unsignedInteger('paid_won')->nullable();
-            $table->date('expires_on');
+            // 이 날까지 쓸 수 있다. 충전 포인트는 현금처럼 쓰는 포인트라 기한이 없어서 비운다.
+            $table->date('expires_on')->nullable();
             $table->timestamps();
 
             $table->index(['user_id', 'expires_on']);

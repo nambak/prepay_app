@@ -4,11 +4,11 @@ enum PointType { charge, shared, service }
 
 // 포인트 종류 하나의 잔액. 단위는 P
 class PointItem {
-  const PointItem(this.type, this.amount, {required this.daysLeft});
+  const PointItem(this.type, this.amount, {this.daysLeft});
 
   final PointType type;
   final int amount;
-  final int daysLeft; // 유효기간까지 남은 날
+  final int? daysLeft; // 유효기간까지 남은 날. 충전 포인트는 기한이 없어서 null
 }
 
 // 내 가게 하나

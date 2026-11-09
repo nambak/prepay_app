@@ -40,5 +40,5 @@ StoreWallet _storeFromJson(JsonMap json) => StoreWallet(
 PointItem _pointItemFromJson(JsonMap json) => PointItem(
   PointType.values.byName(json['type'] as String),
   json['amount'] as int,
-  daysLeft: json['days_left'] as int,
+  daysLeft: json['days_left'] as int?,
 );

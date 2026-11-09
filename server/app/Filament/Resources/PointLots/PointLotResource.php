@@ -54,6 +54,7 @@ class PointLotResource extends Resource
                 TextColumn::make('expires_on')
                     ->label('유효기간')
                     ->date('Y-m-d')
+                    ->placeholder('없음')
                     ->sortable(),
                 TextColumn::make('created_at')
                     ->label('받은 날')

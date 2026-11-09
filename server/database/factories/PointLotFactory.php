@@ -29,7 +29,7 @@ class PointLotFactory extends Factory
             'amount' => 100000,
             'balance' => 100000,
             'paid_won' => 80000,
-            'expires_on' => today()->addYear(),
+            'expires_on' => null,   // 충전 포인트는 기한이 없다.
         ];
     }
 
@@ -54,6 +54,9 @@ class PointLotFactory extends Factory
         ]);
     }
 
+    /**
+     * 기한이 지난 묶음. 기한은 서비스 포인트에만 있다.
+     */
     public function expired(): static
     {
         return $this->state(fn (array $attributes) => [

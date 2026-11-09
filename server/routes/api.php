@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\ChargeController;
 use App\Http\Controllers\StoreController;
 use App\Http\Controllers\WalletController;
 use Illuminate\Http\Request;
@@ -19,4 +20,7 @@ Route::middleware('auth:sanctum')->group(function () {
 
     // 탈퇴: 개인정보를 비우고 모든 기기의 토큰을 지움.
     Route::delete('/user', [AuthController::class, 'withdraw']);
+
+    // 가짜 결제로 충전한다. PG사를 붙이는 일은 TODO.
+    Route::post('/stores/{store}/charges', ChargeController::class);
 });
