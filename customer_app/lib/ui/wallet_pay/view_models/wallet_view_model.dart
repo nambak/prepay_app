@@ -1,39 +1,24 @@
-import 'package:flutter/foundation.dart';
-
 import '../../../data/repositories/point_repository.dart';
 import '../../../domain/models/point.dart';
+import '../../core/load_view_model.dart';
 
-class WalletViewModel extends ChangeNotifier {
+class WalletViewModel extends LoadViewModel<Wallet> {
   WalletViewModel({required this._pointRepository});
 
   final PointRepository _pointRepository;
 
-  Wallet? _wallet;
-
-  Wallet? get wallet => _wallet;
+  Wallet? get wallet => data;
 
   String? _expandedStoreId;
 
   String? get expandedStoreId => _expandedStoreId;
 
-  bool get loading => _wallet == null && !_failed;
-
-  bool _failed = false;
-
-  bool get failed => _failed;
-
-  Future<void> load() async {
-    _failed = false;
-    notifyListeners();
-
-    try {
-      _wallet = await _pointRepository.getWallet();
-      _expandedStoreId = _wallet!.stores.firstOrNull?.id;
-    } catch (error) {
-      debugPrint('지갑을 불러오지 못했습니다: $error');
-      _failed = true;
-    }
-    notifyListeners();
+  @override
+  Future<Wallet> fetch() async {
+    final wallet = await _pointRepository.getWallet();
+    // 첫 가게는 상세를 펼친 상태로 보여 준다.
+    _expandedStoreId = wallet.stores.firstOrNull?.id;
+    return wallet;
   }
 
   void toggleDetail(String storeId) {

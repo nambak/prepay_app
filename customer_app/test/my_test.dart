@@ -4,8 +4,8 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:prepay_app/routing/router.dart';
 import 'package:prepay_app/routing/routes.dart';
 import 'package:prepay_app/ui/account/widgets/login_screen.dart';
-import 'package:prepay_app/ui/core/theme.dart';
 import 'package:prepay_app/ui/core/icons.dart';
+import 'package:prepay_app/ui/core/theme.dart';
 
 void main() {
   testWidgets('마이 > 환경설정에서 로그아웃하면 로그인 화면으로 간다', (tester) async {
@@ -13,7 +13,9 @@ void main() {
     await authRepository.load();
     router.go(Routes.my);
 
-    await tester.pumpWidget(MaterialApp.router(theme: appTheme, routerConfig: router));
+    await tester.pumpWidget(
+      MaterialApp.router(theme: appTheme, routerConfig: router),
+    );
     await tester.tap(find.text('환경설정'));
     await tester.pumpAndSettle();
     await tester.tap(find.text('로그아웃'));
@@ -28,11 +30,16 @@ void main() {
     await authRepository.load();
     router.go(Routes.my);
 
-    await tester.pumpWidget(MaterialApp.router(theme: appTheme, routerConfig: router));
+    await tester.pumpWidget(
+      MaterialApp.router(theme: appTheme, routerConfig: router),
+    );
     await tester.tap(find.text('환경설정'));
     await tester.pumpAndSettle();
 
-    final backIcon = find.descendant(of: find.byType(BackButton), matching: find.byType(SvgIcon));
+    final backIcon = find.descendant(
+      of: find.byType(BackButton),
+      matching: find.byType(SvgIcon),
+    );
     expect(backIcon, findsOneWidget);
     expect(tester.widget<SvgIcon>(backIcon).paths, AppIcons.back);
   });

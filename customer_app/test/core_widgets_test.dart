@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:go_router/go_router.dart';
 import 'package:prepay_app/ui/core/theme.dart';
 import 'package:prepay_app/ui/core/widgets/labeled_field.dart';
 import 'package:prepay_app/ui/core/widgets/primary_button.dart';
+import 'package:prepay_app/ui/core/widgets/view_model_scope.dart';
 
 Widget _app(Widget child) => MaterialApp(
   theme: appTheme,
@@ -27,5 +29,45 @@ void main() {
     await tester.tap(find.byType(PrimaryButton));
     expect(taps, 0);
     expect(find.text('로그인'), findsNothing);
+  });
+
+  testWidgets('위에 화면을 열었다 닫아도 view model을 다시 만들지 않는다', (tester) async {
+    var created = 0;
+    final router = GoRouter(
+      routes: [
+        GoRoute(
+          path: '/',
+          builder: (context, state) => ViewModelScope(
+            create: () {
+              created++;
+              return ChangeNotifier();
+            },
+            builder: (_) => Scaffold(
+              body: TextButton(
+                onPressed: () => context.push('/next'),
+                child: const Text('열기'),
+              ),
+            ),
+          ),
+        ),
+        GoRoute(
+          path: '/next',
+          builder: (context, state) => Scaffold(
+            body: TextButton(
+              onPressed: () => context.pop(),
+              child: const Text('닫기'),
+            ),
+          ),
+        ),
+      ],
+    );
+
+    await tester.pumpWidget(MaterialApp.router(routerConfig: router));
+    await tester.tap(find.text('열기'));
+    await tester.pumpAndSettle();
+    await tester.tap(find.text('닫기'));
+    await tester.pumpAndSettle();
+
+    expect(created, 1);
   });
 }

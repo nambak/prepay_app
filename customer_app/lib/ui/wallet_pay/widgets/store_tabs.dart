@@ -25,7 +25,7 @@ class StoreTabs extends StatelessWidget {
               decoration: const BoxDecoration(
                 border: Border(
                   bottom: BorderSide(color: AppColors.textPrimary, width: 2),
-                )
+                ),
               ),
               child: Text.rich(
                 TextSpan(
@@ -36,13 +36,13 @@ class StoreTabs extends StatelessWidget {
                       style: const TextStyle(
                         color: AppColors.textMuted,
                         fontWeight: FontWeight.w500,
-                      )
-                    )
-                  ]
+                      ),
+                    ),
+                  ],
                 ),
-                style: AppText.input.copyWith(fontWeight: FontWeight.w700)
+                style: AppText.input.copyWith(fontWeight: FontWeight.w700),
               ),
-            )
+            ),
           ),
           InkWell(
             onTap: () {}, // TODO: 이전 가게
@@ -54,11 +54,11 @@ class StoreTabs extends StatelessWidget {
                   style: AppText.input.copyWith(
                     fontWeight: FontWeight.w500,
                     color: AppColors.textMuted,
-                  )
+                  ),
                 ),
-              )
-            )
-          )
+              ),
+            ),
+          ),
         ],
       ),
     );

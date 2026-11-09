@@ -10,7 +10,7 @@ use Illuminate\Database\Eloquent\Model;
  *
  * @property int $id
  * @property int $store_id
- * @property int $amount    충전하는 포인트
+ * @property int $amount 충전하는 포인트
  * @property int $price_won 내는 돈(원)
  */
 #[Fillable(['amount', 'price_won'])]

@@ -42,7 +42,7 @@ class AppServiceProvider extends ServiceProvider
 
             return [
                 Limit::perMinute(5)
-                    ->by((is_string($email) ? Str::lower($email) : '') . '|' . $request->ip()),
+                    ->by((is_string($email) ? Str::lower($email) : '').'|'.$request->ip()),
                 Limit::perMinute(30)
                     ->by($request->ip()),
             ];
@@ -50,7 +50,7 @@ class AppServiceProvider extends ServiceProvider
 
         // 탈퇴한 회원의 토큰은 받지 않는다. 탈퇴와 로그인이 동시에 들어와 탈퇴 뒤에 토큰이 생겨도 쓸 수 없다.
         Sanctum::authenticateAccessTokensUsing(
-            fn(PersonalAccessToken $token, bool $isValid): bool => $isValid && $token->tokenable->withdrawn_at === null
+            fn (PersonalAccessToken $token, bool $isValid): bool => $isValid && $token->tokenable->withdrawn_at === null
         );
     }
 
@@ -65,7 +65,7 @@ class AppServiceProvider extends ServiceProvider
             app()->isProduction(),
         );
 
-        Password::defaults(fn(): ?Password => app()->isProduction()
+        Password::defaults(fn (): ?Password => app()->isProduction()
             ? Password::min(12)
                 ->mixedCase()
                 ->letters()

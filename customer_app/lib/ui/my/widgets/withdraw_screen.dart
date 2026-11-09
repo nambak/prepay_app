@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:prepay_app/ui/my/view_models/withdraw_view_model.dart';
-import 'package:prepay_app/ui/my/widgets/remaining_points_card.dart';
-import 'package:prepay_app/ui/my/widgets/withdraw_bottom_bar.dart';
-import 'package:prepay_app/ui/my/widgets/withdraw_notice.dart';
 
 import '../../core/tokens.dart';
+import '../view_models/withdraw_view_model.dart';
+import 'remaining_points_card.dart';
+import 'withdraw_bottom_bar.dart';
+import 'withdraw_notice.dart';
 
 // 회원 탈퇴
 class WithdrawScreen extends StatelessWidget {

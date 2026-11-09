@@ -1,16 +1,22 @@
 import 'package:go_router/go_router.dart';
-import 'package:prepay_app/data/repositories/auth_repository.dart';
-import 'package:prepay_app/data/services/api_client.dart';
-import 'package:prepay_app/ui/account/view_models/login_view_model.dart';
-import 'package:prepay_app/ui/account/widgets/login_screen.dart';
-import 'package:prepay_app/ui/core/widgets/app_tab_bar.dart';
-import 'package:prepay_app/ui/core/widgets/coming_soon_screen.dart';
-import 'package:prepay_app/ui/my/view_models/withdraw_view_model.dart';
-import 'package:prepay_app/ui/my/widgets/my_screen.dart';
-import 'package:prepay_app/ui/my/widgets/settings_screen.dart';
 
+import '../data/repositories/auth_repository.dart';
 import '../data/repositories/point_repository.dart';
+import '../data/repositories/store_repository.dart';
+import '../data/services/api_client.dart';
+import '../ui/account/view_models/login_view_model.dart';
+import '../ui/account/widgets/login_screen.dart';
+import '../ui/core/widgets/app_tab_bar.dart';
+import '../ui/core/widgets/coming_soon_screen.dart';
+import '../ui/core/widgets/view_model_scope.dart';
+import '../ui/my/view_models/withdraw_view_model.dart';
+import '../ui/my/widgets/my_screen.dart';
+import '../ui/my/widgets/settings_screen.dart';
 import '../ui/my/widgets/withdraw_screen.dart';
+import '../ui/shop/view_models/shop_view_model.dart';
+import '../ui/shop/view_models/store_view_model.dart';
+import '../ui/shop/widgets/shop_screen.dart';
+import '../ui/shop/widgets/store_screen.dart';
 import '../ui/wallet_pay/view_models/wallet_view_model.dart';
 import '../ui/wallet_pay/widgets/wallet_screen.dart';
 import 'routes.dart';
@@ -24,6 +30,7 @@ const _apiBaseUrl = String.fromEnvironment(
 final _apiClient = ApiClient(baseUrl: _apiBaseUrl);
 final authRepository = AuthRepository(apiClient: _apiClient);
 final _pointRepository = PointRepository(apiClient: _apiClient);
+final _storeRepository = StoreRepository(apiClient: _apiClient);
 
 final router = GoRouter(
   initialLocation: Routes.wallet,
@@ -45,9 +52,30 @@ final router = GoRouter(
     ),
     GoRoute(
       path: Routes.wallet,
-      builder: (context, state) => WalletScreen(
-        viewModel: WalletViewModel(pointRepository: _pointRepository)..load(),
+      builder: (context, state) => ViewModelScope(
+        create: () =>
+            WalletViewModel(pointRepository: _pointRepository)..load(),
+        builder: (viewModel) => WalletScreen(viewModel: viewModel),
       ),
+    ),
+    GoRoute(
+      path: Routes.shop,
+      builder: (context, state) => ViewModelScope(
+        create: () => ShopViewModel(storeRepository: _storeRepository)..load(),
+        builder: (viewModel) => ShopScreen(viewModel: viewModel),
+      ),
+      routes: [
+        GoRoute(
+          path: ':id',
+          builder: (context, state) => ViewModelScope(
+            create: () => StoreViewModel(
+              storeRepository: _storeRepository,
+              storeId: state.pathParameters['id']!,
+            )..load(),
+            builder: (viewModel) => StoreScreen(viewModel: viewModel),
+          ),
+        ),
+      ],
     ),
     GoRoute(path: Routes.my, builder: (context, state) => const MyScreen()),
     GoRoute(
@@ -57,15 +85,16 @@ final router = GoRouter(
     ),
     GoRoute(
       path: Routes.withdraw,
-      builder: (context, state) => WithdrawScreen(
-        viewModel: WithdrawViewModel(
+      builder: (context, state) => ViewModelScope(
+        create: () => WithdrawViewModel(
           pointRepository: _pointRepository,
           authRepository: authRepository,
         )..load(),
-      )
+        builder: (viewModel) => WithdrawScreen(viewModel: viewModel),
+      ),
     ),
     // 아직 화면이 없는 탭. 화면을 만들면 목록에서 빼고 GoRoute를 따로 둔다.
-    for (final tab in [AppTab.home, AppTab.shop, AppTab.like])
+    for (final tab in [AppTab.home, AppTab.like])
       GoRoute(
         path: tab.path,
         builder: (context, state) => ComingSoonScreen(tab: tab),

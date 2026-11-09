@@ -39,25 +39,25 @@ class DatabaseSeeder extends Seeder
             'name' => '행복식당 1',
             'kind' => StoreKind::Food,
             'address' => '서울시 행복구 행복로 45',
-            'phone' => '02-1234-5678'
+            'phone' => '02-1234-5678',
         ]);
         $cafe = Store::factory()->create([
             'name' => '하루카페2',
             'kind' => StoreKind::Cafe,
             'address' => '서울시 행복구 하늘로 12 2층',
-            'phone' => '02-2345-6789'
+            'phone' => '02-2345-6789',
         ]);
         $sandwich = Store::factory()->create([
             'name' => '행복샌드위치',
             'kind' => StoreKind::Food,
             'address' => '서울시 행복구 행복로 78',
-            'phone' => '02-3456-7890'
+            'phone' => '02-3456-7890',
         ]);
         $flower = Store::factory()->create([
             'name' => '봄꽃집',
             'kind' => StoreKind::Shop,
             'address' => '서울시 행복구 하늘로 30',
-            'phone' => '02-4567-8901'
+            'phone' => '02-4567-8901',
         ]);
         // 포인트도 충전 상품도 없는 가게(가게찾기에서 할인 배지가 없는 라인)
         Store::factory()->create([

@@ -1,13 +1,13 @@
 import 'dart:convert';
 
 import 'package:flutter_test/flutter_test.dart';
+import 'package:http/http.dart' as http;
 import 'package:http/testing.dart';
 import 'package:prepay_app/data/repositories/point_repository.dart';
 import 'package:prepay_app/data/services/api_client.dart';
 import 'package:prepay_app/domain/models/store.dart';
 import 'package:prepay_app/ui/core/format.dart';
 import 'package:prepay_app/ui/wallet_pay/view_models/wallet_view_model.dart';
-import 'package:http/http.dart' as http;
 
 // 서버 WalletController 와 같은 모양의 응답
 const _walletJson = {
@@ -44,10 +44,10 @@ const _walletJson = {
 WalletViewModel _viewModelReturning(http.Response response) => WalletViewModel(
   pointRepository: PointRepository(
     apiClient: ApiClient(
-        baseUrl: 'http://test',
-        client: MockClient((_) async => response),
-    )
-  )
+      baseUrl: 'http://test',
+      client: MockClient((_) async => response),
+    ),
+  ),
 );
 
 void main() {

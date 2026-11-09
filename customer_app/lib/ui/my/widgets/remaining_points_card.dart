@@ -28,32 +28,34 @@ class RemainingPointsCard extends StatelessWidget {
         borderRadius: BorderRadius.circular(AppRadius.card),
       ),
       child: wallet == null
-        ? _Loading(failed: failed, onRetry: onRetry)
-        : Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              '남은 포인트',
-              style: AppText.label.copyWith(color: AppColors.textSecondary),
-            ),
-            Row(
-              crossAxisAlignment: CrossAxisAlignment.baseline,
-              textBaseline: TextBaseline.alphabetic,
-              spacing: 6,
+          ? _Loading(failed: failed, onRetry: onRetry)
+          : Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  formatNumber(wallet.total),
-                  style: AppText.balance.copyWith(fontFeatures: tabularFigures)
+                  '남은 포인트',
+                  style: AppText.label.copyWith(color: AppColors.textSecondary),
                 ),
-                const Text('P', style: AppText.section),
+                Row(
+                  crossAxisAlignment: CrossAxisAlignment.baseline,
+                  textBaseline: TextBaseline.alphabetic,
+                  spacing: 6,
+                  children: [
+                    Text(
+                      formatNumber(wallet.total),
+                      style: AppText.balance.copyWith(
+                        fontFeatures: tabularFigures,
+                      ),
+                    ),
+                    const Text('P', style: AppText.section),
+                  ],
+                ),
+                const SizedBox(height: 8),
+                _PointRow(PointType.charge, wallet.charge),
+                _PointRow(PointType.shared, wallet.shared, divided: true),
+                _PointRow(PointType.service, wallet.service, divided: true),
               ],
             ),
-            const SizedBox(height: 8),
-            _PointRow(PointType.charge, wallet.charge),
-            _PointRow(PointType.shared, wallet.shared, divided: true),
-            _PointRow(PointType.service, wallet.service, divided: true),
-          ],
-      ),
     );
   }
 }
@@ -71,10 +73,10 @@ class _PointRow extends StatelessWidget {
     return Container(
       height: AppSize.touchTarget,
       decoration: divided
-        ? const BoxDecoration(
-          border: Border(top: BorderSide(color: AppColors.border)),
-        )
-        : null,
+          ? const BoxDecoration(
+              border: Border(top: BorderSide(color: AppColors.border)),
+            )
+          : null,
       child: Row(
         spacing: 10,
         children: [
@@ -85,9 +87,8 @@ class _PointRow extends StatelessWidget {
             style: AppText.body.copyWith(
               fontWeight: FontWeight.w700,
               fontFeatures: tabularFigures,
-            )
-          )
-
+            ),
+          ),
         ],
       ),
     );
@@ -107,19 +108,21 @@ class _Loading extends StatelessWidget {
       height: 160,
       child: Center(
         child: failed
-          ? Column(
-            mainAxisSize: MainAxisSize.min,
-            spacing: 8,
-            children: [
-              Text(
-                '포인트를 불러오지 못했어요.',
-                style: AppText.body.copyWith(color: AppColors.textSecondary),
-              ),
-              TextButton(onPressed: onRetry, child: const Text('다시 불러오기')),
-            ],
-          )
-        : const CircularProgressIndicator(),
-      )
+            ? Column(
+                mainAxisSize: MainAxisSize.min,
+                spacing: 8,
+                children: [
+                  Text(
+                    '포인트를 불러오지 못했어요.',
+                    style: AppText.body.copyWith(
+                      color: AppColors.textSecondary,
+                    ),
+                  ),
+                  TextButton(onPressed: onRetry, child: const Text('다시 불러오기')),
+                ],
+              )
+            : const CircularProgressIndicator(),
+      ),
     );
   }
 }

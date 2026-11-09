@@ -1,11 +1,12 @@
-import 'package:flutter/cupertino.dart';
-import 'package:prepay_app/data/repositories/auth_repository.dart';
-import 'package:prepay_app/data/repositories/point_repository.dart';
-import 'package:prepay_app/data/services/api_client.dart';
+import 'package:flutter/foundation.dart';
 
+import '../../../data/repositories/auth_repository.dart';
+import '../../../data/repositories/point_repository.dart';
+import '../../../data/services/api_client.dart';
 import '../../../domain/models/point.dart';
+import '../../core/load_view_model.dart';
 
-class WithdrawViewModel extends ChangeNotifier {
+class WithdrawViewModel extends LoadViewModel<Wallet> {
   WithdrawViewModel({
     required this._pointRepository,
     required this._authRepository,
@@ -14,13 +15,7 @@ class WithdrawViewModel extends ChangeNotifier {
   final PointRepository _pointRepository;
   final AuthRepository _authRepository;
 
-  Wallet? _wallet;
-
-  Wallet? get wallet => _wallet;
-
-  bool _failed = false;
-
-  bool get failed => _failed;
+  Wallet? get wallet => data;
 
   bool _agreed = false;
 
@@ -35,20 +30,10 @@ class WithdrawViewModel extends ChangeNotifier {
   String? get error => _error;
 
   // 남은 포인트를 본 뒤 동의해야 누를 수 있다.
-  bool get canWithdraw => _wallet != null && _agreed;
+  bool get canWithdraw => data != null && _agreed;
 
-  Future<void> load() async {
-    _failed = false;
-    notifyListeners();
-
-    try {
-      _wallet = await _pointRepository.getWallet();
-    } catch (error) {
-      debugPrint('포인트를 불러오지 못했습니다: $error');
-      _failed = true;
-    }
-    notifyListeners();
-  }
+  @override
+  Future<Wallet> fetch() => _pointRepository.getWallet();
 
   void agree(bool value) {
     _agreed = value;
@@ -67,8 +52,8 @@ class WithdrawViewModel extends ChangeNotifier {
       debugPrint('탈퇴 실패: $error');
       _error = '탈퇴하지 못했어요. 잠시 후 다시 해 주세요';
     } catch (error) {
-      // 응답을 받지 못하면 서버에서 탈퇴됐는지 알 수 없다.
-      // 이미 탈퇴됐다면 다시 누를 때 401이 와서 로그인 화면으로 간다.
+      // 응답을 받지 못하면 서버에서 탈퇴했는지 알 수 없다.
+      // 이미 탈퇴했다면 다시 누를 때 401이 와서 로그인 화면으로 간다.
       debugPrint('탈퇴 응답 없음: $error');
       _error = '탈퇴됐는지 확인하지 못했어요. 잠시 후 다시 해 주세요';
     }

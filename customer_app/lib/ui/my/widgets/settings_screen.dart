@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:prepay_app/ui/core/widgets/app_card.dart';
 
-import '../../core/tokens.dart';
 import '../../../routing/routes.dart';
+import '../../core/tokens.dart';
+import '../../core/widgets/app_card.dart';
 
 // 환경설정. 지금은 로그아웃만 있다. 알림 설정은 저장할 서버가 생기면 넣는다
 class SettingsScreen extends StatelessWidget {
@@ -34,24 +34,31 @@ class SettingsScreen extends StatelessWidget {
                 child: SizedBox(
                   height: AppSize.button,
                   child: Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: AppSpace.gutter),
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: AppSpace.gutter,
+                    ),
                     child: Align(
                       alignment: Alignment.centerLeft,
                       child: Text(
                         '로그아웃',
                         style: AppText.input.copyWith(
                           fontWeight: FontWeight.w500,
-                          color: AppColors.textSecondary
+                          color: AppColors.textSecondary,
                         ),
                       ),
                     ),
                   ),
                 ),
-              )
-            )
+              ),
+            ),
           ),
           Padding(
-            padding: const EdgeInsets.fromLTRB(AppSpace.gutter, 12, AppSpace.gutter, 0),
+            padding: const EdgeInsets.fromLTRB(
+              AppSpace.gutter,
+              12,
+              AppSpace.gutter,
+              0,
+            ),
             child: Align(
               alignment: Alignment.centerLeft,
               child: TextButton(
@@ -65,13 +72,13 @@ class SettingsScreen extends StatelessWidget {
                   style: AppText.secondary.copyWith(
                     decoration: TextDecoration.underline,
                     decorationColor: AppColors.textMuted,
-                  )
-                )
+                  ),
+                ),
               ),
             ),
-          )
+          ),
         ],
-      )
+      ),
     );
   }
 }

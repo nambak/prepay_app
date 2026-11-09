@@ -34,14 +34,14 @@ class PrimaryButton extends StatelessWidget {
       ),
       // 글자 스타일은 textStyle 대신 Text에 넣는다.(textStyle은 Pretendard 정을 덮어쓴다)
       child: loading
-        ? const SizedBox.square(
-          dimension: 22,
-          child: CircularProgressIndicator(
-            strokeWidth: 2.5,
-            color: AppColors.iconMuted,
-          ),
-        )
-        : Text(label, style: AppText.cardTitle),
+          ? const SizedBox.square(
+              dimension: 22,
+              child: CircularProgressIndicator(
+                strokeWidth: 2.5,
+                color: AppColors.iconMuted,
+              ),
+            )
+          : Text(label, style: AppText.cardTitle),
     );
   }
 }

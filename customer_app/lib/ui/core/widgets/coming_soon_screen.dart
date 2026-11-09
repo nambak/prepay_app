@@ -19,7 +19,12 @@ class ComingSoonScreen extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Padding(
-              padding: const EdgeInsets.fromLTRB(AppSpace.gutter, 8, AppSpace.gutter, 0),
+              padding: const EdgeInsets.fromLTRB(
+                AppSpace.gutter,
+                8,
+                AppSpace.gutter,
+                0,
+              ),
               child: SizedBox(
                 height: AppSize.appBar,
                 child: Align(
@@ -34,11 +39,11 @@ class ComingSoonScreen extends StatelessWidget {
                   '준비 중이에요',
                   style: AppText.body.copyWith(color: AppColors.textMuted),
                 ),
-              )
-            )
+              ),
+            ),
           ],
-        )
-      )
+        ),
+      ),
     );
   }
 }

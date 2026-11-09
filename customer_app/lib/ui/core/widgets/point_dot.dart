@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:prepay_app/domain/models/point.dart';
+
+import '../../../domain/models/point.dart';
 
 import '../tokens.dart';
 

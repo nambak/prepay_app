@@ -17,7 +17,7 @@ void main() {
         email: _email,
         password: _password,
       );
-      addTearDown(apiClient.logout);  // 테스트로 만든 토큰은 지운다.
+      addTearDown(apiClient.logout); // 테스트로 만든 토큰은 지운다.
 
       final repository = PointRepository(apiClient: apiClient);
       await expectLater(repository.getWallet(), completes);

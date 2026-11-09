@@ -1,21 +1,23 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 import '../../../domain/models/point.dart';
-import '../../../domain/models/store.dart';
+import '../../../routing/routes.dart';
 import '../../core/format.dart';
 import '../../core/icons.dart';
 import '../../core/tokens.dart';
 import '../../core/widgets/app_card.dart';
+import '../../core/widgets/store_thumb.dart';
 import 'point_detail.dart';
 
 /// 가게 한 곳의 카드: 가게 정보, 포인트 합계, 쓰기·충전·공유 버튼, 포인트 상세
 class StoreCard extends StatelessWidget {
   const StoreCard(
-      this.store, {
-        super.key,
-        required this.expanded,
-        required this.onToggleDetail,
-      });
+    this.store, {
+    super.key,
+    required this.expanded,
+    required this.onToggleDetail,
+  });
 
   final StoreWallet store;
   final bool expanded;
@@ -32,10 +34,10 @@ class StoreCard extends StatelessWidget {
           Row(
             spacing: 12,
             children: [
-              _StoreThumb(store.kind),
+              StoreThumb(store.kind),
               Expanded(
                 child: InkWell(
-                  onTap: () {}, // TODO: 가게
+                  onTap: () => context.push(Routes.store(store.id)),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     spacing: 2,
@@ -141,34 +143,6 @@ class _CardButton extends StatelessWidget {
             ? AppText.input.copyWith(fontWeight: FontWeight.w700)
             : AppText.body.copyWith(fontWeight: FontWeight.w500),
       ),
-    );
-  }
-}
-
-class _StoreThumb extends StatelessWidget {
-  const _StoreThumb(this.kind);
-
-  final StoreKind kind;
-
-  @override
-  Widget build(BuildContext context) {
-    // 시안에서 업종별로 가장 많이 쓴 색이에요.
-    final (tone, icon) = switch (kind) {
-      StoreKind.cafe => (AppTone.a, AppIcons.cafe),
-      StoreKind.food => (AppTone.b, AppIcons.food),
-      StoreKind.bakery => (AppTone.c, AppIcons.bakery),
-      StoreKind.beauty => (AppTone.d, AppIcons.beauty),
-      StoreKind.shop => (AppTone.a, AppIcons.store),
-    };
-    return Container(
-      width: 48,
-      height: 48,
-      alignment: Alignment.center,
-      decoration: BoxDecoration(
-        color: tone.bg,
-        borderRadius: BorderRadius.circular(AppRadius.field),
-      ),
-      child: SvgIcon(icon, color: tone.fg, strokeWidth: 1.6),
     );
   }
 }

@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:prepay_app/ui/account/widgets/join_banner.dart';
-import 'package:prepay_app/ui/core/widgets/labeled_field.dart';
-import 'package:prepay_app/ui/core/widgets/primary_button.dart';
 
-import '../../account/view_models/login_view_model.dart';
 import '../../core/app_name.dart';
 import '../../core/tokens.dart';
+import '../../core/widgets/labeled_field.dart';
+import '../../core/widgets/primary_button.dart';
+import '../view_models/login_view_model.dart';
+import 'join_banner.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key, required this.viewModel});

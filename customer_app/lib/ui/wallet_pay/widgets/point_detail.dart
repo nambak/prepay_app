@@ -1,19 +1,19 @@
 // 가게 카드 아래 '포인트 상세' 접고 펴기
 
 import 'package:flutter/material.dart';
-import 'package:prepay_app/domain/models/point.dart';
-import 'package:prepay_app/ui/core/format.dart';
-import 'package:prepay_app/ui/core/icons.dart';
-import 'package:prepay_app/ui/core/widgets/point_dot.dart';
 
+import '../../../domain/models/point.dart';
+import '../../core/format.dart';
+import '../../core/icons.dart';
 import '../../core/tokens.dart';
+import '../../core/widgets/point_dot.dart';
 
 class PointDetail extends StatelessWidget {
   const PointDetail(
-      this.store, {
-        super.key,
-        required this.expanded,
-        required this.onToggle,
+    this.store, {
+    super.key,
+    required this.expanded,
+    required this.onToggle,
   });
 
   final StoreWallet store;
@@ -48,11 +48,11 @@ class PointDetail extends StatelessWidget {
                       size: 20,
                       color: AppColors.textMuted,
                       strokeWidth: 2,
-                    )
+                    ),
                   ],
-                )
-              )
-            )
+                ),
+              ),
+            ),
           ),
           if (expanded)
             Column(
@@ -68,7 +68,7 @@ class PointDetail extends StatelessWidget {
                           item.type.label,
                           style: AppText.label.copyWith(
                             color: AppColors.textSecondary,
-                          )
+                          ),
                         ),
                       ),
                       _Badge('D-${item.daysLeft}'),
@@ -80,13 +80,13 @@ class PointDetail extends StatelessWidget {
                           style: AppText.label.copyWith(
                             fontWeight: FontWeight.w500,
                             fontFeatures: tabularFigures,
-                          )
-                        )
-                      )
+                          ),
+                        ),
+                      ),
                     ],
-                  )
+                  ),
               ],
-            )
+            ),
         ],
       ),
     );
@@ -109,9 +109,7 @@ class _Badge extends StatelessWidget {
       child: Text(
         text,
         style: AppText.badge.copyWith(color: AppColors.textSecondary),
-      )
+      ),
     );
   }
-
-
 }

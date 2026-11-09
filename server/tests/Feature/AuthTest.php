@@ -8,13 +8,13 @@ beforeEach(function () {
     $password = 'password1234';
 
     User::factory()->create([
-        'email'    => $email,
+        'email' => $email,
         'password' => $password,
     ]);
 
     $this->credentials = [
-        'email'       => $email,
-        'password'    => $password,
+        'email' => $email,
+        'password' => $password,
         'device_name' => 'test',
     ];
 
@@ -57,7 +57,7 @@ it('같은 이메일로 1분에 5번 넘게 시도하면 막는다', function ()
 });
 
 it('같은 IP라도 다른 이메일은 막지 않는다', function () {
-    foreach(range(1, 5) as $i) {
+    foreach (range(1, 5) as $i) {
         $this->postJson('/api/login', $this->wrongCredentials)->assertUnprocessable();
     }
 
@@ -79,7 +79,7 @@ it('검증 문구를 한국어로 돌려준다', function () {
 });
 
 it('같은 IP에서 이메일을 바꿔 가며 1분에 30번 넘게 시도하면 막는다', function () {
-    foreach(range(1, 30) as $i) {
+    foreach (range(1, 30) as $i) {
         $this->postJson('/api/login', [...$this->wrongCredentials, 'email' => "user{$i}@example.com"])
             ->assertUnprocessable();
     }
@@ -119,7 +119,7 @@ it('포인트 기록이 있어도 탈퇴할 수 있고 포인트 묶음은 남�
 
 it('탈퇴한 회원은 토큰이 남아 있어도 쓸 수 없다', function () {
     // 탈퇴와 로그인이 동시에 들어와 탈퇴 뒤에 토큰이 생긴 경우
-    $user =User::first();
+    $user = User::first();
     $user->forceFill(['withdrawn_at' => now()])->save();
     $token = $user->createToken('test')->plainTextToken;
 

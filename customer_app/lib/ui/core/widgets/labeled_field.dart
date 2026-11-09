@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:prepay_app/ui/core/tokens.dart';
+
+import '../tokens.dart';
 
 // 라벨 + 입력창. 입력창 모양은 theme.dart의 inputDecorationTheme이 정한다.
 class LabeledField extends StatelessWidget {
@@ -25,7 +26,7 @@ class LabeledField extends StatelessWidget {
           ),
           child,
         ],
-      )
+      ),
     );
   }
 }
