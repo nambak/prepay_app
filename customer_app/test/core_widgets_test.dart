@@ -1,10 +1,21 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:go_router/go_router.dart';
 import 'package:prepay_app/ui/core/theme.dart';
+import 'package:prepay_app/ui/core/view_model.dart';
 import 'package:prepay_app/ui/core/widgets/labeled_field.dart';
 import 'package:prepay_app/ui/core/widgets/primary_button.dart';
 import 'package:prepay_app/ui/core/widgets/view_model_scope.dart';
+
+// 테스트용 view model. 정한 때에 알린다.
+class _TestViewModel extends ViewModel {
+  Future<void> notifyAfter(Future<void> done) async {
+    await done;
+    notifyListeners();
+  }
+}
 
 Widget _app(Widget child) => MaterialApp(
   theme: appTheme,
@@ -40,7 +51,7 @@ void main() {
           builder: (context, state) => ViewModelScope(
             create: () {
               created++;
-              return ChangeNotifier();
+              return _TestViewModel();
             },
             builder: (_) => Scaffold(
               body: TextButton(
@@ -66,5 +77,22 @@ void main() {
     await tester.pumpAndSettle();
 
     expect(created, 1);
+  });
+
+  testWidgets('화면을 닫으면 view model을 정리하고, 늦게 끝난 요청의 알림은 무시한다', (tester) async {
+    final viewModel = _TestViewModel();
+    final response = Completer<void>();
+    await tester.pumpWidget(
+      ViewModelScope(create: () => viewModel, builder: (_) => SizedBox()),
+    );
+    unawaited(viewModel.notifyAfter(response.future));
+
+    // 요청이 끝나기 전에 화면을 닫는다.
+    await tester.pumpWidget(SizedBox());
+    expect(() => viewModel.addListener(() {}), throwsFlutterError);
+
+    response.complete();
+    await tester.pump();
+    expect(tester.takeException(), isNull);
   });
 }
