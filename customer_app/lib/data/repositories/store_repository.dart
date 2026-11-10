@@ -14,20 +14,20 @@ class StoreRepository {
     ];
   }
 
-  Future<StoreDetail> getStore(String id) async =>
+  Future<StoreDetail> getStore(int id) async =>
       _detailFromJson(await _apiClient.getStore(id));
 }
 
 // 서버 JSON(snake_case)를 앱 모델로 바꾼다. id는 서버는 숫자, 앱은 문자열.
 StoreSummary _summaryFromJson(JsonMap json) => StoreSummary(
-  id: '${json['id']}',
+  id: json['id'],
   name: json['name'] as String,
   kind: StoreKind.fromName(json['kind']),
   maxDiscountRate: json['max_discount_rate'] as int?,
 );
 
 StoreDetail _detailFromJson(JsonMap json) => StoreDetail(
-  id: '${json['id']}',
+  id: json['id'],
   name: json['name'] as String,
   kind: StoreKind.fromName(json['kind']),
   address: json['address'] as String?,
@@ -39,6 +39,7 @@ StoreDetail _detailFromJson(JsonMap json) => StoreDetail(
 );
 
 ChargeProduct _chargeProductFromJson(JsonMap json) => ChargeProduct(
+  id: json['id'],
   amount: json['amount'] as int,
   priceWon: json['price_won'] as int,
   discountRate: json['discount_rate'] as int,

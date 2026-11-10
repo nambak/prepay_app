@@ -66,7 +66,7 @@ void main() {
     await viewModel.load();
     final wallet = viewModel.wallet!;
     expect(wallet.total, 500000);
-    expect(wallet.stores.first.id, '1');
+    expect(wallet.stores.first.id, 1);
     expect(wallet.stores.first.kind, StoreKind.food);
 
     final first = wallet.stores.first.id;

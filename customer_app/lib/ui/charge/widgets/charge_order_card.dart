@@ -1,0 +1,103 @@
+import 'package:flutter/material.dart';
+
+import '../../../domain/models/charge.dart';
+import '../../core/format.dart';
+import '../../core/tokens.dart';
+import '../../core/widgets/app_card.dart';
+import '../../core/widgets/discount_badge.dart';
+import '../../core/widgets/store_thumb.dart';
+
+// 충전할 가게와 상품
+class ChargeOrderCard extends StatelessWidget {
+  const ChargeOrderCard(this.order, {super.key});
+
+  final ChargeOrder order;
+
+  @override
+  Widget build(BuildContext context) {
+    final store = order.store;
+
+    return AppCard(
+      padding: const EdgeInsets.all(20),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          Row(
+            spacing: 12,
+            children: [
+              StoreThumb(store.kind, size: 44, iconSize: 22),
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  spacing: 2,
+                  children: [
+                    Text(store.name, style: AppText.cardTitle),
+                    Text(
+                      store.kind.label,
+                      style: AppText.secondary.copyWith(
+                        color: AppColors.textMuted,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
+          const SizedBox(height: 20),
+          const Divider(height: 1, color: AppColors.borderInner),
+          const SizedBox(height: 16),
+          Text(
+            '충전 상품',
+            style: AppText.body.copyWith(fontWeight: FontWeight.w700),
+          ),
+          const SizedBox(height: 4),
+          for (final (index, line) in order.lines.indexed) ...[
+            if (index > 0)
+              const Divider(height: 1, color: AppColors.borderInner),
+            _LineRow(line),
+          ],
+        ],
+      ),
+    );
+  }
+}
+
+// 상품 한 줄: 포인트 × 수량, 할인 배지, 결제 금액
+class _LineRow extends StatelessWidget {
+  const _LineRow(this.line);
+
+  final ChargeLine line;
+
+  @override
+  Widget build(BuildContext context) {
+    const numbers = AppText.body;
+
+    return ConstrainedBox(
+      constraints: const BoxConstraints(minHeight: 48),
+      child: Row(
+        spacing: 8,
+        children: [
+          Expanded(
+            child: Text(
+              '${formatNumber(line.product.amount)}P × ${line.quantity}',
+              style: numbers.copyWith(fontFeatures: tabularFigures),
+            ),
+          ),
+          if (line.product.discountRate > 0)
+            DiscountBadge('${line.product.discountRate}% 할인'),
+          ConstrainedBox(
+            constraints: const BoxConstraints(minWidth: 84),
+            child: Text(
+              '${formatNumber(line.priceWon)}원',
+              textAlign: TextAlign.right,
+              style: numbers.copyWith(
+                fontWeight: FontWeight.w700,
+                fontFeatures: tabularFigures,
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}

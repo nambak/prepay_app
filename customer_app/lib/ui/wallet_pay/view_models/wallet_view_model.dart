@@ -9,9 +9,9 @@ class WalletViewModel extends LoadViewModel<Wallet> {
 
   Wallet? get wallet => data;
 
-  String? _expandedStoreId;
+  int? _expandedStoreId;
 
-  String? get expandedStoreId => _expandedStoreId;
+  int? get expandedStoreId => _expandedStoreId;
 
   @override
   Future<Wallet> fetch() async {
@@ -21,7 +21,7 @@ class WalletViewModel extends LoadViewModel<Wallet> {
     return wallet;
   }
 
-  void toggleDetail(String storeId) {
+  void toggleDetail(int storeId) {
     _expandedStoreId = _expandedStoreId == storeId ? null : storeId;
     notifyListeners();
   }

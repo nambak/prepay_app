@@ -10,7 +10,7 @@ Widget _card({required int visitCount, bool expanded = false}) => MaterialApp(
   home: Scaffold(
     body: StoreCard(
       StoreWallet(
-        id: '2',
+        id: 2,
         name: '하루카페2',
         kind: StoreKind.cafe,
         visitCount: visitCount,

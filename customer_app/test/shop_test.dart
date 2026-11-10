@@ -13,7 +13,7 @@ import 'package:prepay_app/ui/shop/view_models/store_view_model.dart';
 import 'package:prepay_app/ui/shop/widgets/shop_screen.dart';
 import 'package:prepay_app/ui/shop/widgets/store_screen.dart';
 
-const _sotreJson = {
+const _storesJson = {
   'stores': [
     {'id': 2, 'name': '하루카페2', 'kind': 'cafe', 'max_discount_rate': 20},
     {'id': 5, 'name': '아침베이커리', 'kind': 'bakery', 'max_discount_rate': null},
@@ -46,7 +46,7 @@ StoreRepository _repositoryReturning(Map<String, Object?> json) =>
 void main() {
   testWidgets('가게 목록은 할인율이 있는 가게에만 할인 배지를 보여 준다.', (tester) async {
     final viewModel = ShopViewModel(
-      storeRepository: _repositoryReturning(_sotreJson),
+      storeRepository: _repositoryReturning(_storesJson),
     )..load();
 
     await tester.pumpWidget(
@@ -65,9 +65,14 @@ void main() {
   });
 
   testWidgets('가게 상세는 주소와 충전 상품을 보여 주고, 없는 전화는 숨긴다', (tester) async {
+    // 시안과 같은 390x844 화면. 기본 800x600에서는 충전 상품이 아직 그려지지 않는다.
+    tester.view.physicalSize = const Size(390, 844);
+    tester.view.devicePixelRatio = 1;
+    addTearDown(tester.view.reset);
+
     final viewModel = StoreViewModel(
       storeRepository: _repositoryReturning(_storeJson),
-      storeId: '2',
+      storeId: 2,
     )..load();
 
     await tester.pumpWidget(
