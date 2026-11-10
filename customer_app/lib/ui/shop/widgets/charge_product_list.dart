@@ -23,17 +23,12 @@ class ChargeProductList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.fromLTRB(
-        AppSpace.gutter,
-        24,
-        AppSpace.gutter,
-        0,
-      ),
+      padding: EdgeInsets.fromLTRB(AppSpace.gutter, 24, AppSpace.gutter, 0),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         spacing: 12,
         children: [
-          const Text('충전 상품', style: AppText.section),
+          Text('충전 상품', style: AppText.section),
           if (products.isEmpty)
             Text(
               '아직 충전 상품이 없어요',
@@ -67,7 +62,7 @@ class _ChargeProductCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.all(18),
+      padding: EdgeInsets.all(18),
       decoration: BoxDecoration(
         color: AppColors.bgField,
         borderRadius: BorderRadius.circular(AppRadius.card),
@@ -84,10 +79,10 @@ class _ChargeProductCard extends StatelessWidget {
                   TextSpan(
                     children: [
                       TextSpan(text: formatNumber(product.amount)),
-                      const TextSpan(text: 'P', style: TextStyle(fontSize: 15)),
+                      TextSpan(text: 'P', style: TextStyle(fontSize: 15)),
                     ],
                   ),
-                  style: const TextStyle(
+                  style: TextStyle(
                     fontSize: 20,
                     fontWeight: FontWeight.w700,
                     letterSpacing: -0.4,
@@ -100,7 +95,7 @@ class _ChargeProductCard extends StatelessWidget {
                 ),
                 if (product.discountRate > 0)
                   Padding(
-                    padding: const EdgeInsets.only(top: 4),
+                    padding: EdgeInsets.only(top: 4),
                     child: DiscountBadge('${product.discountRate}% 할인'),
                   ),
               ],

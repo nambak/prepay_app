@@ -18,13 +18,13 @@ class ShopScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      bottomNavigationBar: const AppTabBar(current: AppTab.shop),
+      bottomNavigationBar: AppTabBar(current: AppTab.shop),
       body: SafeArea(
         bottom: false,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const Padding(
+            Padding(
               padding: EdgeInsets.fromLTRB(
                 AppSpace.gutter,
                 8,
@@ -47,7 +47,7 @@ class ShopScreen extends StatelessWidget {
                   if (stores == null) {
                     return viewModel.failed
                         ? LoadError('가게를 불러오지 못했어요', onRetry: viewModel.load)
-                        : const Center(child: CircularProgressIndicator());
+                        : Center(child: CircularProgressIndicator());
                   }
                   if (stores.isEmpty) {
                     return Center(
@@ -60,17 +60,17 @@ class ShopScreen extends StatelessWidget {
                     );
                   }
                   return ListView(
-                    padding: const EdgeInsets.only(top: 8, bottom: 24),
+                    padding: EdgeInsets.only(top: 8, bottom: 24),
                     children: [
                       AppCard(
-                        padding: const EdgeInsets.symmetric(
+                        padding: EdgeInsets.symmetric(
                           horizontal: AppSpace.gutter,
                         ),
                         child: Column(
                           children: [
                             for (final (index, store) in stores.indexed) ...[
                               if (index > 0)
-                                const Divider(
+                                Divider(
                                   height: 1,
                                   color: AppColors.borderInner,
                                 ),

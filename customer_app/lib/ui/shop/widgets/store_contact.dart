@@ -34,9 +34,9 @@ class _ContactRow extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: AppSpace.gutter),
+      padding: EdgeInsets.symmetric(horizontal: AppSpace.gutter),
       child: ConstrainedBox(
-        constraints: const BoxConstraints(minHeight: 48),
+        constraints: BoxConstraints(minHeight: 48),
         child: Row(
           spacing: 10,
           children: [
@@ -61,11 +61,11 @@ class _CopyButton extends StatelessWidget {
       onPressed: () {
         Clipboard.setData(ClipboardData(text: text));
         ScaffoldMessenger.of(context)
-            .showSnackBar(const SnackBar(content: Text('주소를 복사했어요')));
+            .showSnackBar(SnackBar(content: Text('주소를 복사했어요')));
       },
       style: TextButton.styleFrom(
-        minimumSize: const Size(0, 32),
-        padding: const EdgeInsets.symmetric(horizontal: 10),
+        minimumSize: Size(0, 32),
+        padding: EdgeInsets.symmetric(horizontal: 10),
         backgroundColor: AppColors.bgField,
         foregroundColor: AppColors.textPrimary,
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),

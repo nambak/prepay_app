@@ -14,7 +14,7 @@ class AuthRepository extends ChangeNotifier {
   static const _tokenKey = 'auth_token';
 
   final ApiClient _apiClient;
-  final _storage = const FlutterSecureStorage();
+  final _storage = FlutterSecureStorage();
 
   bool get isLoggedIn => _apiClient.token != null;
 

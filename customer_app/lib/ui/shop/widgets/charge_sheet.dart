@@ -27,7 +27,7 @@ class ChargeSheet extends StatelessWidget {
         return SafeArea(
           top: false,
           child: Padding(
-            padding: const EdgeInsets.fromLTRB(
+            padding: EdgeInsets.fromLTRB(
               AppSpace.gutter,
               0,
               AppSpace.gutter,
@@ -49,7 +49,7 @@ class ChargeSheet extends StatelessWidget {
                     IconButton(
                       onPressed: () => Navigator.pop(context),
                       tooltip: '닫기',
-                      icon: const SvgIcon(
+                      icon: SvgIcon(
                         AppIcons.close,
                         size: 22,
                         color: AppColors.textPrimary,
@@ -62,7 +62,7 @@ class ChargeSheet extends StatelessWidget {
                   child: ListView.separated(
                     shrinkWrap: true,
                     itemCount: order.store.chargeProducts.length,
-                    separatorBuilder: (_, _) => const SizedBox(height: 8),
+                    separatorBuilder: (_, _) => SizedBox(height: 8),
                     itemBuilder: (context, index) {
                       final product = order.store.chargeProducts[index];
                       return _ProductRow(
@@ -108,7 +108,7 @@ class _ProductRow extends StatelessWidget {
     final amount = '${formatNumber(product.amount)}P';
 
     return Container(
-      padding: const EdgeInsets.all(16),
+      padding: EdgeInsets.all(16),
       decoration: BoxDecoration(
         color: AppColors.bgField,
         borderRadius: BorderRadius.circular(AppRadius.card),
@@ -127,7 +127,7 @@ class _ProductRow extends StatelessWidget {
                     fontFeatures: tabularFigures,
                   ),
                 ),
-                const SizedBox(height: 2),
+                SizedBox(height: 2),
                 Text(
                   '${formatNumber(product.priceWon)}원 결제',
                   style: AppText.label.copyWith(
@@ -137,7 +137,7 @@ class _ProductRow extends StatelessWidget {
                 ),
                 if (product.discountRate > 0)
                   Padding(
-                    padding: const EdgeInsets.only(top: 8),
+                    padding: EdgeInsets.only(top: 8),
                     child: DiscountBadge('${product.discountRate}% 할인'),
                   ),
               ],
@@ -166,8 +166,8 @@ class _Summary extends StatelessWidget {
     final label = AppText.label.copyWith(color: AppColors.textSecondary);
 
     return Container(
-      padding: const EdgeInsets.only(top: 16),
-      decoration: const BoxDecoration(
+      padding: EdgeInsets.only(top: 16),
+      decoration: BoxDecoration(
         border: Border(top: BorderSide(color: AppColors.border)),
       ),
       child: Column(
@@ -193,7 +193,7 @@ class _Summary extends StatelessWidget {
                 _SavedBadge('${formatNumber(order.savedWon)}원 아껴요'),
               Text(
                 '${formatNumber(order.priceWon)}원',
-                style: const TextStyle(
+                style: TextStyle(
                   fontSize: 22,
                   fontWeight: FontWeight.w700,
                   letterSpacing: -0.4,
@@ -217,7 +217,7 @@ class _SavedBadge extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 7, vertical: 2),
+      padding: EdgeInsets.symmetric(horizontal: 7, vertical: 2),
       decoration: BoxDecoration(
         color: AppColors.successBg,
         borderRadius: BorderRadius.circular(AppRadius.badge),

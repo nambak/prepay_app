@@ -20,7 +20,7 @@ class LoadError extends StatelessWidget {
             message,
             style: AppText.body.copyWith(color: AppColors.textSecondary),
           ),
-          FilledButton(onPressed: onRetry, child: const Text('다시 불러오기')),
+          FilledButton(onPressed: onRetry, child: Text('다시 불러오기')),
         ],
       ),
     );

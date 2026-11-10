@@ -16,7 +16,7 @@ class WalletScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      bottomNavigationBar: const AppTabBar(current: AppTab.wallet),
+      bottomNavigationBar: AppTabBar(current: AppTab.wallet),
       body: SafeArea(
         bottom: false,
         child: ListenableBuilder(
@@ -26,19 +26,19 @@ class WalletScreen extends StatelessWidget {
             if (wallet == null) {
               return viewModel.failed
                   ? LoadError('포인트를 불러오지 못했어요.', onRetry: viewModel.load)
-                  : const Center(child: CircularProgressIndicator());
+                  : Center(child: CircularProgressIndicator());
             }
             return ListView(
-              padding: const EdgeInsets.only(bottom: 24),
+              padding: EdgeInsets.only(bottom: 24),
               children: [
-                const WalletHeader(),
-                const SizedBox(height: 8),
+                WalletHeader(),
+                SizedBox(height: 8),
                 BalanceCard(wallet),
-                const SizedBox(height: 24),
+                SizedBox(height: 24),
                 StoreTabs(count: wallet.stores.length),
                 // TODO: 가게 검색창
                 for (final store in wallet.stores) ...[
-                  const SizedBox(height: 12),
+                  SizedBox(height: 12),
                   StoreCard(
                     store,
                     expanded: viewModel.expandedStoreId == store.id,

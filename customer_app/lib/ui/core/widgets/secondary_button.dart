@@ -18,7 +18,7 @@ class SecondaryButton extends StatelessWidget {
     return FilledButton(
       onPressed: onPressed,
       style: FilledButton.styleFrom(
-        minimumSize: const Size.fromHeight(AppSize.button),
+        minimumSize: Size.fromHeight(AppSize.button),
         backgroundColor: AppColors.bgField,
         foregroundColor: AppColors.textPrimary,
         shape: RoundedRectangleBorder(

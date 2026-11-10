@@ -36,7 +36,7 @@ class QuantityStepper extends StatelessWidget {
             onPressed: quantity > 0 ? () => onChanged(quantity - 1) : null,
           ),
           ConstrainedBox(
-            constraints: const BoxConstraints(minWidth: 28),
+            constraints: BoxConstraints(minWidth: 28),
             child: Text(
               '$quantity',
               textAlign: TextAlign.center,
@@ -76,7 +76,7 @@ class _StepButton extends StatelessWidget {
       // 누를 수 없으면 회색
       color: AppColors.textPrimary,
       disabledColor: AppColors.iconMuted,
-      constraints: const BoxConstraints.tightFor(
+      constraints: BoxConstraints.tightFor(
         width: AppSize.touchTarget,
         height: AppSize.touchTarget,
       ),

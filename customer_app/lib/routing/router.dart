@@ -97,7 +97,7 @@ final router = GoRouter(
         ),
       ],
     ),
-    GoRoute(path: Routes.my, builder: (context, state) => const MyScreen()),
+    GoRoute(path: Routes.my, builder: (context, state) => MyScreen()),
     GoRoute(
       path: Routes.settings,
       builder: (context, state) =>

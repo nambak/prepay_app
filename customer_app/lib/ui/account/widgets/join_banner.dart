@@ -9,8 +9,8 @@ class JoinBanner extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.symmetric(horizontal: AppSpace.gutter),
-      padding: const EdgeInsets.fromLTRB(20, 16, 16, 16),
+      margin: EdgeInsets.symmetric(horizontal: AppSpace.gutter),
+      padding: EdgeInsets.fromLTRB(20, 16, 16, 16),
       decoration: BoxDecoration(
         color: AppColors.bgField,
         borderRadius: BorderRadius.circular(AppRadius.cardSm),
@@ -39,7 +39,7 @@ class JoinBanner extends StatelessWidget {
           FilledButton(
             onPressed: () {}, // TODO: 회원가입
             style: FilledButton.styleFrom(
-              minimumSize: const Size(0, AppSize.touchTarget),
+              minimumSize: Size(0, AppSize.touchTarget),
               backgroundColor: AppColors.surface,
               foregroundColor: AppColors.textPrimary,
               shape: RoundedRectangleBorder(

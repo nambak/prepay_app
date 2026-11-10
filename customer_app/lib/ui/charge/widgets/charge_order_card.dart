@@ -18,7 +18,7 @@ class ChargeOrderCard extends StatelessWidget {
     final store = order.store;
 
     return AppCard(
-      padding: const EdgeInsets.all(20),
+      padding: EdgeInsets.all(20),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
@@ -43,17 +43,16 @@ class ChargeOrderCard extends StatelessWidget {
               ),
             ],
           ),
-          const SizedBox(height: 20),
-          const Divider(height: 1, color: AppColors.borderInner),
-          const SizedBox(height: 16),
+          SizedBox(height: 20),
+          Divider(height: 1, color: AppColors.borderInner),
+          SizedBox(height: 16),
           Text(
             '충전 상품',
             style: AppText.body.copyWith(fontWeight: FontWeight.w700),
           ),
-          const SizedBox(height: 4),
+          SizedBox(height: 4),
           for (final (index, line) in order.lines.indexed) ...[
-            if (index > 0)
-              const Divider(height: 1, color: AppColors.borderInner),
+            if (index > 0) Divider(height: 1, color: AppColors.borderInner),
             _LineRow(line),
           ],
         ],
@@ -70,10 +69,10 @@ class _LineRow extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    const numbers = AppText.body;
+    final numbers = AppText.body;
 
     return ConstrainedBox(
-      constraints: const BoxConstraints(minHeight: 48),
+      constraints: BoxConstraints(minHeight: 48),
       child: Row(
         spacing: 8,
         children: [
@@ -86,7 +85,7 @@ class _LineRow extends StatelessWidget {
           if (line.product.discountRate > 0)
             DiscountBadge('${line.product.discountRate}% 할인'),
           ConstrainedBox(
-            constraints: const BoxConstraints(minWidth: 84),
+            constraints: BoxConstraints(minWidth: 84),
             child: Text(
               '${formatNumber(line.priceWon)}원',
               textAlign: TextAlign.right,

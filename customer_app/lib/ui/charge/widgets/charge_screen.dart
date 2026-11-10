@@ -32,18 +32,18 @@ class ChargeScreen extends StatelessWidget {
               backgroundColor: AppColors.bgPage,
               scrolledUnderElevation: 0,
               centerTitle: true,
-              title: const Text('포인트 충전', style: AppText.cardTitle),
+              title: Text('포인트 충전', style: AppText.cardTitle),
             ),
             body: Column(
               children: [
                 Expanded(
                   child: ListView(
-                    padding: const EdgeInsets.only(top: 8, bottom: 24),
+                    padding: EdgeInsets.only(top: 8, bottom: 24),
                     children: [
                       ChargeOrderCard(order),
-                      const SizedBox(height: 12),
+                      SizedBox(height: 12),
                       ChargeAmountCard(order),
-                      const SizedBox(height: 12),
+                      SizedBox(height: 12),
                       ChargeNotice(
                         agreed: viewModel.agreed,
                         onAgreeChanged: viewModel.agree,

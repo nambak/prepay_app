@@ -11,7 +11,7 @@ class WalletHeader extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.fromLTRB(AppSpace.gutter, 8, 8, 0),
+      padding: EdgeInsets.fromLTRB(AppSpace.gutter, 8, 8, 0),
       child: SizedBox(
         height: AppSize.appBar,
         child: Row(
@@ -19,7 +19,7 @@ class WalletHeader extends StatelessWidget {
           children: [
             Semantics(
               selected: true,
-              child: const Text('즐겨찾는 가게', style: AppText.title),
+              child: Text('즐겨찾는 가게', style: AppText.title),
             ),
             InkWell(
               onTap: () {}, // TODO: 그룹
@@ -28,11 +28,11 @@ class WalletHeader extends StatelessWidget {
                 style: AppText.title.copyWith(color: AppColors.iconMuted),
               ),
             ),
-            const Spacer(),
+            Spacer(),
             IconButton(
               onPressed: () {}, // TODO: QR
               tooltip: 'QR로 쓰기',
-              icon: const SvgIcon(AppIcons.qr, color: AppColors.textPrimary),
+              icon: SvgIcon(AppIcons.qr, color: AppColors.textPrimary),
             ),
           ],
         ),

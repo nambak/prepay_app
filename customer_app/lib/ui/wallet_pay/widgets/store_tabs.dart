@@ -10,8 +10,8 @@ class StoreTabs extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.symmetric(horizontal: AppSpace.gutter),
-      decoration: const BoxDecoration(
+      margin: EdgeInsets.symmetric(horizontal: AppSpace.gutter),
+      decoration: BoxDecoration(
         border: Border(bottom: BorderSide(color: AppColors.border)),
       ),
       child: Row(
@@ -22,7 +22,7 @@ class StoreTabs extends StatelessWidget {
             child: Container(
               height: 44,
               alignment: Alignment.center,
-              decoration: const BoxDecoration(
+              decoration: BoxDecoration(
                 border: Border(
                   bottom: BorderSide(color: AppColors.textPrimary, width: 2),
                 ),
@@ -30,10 +30,10 @@ class StoreTabs extends StatelessWidget {
               child: Text.rich(
                 TextSpan(
                   children: [
-                    const TextSpan(text: '이용 중인 가게 '),
+                    TextSpan(text: '이용 중인 가게 '),
                     TextSpan(
                       text: '$count',
-                      style: const TextStyle(
+                      style: TextStyle(
                         color: AppColors.textMuted,
                         fontWeight: FontWeight.w500,
                       ),

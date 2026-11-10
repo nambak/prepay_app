@@ -36,9 +36,9 @@ class _LoginScreenState extends State<LoginScreen> {
       backgroundColor: AppColors.surface,
       body: SafeArea(
         child: ListView(
-          padding: const EdgeInsets.only(bottom: 24),
+          padding: EdgeInsets.only(bottom: 24),
           children: [
-            const Padding(
+            Padding(
               padding: EdgeInsets.fromLTRB(
                 AppSpace.gutter,
                 8,
@@ -48,7 +48,7 @@ class _LoginScreenState extends State<LoginScreen> {
               child: Text('$appName에\n로그인해 주세요', style: AppText.title),
             ),
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: AppSpace.gutter),
+              padding: EdgeInsets.symmetric(horizontal: AppSpace.gutter),
               // 오류 문구와 버튼만 바뀌니, 이 부분만 다시 그린다.
               child: ListenableBuilder(
                 listenable: widget.viewModel,
@@ -64,12 +64,12 @@ class _LoginScreenState extends State<LoginScreen> {
                           controller: _email,
                           keyboardType: TextInputType.emailAddress,
                           textInputAction: TextInputAction.next,
-                          autofillHints: const [
+                          autofillHints: [
                             AutofillHints.username,
                             AutofillHints.email,
                           ],
                           autocorrect: false,
-                          decoration: const InputDecoration(
+                          decoration: InputDecoration(
                             hintText: 'hana@email.com',
                           ),
                         ),
@@ -80,7 +80,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           controller: _password,
                           obscureText: true,
                           textInputAction: TextInputAction.done,
-                          autofillHints: const [AutofillHints.password],
+                          autofillHints: [AutofillHints.password],
                           onSubmitted: (_) => _submit(),
                           decoration: InputDecoration(
                             hintText: '비밀번호를 입력해 주세요.',
@@ -89,7 +89,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         ),
                       ),
                       Padding(
-                        padding: const EdgeInsets.only(top: 8),
+                        padding: EdgeInsets.only(top: 8),
                         child: PrimaryButton(
                           label: '로그인',
                           onPressed: _submit,
@@ -101,10 +101,10 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
               ),
             ),
-            const _FindLinks(),
+            _FindLinks(),
             // TODO: SNS 로그인
-            const SizedBox(height: 24),
-            const JoinBanner(),
+            SizedBox(height: 24),
+            JoinBanner(),
           ],
         ),
       ),
@@ -119,7 +119,7 @@ class _FindLinks extends StatelessWidget {
   Widget build(BuildContext context) {
     final style = AppText.label.copyWith(color: AppColors.textSecondary);
     return Padding(
-      padding: const EdgeInsets.only(top: 8),
+      padding: EdgeInsets.only(top: 8),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [

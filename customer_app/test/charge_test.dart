@@ -45,7 +45,7 @@ http.Response _json(Object json, [int status = 200]) =>
 
 // 시안과 같은 390x844 화면
 void _usePhoneSize(WidgetTester tester) {
-  tester.view.physicalSize = const Size(390, 844);
+  tester.view.physicalSize = Size(390, 844);
   tester.view.devicePixelRatio = 1;
   addTearDown(tester.view.reset);
 }
@@ -88,7 +88,7 @@ void main() {
             ),
           ],
         ),
-        GoRoute(path: '/wallet', builder: (_, _) => const Text('내 가게')),
+        GoRoute(path: '/wallet', builder: (_, _) => Text('내 가게')),
       ],
     );
     addTearDown(router.dispose);

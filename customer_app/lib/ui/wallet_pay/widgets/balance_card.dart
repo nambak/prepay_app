@@ -22,7 +22,7 @@ class BalanceCard extends StatelessWidget {
     ];
 
     return AppCard(
-      padding: const EdgeInsets.fromLTRB(20, 24, 20, 12),
+      padding: EdgeInsets.fromLTRB(20, 24, 20, 12),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -35,7 +35,7 @@ class BalanceCard extends StatelessWidget {
               IconButton(
                 onPressed: () {}, // TODO: 포인트 종류 설명 시트
                 tooltip: '포인트 종류 설명 보기',
-                icon: const SvgIcon(
+                icon: SvgIcon(
                   AppIcons.info,
                   size: 18,
                   color: AppColors.iconMuted,
@@ -52,28 +52,28 @@ class BalanceCard extends StatelessWidget {
                 formatNumber(wallet.total),
                 style: AppText.balance.copyWith(fontFeatures: tabularFigures),
               ),
-              const Text('P', style: AppText.section),
+              Text('P', style: AppText.section),
             ],
           ),
-          const SizedBox(height: 6),
+          SizedBox(height: 6),
           Text.rich(
             TextSpan(
               children: [
-                const TextSpan(text: '즐겨찾는 가게에서 지금까지 '),
+                TextSpan(text: '즐겨찾는 가게에서 지금까지 '),
                 TextSpan(
                   text: '${formatNumber(wallet.savedWon)}원',
-                  style: const TextStyle(
+                  style: TextStyle(
                     fontWeight: FontWeight.w700,
                     color: AppColors.textPrimary,
                   ),
                 ),
-                const TextSpan(text: ' 아꼈어요'),
+                TextSpan(text: ' 아꼈어요'),
               ],
             ),
             style: AppText.secondary.copyWith(color: AppColors.textSecondary),
           ),
           Padding(
-            padding: const EdgeInsets.only(top: 20, bottom: 8),
+            padding: EdgeInsets.only(top: 20, bottom: 8),
             child: SizedBox(
               height: 8,
               child: Row(
@@ -101,7 +101,7 @@ class BalanceCard extends StatelessWidget {
                 height: 48,
                 decoration: i == 0
                     ? null
-                    : const BoxDecoration(
+                    : BoxDecoration(
                         border: Border(
                           top: BorderSide(color: AppColors.borderInner),
                         ),
@@ -113,12 +113,12 @@ class BalanceCard extends StatelessWidget {
                     Expanded(child: Text(type.label)),
                     Text(
                       formatNumber(amount),
-                      style: const TextStyle(
+                      style: TextStyle(
                         fontWeight: FontWeight.w700,
                         fontFeatures: tabularFigures,
                       ),
                     ),
-                    const SvgIcon(
+                    SvgIcon(
                       AppIcons.chevronRight,
                       size: 18,
                       color: AppColors.iconMuted,

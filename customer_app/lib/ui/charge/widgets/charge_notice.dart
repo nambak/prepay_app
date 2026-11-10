@@ -30,7 +30,7 @@ class ChargeNotice extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
         AppCard(
-          padding: const EdgeInsets.all(20),
+          padding: EdgeInsets.all(20),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             spacing: 6,
@@ -39,7 +39,7 @@ class ChargeNotice extends StatelessWidget {
                 '포인트 이용 안내',
                 style: AppText.body.copyWith(fontWeight: FontWeight.w700),
               ),
-              const SizedBox(height: 4),
+              SizedBox(height: 4),
               for (final notice in _notices)
                 Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -53,7 +53,7 @@ class ChargeNotice extends StatelessWidget {
           ),
         ),
         Padding(
-          padding: const EdgeInsets.symmetric(horizontal: AppSpace.gutter),
+          padding: EdgeInsets.symmetric(horizontal: AppSpace.gutter),
           child: CheckboxListTile(
             value: agreed,
             onChanged: (value) => onAgreeChanged(value ?? false),

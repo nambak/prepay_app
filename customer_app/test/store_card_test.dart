@@ -15,7 +15,7 @@ Widget _card({required int visitCount, bool expanded = false}) => MaterialApp(
         kind: StoreKind.cafe,
         visitCount: visitCount,
         savedWon: 2500,
-        items: const [
+        items: [
           PointItem(PointType.charge, 20000),
           PointItem(PointType.service, 10000, daysLeft: 100),
         ],
