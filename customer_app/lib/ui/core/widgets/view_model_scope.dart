@@ -21,14 +21,16 @@ class ViewModelScope<T extends ViewModel> extends StatefulWidget {
 
 class _ViewModelScopeState<T extends ViewModel>
     extends State<ViewModelScope<T>> {
-  late final T _viewModel = widget.create();
+  // 처음 그릴 때 만든다. 만들다 실패하면 null로 남아서, dispose에서 다시 만들지 않는다.
+  T? _viewModel;
 
   @override
   void dispose() {
-    _viewModel.dispose();
+    _viewModel?.dispose();
     super.dispose();
   }
 
   @override
-  Widget build(BuildContext context) => widget.builder(_viewModel);
+  Widget build(BuildContext context) =>
+      widget.builder(_viewModel ??= widget.create());
 }

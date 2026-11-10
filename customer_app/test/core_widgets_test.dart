@@ -95,4 +95,22 @@ void main() {
     await tester.pump();
     expect(tester.takeException(), isNull);
   });
+
+  testWidgets('view model을 만들다 실패하면 화면을 닫을 때 다시 만들지 않는다', (tester) async {
+    var created = 0;
+    await tester.pumpWidget(
+      ViewModelScope<_TestViewModel>(
+        create: () {
+          created++;
+          throw StateError('만들기 실패');
+        },
+        builder: (_) => SizedBox(),
+      ),
+    );
+    expect(tester.takeException(), isStateError);
+
+    await tester.pumpWidget(SizedBox());
+    expect(tester.takeException(), isNull);
+    expect(created, 1);
+  });
 }
