@@ -28,7 +28,12 @@ class WalletController extends Controller
             ->pluck('saved_won', 'store_id')
             ->map(fn ($savedWon): int => (int) $savedWon);
 
-        $lots = $user->pointLots()->usable()->with('store')->orderBy('expires_on')->get();
+        $lots = $user->pointLots()
+            ->usable()
+            ->with('store')
+            ->orderBy('expires_on')
+            ->orderBy('id')
+            ->get();
 
         $stores = $lots->groupBy('store_id')
             ->sortByDesc(fn (Collection $storeLots) => $storeLots->max('created_at'))
@@ -55,10 +60,12 @@ class WalletController extends Controller
             ->values()
             ->all();
 
+        $balanceOf = fn (PointType $type): int => $lots->where('type', $type)->sum('balance');
+
         return [
-            'charge' => $lots->where('type', PointType::Charge)->sum(fn (PointLot $lot): int => $lot->balance),
+            'charge' => $balanceOf(PointType::Charge),
             'shared' => 0, // 공유 기능을 만들 때 채운다.
-            'service' => $lots->where('type', PointType::Service)->sum(fn (PointLot $lot): int => $lot->balance),
+            'service' => $balanceOf(PointType::Service),
             'saved_won' => $savedWonByStore->sum(fn (int $savedWon): int => $savedWon),
             'stores' => $stores,
         ];

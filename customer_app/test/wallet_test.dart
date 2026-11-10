@@ -23,7 +23,7 @@ const _walletJson = {
       'visit_count': 12,
       'saved_won': 8400,
       'items': [
-        {'type': 'charge', 'amount': 150000, 'days_left': 365},
+        {'type': 'charge', 'amount': 150000, 'days_left': null},
         {'type': 'shared', 'amount': 100000, 'days_left': 100},
         {'type': 'service', 'amount': 30000, 'days_left': 365},
       ],
@@ -35,7 +35,7 @@ const _walletJson = {
       'visit_count': 3,
       'saved_won': 2500,
       'items': [
-        {'type': 'charge', 'amount': 100000, 'days_left': 365},
+        {'type': 'charge', 'amount': 100000, 'days_left': null},
       ],
     },
   ],

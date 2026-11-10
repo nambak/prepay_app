@@ -71,7 +71,8 @@ class PointDetail extends StatelessWidget {
                           ),
                         ),
                       ),
-                      _Badge('D-${item.daysLeft}'),
+                      if (item.daysLeft case final daysLeft?)
+                        _Badge('D-$daysLeft'),
                       SizedBox(
                         width: 96,
                         child: Text(
