@@ -28,7 +28,7 @@ class ChargeBottomBar extends StatelessWidget {
       child: SafeArea(
         top: false,
         child: Padding(
-          padding: const EdgeInsets.fromLTRB(
+          padding: EdgeInsets.fromLTRB(
             AppSpace.gutter,
             12,
             AppSpace.gutter,

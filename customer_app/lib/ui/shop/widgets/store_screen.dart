@@ -56,7 +56,7 @@ class StoreScreen extends StatelessWidget {
           if (store == null) {
             return viewModel.failed
                 ? LoadError('가게를 불러오지 못했어요.', onRetry: viewModel.load)
-                : const Center(child: CircularProgressIndicator());
+                : Center(child: CircularProgressIndicator());
           }
           return ListView(
             padding: EdgeInsets.only(
@@ -66,7 +66,7 @@ class StoreScreen extends StatelessWidget {
               StoreHero(store.kind),
               StoreInfo(store),
               StoreContact(address: store.address, phone: store.phone),
-              const SizedBox(height: 12),
+              SizedBox(height: 12),
               Container(height: 8, color: AppColors.bgPage),
               ChargeProductList(
                 store.chargeProducts,
@@ -81,17 +81,17 @@ class StoreScreen extends StatelessWidget {
         listenable: viewModel,
         builder: (context, _) {
           if (viewModel.store?.chargeProducts.isNotEmpty != true) {
-            return const SizedBox.shrink();
+            return SizedBox.shrink();
           }
           final priceWon = viewModel.order.priceWon;
           return DecoratedBox(
-            decoration: const BoxDecoration(
+            decoration: BoxDecoration(
               color: AppColors.surface,
               border: Border(top: BorderSide(color: AppColors.border)),
             ),
             child: SafeArea(
               child: Padding(
-                padding: const EdgeInsets.fromLTRB(
+                padding: EdgeInsets.fromLTRB(
                   AppSpace.gutter,
                   12,
                   AppSpace.gutter,

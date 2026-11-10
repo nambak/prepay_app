@@ -50,7 +50,7 @@ void main() {
   });
 
   testWidgets('390x844 화면에 넘치지 않고, 틀리면 비밀번호 아래에 안내가 나온다', (tester) async {
-    tester.view.physicalSize = const Size(390, 844);
+    tester.view.physicalSize = Size(390, 844);
     tester.view.devicePixelRatio = 1;
     addTearDown(tester.view.reset);
 

@@ -28,11 +28,11 @@ class AppTabBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      decoration: const BoxDecoration(
+      decoration: BoxDecoration(
         color: AppColors.surface,
         border: Border(top: BorderSide(color: AppColors.border)),
       ),
-      padding: const EdgeInsets.fromLTRB(8, 6, 8, 0),
+      padding: EdgeInsets.fromLTRB(8, 6, 8, 0),
       child: SafeArea(
         top: false,
         child: SizedBox(

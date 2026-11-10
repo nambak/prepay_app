@@ -77,9 +77,7 @@ void main() {
     final (viewModel, _) = await _setUp(() => deleting.future);
 
     // 취소하면 돌아갈 화면이 있어야 해서, 빈 화면 위에 탈퇴 화면을 올린다.
-    await tester.pumpWidget(
-      MaterialApp(theme: appTheme, home: const SizedBox()),
-    );
+    await tester.pumpWidget(MaterialApp(theme: appTheme, home: SizedBox()));
     final navigator = tester.state<NavigatorState>(find.byType(Navigator));
     navigator.push(
       MaterialPageRoute<void>(

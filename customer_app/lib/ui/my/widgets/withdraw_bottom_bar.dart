@@ -25,12 +25,7 @@ class WithdrawBottomBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.fromLTRB(
-        AppSpace.gutter,
-        0,
-        AppSpace.gutter,
-        12,
-      ),
+      padding: EdgeInsets.fromLTRB(AppSpace.gutter, 0, AppSpace.gutter, 12),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -50,7 +45,7 @@ class WithdrawBottomBar extends StatelessWidget {
               error,
               style: AppText.secondary.copyWith(color: AppColors.danger),
             ),
-          const SizedBox(height: 12),
+          SizedBox(height: 12),
           Row(
             spacing: 8,
             children: [

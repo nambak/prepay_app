@@ -22,7 +22,7 @@ class RemainingPointsCard extends StatelessWidget {
     final wallet = this.wallet;
 
     return Container(
-      padding: const EdgeInsets.fromLTRB(16, 20, 16, 4),
+      padding: EdgeInsets.fromLTRB(16, 20, 16, 4),
       decoration: BoxDecoration(
         color: AppColors.bgField,
         borderRadius: BorderRadius.circular(AppRadius.card),
@@ -47,10 +47,10 @@ class RemainingPointsCard extends StatelessWidget {
                         fontFeatures: tabularFigures,
                       ),
                     ),
-                    const Text('P', style: AppText.section),
+                    Text('P', style: AppText.section),
                   ],
                 ),
-                const SizedBox(height: 8),
+                SizedBox(height: 8),
                 _PointRow(PointType.charge, wallet.charge),
                 _PointRow(PointType.shared, wallet.shared, divided: true),
                 _PointRow(PointType.service, wallet.service, divided: true),
@@ -73,7 +73,7 @@ class _PointRow extends StatelessWidget {
     return Container(
       height: AppSize.touchTarget,
       decoration: divided
-          ? const BoxDecoration(
+          ? BoxDecoration(
               border: Border(top: BorderSide(color: AppColors.border)),
             )
           : null,
@@ -118,10 +118,10 @@ class _Loading extends StatelessWidget {
                       color: AppColors.textSecondary,
                     ),
                   ),
-                  TextButton(onPressed: onRetry, child: const Text('다시 불러오기')),
+                  TextButton(onPressed: onRetry, child: Text('다시 불러오기')),
                 ],
               )
-            : const CircularProgressIndicator(),
+            : CircularProgressIndicator(),
       ),
     );
   }

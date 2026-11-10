@@ -66,7 +66,7 @@ void main() {
 
   testWidgets('가게 상세는 주소와 충전 상품을 보여 주고, 없는 전화는 숨긴다', (tester) async {
     // 시안과 같은 390x844 화면. 기본 800x600에서는 충전 상품이 아직 그려지지 않는다.
-    tester.view.physicalSize = const Size(390, 844);
+    tester.view.physicalSize = Size(390, 844);
     tester.view.devicePixelRatio = 1;
     addTearDown(tester.view.reset);
 

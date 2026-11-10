@@ -48,7 +48,7 @@ class StoreRow extends StatelessWidget {
                   ),
                   if (rate != null && rate > 0)
                     Padding(
-                      padding: const EdgeInsets.only(top: 3),
+                      padding: EdgeInsets.only(top: 3),
                       child: DiscountBadge('최대 $rate%'),
                     ),
                 ],

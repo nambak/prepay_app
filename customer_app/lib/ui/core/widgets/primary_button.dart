@@ -22,7 +22,7 @@ class PrimaryButton extends StatelessWidget {
     return FilledButton(
       onPressed: loading ? null : onPressed,
       style: FilledButton.styleFrom(
-        minimumSize: const Size.fromHeight(AppSize.button),
+        minimumSize: Size.fromHeight(AppSize.button),
         backgroundColor: AppColors.buttonRed,
         foregroundColor: AppColors.surface,
         // 누를 수 없는 상태: 회색 바탕, 회색 글자.
@@ -34,7 +34,7 @@ class PrimaryButton extends StatelessWidget {
       ),
       // 글자 스타일은 textStyle 대신 Text에 넣는다.(textStyle은 Pretendard 정을 덮어쓴다)
       child: loading
-          ? const SizedBox.square(
+          ? SizedBox.square(
               dimension: 22,
               child: CircularProgressIndicator(
                 strokeWidth: 2.5,

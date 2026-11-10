@@ -26,19 +26,17 @@ class WithdrawScreen extends StatelessWidget {
             backgroundColor: AppColors.surface,
             scrolledUnderElevation: 0,
             centerTitle: true,
-            title: const Text('회원 탈퇴', style: AppText.cardTitle),
+            title: Text('회원 탈퇴', style: AppText.cardTitle),
           ),
           body: SafeArea(
             child: Column(
               children: [
                 Expanded(
                   child: ListView(
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: AppSpace.gutter,
-                    ),
+                    padding: EdgeInsets.symmetric(horizontal: AppSpace.gutter),
                     children: [
                       Padding(
-                        padding: const EdgeInsets.only(top: 8, bottom: 24),
+                        padding: EdgeInsets.only(top: 8, bottom: 24),
                         child: Text(
                           '탈퇴하면 남은 포인트가\n모두 사라져요',
                           style: AppText.title.copyWith(height: 1.4),
@@ -49,8 +47,8 @@ class WithdrawScreen extends StatelessWidget {
                         failed: viewModel.failed,
                         onRetry: viewModel.load,
                       ),
-                      const SizedBox(height: 16),
-                      const WithdrawNotice(),
+                      SizedBox(height: 16),
+                      WithdrawNotice(),
                     ],
                   ),
                 ),

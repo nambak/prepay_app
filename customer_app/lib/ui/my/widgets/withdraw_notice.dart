@@ -30,10 +30,10 @@ class WithdrawNotice extends StatelessWidget {
           '탈퇴하기 전에 환불을 신청해 주세요',
           style: AppText.secondary.copyWith(color: AppColors.textMuted),
         ),
-        const SizedBox(height: 24),
+        SizedBox(height: 24),
         for (final notice in _notices)
           Padding(
-            padding: const EdgeInsets.only(bottom: 6),
+            padding: EdgeInsets.only(bottom: 6),
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               spacing: 8,

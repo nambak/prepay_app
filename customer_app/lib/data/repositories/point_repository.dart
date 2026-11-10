@@ -40,7 +40,7 @@ Wallet _walletFromJson(JsonMap json) => Wallet(
 );
 
 StoreWallet _storeFromJson(JsonMap json) => StoreWallet(
-  id: json['id'],
+  id: json['id'] as int,
   // 서버는 숫자, 앱은 문자열
   name: json['name'] as String,
   // 앱이 모르는 업종이 오면 일반 가게로 보여줌

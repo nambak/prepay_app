@@ -19,7 +19,7 @@ class ComingSoonScreen extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Padding(
-              padding: const EdgeInsets.fromLTRB(
+              padding: EdgeInsets.fromLTRB(
                 AppSpace.gutter,
                 8,
                 AppSpace.gutter,

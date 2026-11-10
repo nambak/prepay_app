@@ -26,7 +26,7 @@ class ChargeDoneScreen extends StatelessWidget {
           children: [
             Expanded(
               child: ListView(
-                padding: const EdgeInsets.fromLTRB(
+                padding: EdgeInsets.fromLTRB(
                   AppSpace.gutter,
                   72,
                   AppSpace.gutter,
@@ -38,11 +38,11 @@ class ChargeDoneScreen extends StatelessWidget {
                       width: 72,
                       height: 72,
                       alignment: Alignment.center,
-                      decoration: const BoxDecoration(
+                      decoration: BoxDecoration(
                         color: AppColors.successBg,
                         shape: BoxShape.circle,
                       ),
-                      child: const SvgIcon(
+                      child: SvgIcon(
                         AppIcons.check,
                         size: 34,
                         color: AppColors.successText,
@@ -50,7 +50,7 @@ class ChargeDoneScreen extends StatelessWidget {
                       ),
                     ),
                   ),
-                  const SizedBox(height: 24),
+                  SizedBox(height: 24),
                   Text(
                     '$amount\n충전이 끝났어요',
                     textAlign: TextAlign.center,
@@ -59,7 +59,7 @@ class ChargeDoneScreen extends StatelessWidget {
                       fontFeatures: tabularFigures,
                     ),
                   ),
-                  const SizedBox(height: 8),
+                  SizedBox(height: 8),
                   Text(
                     receipt.storeName,
                     textAlign: TextAlign.center,
@@ -67,9 +67,9 @@ class ChargeDoneScreen extends StatelessWidget {
                       color: AppColors.textSecondary,
                     ),
                   ),
-                  const SizedBox(height: 36),
+                  SizedBox(height: 36),
                   Container(
-                    padding: const EdgeInsets.all(20),
+                    padding: EdgeInsets.all(20),
                     decoration: BoxDecoration(
                       color: AppColors.bgField,
                       borderRadius: BorderRadius.circular(AppRadius.card),
@@ -91,7 +91,7 @@ class ChargeDoneScreen extends StatelessWidget {
               ),
             ),
             Padding(
-              padding: const EdgeInsets.fromLTRB(
+              padding: EdgeInsets.fromLTRB(
                 AppSpace.gutter,
                 12,
                 AppSpace.gutter,

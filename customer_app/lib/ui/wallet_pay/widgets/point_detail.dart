@@ -23,7 +23,7 @@ class PointDetail extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      decoration: const BoxDecoration(
+      decoration: BoxDecoration(
         border: Border(top: BorderSide(color: AppColors.borderInner)),
       ),
       child: Column(
@@ -37,7 +37,7 @@ class PointDetail extends StatelessWidget {
                 height: 48,
                 child: Row(
                   children: [
-                    const Expanded(
+                    Expanded(
                       child: Text(
                         '포인트 상세',
                         style: TextStyle(fontWeight: FontWeight.w700),
@@ -102,7 +102,7 @@ class _Badge extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
+      padding: EdgeInsets.symmetric(horizontal: 6, vertical: 2),
       decoration: BoxDecoration(
         color: AppColors.bgField,
         borderRadius: BorderRadius.circular(AppRadius.badge),

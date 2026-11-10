@@ -26,7 +26,7 @@ class StoreCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AppCard(
-      padding: const EdgeInsets.all(20),
+      padding: EdgeInsets.all(20),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         spacing: 16,
@@ -66,9 +66,9 @@ class StoreCard extends StatelessWidget {
                 tooltip: '${store.name}에 전화 걸기',
                 style: IconButton.styleFrom(
                   backgroundColor: AppColors.bgField,
-                  fixedSize: const Size.square(AppSize.touchTarget),
+                  fixedSize: Size.square(AppSize.touchTarget),
                 ),
-                icon: const SvgIcon(
+                icon: SvgIcon(
                   AppIcons.phone,
                   size: 20,
                   color: AppColors.textPrimary,
@@ -90,10 +90,10 @@ class StoreCard extends StatelessWidget {
                 TextSpan(
                   children: [
                     TextSpan(text: formatNumber(store.total)),
-                    const TextSpan(text: 'P', style: TextStyle(fontSize: 15)),
+                    TextSpan(text: 'P', style: TextStyle(fontSize: 15)),
                   ],
                 ),
-                style: const TextStyle(
+                style: TextStyle(
                   fontSize: 22,
                   fontWeight: FontWeight.w700,
                   letterSpacing: -0.4,
@@ -103,7 +103,7 @@ class StoreCard extends StatelessWidget {
             ],
           ),
           // TODO: 쓰기 05-03, 충전 04-05, 공유 06-01 화면을 만들면 연결
-          const Row(
+          Row(
             spacing: 8,
             children: [
               Expanded(flex: 3, child: _CardButton('쓰기', primary: true)),
@@ -129,7 +129,7 @@ class _CardButton extends StatelessWidget {
     return FilledButton(
       onPressed: () {},
       style: FilledButton.styleFrom(
-        minimumSize: const Size.fromHeight(AppSize.buttonSm),
+        minimumSize: Size.fromHeight(AppSize.buttonSm),
         backgroundColor: primary ? AppColors.buttonRed : AppColors.bgField,
         foregroundColor: primary ? AppColors.surface : AppColors.textPrimary,
         shape: RoundedRectangleBorder(

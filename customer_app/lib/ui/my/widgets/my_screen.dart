@@ -15,23 +15,23 @@ class MyScreen extends StatelessWidget {
     void openSettings() => context.push(Routes.settings);
 
     return Scaffold(
-      bottomNavigationBar: const AppTabBar(current: AppTab.my),
+      bottomNavigationBar: AppTabBar(current: AppTab.my),
       body: SafeArea(
         bottom: false,
         child: ListView(
-          padding: const EdgeInsets.only(bottom: 24),
+          padding: EdgeInsets.only(bottom: 24),
           children: [
             Padding(
-              padding: const EdgeInsets.fromLTRB(AppSpace.gutter, 8, 8, 0),
+              padding: EdgeInsets.fromLTRB(AppSpace.gutter, 8, 8, 0),
               child: SizedBox(
                 height: AppSize.appBar,
                 child: Row(
                   children: [
-                    const Expanded(child: Text('내 정보', style: AppText.title)),
+                    Expanded(child: Text('내 정보', style: AppText.title)),
                     IconButton(
                       onPressed: openSettings,
                       tooltip: '환경설정',
-                      icon: const SvgIcon(
+                      icon: SvgIcon(
                         AppIcons.settings,
                         color: AppColors.textPrimary,
                       ),
@@ -41,7 +41,7 @@ class MyScreen extends StatelessWidget {
               ),
             ),
             Padding(
-              padding: const EdgeInsets.fromLTRB(
+              padding: EdgeInsets.fromLTRB(
                 AppSpace.gutter,
                 20,
                 AppSpace.gutter,
@@ -60,12 +60,12 @@ class MyScreen extends StatelessWidget {
             ),
             AppCard(
               radius: AppRadius.card,
-              padding: const EdgeInsets.symmetric(vertical: 4),
+              padding: EdgeInsets.symmetric(vertical: 4),
               child: Semantics(
                 button: true,
                 child: InkWell(
                   onTap: openSettings,
-                  child: const SizedBox(
+                  child: SizedBox(
                     height: AppSize.button,
                     child: Padding(
                       padding: EdgeInsets.symmetric(

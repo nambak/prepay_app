@@ -13,7 +13,7 @@ class ChargeAmountCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AppCard(
-      padding: const EdgeInsets.all(20),
+      padding: EdgeInsets.all(20),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         spacing: 12,
@@ -25,9 +25,9 @@ class ChargeAmountCard extends StatelessWidget {
           _AmountRow('충전 포인트', '${formatNumber(order.amount)}P'),
           _AmountRow('상품 금액', '${formatNumber(order.listPriceWon)}원'),
           _AmountRow('할인 금액', '−${formatNumber(order.savedWon)}원'),
-          const SizedBox(height: 4),
-          const Divider(height: 1, color: AppColors.borderInner),
-          const SizedBox(height: 4),
+          SizedBox(height: 4),
+          Divider(height: 1, color: AppColors.borderInner),
+          SizedBox(height: 4),
           Row(
             children: [
               Expanded(

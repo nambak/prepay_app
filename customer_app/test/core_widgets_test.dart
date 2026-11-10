@@ -14,7 +14,7 @@ Widget _app(Widget child) => MaterialApp(
 void main() {
   testWidgets('입력창에 닿으면 라벨도 함께 읽는다', (tester) async {
     await tester.pumpWidget(
-      _app(const LabeledField(label: '이메일 아이디', child: TextField())),
+      _app(LabeledField(label: '이메일 아이디', child: TextField())),
     );
 
     expect(tester.getSemantics(find.byType(TextField)).label, '이메일 아이디');
@@ -45,7 +45,7 @@ void main() {
             builder: (_) => Scaffold(
               body: TextButton(
                 onPressed: () => context.push('/next'),
-                child: const Text('열기'),
+                child: Text('열기'),
               ),
             ),
           ),
@@ -53,10 +53,7 @@ void main() {
         GoRoute(
           path: '/next',
           builder: (context, state) => Scaffold(
-            body: TextButton(
-              onPressed: () => context.pop(),
-              child: const Text('닫기'),
-            ),
+            body: TextButton(onPressed: () => context.pop(), child: Text('닫기')),
           ),
         ),
       ],

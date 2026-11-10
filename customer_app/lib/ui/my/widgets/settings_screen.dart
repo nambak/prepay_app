@@ -19,10 +19,10 @@ class SettingsScreen extends StatelessWidget {
         backgroundColor: AppColors.bgPage,
         scrolledUnderElevation: 0,
         centerTitle: true,
-        title: const Text('환경설정', style: AppText.cardTitle),
+        title: Text('환경설정', style: AppText.cardTitle),
       ),
       body: ListView(
-        padding: const EdgeInsets.only(top: 12, bottom: 24),
+        padding: EdgeInsets.only(top: 12, bottom: 24),
         children: [
           AppCard(
             radius: AppRadius.card,
@@ -34,9 +34,7 @@ class SettingsScreen extends StatelessWidget {
                 child: SizedBox(
                   height: AppSize.button,
                   child: Padding(
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: AppSpace.gutter,
-                    ),
+                    padding: EdgeInsets.symmetric(horizontal: AppSpace.gutter),
                     child: Align(
                       alignment: Alignment.centerLeft,
                       child: Text(
@@ -53,7 +51,7 @@ class SettingsScreen extends StatelessWidget {
             ),
           ),
           Padding(
-            padding: const EdgeInsets.fromLTRB(
+            padding: EdgeInsets.fromLTRB(
               AppSpace.gutter,
               12,
               AppSpace.gutter,
@@ -64,7 +62,7 @@ class SettingsScreen extends StatelessWidget {
               child: TextButton(
                 onPressed: () => context.push(Routes.withdraw),
                 style: TextButton.styleFrom(
-                  minimumSize: const Size(0, AppSize.touchTarget),
+                  minimumSize: Size(0, AppSize.touchTarget),
                   foregroundColor: AppColors.textMuted,
                 ),
                 child: Text(

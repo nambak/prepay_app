@@ -15,12 +15,7 @@ class StoreInfo extends StatelessWidget {
     final rate = store.maxDiscountRate;
 
     return Padding(
-      padding: const EdgeInsets.fromLTRB(
-        AppSpace.gutter,
-        20,
-        AppSpace.gutter,
-        8,
-      ),
+      padding: EdgeInsets.fromLTRB(AppSpace.gutter, 20, AppSpace.gutter, 8),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         spacing: 6,
@@ -44,11 +39,11 @@ class _DiscountBox extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    const discount = TextStyle(color: AppColors.discountText);
+    final discount = TextStyle(color: AppColors.discountText);
 
     return Container(
-      margin: const EdgeInsets.only(top: 6),
-      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
+      margin: EdgeInsets.only(top: 6),
+      padding: EdgeInsets.symmetric(horizontal: 16, vertical: 14),
       decoration: BoxDecoration(
         color: AppColors.discountBg,
         borderRadius: BorderRadius.circular(AppRadius.cardSm),
@@ -73,7 +68,7 @@ class _DiscountBox extends StatelessWidget {
               ],
             ),
           ),
-          const SvgIcon(
+          SvgIcon(
             AppIcons.coin,
             size: 28,
             color: AppColors.discountText,

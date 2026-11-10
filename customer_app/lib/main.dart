@@ -14,8 +14,8 @@ Future<void> main() async {
       theme: appTheme,
       routerConfig: router,
       // 뒤로 버튼 툴팁처럼 Flutter가 넣는 문구도 한국어로 보여 준다(스크린 리더가 'Back' 대신 '뒤로'로 읽음)
-      locale: const Locale('ko'),
-      supportedLocales: const [Locale('ko')],
+      locale: Locale('ko'),
+      supportedLocales: [Locale('ko')],
       localizationsDelegates: GlobalMaterialLocalizations.delegates,
     ),
   );
