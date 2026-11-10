@@ -37,7 +37,7 @@ class WithdrawBottomBar extends StatelessWidget {
             activeColor: AppColors.textPrimary,
             title: Text(
               '남은 포인트가 사라지는 것을 확인했고, 탈퇴에 동의해요',
-              style: AppText.body.copyWith(fontWeight: FontWeight.w700),
+              style: AppText.bodyBold,
             ),
           ),
           if (error case final error?)

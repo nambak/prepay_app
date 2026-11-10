@@ -178,10 +178,7 @@ class _Summary extends StatelessWidget {
               Expanded(child: Text('충전 포인트', style: label)),
               Text(
                 '${formatNumber(order.amount)}P',
-                style: AppText.body.copyWith(
-                  fontWeight: FontWeight.w700,
-                  fontFeatures: tabularFigures,
-                ),
+                style: AppText.bodyBold.copyWith(fontFeatures: tabularFigures),
               ),
             ],
           ),

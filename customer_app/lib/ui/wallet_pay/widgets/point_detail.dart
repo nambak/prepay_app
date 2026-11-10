@@ -78,8 +78,7 @@ class PointDetail extends StatelessWidget {
                         child: Text(
                           formatNumber(item.amount),
                           textAlign: TextAlign.right,
-                          style: AppText.label.copyWith(
-                            fontWeight: FontWeight.w500,
+                          style: AppText.labelMedium.copyWith(
                             fontFeatures: tabularFigures,
                           ),
                         ),

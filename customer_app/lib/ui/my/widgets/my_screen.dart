@@ -51,8 +51,7 @@ class MyScreen extends StatelessWidget {
                 header: true,
                 child: Text(
                   '계정',
-                  style: AppText.secondary.copyWith(
-                    fontWeight: FontWeight.w500,
+                  style: AppText.secondaryMedium.copyWith(
                     color: AppColors.textMuted,
                   ),
                 ),

@@ -57,9 +57,7 @@ class _DiscountBox extends StatelessWidget {
               children: [
                 Text(
                   '충전하면 최대 $rate% 할인',
-                  style: AppText.input
-                      .merge(discount)
-                      .copyWith(fontWeight: FontWeight.w700),
+                  style: AppText.inputBold.merge(discount),
                 ),
                 Text(
                   '충전한 포인트로 이 가게에서 바로 결제해요',

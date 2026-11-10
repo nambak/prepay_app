@@ -22,10 +22,7 @@ class WithdrawNotice extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         // TODO: 환불 신청 화면이 생기면 오른쪽에 '환불 신청' 버튼을 단다.
-        Text(
-          '충전포인트는 환불받을 수 있어요',
-          style: AppText.body.copyWith(fontWeight: FontWeight.w700),
-        ),
+        Text('충전포인트는 환불받을 수 있어요', style: AppText.bodyBold),
         Text(
           '탈퇴하기 전에 환불을 신청해 주세요',
           style: AppText.secondary.copyWith(color: AppColors.textMuted),

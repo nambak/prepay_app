@@ -139,9 +139,7 @@ class _CardButton extends StatelessWidget {
       // 글자 스타일은 textStyle 대신 Text 에 줘요. (textStyle 은 Pretendard 지정을 덮어써요)
       child: Text(
         label,
-        style: primary
-            ? AppText.input.copyWith(fontWeight: FontWeight.w700)
-            : AppText.body.copyWith(fontWeight: FontWeight.w500),
+        style: primary ? AppText.inputBold : AppText.bodyMedium,
       ),
     );
   }

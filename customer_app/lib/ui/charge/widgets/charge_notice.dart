@@ -35,10 +35,7 @@ class ChargeNotice extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             spacing: 6,
             children: [
-              Text(
-                '포인트 이용 안내',
-                style: AppText.body.copyWith(fontWeight: FontWeight.w700),
-              ),
+              Text('포인트 이용 안내', style: AppText.bodyBold),
               SizedBox(height: 4),
               for (final notice in _notices)
                 Row(
@@ -60,10 +57,7 @@ class ChargeNotice extends StatelessWidget {
             controlAffinity: ListTileControlAffinity.leading,
             contentPadding: EdgeInsets.zero,
             activeColor: AppColors.textPrimary,
-            title: Text(
-              '이용 안내를 확인했어요 (필수)',
-              style: AppText.body.copyWith(fontWeight: FontWeight.w500),
-            ),
+            title: Text('이용 안내를 확인했어요 (필수)', style: AppText.bodyMedium),
           ),
         ),
       ],

@@ -70,10 +70,7 @@ class _CopyButton extends StatelessWidget {
         foregroundColor: AppColors.textPrimary,
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
       ),
-      child: Text(
-        '복사',
-        style: AppText.secondary.copyWith(fontWeight: FontWeight.w500),
-      ),
+      child: Text('복사', style: AppText.secondaryMedium),
     );
   }
 }
