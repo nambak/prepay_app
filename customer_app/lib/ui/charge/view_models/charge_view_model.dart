@@ -42,10 +42,11 @@ class ChargeViewModel extends ChangeNotifier {
     } catch (error) {
       debugPrint('충전 실패: $error');
       // 4xx는 서버가 요청을 받지 않은 것이라 충전되지 않았다.
-      // 5xx나 응답이 없으면 충전됐는지 알 수 없다. 다시 누르면 두 번 충전될 수 있다.
-      _error = error is ApiException && error.statusCode < 500
-          ? '결제하지 못했어요. 잠시 후 다시 해 주세요'
-          : '충전됐는지 확인하지 못했어요. 내 가게에서 포인트를 먼저 확인해 주세요';
+      // 그 밖의 응답(3xx·5xx)이나 응답이 없으면 충전됐는지 알 수 없다. 다시 누르면 두 번 충전될 수 있다.
+      _error = switch (error) {
+        ApiException(statusCode: >= 400 && < 500) => '결제하지 못했어요. 잠시 후 다시 해 주세요',
+        _ => '충전됐는지 확인하지 못했어요. 내 가게에서 포인트를 먼저 확인해 주세요',
+      };
     }
 
     _submitting = false;
