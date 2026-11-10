@@ -19,6 +19,19 @@ final appTheme = ThemeData(
     bodySmall: AppText.secondary,
   ),
   splashFactory: NoSplash.splashFactory,
+  // 바텀시트: 위 모서리 28, 손잡이 40x4. 손잡이 색은 시안의 #D1D6DB(꺼진 토글과 같은 값).
+  bottomSheetTheme: const BottomSheetThemeData(
+    backgroundColor: AppColors.surface,
+    modalBarrierColor: AppColors.dim,
+    showDragHandle: true,
+    dragHandleColor: AppColors.toggleOff,
+    dragHandleSize: Size(40, 4),
+    shape: RoundedRectangleBorder(
+      borderRadius: BorderRadius.vertical(
+        top: Radius.circular(AppRadius.sheet),
+      ),
+    ),
+  ),
   // 모든 AppBar의 기본 뒤로 버튼을 시안의 꺾쇠(SVG)로 바꾼다. 화면마다 leading을 따로 넣지 않는다.
   actionIconTheme: ActionIconThemeData(
     backButtonIconBuilder: (context) => const SvgIcon(

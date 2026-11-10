@@ -1,3 +1,4 @@
+import '../../domain/models/charge.dart';
 import '../../domain/models/point.dart';
 import '../../domain/models/store.dart';
 import '../services/api_client.dart';
@@ -9,6 +10,24 @@ class PointRepository {
 
   Future<Wallet> getWallet() async =>
       _walletFromJson(await _apiClient.getWallet());
+
+  // 포인트와 결제 금액은 서버가 충전 상품으로 다시 계산해서 돌려준다.
+  Future<ChargeReceipt> charge(ChargeOrder order) async {
+    final json = await _apiClient.charge(order.store.id, [
+      for (final line in order.lines)
+        {
+          'charge_product_id': int.parse(line.product.id),
+          'quantity': line.quantity,
+        },
+    ]);
+
+    return ChargeReceipt(
+      storeName: json['store_name'] as String,
+      amount: json['amount'] as int,
+      paidWon: json['paid_won'] as int,
+      chargedAt: DateTime.parse(json['charged_at'] as String),
+    );
+  }
 }
 
 // 서버 JSON(saved_won 처럼 snake_case)을 앱 모델로 바꾼다.

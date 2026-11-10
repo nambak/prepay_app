@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../core/tokens.dart';
 import '../../core/widgets/primary_button.dart';
+import '../../core/widgets/secondary_button.dart';
 
 class WithdrawBottomBar extends StatelessWidget {
   const WithdrawBottomBar({
@@ -53,7 +54,12 @@ class WithdrawBottomBar extends StatelessWidget {
           Row(
             spacing: 8,
             children: [
-              const Expanded(child: _CancelButton()),
+              Expanded(
+                child: SecondaryButton(
+                  label: '취소',
+                  onPressed: () => Navigator.maybePop(context),
+                ),
+              ),
               Expanded(
                 flex: 2,
                 child: PrimaryButton(
@@ -65,31 +71,6 @@ class WithdrawBottomBar extends StatelessWidget {
             ],
           ),
         ],
-      ),
-    );
-  }
-}
-
-// 보조 버튼: 회색 바탕, 잉크 글자 500
-class _CancelButton extends StatelessWidget {
-  const _CancelButton();
-
-  @override
-  Widget build(BuildContext context) {
-    return FilledButton(
-      // PopScope를 따르도록 maybePop을 쓴다. 탈퇴 요청 중에는 닫히지 않는다
-      onPressed: () => Navigator.maybePop(context),
-      style: FilledButton.styleFrom(
-        minimumSize: const Size.fromHeight(AppSize.button),
-        backgroundColor: AppColors.bgField,
-        foregroundColor: AppColors.textPrimary,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(AppRadius.button),
-        ),
-      ),
-      child: Text(
-        '취소',
-        style: AppText.cardTitle.copyWith(fontWeight: FontWeight.w500),
       ),
     );
   }

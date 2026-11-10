@@ -4,8 +4,11 @@ import '../data/repositories/auth_repository.dart';
 import '../data/repositories/point_repository.dart';
 import '../data/repositories/store_repository.dart';
 import '../data/services/api_client.dart';
+import '../domain/models/charge.dart';
 import '../ui/account/view_models/login_view_model.dart';
 import '../ui/account/widgets/login_screen.dart';
+import '../ui/charge/view_models/charge_view_model.dart';
+import '../ui/charge/widgets/charge_screen.dart';
 import '../ui/core/widgets/app_tab_bar.dart';
 import '../ui/core/widgets/coming_soon_screen.dart';
 import '../ui/core/widgets/view_model_scope.dart';
@@ -74,6 +77,23 @@ final router = GoRouter(
             )..load(),
             builder: (viewModel) => StoreScreen(viewModel: viewModel),
           ),
+          routes: [
+            // 충전 결제와 충전 완료. 고른 상품은 가게 상세에서 extra로 받는다.
+            GoRoute(
+              path: 'charge',
+              // extra는 앱을 다시 켜면 사라진다. 그때는 가게 상세로 돌아간다.
+              redirect: (context, state) => state.extra is ChargeOrder
+                  ? null
+                  : Routes.store(state.pathParameters['id']!),
+              builder: (context, state) => ViewModelScope(
+                create: () => ChargeViewModel(
+                  pointRepository: _pointRepository,
+                  order: state.extra! as ChargeOrder,
+                ),
+                builder: (viewModel) => ChargeScreen(viewModel: viewModel),
+              ),
+            ),
+          ],
         ),
       ],
     ),

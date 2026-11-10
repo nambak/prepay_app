@@ -39,6 +39,7 @@ StoreDetail _detailFromJson(JsonMap json) => StoreDetail(
 );
 
 ChargeProduct _chargeProductFromJson(JsonMap json) => ChargeProduct(
+  id: '${json['id']}',
   amount: json['amount'] as int,
   priceWon: json['price_won'] as int,
   discountRate: json['discount_rate'] as int,
