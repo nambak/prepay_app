@@ -3,9 +3,10 @@ import 'package:flutter/material.dart';
 import '../../../data/repositories/point_repository.dart';
 import '../../../data/services/api_client.dart';
 import '../../../domain/models/charge.dart';
+import '../../core/view_model.dart';
 
 // 충전 결제. 결제가 끝나면 receipt가 생기고 충전 완료를 보여준다.
-class ChargeViewModel extends ChangeNotifier {
+class ChargeViewModel extends ViewModel {
   ChargeViewModel({required this._pointRepository, required this.order});
 
   final PointRepository _pointRepository;

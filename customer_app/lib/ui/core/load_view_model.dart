@@ -1,8 +1,10 @@
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/foundation.dart';
+
+import 'view_model.dart';
 
 // 화면을 열 때 서버에서 데이터를 불러와서 보여 주는 view model.
 // 불러오기 전과 불러오는 중에는 data가 null이고, 실패하면 failed가 true가 된다.
-abstract class LoadViewModel<T> extends ChangeNotifier {
+abstract class LoadViewModel<T> extends ViewModel {
   T? _data;
 
   T? get data => _data;
