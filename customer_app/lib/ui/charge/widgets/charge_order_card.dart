@@ -46,10 +46,7 @@ class ChargeOrderCard extends StatelessWidget {
           SizedBox(height: 20),
           Divider(height: 1, color: AppColors.borderInner),
           SizedBox(height: 16),
-          Text(
-            '충전 상품',
-            style: AppText.body.copyWith(fontWeight: FontWeight.w700),
-          ),
+          Text('충전 상품', style: AppText.bodyBold),
           SizedBox(height: 4),
           for (final (index, line) in order.lines.indexed) ...[
             if (index > 0) Divider(height: 1, color: AppColors.borderInner),
@@ -69,8 +66,6 @@ class _LineRow extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final numbers = AppText.body;
-
     return ConstrainedBox(
       constraints: BoxConstraints(minHeight: 48),
       child: Row(
@@ -79,7 +74,7 @@ class _LineRow extends StatelessWidget {
           Expanded(
             child: Text(
               '${formatNumber(line.product.amount)}P × ${line.quantity}',
-              style: numbers.copyWith(fontFeatures: tabularFigures),
+              style: AppText.body.copyWith(fontFeatures: tabularFigures),
             ),
           ),
           if (line.product.discountRate > 0)
@@ -89,10 +84,7 @@ class _LineRow extends StatelessWidget {
             child: Text(
               '${formatNumber(line.priceWon)}원',
               textAlign: TextAlign.right,
-              style: numbers.copyWith(
-                fontWeight: FontWeight.w700,
-                fontFeatures: tabularFigures,
-              ),
+              style: AppText.bodyBold.copyWith(fontFeatures: tabularFigures),
             ),
           ),
         ],

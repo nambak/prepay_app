@@ -84,10 +84,7 @@ class _PointRow extends StatelessWidget {
           Expanded(child: Text(type.label, style: AppText.body)),
           Text(
             formatNumber(amount),
-            style: AppText.body.copyWith(
-              fontWeight: FontWeight.w700,
-              fontFeatures: tabularFigures,
-            ),
+            style: AppText.bodyBold.copyWith(fontFeatures: tabularFigures),
           ),
         ],
       ),

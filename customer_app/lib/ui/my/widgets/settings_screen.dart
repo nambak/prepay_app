@@ -39,8 +39,7 @@ class SettingsScreen extends StatelessWidget {
                       alignment: Alignment.centerLeft,
                       child: Text(
                         '로그아웃',
-                        style: AppText.input.copyWith(
-                          fontWeight: FontWeight.w500,
+                        style: AppText.inputMedium.copyWith(
                           color: AppColors.textSecondary,
                         ),
                       ),

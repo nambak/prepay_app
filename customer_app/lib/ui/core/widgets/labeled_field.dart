@@ -19,10 +19,7 @@ class LabeledField extends StatelessWidget {
         children: [
           Text(
             label,
-            style: AppText.label.copyWith(
-              fontWeight: FontWeight.w500,
-              color: AppColors.textSecondary,
-            ),
+            style: AppText.labelMedium.copyWith(color: AppColors.textSecondary),
           ),
           child,
         ],

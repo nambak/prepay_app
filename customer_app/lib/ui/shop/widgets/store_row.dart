@@ -36,7 +36,7 @@ class StoreRow extends StatelessWidget {
                 children: [
                   Text(
                     store.name,
-                    style: AppText.input.copyWith(fontWeight: FontWeight.w700),
+                    style: AppText.inputBold,
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
                   ),

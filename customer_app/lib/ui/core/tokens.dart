@@ -79,8 +79,6 @@ abstract final class AppText {
     fontWeight: FontWeight.w400,
     letterSpacing: 0,
   );
-
-  // 시안에서 많이 쓰지만 tokens.json 에는 아직 없는 크기예요.
   static const label = TextStyle(
     fontSize: 14,
     fontWeight: FontWeight.w400,
@@ -95,6 +93,16 @@ abstract final class AppText {
     fontSize: 12,
     fontWeight: FontWeight.w500,
     letterSpacing: 0,
+  );
+
+  // 같은 크기에 굵기만 다른 글자. 화면에서 두 번 이상 쓰는 조합만 둔다.
+  static final bodyMedium = body.copyWith(fontWeight: FontWeight.w500);
+  static final bodyBold = body.copyWith(fontWeight: FontWeight.w700);
+  static final inputMedium = input.copyWith(fontWeight: FontWeight.w500);
+  static final inputBold = input.copyWith(fontWeight: FontWeight.w700);
+  static final labelMedium = label.copyWith(fontWeight: FontWeight.w500);
+  static final secondaryMedium = secondary.copyWith(
+    fontWeight: FontWeight.w500,
   );
 }
 

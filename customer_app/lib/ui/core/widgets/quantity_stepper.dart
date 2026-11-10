@@ -40,10 +40,7 @@ class QuantityStepper extends StatelessWidget {
             child: Text(
               '$quantity',
               textAlign: TextAlign.center,
-              style: AppText.input.copyWith(
-                fontWeight: FontWeight.w700,
-                fontFeatures: tabularFigures,
-              ),
+              style: AppText.inputBold.copyWith(fontFeatures: tabularFigures),
             ),
           ),
           _StepButton(

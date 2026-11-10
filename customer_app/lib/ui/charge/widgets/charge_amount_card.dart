@@ -18,10 +18,7 @@ class ChargeAmountCard extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.stretch,
         spacing: 12,
         children: [
-          Text(
-            '결제 금액',
-            style: AppText.body.copyWith(fontWeight: FontWeight.w700),
-          ),
+          Text('결제 금액', style: AppText.bodyBold),
           _AmountRow('충전 포인트', '${formatNumber(order.amount)}P'),
           _AmountRow('상품 금액', '${formatNumber(order.listPriceWon)}원'),
           _AmountRow('할인 금액', '−${formatNumber(order.savedWon)}원'),
@@ -30,12 +27,7 @@ class ChargeAmountCard extends StatelessWidget {
           SizedBox(height: 4),
           Row(
             children: [
-              Expanded(
-                child: Text(
-                  '최종 결제 금액',
-                  style: AppText.input.copyWith(fontWeight: FontWeight.w700),
-                ),
-              ),
+              Expanded(child: Text('최종 결제 금액', style: AppText.inputBold)),
               Text(
                 '${formatNumber(order.priceWon)}원',
                 style: AppText.title.copyWith(
@@ -69,10 +61,7 @@ class _AmountRow extends StatelessWidget {
         ),
         Text(
           value,
-          style: AppText.body.copyWith(
-            fontWeight: FontWeight.w500,
-            fontFeatures: tabularFigures,
-          ),
+          style: AppText.bodyMedium.copyWith(fontFeatures: tabularFigures),
         ),
       ],
     );

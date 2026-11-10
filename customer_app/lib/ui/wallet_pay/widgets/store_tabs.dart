@@ -40,7 +40,7 @@ class StoreTabs extends StatelessWidget {
                     ),
                   ],
                 ),
-                style: AppText.input.copyWith(fontWeight: FontWeight.w700),
+                style: AppText.inputBold,
               ),
             ),
           ),
@@ -51,8 +51,7 @@ class StoreTabs extends StatelessWidget {
               child: Center(
                 child: Text(
                   '이전 가게',
-                  style: AppText.input.copyWith(
-                    fontWeight: FontWeight.w500,
+                  style: AppText.inputMedium.copyWith(
                     color: AppColors.textMuted,
                   ),
                 ),

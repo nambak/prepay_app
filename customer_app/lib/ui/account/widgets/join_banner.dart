@@ -23,10 +23,7 @@ class JoinBanner extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               spacing: 4,
               children: [
-                Text(
-                  '처음이세요?',
-                  style: AppText.body.copyWith(fontWeight: FontWeight.w700),
-                ),
+                Text('처음이세요?', style: AppText.bodyBold),
                 Text(
                   '회원가입하고 지금 방문한 가게에서 바로 할인받아 보세요',
                   style: AppText.secondary.copyWith(
@@ -46,10 +43,7 @@ class JoinBanner extends StatelessWidget {
                 borderRadius: BorderRadius.circular(12),
               ),
             ),
-            child: Text(
-              '회원가입',
-              style: AppText.label.copyWith(fontWeight: FontWeight.w500),
-            ),
+            child: Text('회원가입', style: AppText.labelMedium),
           ),
         ],
       ),
