@@ -7,6 +7,6 @@ abstract final class Routes {
   static const my = '/my';
   static const settings = '/my/settings';
   static const withdraw = '/my/withdraw';
-  static String store(String id) => '/shop/$id';
-  static String charge(String storeId) => '/shop/$storeId/charge';
+  static String store(int id) => '/shop/$id';
+  static String charge(int storeId) => '/shop/$storeId/charge';
 }

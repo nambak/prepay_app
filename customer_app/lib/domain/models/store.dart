@@ -20,7 +20,7 @@ class StoreSummary {
     required this.maxDiscountRate,
   });
 
-  final String id;
+  final int id;
   final String name;
   final StoreKind kind;
   final int? maxDiscountRate; // 충전 상품 중 가장 큰 할인율(%). 충전 상품이 없으면 null
@@ -35,7 +35,7 @@ class ChargeProduct {
     required this.discountRate,
   });
 
-  final String id;
+  final int id;
   final int amount; // 지갑에 충전되는 포인트(P)
   final int priceWon; // 고객이 실제로 결제하는 금액(원)
   final int discountRate; // %. 서버가 소수점을 버려서 준다.
@@ -52,7 +52,7 @@ class StoreDetail {
     required this.chargeProducts,
   });
 
-  final String id;
+  final int id;
   final String name;
   final StoreKind kind;
   final String? address;

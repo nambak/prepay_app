@@ -8,12 +8,12 @@ class StoreViewModel extends LoadViewModel<StoreDetail> {
   StoreViewModel({required this._storeRepository, required this.storeId});
 
   final StoreRepository _storeRepository;
-  final String storeId;
+  final int storeId;
 
   StoreDetail? get store => data;
 
   // 충전 상품 id -> 고른 수량
-  final _quantities = <String, int>{};
+  final _quantities = <int, int>{};
 
   @override
   Future<StoreDetail> fetch() async {

@@ -15,10 +15,7 @@ class PointRepository {
   Future<ChargeReceipt> charge(ChargeOrder order) async {
     final json = await _apiClient.charge(order.store.id, [
       for (final line in order.lines)
-        {
-          'charge_product_id': int.parse(line.product.id),
-          'quantity': line.quantity,
-        },
+        {'charge_product_id': line.product.id, 'quantity': line.quantity},
     ]);
 
     return ChargeReceipt(
@@ -43,7 +40,7 @@ Wallet _walletFromJson(JsonMap json) => Wallet(
 );
 
 StoreWallet _storeFromJson(JsonMap json) => StoreWallet(
-  id: '${json['id']}',
+  id: json['id'],
   // 서버는 숫자, 앱은 문자열
   name: json['name'] as String,
   // 앱이 모르는 업종이 오면 일반 가게로 보여줌

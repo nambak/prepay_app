@@ -23,7 +23,7 @@ class ChargeAmountCard extends StatelessWidget {
             style: AppText.body.copyWith(fontWeight: FontWeight.w700),
           ),
           _AmountRow('충전 포인트', '${formatNumber(order.amount)}P'),
-          _AmountRow('상품 금액', '${formatNumber(order.amount)}원'),
+          _AmountRow('상품 금액', '${formatNumber(order.listPriceWon)}원'),
           _AmountRow('할인 금액', '−${formatNumber(order.savedWon)}원'),
           const SizedBox(height: 4),
           const Divider(height: 1, color: AppColors.borderInner),

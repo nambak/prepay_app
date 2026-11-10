@@ -72,7 +72,7 @@ void main() {
 
     final viewModel = StoreViewModel(
       storeRepository: _repositoryReturning(_storeJson),
-      storeId: '2',
+      storeId: 2,
     )..load();
 
     await tester.pumpWidget(

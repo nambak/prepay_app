@@ -27,8 +27,11 @@ class ChargeOrder {
   // 결제 금액(원)
   int get priceWon => lines.fold(0, (sum, line) => sum + line.priceWon);
 
+  // 할인 전 상품 금액(원). 1P를 1원으로 본다.
+  int get listPriceWon => amount;
+
   // 할인 금액(원)
-  int get savedWon => amount - priceWon;
+  int get savedWon => listPriceWon - priceWon;
 }
 
 // 충전이 끝난 뒤 서버가 돌려준 내용

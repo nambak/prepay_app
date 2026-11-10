@@ -68,7 +68,7 @@ void main() {
     });
     final storeViewModel = StoreViewModel(
       storeRepository: StoreRepository(apiClient: apiClient),
-      storeId: '2',
+      storeId: 2,
     )..load();
     final router = GoRouter(
       initialLocation: '/shop/2',
@@ -150,7 +150,7 @@ void main() {
       storeRepository: StoreRepository(
         apiClient: _apiClient((_) async => _json(_storeJson)),
       ),
-      storeId: '2',
+      storeId: 2,
     )..load();
 
     await tester.pumpWidget(
@@ -168,7 +168,12 @@ void main() {
   });
 
   for (final (name, handler, message) in [
-    ('서버가 결제를 받지 않으면', (_) async => _json({}, 500), '결제하지 못했어요. 잠시 후 다시 해 주세요'),
+    ('서버가 결제를 받지 않으면', (_) async => _json({}, 422), '결제하지 못했어요. 잠시 후 다시 해 주세요'),
+    (
+      '서버 오류로 충전됐는지 알 수 없으면',
+      (_) async => _json({}, 500),
+      '충전됐는지 확인하지 못했어요. 내 가게에서 포인트를 먼저 확인해 주세요',
+    ),
     (
       '응답을 받지 못하면',
       (_) async => throw http.ClientException('연결 끊김'),
@@ -181,7 +186,7 @@ void main() {
         storeRepository: StoreRepository(
           apiClient: _apiClient((_) async => _json(_storeJson)),
         ),
-        storeId: '2',
+        storeId: 2,
       );
       await storeViewModel.load();
       final viewModel = ChargeViewModel(

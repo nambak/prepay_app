@@ -73,7 +73,7 @@ final router = GoRouter(
           builder: (context, state) => ViewModelScope(
             create: () => StoreViewModel(
               storeRepository: _storeRepository,
-              storeId: state.pathParameters['id']!,
+              storeId: _storeId(state),
             )..load(),
             builder: (viewModel) => StoreScreen(viewModel: viewModel),
           ),
@@ -84,7 +84,7 @@ final router = GoRouter(
               // extra는 앱을 다시 켜면 사라진다. 그때는 가게 상세로 돌아간다.
               redirect: (context, state) => state.extra is ChargeOrder
                   ? null
-                  : Routes.store(state.pathParameters['id']!),
+                  : Routes.store(_storeId(state)),
               builder: (context, state) => ViewModelScope(
                 create: () => ChargeViewModel(
                   pointRepository: _pointRepository,
@@ -121,3 +121,6 @@ final router = GoRouter(
       ),
   ],
 );
+
+// 주소의 id는 문자열이라 여기서만 숫자로 바꾼다.
+int _storeId(GoRouterState state) => int.parse(state.pathParameters['id']!);

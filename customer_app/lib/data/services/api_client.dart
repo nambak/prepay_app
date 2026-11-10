@@ -95,10 +95,10 @@ class ApiClient {
 
   Future<JsonMap> getStores() => _get('/api/stores');
 
-  Future<JsonMap> getStore(String id) => _get('/api/stores/$id');
+  Future<JsonMap> getStore(int id) => _get('/api/stores/$id');
 
   // ── 충전 ──
 
-  Future<JsonMap> charge(String storeId, List<JsonMap> items) =>
+  Future<JsonMap> charge(int storeId, List<JsonMap> items) =>
       _post('/api/stores/$storeId/charges', {'items': items});
 }
