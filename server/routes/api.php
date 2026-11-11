@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ChargeController;
+use App\Http\Controllers\PointUseController;
 use App\Http\Controllers\StoreController;
 use App\Http\Controllers\WalletController;
 use Illuminate\Http\Request;
@@ -23,4 +24,7 @@ Route::middleware('auth:sanctum')->group(function () {
 
     // 가짜 결제로 충전한다. PG사를 붙이는 일은 TODO.
     Route::post('/stores/{store}/charges', ChargeController::class);
+
+    // 고객차감: 고객이 입력한 금액만큼 바로 차감한다.
+    Route::post('/stores/{store}/uses', PointUseController::class);
 });
