@@ -102,13 +102,23 @@ class StoreCard extends StatelessWidget {
               ),
             ],
           ),
-          // TODO: 쓰기 05-03, 충전 04-05, 공유 06-01 화면을 만들면 연결
+          // TODO: 쓰기 05-03, 공유 06-01 화면을 만들면 연결
           Row(
             spacing: 8,
             children: [
-              Expanded(flex: 3, child: _CardButton('쓰기', primary: true)),
-              Expanded(flex: 2, child: _CardButton('충전')),
-              Expanded(flex: 2, child: _CardButton('공유')),
+              Expanded(
+                flex: 3,
+                child: _CardButton('쓰기', primary: true, onPressed: () {}),
+              ),
+              Expanded(
+                flex: 2,
+                // 충전 상품은 가게 상세에서 고른다
+                child: _CardButton(
+                  '충전',
+                  onPressed: () => context.push(Routes.store(store.id)),
+                ),
+              ),
+              Expanded(flex: 2, child: _CardButton('공유', onPressed: () {})),
             ],
           ),
           PointDetail(store, expanded: expanded, onToggle: onToggleDetail),
@@ -119,15 +129,20 @@ class StoreCard extends StatelessWidget {
 }
 
 class _CardButton extends StatelessWidget {
-  const _CardButton(this.label, {this.primary = false});
+  const _CardButton(
+    this.label, {
+    this.primary = false,
+    required this.onPressed,
+  });
 
   final String label;
   final bool primary;
+  final VoidCallback onPressed;
 
   @override
   Widget build(BuildContext context) {
     return FilledButton(
-      onPressed: () {},
+      onPressed: onPressed,
       style: FilledButton.styleFrom(
         minimumSize: Size.fromHeight(AppSize.buttonSm),
         backgroundColor: primary ? AppColors.buttonRed : AppColors.bgField,

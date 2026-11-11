@@ -99,14 +99,14 @@ void main() {
     await tester.pumpAndSettle();
 
     // 가게 상세: 처음에는 가장 작은 상품 하나를 골라 둔다.
-    expect(find.text('47,500원 충전하기'), findsOneWidget);
+    expect(find.text('50,000P 충전하기'), findsOneWidget);
     await tester.scrollUntilVisible(find.byTooltip('100,000P 수량 늘리기'), 100);
     await tester.tap(find.byTooltip('100,000P 수량 늘리기'));
     await tester.pump();
-    expect(find.text('127,500원 충전하기'), findsOneWidget);
+    expect(find.text('150,000P 충전하기'), findsOneWidget);
 
     // 충전 상품 선택
-    await tester.tap(find.text('127,500원 충전하기'));
+    await tester.tap(find.text('150,000P 충전하기'));
     await tester.pumpAndSettle();
     expect(find.text('충전 상품 선택'), findsOneWidget);
     expect(find.text('150,000P'), findsOneWidget);
