@@ -83,7 +83,8 @@ class StoreScreen extends StatelessWidget {
           if (viewModel.store?.chargeProducts.isNotEmpty != true) {
             return SizedBox.shrink();
           }
-          final priceWon = viewModel.order.priceWon;
+          // 충전하기에는 받는 포인트(P)를, 결제하기에는 내는 돈(원)을 보여 준다.
+          final amount = viewModel.order.amount;
           return DecoratedBox(
             decoration: BoxDecoration(
               color: AppColors.surface,
@@ -98,10 +99,10 @@ class StoreScreen extends StatelessWidget {
                   12,
                 ),
                 child: PrimaryButton(
-                  label: priceWon > 0
-                      ? '${formatNumber(priceWon)}원 충전하기'
+                  label: amount > 0
+                      ? '${formatNumber(amount)}P 충전하기'
                       : '충전 상품을 골라 주세요',
-                  onPressed: priceWon > 0
+                  onPressed: amount > 0
                       ? () => _openChargeSheet(context)
                       : null,
                 ),
