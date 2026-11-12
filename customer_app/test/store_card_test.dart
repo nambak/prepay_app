@@ -25,6 +25,7 @@ Widget _card({required int visitCount, bool expanded = false}) => MaterialApp(
       _store(visitCount: visitCount),
       expanded: expanded,
       onToggleDetail: () {},
+      onUse: () {},
     ),
   ),
 );
@@ -51,7 +52,12 @@ void main() {
         GoRoute(
           path: '/',
           builder: (_, _) => Scaffold(
-            body: StoreCard(_store(), expanded: false, onToggleDetail: () {}),
+            body: StoreCard(
+              _store(),
+              expanded: false,
+              onToggleDetail: () {},
+              onUse: () {},
+            ),
           ),
         ),
         GoRoute(

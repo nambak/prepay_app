@@ -7,7 +7,7 @@ class LabeledField extends StatelessWidget {
   const LabeledField({super.key, required this.label, required this.child});
 
   final String label;
-  final TextField child;
+  final Widget child;
 
   @override
   Widget build(BuildContext context) {
