@@ -101,4 +101,9 @@ class ApiClient {
 
   Future<JsonMap> charge(int storeId, List<JsonMap> items) =>
       _post('/api/stores/$storeId/charges', {'items': items});
+
+  // ── 쓰기 ──
+
+  Future<JsonMap> usePoints(int storeId, int amount) =>
+      _post('/api/stores/$storeId/uses', {'amount': amount});
 }
