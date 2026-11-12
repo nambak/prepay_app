@@ -121,6 +121,29 @@ it('충전포인트는 기한이 없어서 오래전에 충전해도 보여 준�
         ->assertJsonPath('stores.0.items', [['type' => 'charge', 'amount' => 10000, 'days_left' => null]]);
 });
 
+it('방문 횟수는 그 가게에서 쓴 횟수다', function () {
+    $user = User::factory()->create();
+    $restaurant = Store::factory()->create();
+    $cafe = Store::factory()->create();
+    PointLot::factory()->for($user)->for($restaurant)->create(['amount' => 100000, 'balance' => 100000]);
+    PointLot::factory()->for($user)->for($cafe)->create(['amount' => 100000, 'balance' => 100000]);
+
+    $user->usePoints($restaurant, 10000);
+    $user->usePoints($restaurant, 20000);
+
+    // 다른 회원이 같은 가게에서 쓴 것은 세지 않는다.
+    $other = User::factory()->create();
+    PointLot::factory()->for($other)->for($restaurant)->create(['amount' => 10000, 'balance' => 10000]);
+    $other->usePoints($restaurant, 10000);
+
+    Sanctum::actingAs($user);
+
+    $stores = $this->getJson('/api/wallet')->assertOk()->json('stores');
+
+    expect(collect($stores)->pluck('visit_count', 'id')->all())
+        ->toEqual([$restaurant->id => 2, $cafe->id => 0]);
+});
+
 it('포인트가 없으면 빈 지갑을 돌려준다', function () {
     Sanctum::actingAs(User::factory()->create());
 
