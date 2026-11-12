@@ -9,23 +9,24 @@ use Laravel\Sanctum\Sanctum;
 
 beforeEach(function () {
     $this->travelTo('2026-11-11 12:00:00');
+
+    $this->user = User::factory()->create();
+    $this->store = Store::factory()->create(['name' => '행복식당 1']);
 });
 
 it('서비스포인트 부터, 같은 종류는 기한이 빠른 것, 먼저 충전한 것부터 빼고 쓰기 내용을 돌려준다', function () {
-    $user = User::factory()->create();
-    $store = Store::factory()->create(['name' => '행복식당 1']);
-    $lots = PointLot::factory()->for($user)->for($store);
+    $lots = PointLot::factory()->for($this->user)->for($this->store);
 
     $chargeA = $lots->create(['amount' => 50000, 'balance' => 50000]);
     $chargeB = $lots->create(['amount' => 50000, 'balance' => 50000]);
     $serviceLater = $lots->service()->create(['amount' => 10000, 'balance' => 10000, 'expires_on' => today()->addDays(30)]);
     $serviceSooner = $lots->service()->create(['amount' => 5000, 'balance' => 5000, 'expires_on' => today()->addDays(10)]);
-    $otherStore = PointLot::factory()->for($user)->create(['amount' => 50000, 'balance' => 50000]);
-    $otherUser = PointLot::factory()->for($store)->create(['amount' => 50000, 'balance' => 50000]);
+    $otherStore = PointLot::factory()->for($this->user)->create(['amount' => 50000, 'balance' => 50000]);
+    $otherUser = PointLot::factory()->for($this->store)->create(['amount' => 50000, 'balance' => 50000]);
 
-    Sanctum::actingAs($user);
+    Sanctum::actingAs($this->user);
 
-    $response = $this->postJson("/api/stores/{$store->id}/uses", ['amount' => 30000]);
+    $response = $this->postJson("/api/stores/{$this->store->id}/uses", ['amount' => 30000]);
 
     $balances = fn (PointLot ...$picked) => array_map(fn (PointLot $lot) => $lot->fresh()->balance, $picked);
 
@@ -35,8 +36,8 @@ it('서비스포인트 부터, 같은 종류는 기한이 빠른 것, 먼저 충
     $use = PointUse::sole();
 
     expect($use)
-        ->user_id->toBe($user->id)
-        ->store_id->toBe($store->id)
+        ->user_id->toBe($this->user->id)
+        ->store_id->toBe($this->store->id)
         ->method->toBe(PointUseMethod::Customer)
         ->amount->toBe(30000);
 
@@ -60,13 +61,14 @@ it('서비스포인트 부터, 같은 종류는 기한이 빠른 것, 먼저 충
 });
 
 it('1P보다 적거나 쓸 수 있는 포인트보다 많으면 차감하지 않는다', function () {
-    $user = User::factory()->create();
-    $store = Store::factory()->create();
-    $lot = PointLot::factory()->for($user)->for($store)->create(['amount' => 50000, 'balance' => 50000]);
+    $lot = PointLot::factory()
+        ->for($this->user)
+        ->for($this->store)
+        ->create(['amount' => 50000, 'balance' => 50000]);
 
-    Sanctum::actingAs($user);
+    Sanctum::actingAs($this->user);
 
-    $use = fn (mixed $amount) => $this->postJson("/api/stores/{$store->id}/uses", ['amount' => $amount]);
+    $use = fn (mixed $amount) => $this->postJson("/api/stores/{$this->store->id}/uses", compact('amount'));
 
     foreach ([0, -1, 'abc', 100.5, 50001] as $amount) {
         $use($amount)->assertJsonValidationErrors('amount');
@@ -81,15 +83,16 @@ it('1P보다 적거나 쓸 수 있는 포인트보다 많으면 차감하지 않
 });
 
 it('기한이 오늘인 서비스포인트는 쓰고, 지난 것은 쓸 수 있는 포인트에 넣지 않는다', function () {
-    $user = User::factory()->create();
-    $store = Store::factory()->create();
-    $lots = PointLot::factory()->for($user)->for($store)->service();
+    $lots = PointLot::factory()
+        ->for($this->user)
+        ->for($this->store)
+        ->service();
     $today = $lots->create(['expires_on' => today()]);
     $expired = $lots->expired()->create();
 
-    Sanctum::actingAs($user);
+    Sanctum::actingAs($this->user);
 
-    $use = fn (int $amount) => $this->postJson("/api/stores/{$store->id}/uses", compact('amount'));
+    $use = fn (int $amount) => $this->postJson("/api/stores/{$this->store->id}/uses", compact('amount'));
     $use(10001)->assertJsonValidationErrors('amount');
     $use(10000)->assertCreated();
 
@@ -98,7 +101,5 @@ it('기한이 오늘인 서비스포인트는 쓰고, 지난 것은 쓸 수 있�
 });
 
 it('로그인하지 않으면 쓸 수 없다', function () {
-    $store = Store::factory()->create();
-
-    $this->postJson("/api/stores/{$store->id}/uses", ['amount' => 1000])->assertUnauthorized();
+    $this->postJson("/api/stores/{$this->store->id}/uses", ['amount' => 1000])->assertUnauthorized();
 });
