@@ -28,6 +28,13 @@ class WalletController extends Controller
             ->pluck('saved_won', 'store_id')
             ->map(fn ($savedWon): int => (int) $savedWon);
 
+        // 방문 횟수는 그 가게에서 쓴 횟수다. 충전은 세지 않는다.
+        $visitByStore = $user->pointUses()
+            ->groupBy('store_id')
+            ->selectRaw('store_id, count(*) as visits')
+            ->pluck('visits', 'store_id')
+            ->map(fn ($visits): int => (int) $visits);
+
         $lots = $user->pointLots()
             ->usable()
             ->with('store')
@@ -37,14 +44,14 @@ class WalletController extends Controller
 
         $stores = $lots->groupBy('store_id')
             ->sortByDesc(fn (Collection $storeLots) => $storeLots->max('created_at'))
-            ->map(function (Collection $storeLots) use ($savedWonByStore) {
+            ->map(function (Collection $storeLots) use ($savedWonByStore, $visitByStore) {
                 $store = $storeLots->first()->store;
 
                 return [
                     'id' => $store->id,
                     'name' => $store->name,
                     'kind' => $store->kind,
-                    'visit_count' => 0, // 쓰기 기록이 생기면 센다.
+                    'visit_count' => $visitByStore[$store->id] ?? 0,
                     'saved_won' => $savedWonByStore[$store->id] ?? 0,
                     'items' => $storeLots
                         ->sortBy(fn (PointLot $lot) => array_search($lot->type, PointType::cases(), true))

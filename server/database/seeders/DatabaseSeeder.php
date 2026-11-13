@@ -81,9 +81,13 @@ class DatabaseSeeder extends Seeder
         PointLot::factory()->for($user)->for($restaurant)->create(['amount' => 150000, 'balance' => 150000, 'paid_won' => 127500]);
         PointLot::factory()->for($user)->for($restaurant)->service()->create(['amount' => 30000, 'balance' => 30000, 'expires_on' => today()->addYear()]);
         PointLot::factory()->for($user)->for($cafe)->create(['amount' => 100000, 'balance' => 100000, 'paid_won' => 80000]);
-        PointLot::factory()->for($user)->for($sandwich)->create(['amount' => 100000, 'balance' => 70000, 'paid_won' => 90000]);
+        PointLot::factory()->for($user)->for($sandwich)->create(['amount' => 100000, 'balance' => 100000, 'paid_won' => 90000]);
+        // 두 번 써서 충전포인트가 70,000P 남는다. 서비스포인트부터 빠지므로 서비스포인트는 쓴 다음에 만든다.
+        $user->usePoints($sandwich, 18000);
+        $user->usePoints($sandwich, 12000);
         PointLot::factory()->for($user)->for($sandwich)->service()->create(['amount' => 20000, 'balance' => 20000]);
         // 다 쓴 가게(05-08 이전 가게)
-        PointLot::factory()->for($user)->for($flower)->usedUp()->create(['amount' => 50000, 'paid_won' => 45500]);
+        PointLot::factory()->for($user)->for($flower)->create(['amount' => 50000, 'balance' => 50000, 'paid_won' => 45500]);
+        $user->usePoints($flower, 50000);
     }
 }

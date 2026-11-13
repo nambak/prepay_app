@@ -20,6 +20,7 @@ import '../ui/shop/view_models/shop_view_model.dart';
 import '../ui/shop/view_models/store_view_model.dart';
 import '../ui/shop/widgets/shop_screen.dart';
 import '../ui/shop/widgets/store_screen.dart';
+import '../ui/wallet_pay/view_models/point_use_view_model.dart';
 import '../ui/wallet_pay/view_models/wallet_view_model.dart';
 import '../ui/wallet_pay/widgets/wallet_screen.dart';
 import 'routes.dart';
@@ -58,7 +59,13 @@ final router = GoRouter(
       builder: (context, state) => ViewModelScope(
         create: () =>
             WalletViewModel(pointRepository: _pointRepository)..load(),
-        builder: (viewModel) => WalletScreen(viewModel: viewModel),
+        builder: (viewModel) => WalletScreen(
+          viewModel: viewModel,
+          createPointUse: (store) => PointUseViewModel(
+            pointRepository: _pointRepository,
+            store: store,
+          ),
+        ),
       ),
     ),
     GoRoute(

@@ -1,17 +1,43 @@
 import 'package:flutter/material.dart';
 
+import '../../../domain/models/point.dart';
+import '../../../domain/models/point_use.dart';
 import '../../core/widgets/app_tab_bar.dart';
 import '../../core/widgets/load_error.dart';
+import '../../core/widgets/view_model_scope.dart';
+import '../view_models/point_use_view_model.dart';
 import '../view_models/wallet_view_model.dart';
 import 'balance_card.dart';
+import 'point_use_sheet.dart';
 import 'store_card.dart';
 import 'store_tabs.dart';
 import 'wallet_header.dart';
 
 class WalletScreen extends StatelessWidget {
-  const WalletScreen({super.key, required this.viewModel});
+  const WalletScreen({
+    super.key,
+    required this.viewModel,
+    required this.createPointUse,
+  });
 
   final WalletViewModel viewModel;
+  final PointUseViewModel Function(StoreWallet store) createPointUse;
+
+  // 차감하기. 시트가 닫히면 끝났는지 상관없이 포인트를 다시 불러온다
+  // 썼는지 확인하지 못한 실패 뒤에도 남은 포인트가 맞게 보이게 하려는 것이다
+  Future<void> _openPointUse(BuildContext context, StoreWallet store) async {
+    await showModalBottomSheet<PointUseReceipt>(
+      context: context,
+      isScrollControlled: true,
+      useSafeArea: true,
+      builder: (_) => ViewModelScope(
+        create: () => createPointUse(store),
+        builder: PointUseSheet.new,
+      ),
+    );
+    viewModel.load();
+    // TODO: 사용 완료 화면을 만들면 영수증을 받아서 연결
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -32,6 +58,11 @@ class WalletScreen extends StatelessWidget {
               padding: EdgeInsets.only(bottom: 24),
               children: [
                 WalletHeader(),
+                // 차감한 뒤에 불러오지 못하면 아래 포인트는 차감하기 전 값이다
+                if (viewModel.failed) ...[
+                  SizedBox(height: 8),
+                  LoadError('포인트를 새로 불러오지 못했어요.', onRetry: viewModel.load),
+                ],
                 SizedBox(height: 8),
                 BalanceCard(wallet),
                 SizedBox(height: 24),
@@ -43,6 +74,7 @@ class WalletScreen extends StatelessWidget {
                     store,
                     expanded: viewModel.expandedStoreId == store.id,
                     onToggleDetail: () => viewModel.toggleDetail(store.id),
+                    onUse: () => _openPointUse(context, store),
                   ),
                 ],
               ],

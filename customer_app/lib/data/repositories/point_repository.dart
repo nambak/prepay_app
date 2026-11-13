@@ -1,5 +1,6 @@
 import '../../domain/models/charge.dart';
 import '../../domain/models/point.dart';
+import '../../domain/models/point_use.dart';
 import '../../domain/models/store.dart';
 import '../services/api_client.dart';
 
@@ -25,9 +26,24 @@ class PointRepository {
       chargedAt: DateTime.parse(json['charged_at'] as String),
     );
   }
+
+  // 고객차감: 서버가 바로 차감하고, 어느 포인트에서 얼마를 뺐는지 돌려준다
+  Future<PointUseReceipt> usePoints(int storeId, int amount) async {
+    final json = await _apiClient.usePoints(storeId, amount);
+
+    return PointUseReceipt(
+      storeName: json['store_name'] as String,
+      amount: json['amount'] as int,
+      serviceAmount: json['service_amount'] as int,
+      chargeAmount: json['charge_amount'] as int,
+      balance: json['balance'] as int,
+      visitCount: json['visit_count'] as int,
+      usedAt: DateTime.parse(json['used_at'] as String),
+    );
+  }
 }
 
-// 서버 JSON(saved_won 처럼 snake_case)을 앱 모델로 바꾼다.
+// 서버 JSON(saved_won 처럼 snake_case)을 앱 모델로 바꾼다
 Wallet _walletFromJson(JsonMap json) => Wallet(
   charge: json['charge'] as int,
   shared: json['shared'] as int,

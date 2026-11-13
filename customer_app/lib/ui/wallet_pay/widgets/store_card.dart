@@ -17,11 +17,13 @@ class StoreCard extends StatelessWidget {
     super.key,
     required this.expanded,
     required this.onToggleDetail,
+    required this.onUse,
   });
 
   final StoreWallet store;
   final bool expanded;
   final VoidCallback onToggleDetail;
+  final VoidCallback onUse;
 
   @override
   Widget build(BuildContext context) {
@@ -48,7 +50,7 @@ class StoreCard extends StatelessWidget {
                         overflow: TextOverflow.ellipsis,
                       ),
                       Text(
-                        // 쓰기 기록이 생기기 전에는 방문 횟수가 0이라 숨긴다.
+                        // 아직 차감한 적이 없으면 0이라 숨긴다.
                         [
                           if (store.visitCount > 0) '${store.visitCount}번째 방문',
                           '${formatNumber(store.savedWon)}원 아낌',
@@ -102,13 +104,13 @@ class StoreCard extends StatelessWidget {
               ),
             ],
           ),
-          // TODO: 쓰기 05-03, 공유 06-01 화면을 만들면 연결
+          // TODO: 공유 화면을 만들면 연결
           Row(
             spacing: 8,
             children: [
               Expanded(
                 flex: 3,
-                child: _CardButton('쓰기', primary: true, onPressed: () {}),
+                child: _CardButton('쓰기', primary: true, onPressed: onUse),
               ),
               Expanded(
                 flex: 2,
