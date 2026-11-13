@@ -1,5 +1,5 @@
 // '즐겨찾는 가게 | 그룹' 제목줄과 QR 버튼
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 
 import '../../core/icons.dart';
 

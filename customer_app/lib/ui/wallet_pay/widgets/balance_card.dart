@@ -1,5 +1,5 @@
 // 전체 포인트 합계, 종류별 비율 막대, 종류별 금액
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 
 import '../../../domain/models/point.dart';
 import '../../core/format.dart';

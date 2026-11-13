@@ -1,10 +1,10 @@
 // 서버 StoreController와 같은 모양의 응답
 import 'dart:convert';
 
-import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:http/http.dart' as http;
 import 'package:http/testing.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:prepay_app/data/repositories/store_repository.dart';
 import 'package:prepay_app/data/services/api_client.dart';
 import 'package:prepay_app/ui/core/theme.dart';

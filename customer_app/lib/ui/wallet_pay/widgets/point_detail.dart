@@ -1,6 +1,6 @@
 // 가게 카드 아래 '포인트 상세' 접고 펴기
 
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 
 import '../../../domain/models/point.dart';
 import '../../core/format.dart';

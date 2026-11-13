@@ -1,7 +1,7 @@
 // 금액 입력. 차감을 누르면 확인을 띄우고, 차감이 끝나면 영수증을 돌려주며 닫힌다
 // 메뉴를 골라서 금액 계산하기는 메뉴 만들 때 단다
-import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:material_ui/material_ui.dart';
 
 import '../../core/format.dart';
 import '../../core/tokens.dart';
