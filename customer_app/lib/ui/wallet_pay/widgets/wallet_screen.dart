@@ -58,6 +58,11 @@ class WalletScreen extends StatelessWidget {
               padding: EdgeInsets.only(bottom: 24),
               children: [
                 WalletHeader(),
+                // 차감한 뒤에 불러오지 못하면 아래 포인트는 차감하기 전 값이다
+                if (viewModel.failed) ...[
+                  SizedBox(height: 8),
+                  LoadError('포인트를 새로 불러오지 못했어요.', onRetry: viewModel.load),
+                ],
                 SizedBox(height: 8),
                 BalanceCard(wallet),
                 SizedBox(height: 24),
