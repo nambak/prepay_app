@@ -5,6 +5,7 @@ import '../data/repositories/point_repository.dart';
 import '../data/repositories/store_repository.dart';
 import '../data/services/api_client.dart';
 import '../domain/models/charge.dart';
+import '../domain/models/point_use.dart';
 import '../ui/account/view_models/login_view_model.dart';
 import '../ui/account/widgets/login_screen.dart';
 import '../ui/charge/view_models/charge_view_model.dart';
@@ -22,6 +23,7 @@ import '../ui/shop/widgets/shop_screen.dart';
 import '../ui/shop/widgets/store_screen.dart';
 import '../ui/wallet_pay/view_models/point_use_view_model.dart';
 import '../ui/wallet_pay/view_models/wallet_view_model.dart';
+import '../ui/wallet_pay/widgets/point_use_done_screen.dart';
 import '../ui/wallet_pay/widgets/wallet_screen.dart';
 import 'routes.dart';
 
@@ -67,6 +69,17 @@ final router = GoRouter(
           ),
         ),
       ),
+      routes: [
+        // 사용 완료. 영수증은 지갑 화면에서 extra로 받는다
+        GoRoute(
+          path: 'use-done',
+          // extra는 앱을 다시 켜면 사라진다. 그때는 지갑으로 돌아간다
+          redirect: (context, state) =>
+              state.extra is PointUseReceipt ? null : Routes.wallet,
+          builder: (context, state) =>
+              PointUseDoneScreen(state.extra! as PointUseReceipt),
+        ),
+      ],
     ),
     GoRoute(
       path: Routes.shop,

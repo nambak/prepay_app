@@ -56,6 +56,18 @@ void main() {
     expect(formatNumber(999), '999');
   });
 
+  test('일시는 기기 시간대와 상관없이 서울 시간으로 보여 준다', () {
+    // 서버는 +09:00으로 주지만 DateTime.parse는 UTC로 바꿔 둔다
+    expect(
+      formatDateTime(DateTime.parse('2026-10-27T12:00:00+09:00')),
+      '2026.10.27 12:00',
+    );
+    expect(
+      formatDateTime(DateTime.utc(2026, 10, 27, 20, 30)),
+      '2026.10.28 05:30',
+    );
+  });
+
   test('지갑을 불러오고 포인트 상세를 접고 편다', () async {
     // 한글이 들어 있어서 utf8바이트로 응답을 만든다.
     final viewModel = _viewModelReturning(
