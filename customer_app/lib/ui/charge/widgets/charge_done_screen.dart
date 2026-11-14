@@ -7,6 +7,7 @@ import '../../core/format.dart';
 import '../../core/icons.dart';
 import '../../core/tokens.dart';
 import '../../core/widgets/primary_button.dart';
+import '../../core/widgets/receipt_row.dart';
 import '../../core/widgets/secondary_button.dart';
 
 // 충전 완료
@@ -77,13 +78,13 @@ class ChargeDoneScreen extends StatelessWidget {
                     child: Column(
                       spacing: 14,
                       children: [
-                        _ReceiptRow('충전 가게', receipt.storeName),
-                        _ReceiptRow('충전 포인트', amount, bold: true),
-                        _ReceiptRow(
+                        ReceiptRow('충전 가게', receipt.storeName),
+                        ReceiptRow('충전 포인트', amount, bold: true),
+                        ReceiptRow(
                           '결제 금액',
                           '${formatNumber(receipt.paidWon)}원',
                         ),
-                        _ReceiptRow('충전 일시', formatDateTime(receipt.chargedAt)),
+                        ReceiptRow('충전 일시', formatDateTime(receipt.chargedAt)),
                       ],
                     ),
                   ),
@@ -119,34 +120,6 @@ class ChargeDoneScreen extends StatelessWidget {
           ],
         ),
       ),
-    );
-  }
-}
-
-class _ReceiptRow extends StatelessWidget {
-  const _ReceiptRow(this.label, this.value, {this.bold = false});
-
-  final String label;
-  final String value;
-  final bool bold;
-
-  @override
-  Widget build(BuildContext context) {
-    return Row(
-      spacing: 12,
-      children: [
-        Text(label, style: AppText.body.copyWith(color: AppColors.textMuted)),
-        Expanded(
-          child: Text(
-            value,
-            textAlign: TextAlign.right,
-            style: AppText.body.copyWith(
-              fontWeight: bold ? FontWeight.w700 : FontWeight.w500,
-              fontFeatures: tabularFigures,
-            ),
-          ),
-        ),
-      ],
     );
   }
 }

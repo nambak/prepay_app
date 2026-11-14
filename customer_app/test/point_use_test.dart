@@ -8,10 +8,12 @@ import 'package:http/testing.dart';
 import 'package:material_ui/material_ui.dart';
 import 'package:prepay_app/data/repositories/point_repository.dart';
 import 'package:prepay_app/data/services/api_client.dart';
+import 'package:prepay_app/domain/models/point_use.dart';
 import 'package:prepay_app/ui/core/theme.dart';
 import 'package:prepay_app/ui/core/widgets/view_model_scope.dart';
 import 'package:prepay_app/ui/wallet_pay/view_models/point_use_view_model.dart';
 import 'package:prepay_app/ui/wallet_pay/view_models/wallet_view_model.dart';
+import 'package:prepay_app/ui/wallet_pay/widgets/point_use_done_screen.dart';
 import 'package:prepay_app/ui/wallet_pay/widgets/point_use_sheet.dart';
 import 'package:prepay_app/ui/wallet_pay/widgets/wallet_screen.dart';
 
@@ -81,6 +83,13 @@ Future<void> _pumpWallet(
             ),
           ),
         ),
+        routes: [
+          GoRoute(
+            path: 'use-done',
+            builder: (context, state) =>
+                PointUseDoneScreen(state.extra! as PointUseReceipt),
+          ),
+        ],
       ),
     ],
   );
@@ -175,6 +184,39 @@ void main() {
     expect(find.byType(Dialog), findsNothing);
     expect(find.byType(PointUseSheet), findsNothing);
     expect(walletLoads, 2);
+
+    // 사용 완료
+    expect(find.text('18,800P를 썼어요'), findsOneWidget);
+    expect(find.text('행복식당 1 · 13번째 이용'), findsOneWidget);
+    expect(find.text('10,000P'), findsOneWidget);
+    expect(find.text('8,800P'), findsOneWidget);
+    expect(find.text('261,200P'), findsOneWidget);
+
+    await tester.tap(find.text('확인'));
+    await tester.pumpAndSettle();
+    expect(find.byType(PointUseDoneScreen), findsNothing);
+    expect(find.text('행복식당 1'), findsOneWidget);
+  });
+
+  testWidgets('서비스포인트를 쓰지 않았으면 그 줄을 숨긴다', (tester) async {
+    await _pumpWallet(
+      tester,
+      (request) async => request.method == 'POST'
+          ? _json({
+              ..._receiptJson,
+              'service_amount': 0,
+              'charge_amount': 18800,
+            }, 201)
+          : _json(_walletJson),
+    );
+    await _openConfirm(tester, '18800');
+
+    await tester.tap(_inDialog('쓰기'));
+    await tester.pumpAndSettle();
+
+    expect(find.text('18,800P를 썼어요'), findsOneWidget);
+    expect(find.text('서비스포인트'), findsNothing);
+    expect(find.text('충전포인트'), findsOneWidget);
   });
 
   testWidgets('금액이 0이거나 쓸 수 있는 포인트보다 많으면 차감을 할 수 없다', (tester) async {

@@ -1,7 +1,9 @@
+import 'package:go_router/go_router.dart';
 import 'package:material_ui/material_ui.dart';
 
 import '../../../domain/models/point.dart';
 import '../../../domain/models/point_use.dart';
+import '../../../routing/routes.dart';
 import '../../core/widgets/app_tab_bar.dart';
 import '../../core/widgets/load_error.dart';
 import '../../core/widgets/view_model_scope.dart';
@@ -25,8 +27,9 @@ class WalletScreen extends StatelessWidget {
 
   // 차감하기. 시트가 닫히면 끝났는지 상관없이 포인트를 다시 불러온다
   // 썼는지 확인하지 못한 실패 뒤에도 남은 포인트가 맞게 보이게 하려는 것이다
+  // 차감이 끝났으면 사용 완료 화면을 띄운다
   Future<void> _openPointUse(BuildContext context, StoreWallet store) async {
-    await showModalBottomSheet<PointUseReceipt>(
+    final receipt = await showModalBottomSheet<PointUseReceipt>(
       context: context,
       isScrollControlled: true,
       useSafeArea: true,
@@ -36,7 +39,9 @@ class WalletScreen extends StatelessWidget {
       ),
     );
     viewModel.load();
-    // TODO: 사용 완료 화면을 만들면 영수증을 받아서 연결
+    if (receipt != null && context.mounted) {
+      context.push(Routes.pointUseDone, extra: receipt);
+    }
   }
 
   @override
