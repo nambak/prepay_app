@@ -7,10 +7,7 @@ import '../../../domain/models/point.dart';
 import '../../core/load_view_model.dart';
 
 class WithdrawViewModel extends LoadViewModel<Wallet> {
-  WithdrawViewModel({
-    required this._pointRepository,
-    required this._authRepository,
-  });
+  new({required this._pointRepository, required this._authRepository});
 
   final PointRepository _pointRepository;
   final AuthRepository _authRepository;

@@ -5,7 +5,7 @@ import '../tokens.dart';
 
 // 완료 화면 영수증의 한 줄. 이름은 왼쪽, 값은 오른쪽
 class ReceiptRow extends StatelessWidget {
-  const ReceiptRow(this.label, this.value, {super.key, this.bold = false});
+  const new(this.label, this.value, {super.key, this.bold = false});
 
   final String label;
   final String value;

@@ -9,7 +9,7 @@ import '../../core/tokens.dart';
 import '../../core/widgets/point_dot.dart';
 
 class PointDetail extends StatelessWidget {
-  const PointDetail(
+  const new(
     this.store, {
     super.key,
     required this.expanded,
@@ -94,7 +94,7 @@ class PointDetail extends StatelessWidget {
 }
 
 class _Badge extends StatelessWidget {
-  const _Badge(this.text);
+  const new(this.text);
 
   final String text;
 

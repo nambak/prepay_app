@@ -6,7 +6,7 @@ typedef JsonMap = Map<String, dynamic>;
 
 // 서버가 2xx가 아닌 응답을 준 경우. 상태 코드로 무엇이 잘못됐는지 알 수 있다.
 class ApiException implements Exception {
-  const ApiException(this.statusCode);
+  const new(this.statusCode);
 
   final int statusCode;
 
@@ -16,7 +16,7 @@ class ApiException implements Exception {
 
 // 서버(server/)의 api 호출. JSON을 주고받기만 하고, 앱 모델로 바꾸는 것은 repository가 한다.
 class ApiClient {
-  ApiClient({required this._baseUrl, http.Client? client})
+  new({required this._baseUrl, http.Client? client})
     : _client = client ?? http.Client();
 
   static const _timeout = Duration(seconds: 10);

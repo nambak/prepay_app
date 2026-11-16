@@ -12,7 +12,7 @@ enum AppTab {
   like('좋아요', AppIcons.heart, Routes.likes),
   my('내 정보', AppIcons.my, Routes.my);
 
-  const AppTab(this.label, this.icon, this.path);
+  const new(this.label, this.icon, this.path);
 
   final String label;
   final String icon;
@@ -21,7 +21,7 @@ enum AppTab {
 
 // 하단 탭바. 화면에서는 Scaffold(bottomNavigationBar: AppTabBar(current: AppTab.wallet))로 사용.
 class AppTabBar extends StatelessWidget {
-  const AppTabBar({super.key, required this.current});
+  const new({super.key, required this.current});
 
   final AppTab current;
 
@@ -50,7 +50,7 @@ class AppTabBar extends StatelessWidget {
 }
 
 class _TabItem extends StatelessWidget {
-  const _TabItem(this.tab, {required this.selected});
+  const new(this.tab, {required this.selected});
 
   final AppTab tab;
   final bool selected;

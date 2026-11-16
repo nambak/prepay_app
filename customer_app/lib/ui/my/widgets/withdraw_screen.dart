@@ -8,7 +8,7 @@ import 'withdraw_notice.dart';
 
 // 회원 탈퇴
 class WithdrawScreen extends StatelessWidget {
-  const WithdrawScreen({super.key, required this.viewModel});
+  const new({super.key, required this.viewModel});
 
   final WithdrawViewModel viewModel;
 

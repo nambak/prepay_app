@@ -5,7 +5,7 @@ import '../../core/tokens.dart';
 import '../../core/widgets/primary_button.dart';
 
 class ChargeBottomBar extends StatelessWidget {
-  const ChargeBottomBar({
+  const new({
     super.key,
     required this.priceWon,
     required this.error,

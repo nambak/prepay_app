@@ -8,7 +8,7 @@ import '../view_models/login_view_model.dart';
 import 'join_banner.dart';
 
 class LoginScreen extends StatefulWidget {
-  const LoginScreen({super.key, required this.viewModel});
+  const new({super.key, required this.viewModel});
 
   final LoginViewModel viewModel;
 
@@ -113,7 +113,7 @@ class _LoginScreenState extends State<LoginScreen> {
 }
 
 class _FindLinks extends StatelessWidget {
-  const _FindLinks();
+  const new();
 
   @override
   Widget build(BuildContext context) {

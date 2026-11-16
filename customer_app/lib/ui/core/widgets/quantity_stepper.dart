@@ -6,7 +6,7 @@ import '../tokens.dart';
 
 // 수량 스테퍼: 흰 바탕, -/+ 버튼, 숫자 16/700.
 class QuantityStepper extends StatelessWidget {
-  const QuantityStepper({
+  const new({
     super.key,
     required this.label,
     required this.quantity,
@@ -55,7 +55,7 @@ class QuantityStepper extends StatelessWidget {
 }
 
 class _StepButton extends StatelessWidget {
-  const _StepButton({
+  const new({
     required this.icon,
     required this.tooltip,
     required this.onPressed,

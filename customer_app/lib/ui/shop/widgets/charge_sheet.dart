@@ -13,7 +13,7 @@ import '../view_models/store_view_model.dart';
 // 충전 상품 선택. 결제하기를 누르면 true를 돌려주고 닫힌다.
 // 원하는 금액으로 충전하기는 정책이 정해지면 단다.
 class ChargeSheet extends StatelessWidget {
-  const ChargeSheet(this.viewModel, {super.key});
+  const new(this.viewModel, {super.key});
 
   final StoreViewModel viewModel;
 
@@ -93,7 +93,7 @@ class ChargeSheet extends StatelessWidget {
 }
 
 class _ProductRow extends StatelessWidget {
-  const _ProductRow(
+  const new(
     this.product, {
     required this.quantity,
     required this.onQuantityChanged,
@@ -157,7 +157,7 @@ class _ProductRow extends StatelessWidget {
 
 // 충전 포인트와 결제 금액,
 class _Summary extends StatelessWidget {
-  const _Summary(this.order);
+  const new(this.order);
 
   final ChargeOrder order;
 
@@ -207,7 +207,7 @@ class _Summary extends StatelessWidget {
 
 // 아끼는 금액은 완료 배지 색(초록)으로 그린다.
 class _SavedBadge extends StatelessWidget {
-  const _SavedBadge(this.text);
+  const new(this.text);
 
   final String text;
 

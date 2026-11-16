@@ -4,7 +4,7 @@ enum PointType { charge, shared, service }
 
 // 포인트 종류 하나의 잔액. 단위는 P
 class PointItem {
-  const PointItem(this.type, this.amount, {this.daysLeft});
+  const new(this.type, this.amount, {this.daysLeft});
 
   final PointType type;
   final int amount;
@@ -13,7 +13,7 @@ class PointItem {
 
 // 내 가게 하나
 class StoreWallet {
-  const StoreWallet({
+  const new({
     required this.id,
     required this.name,
     required this.kind,
@@ -34,7 +34,7 @@ class StoreWallet {
 
 // 내 가게 탭 전체
 class Wallet {
-  const Wallet({
+  const new({
     required this.charge,
     required this.shared,
     required this.service,

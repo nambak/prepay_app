@@ -4,11 +4,7 @@ import '../tokens.dart';
 
 // 하단 보조 버튼
 class SecondaryButton extends StatelessWidget {
-  const SecondaryButton({
-    super.key,
-    required this.label,
-    required this.onPressed,
-  });
+  const new({super.key, required this.label, required this.onPressed});
 
   final String label;
   final VoidCallback onPressed;

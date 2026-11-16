@@ -6,7 +6,7 @@ import '../../core/tokens.dart';
 
 // 주소(복사 버튼)와 전화번호. 없는 것은 줄을 그리지 않는다.
 class StoreContact extends StatelessWidget {
-  const StoreContact({super.key, this.address, this.phone});
+  const new({super.key, this.address, this.phone});
 
   final String? address;
   final String? phone;
@@ -25,7 +25,7 @@ class StoreContact extends StatelessWidget {
 }
 
 class _ContactRow extends StatelessWidget {
-  const _ContactRow(this.icon, this.text, {this.action});
+  const new(this.icon, this.text, {this.action});
 
   final String icon;
   final String text;
@@ -51,7 +51,7 @@ class _ContactRow extends StatelessWidget {
 }
 
 class _CopyButton extends StatelessWidget {
-  const _CopyButton(this.text);
+  const new(this.text);
 
   final String text;
 

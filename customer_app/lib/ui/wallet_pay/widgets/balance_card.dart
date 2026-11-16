@@ -9,7 +9,7 @@ import '../../core/widgets/app_card.dart';
 import '../../core/widgets/point_dot.dart';
 
 class BalanceCard extends StatelessWidget {
-  const BalanceCard(this.wallet, {super.key});
+  const new(this.wallet, {super.key});
 
   final Wallet wallet;
 

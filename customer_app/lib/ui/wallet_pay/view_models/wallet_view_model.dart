@@ -3,7 +3,7 @@ import '../../../domain/models/point.dart';
 import '../../core/load_view_model.dart';
 
 class WalletViewModel extends LoadViewModel<Wallet> {
-  WalletViewModel({required this._pointRepository});
+  new({required this._pointRepository});
 
   final PointRepository _pointRepository;
 

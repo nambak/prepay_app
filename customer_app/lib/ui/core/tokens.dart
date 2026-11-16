@@ -42,7 +42,7 @@ enum AppTone {
   c(Color(0xFFECF7EF), Color(0xFF2C7445)),
   d(Color(0xFFF3EFFC), Color(0xFF5E46A6));
 
-  const AppTone(this.bg, this.fg);
+  const new(this.bg, this.fg);
 
   final Color bg;
   final Color fg;

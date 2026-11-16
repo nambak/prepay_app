@@ -4,7 +4,7 @@ import '../tokens.dart';
 
 // 하단 주요 버튼: 높이 56, 빨강, 17 Bold, 빨강은 한 화면에 한 곳이라 화면마다 하나만 쓴다.
 class PrimaryButton extends StatelessWidget {
-  const PrimaryButton({
+  const new({
     super.key,
     required this.label,
     required this.onPressed,

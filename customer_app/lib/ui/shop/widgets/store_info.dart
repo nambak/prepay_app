@@ -6,7 +6,7 @@ import '../../core/tokens.dart';
 import '../../core/widgets/store_thumb.dart';
 
 class StoreInfo extends StatelessWidget {
-  const StoreInfo(this.store, {super.key});
+  const new(this.store, {super.key});
 
   final StoreDetail store;
 
@@ -33,7 +33,7 @@ class StoreInfo extends StatelessWidget {
 }
 
 class _DiscountBox extends StatelessWidget {
-  const _DiscountBox(this.rate);
+  const new(this.rate);
 
   final int rate;
 

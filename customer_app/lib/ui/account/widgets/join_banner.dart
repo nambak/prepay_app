@@ -4,7 +4,7 @@ import '../../core/tokens.dart';
 
 // 로그인 화면 아래 회원가입 안내
 class JoinBanner extends StatelessWidget {
-  const JoinBanner({super.key});
+  const new({super.key});
 
   @override
   Widget build(BuildContext context) {

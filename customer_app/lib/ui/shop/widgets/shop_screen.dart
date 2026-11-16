@@ -11,7 +11,7 @@ import 'store_row.dart';
 
 // 가게찾기
 class ShopScreen extends StatelessWidget {
-  const ShopScreen({super.key, required this.viewModel});
+  const new({super.key, required this.viewModel});
 
   final ShopViewModel viewModel;
 

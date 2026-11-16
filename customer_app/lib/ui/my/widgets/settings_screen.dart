@@ -7,7 +7,7 @@ import '../../core/widgets/app_card.dart';
 
 // 환경설정. 지금은 로그아웃만 있다. 알림 설정은 저장할 서버가 생기면 넣는다
 class SettingsScreen extends StatelessWidget {
-  const SettingsScreen({super.key, required this.onLogout});
+  const new({super.key, required this.onLogout});
 
   // 로그아웃하면 라우터가 로그인 화면으로 옮긴다
   final VoidCallback onLogout;

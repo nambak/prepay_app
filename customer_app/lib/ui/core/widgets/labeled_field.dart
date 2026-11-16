@@ -4,7 +4,7 @@ import '../tokens.dart';
 
 // 라벨 + 입력창. 입력창 모양은 theme.dart의 inputDecorationTheme이 정한다.
 class LabeledField extends StatelessWidget {
-  const LabeledField({super.key, required this.label, required this.child});
+  const new({super.key, required this.label, required this.child});
 
   final String label;
   final Widget child;

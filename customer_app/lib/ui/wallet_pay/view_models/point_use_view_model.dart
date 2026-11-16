@@ -8,7 +8,7 @@ import '../../core/view_model.dart';
 
 // 고객차감. 차감이 끝나면 receipt가 생긴다
 class PointUseViewModel extends ViewModel {
-  PointUseViewModel({required this._pointRepository, required this.store});
+  new({required this._pointRepository, required this.store});
 
   final PointRepository _pointRepository;
   final StoreWallet store;

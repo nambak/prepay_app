@@ -16,11 +16,7 @@ import 'store_tabs.dart';
 import 'wallet_header.dart';
 
 class WalletScreen extends StatelessWidget {
-  const WalletScreen({
-    super.key,
-    required this.viewModel,
-    required this.createPointUse,
-  });
+  const new({super.key, required this.viewModel, required this.createPointUse});
 
   final WalletViewModel viewModel;
   final PointUseViewModel Function(StoreWallet store) createPointUse;

@@ -12,7 +12,7 @@ import '../../core/widgets/secondary_button.dart';
 
 // 충전 완료
 class ChargeDoneScreen extends StatelessWidget {
-  const ChargeDoneScreen(this.receipt, {super.key});
+  const new(this.receipt, {super.key});
 
   final ChargeReceipt receipt;
 

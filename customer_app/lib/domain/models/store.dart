@@ -13,7 +13,7 @@ enum StoreKind {
 
 // 가게찾기 목록의 가게 한 곳
 class StoreSummary {
-  const StoreSummary({
+  const new({
     required this.id,
     required this.name,
     required this.kind,
@@ -28,7 +28,7 @@ class StoreSummary {
 
 // 충전 상품
 class ChargeProduct {
-  const ChargeProduct({
+  const new({
     required this.id,
     required this.amount,
     required this.priceWon,
@@ -43,7 +43,7 @@ class ChargeProduct {
 
 // 가게 상세
 class StoreDetail {
-  const StoreDetail({
+  const new({
     required this.id,
     required this.name,
     required this.kind,

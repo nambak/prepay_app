@@ -5,7 +5,7 @@ import '../../core/load_view_model.dart';
 
 // 가가 상세. 충전 상품마다 고른 수량은 가게 상세와 충전 상품 선택이 함께 쓴다.
 class StoreViewModel extends LoadViewModel<StoreDetail> {
-  StoreViewModel({required this._storeRepository, required this.storeId});
+  new({required this._storeRepository, required this.storeId});
 
   final StoreRepository _storeRepository;
   final int storeId;

@@ -9,7 +9,7 @@ import '../view_models/point_use_view_model.dart';
 // 차감 확인. 차감이 끝나면 true, 취소하면 false를 불러온다
 // 차감하는 동안은 뒤로 가기·바깥 누르기·취소로 닫히지 않는다.
 class PointUseConfirmDialog extends StatelessWidget {
-  const PointUseConfirmDialog(this.viewModel, {super.key});
+  const new(this.viewModel, {super.key});
 
   final PointUseViewModel viewModel;
 
@@ -113,7 +113,7 @@ class PointUseConfirmDialog extends StatelessWidget {
 }
 
 class _Row extends StatelessWidget {
-  const _Row(this.label, this.value, this.valueStyle);
+  const new(this.label, this.value, this.valueStyle);
 
   final String label;
   final String value;

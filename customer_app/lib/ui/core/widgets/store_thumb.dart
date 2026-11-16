@@ -32,7 +32,7 @@ extension StoreKindLook on StoreKind {
 
 // 업종 썸네일. 가게 사진이 생기기 전까지 업종 아이콘을 보여 준다.
 class StoreThumb extends StatelessWidget {
-  const StoreThumb(
+  const new(
     this.kind, {
     super.key,
     this.size = 48,

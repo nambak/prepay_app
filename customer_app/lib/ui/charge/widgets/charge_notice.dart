@@ -4,11 +4,7 @@ import '../../core/tokens.dart';
 import '../../core/widgets/app_card.dart';
 
 class ChargeNotice extends StatelessWidget {
-  const ChargeNotice({
-    super.key,
-    required this.agreed,
-    required this.onAgreeChanged,
-  });
+  const new({super.key, required this.agreed, required this.onAgreeChanged});
 
   final bool agreed;
   final ValueChanged<bool> onAgreeChanged;

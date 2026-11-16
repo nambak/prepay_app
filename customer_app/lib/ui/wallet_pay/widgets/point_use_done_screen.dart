@@ -15,7 +15,7 @@ import '../../core/widgets/secondary_button.dart';
 // 사용 완료
 // 리뷰 쓰기와 이용 내역 보기는 그 화면을 만들 때 단다
 class PointUseDoneScreen extends StatelessWidget {
-  const PointUseDoneScreen(this.receipt, {super.key});
+  const new(this.receipt, {super.key});
 
   final PointUseReceipt receipt;
 
@@ -147,7 +147,7 @@ class PointUseDoneScreen extends StatelessWidget {
 
 // 쓴 포인트 중 한 종류. 점과 이름, 포인트
 class _PartRow extends StatelessWidget {
-  const _PartRow(this.type, this.amount);
+  const new(this.type, this.amount);
 
   final PointType type;
   final int amount;

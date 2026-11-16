@@ -5,7 +5,7 @@ import '../../core/widgets/primary_button.dart';
 import '../../core/widgets/secondary_button.dart';
 
 class WithdrawBottomBar extends StatelessWidget {
-  const WithdrawBottomBar({
+  const new({
     super.key,
     required this.agreed,
     required this.onAgreeChanged,

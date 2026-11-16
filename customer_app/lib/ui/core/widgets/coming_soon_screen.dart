@@ -5,7 +5,7 @@ import 'app_tab_bar.dart';
 
 // 아직 만들지 않은 탭 화면. 그 탭의 화면을 만들면 router.dart에서 실제 화면으로 바꾼다.
 class ComingSoonScreen extends StatelessWidget {
-  const ComingSoonScreen({super.key, required this.tab});
+  const new({super.key, required this.tab});
 
   final AppTab tab;
 
