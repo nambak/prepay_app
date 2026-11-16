@@ -31,4 +31,5 @@ Route::middleware('auth:sanctum')->group(function () {
 
     // 포인트 내역: 기간(year, month)로 조회한 기록
     Route::get('/history/charges', [PointHistoryController::class, 'charges']);
+    Route::get('/history/uses', [PointHistoryController::class, 'uses']);
 });
