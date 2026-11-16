@@ -3,7 +3,7 @@ import 'package:material_ui/material_ui.dart';
 import '../../core/tokens.dart';
 
 class WithdrawNotice extends StatelessWidget {
-  const WithdrawNotice({super.key});
+  const new({super.key});
 
   static const _notices = [
     '사라진 포인트는 다시 가입해도 돌아오지 않아요.',

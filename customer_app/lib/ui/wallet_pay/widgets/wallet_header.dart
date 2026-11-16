@@ -6,7 +6,7 @@ import '../../core/icons.dart';
 import '../../core/tokens.dart';
 
 class WalletHeader extends StatelessWidget {
-  const WalletHeader({super.key});
+  const new({super.key});
 
   @override
   Widget build(BuildContext context) {

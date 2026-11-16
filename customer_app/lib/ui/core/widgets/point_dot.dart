@@ -20,7 +20,7 @@ extension PointTypeUi on PointType {
 
 // 포인트 종류를 나타내는 점
 class PointDot extends StatelessWidget {
-  const PointDot(this.type, {super.key});
+  const new(this.type, {super.key});
 
   final PointType type;
 

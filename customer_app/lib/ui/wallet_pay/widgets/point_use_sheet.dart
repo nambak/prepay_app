@@ -12,7 +12,7 @@ import '../view_models/point_use_view_model.dart';
 import 'point_use_confirm_dialog.dart';
 
 class PointUseSheet extends StatelessWidget {
-  const PointUseSheet(this.viewModel, {super.key});
+  const new(this.viewModel, {super.key});
 
   final PointUseViewModel viewModel;
 

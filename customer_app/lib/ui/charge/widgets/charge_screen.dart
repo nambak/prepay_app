@@ -10,7 +10,7 @@ import 'charge_order_card.dart';
 
 // 충전 결제. 결제가 끝나면 같은 자리에 충전 완료를 보여 준다.
 class ChargeScreen extends StatelessWidget {
-  const ChargeScreen({super.key, required this.viewModel});
+  const new({super.key, required this.viewModel});
 
   final ChargeViewModel viewModel;
 

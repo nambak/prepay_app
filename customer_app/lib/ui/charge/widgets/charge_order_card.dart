@@ -9,7 +9,7 @@ import '../../core/widgets/store_thumb.dart';
 
 // 충전할 가게와 상품
 class ChargeOrderCard extends StatelessWidget {
-  const ChargeOrderCard(this.order, {super.key});
+  const new(this.order, {super.key});
 
   final ChargeOrder order;
 
@@ -60,7 +60,7 @@ class ChargeOrderCard extends StatelessWidget {
 
 // 상품 한 줄: 포인트 × 수량, 할인 배지, 결제 금액
 class _LineRow extends StatelessWidget {
-  const _LineRow(this.line);
+  const new(this.line);
 
   final ChargeLine line;
 

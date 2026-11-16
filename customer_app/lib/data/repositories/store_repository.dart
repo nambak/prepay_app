@@ -2,7 +2,7 @@ import '../../domain/models/store.dart';
 import '../services/api_client.dart';
 
 class StoreRepository {
-  StoreRepository({required this._apiClient});
+  new({required this._apiClient});
 
   final ApiClient _apiClient;
 

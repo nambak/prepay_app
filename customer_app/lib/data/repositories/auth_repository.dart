@@ -6,7 +6,7 @@ import '../services/api_client.dart';
 // 로그인 상태를 가진 곳. 토큰은 기기의 안정한 저장소(iOS 키체인, Android 키스토어)에 둔다.
 // 상태가 바뀌면 알려 줘서, 라우터가 로그인 다른 화면 사이를 옮겨준다.
 class AuthRepository extends ChangeNotifier {
-  AuthRepository({required this._apiClient}) {
+  new({required this._apiClient}) {
     // 다른 기기에서 로그아웃했거나 토큰이 지워져서 401로 응답하면 이 기기도 로그아웃한다.
     _apiClient.onUnauthorized = _forgetToken;
   }

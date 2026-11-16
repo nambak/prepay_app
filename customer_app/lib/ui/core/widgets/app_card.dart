@@ -4,7 +4,7 @@ import '../tokens.dart';
 
 // 흰 바탕 둥근 카드
 class AppCard extends StatelessWidget {
-  const AppCard({
+  const new({
     super.key,
     required this.padding,
     required this.child,

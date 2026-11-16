@@ -16,7 +16,7 @@ import 'store_info.dart';
 
 // 가게 상세
 class StoreScreen extends StatelessWidget {
-  const StoreScreen({super.key, required this.viewModel});
+  const new({super.key, required this.viewModel});
 
   final StoreViewModel viewModel;
 

@@ -9,7 +9,7 @@ import '../../core/widgets/quantity_stepper.dart';
 
 // 충전 상품 목록과 수량 고르기. 상품이 없으면 안내 문구를 보여 준다.
 class ChargeProductList extends StatelessWidget {
-  const ChargeProductList(
+  const new(
     this.products, {
     super.key,
     required this.quantityOf,
@@ -49,7 +49,7 @@ class ChargeProductList extends StatelessWidget {
 
 // 충전 상품 하나.
 class _ChargeProductCard extends StatelessWidget {
-  const _ChargeProductCard(
+  const new(
     this.product, {
     required this.quantity,
     required this.onQuantityChanged,

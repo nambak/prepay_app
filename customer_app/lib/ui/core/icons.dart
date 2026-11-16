@@ -50,7 +50,7 @@ abstract final class AppIcons {
 
 // 선 아이콘. 색을 안 주면 주변 IconTheme 색을 따름
 class SvgIcon extends StatelessWidget {
-  const SvgIcon(
+  const new(
     this.paths, {
     super.key,
     this.size = 24,

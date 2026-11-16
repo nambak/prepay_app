@@ -5,7 +5,7 @@ import '../../domain/models/store.dart';
 import '../services/api_client.dart';
 
 class PointRepository {
-  PointRepository({required this._apiClient});
+  new({required this._apiClient});
 
   final ApiClient _apiClient;
 

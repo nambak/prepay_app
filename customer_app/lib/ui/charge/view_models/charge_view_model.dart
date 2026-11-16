@@ -7,7 +7,7 @@ import '../../core/view_model.dart';
 
 // 충전 결제. 결제가 끝나면 receipt가 생기고 충전 완료를 보여준다.
 class ChargeViewModel extends ViewModel {
-  ChargeViewModel({required this._pointRepository, required this.order});
+  new({required this._pointRepository, required this.order});
 
   final PointRepository _pointRepository;
   final ChargeOrder order;

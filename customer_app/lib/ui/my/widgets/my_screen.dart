@@ -8,7 +8,7 @@ import '../../core/widgets/app_card.dart';
 import '../../core/widgets/app_tab_bar.dart';
 
 class MyScreen extends StatelessWidget {
-  const MyScreen({super.key});
+  const new({super.key});
 
   @override
   Widget build(BuildContext context) {

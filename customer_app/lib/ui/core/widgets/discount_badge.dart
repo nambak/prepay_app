@@ -4,7 +4,7 @@ import '../tokens.dart';
 
 // 할인 배지: '최대 20%', '5% 할인'
 class DiscountBadge extends StatelessWidget {
-  const DiscountBadge(this.text, {super.key});
+  const new(this.text, {super.key});
 
   final String text;
 

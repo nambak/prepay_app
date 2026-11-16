@@ -6,7 +6,7 @@ import '../../core/tokens.dart';
 import '../../core/widgets/app_card.dart';
 
 class ChargeAmountCard extends StatelessWidget {
-  const ChargeAmountCard(this.order, {super.key});
+  const new(this.order, {super.key});
 
   final ChargeOrder order;
 
@@ -44,7 +44,7 @@ class ChargeAmountCard extends StatelessWidget {
 }
 
 class _AmountRow extends StatelessWidget {
-  const _AmountRow(this.label, this.value);
+  const new(this.label, this.value);
 
   final String label;
   final String value;

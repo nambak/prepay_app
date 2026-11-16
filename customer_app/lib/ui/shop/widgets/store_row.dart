@@ -6,7 +6,7 @@ import '../../core/widgets/discount_badge.dart';
 import '../../core/widgets/store_thumb.dart';
 
 class StoreRow extends StatelessWidget {
-  const StoreRow(this.store, {super.key, required this.onTap});
+  const new(this.store, {super.key, required this.onTap});
 
   final StoreSummary store;
   final VoidCallback onTap;

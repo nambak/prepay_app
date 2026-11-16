@@ -1,6 +1,6 @@
 // 쓰기가 끝난 뒤 서버가 돌려준 내용. 사용 완료 화면에 보여준다
 class PointUseReceipt {
-  const PointUseReceipt({
+  const new({
     required this.storeName,
     required this.amount,
     required this.serviceAmount,

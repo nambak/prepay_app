@@ -6,7 +6,7 @@ import '../../core/tokens.dart';
 import '../../core/widgets/point_dot.dart';
 
 class RemainingPointsCard extends StatelessWidget {
-  const RemainingPointsCard({
+  const new({
     super.key,
     required this.wallet,
     required this.failed,
@@ -62,7 +62,7 @@ class RemainingPointsCard extends StatelessWidget {
 
 // 포인트 종류 한 줄. divided면 위에 구분선을 긋는다.
 class _PointRow extends StatelessWidget {
-  const _PointRow(this.type, this.amount, {this.divided = false});
+  const new(this.type, this.amount, {this.divided = false});
 
   final PointType type;
   final int amount;
@@ -94,7 +94,7 @@ class _PointRow extends StatelessWidget {
 
 // 불러오는 중이면 로딩 표시, 실패하면 다시 불러오기 버튼
 class _Loading extends StatelessWidget {
-  const _Loading({required this.failed, required this.onRetry});
+  const new({required this.failed, required this.onRetry});
 
   final bool failed;
   final VoidCallback onRetry;

@@ -12,7 +12,7 @@ import 'point_detail.dart';
 
 /// 가게 한 곳의 카드: 가게 정보, 포인트 합계, 쓰기·충전·공유 버튼, 포인트 상세
 class StoreCard extends StatelessWidget {
-  const StoreCard(
+  const new(
     this.store, {
     super.key,
     required this.expanded,
@@ -131,11 +131,7 @@ class StoreCard extends StatelessWidget {
 }
 
 class _CardButton extends StatelessWidget {
-  const _CardButton(
-    this.label, {
-    this.primary = false,
-    required this.onPressed,
-  });
+  const new(this.label, {this.primary = false, required this.onPressed});
 
   final String label;
   final bool primary;

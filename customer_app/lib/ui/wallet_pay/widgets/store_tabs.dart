@@ -3,7 +3,7 @@ import 'package:material_ui/material_ui.dart';
 import '../../core/tokens.dart';
 
 class StoreTabs extends StatelessWidget {
-  const StoreTabs({super.key, required this.count});
+  const new({super.key, required this.count});
 
   final int count;
 
