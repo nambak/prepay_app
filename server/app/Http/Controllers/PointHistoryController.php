@@ -126,7 +126,7 @@ class PointHistoryController extends Controller
     {
         $validated = $request->validate([
             'year' => ['required', 'integer', 'digits:4'],
-            'month' => ['nullable', 'integer', 'between:1,12'],
+            'month' => ['filled', 'integer', 'between:1,12'],
         ]);
 
         $month = isset($validated['month']) ? (int) $validated['month'] : null;

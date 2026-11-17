@@ -247,7 +247,7 @@ it('기간이 틀리면 422를 돌려준다', function (string $kind, string $qu
 
     $this->getJson("/api/history/{$kind}?{$query}")->assertUnprocessable();
 })->with(['charges', 'uses', 'service'])
-    ->with(['', 'year=26', 'year=abcd', 'year=2026&month=0', 'year=2026&month=13']);
+    ->with(['', 'year=26', 'year=abcd', 'year=2026&month=', 'year=2026&month=0', 'year=2026&month=13']);
 
 it('로그인하지 않으면 401을 돌려준다', function (string $kind) {
     $this->getJson("/api/history/{$kind}?year=2026&month=11")->assertUnauthorized();
