@@ -1,5 +1,6 @@
 import '../../domain/models/charge.dart';
 import '../../domain/models/point.dart';
+import '../../domain/models/point_history.dart';
 import '../../domain/models/point_use.dart';
 import '../../domain/models/store.dart';
 import '../services/api_client.dart';
@@ -41,6 +42,35 @@ class PointRepository {
       usedAt: DateTime.parse(json['used_at'] as String),
     );
   }
+
+  // 포인트 내역: 기간 안의 기록을 최신 순으로 받는다
+  Future<HistoryPage<ChargeRecord>> getChargeHistory(HistoryPeriod period) =>
+      _getHistory('charges', period, _chargeRecordFromJson);
+
+  Future<HistoryPage<UseRecord>> getUseHistory(HistoryPeriod period) =>
+      _getHistory('uses', period, _useRecordFromJson);
+
+  Future<HistoryPage<ServiceRecord>> getServiceHistory(HistoryPeriod period) =>
+      _getHistory('service', period, _serviceRecordFromJson);
+
+  Future<HistoryPage<T>> _getHistory<T extends HistoryRecord>(
+    String kind,
+    HistoryPeriod period,
+    T Function(JsonMap json) fromJson,
+  ) async {
+    final json = await _apiClient.getHistory(
+      kind,
+      year: period.year,
+      month: period.month,
+    );
+
+    return HistoryPage(
+      balance: json['balance'] as int,
+      items: [
+        for (final item in json['items'] as List) fromJson(item as JsonMap),
+      ],
+    );
+  }
 }
 
 // 서버 JSON(saved_won 처럼 snake_case)을 앱 모델로 바꾼다
@@ -73,4 +103,38 @@ PointItem _pointItemFromJson(JsonMap json) => PointItem(
   PointType.values.byName(json['type'] as String),
   json['amount'] as int,
   daysLeft: json['days_left'] as int?,
+);
+
+ChargeRecord _chargeRecordFromJson(JsonMap json) => ChargeRecord(
+  id: json['id'] as int,
+  storeName: json['store_name'] as String,
+  amount: json['amount'] as int,
+  paidWon: json['paid_won'] as int,
+  chargedAt: DateTime.parse(json['charged_at'] as String),
+);
+
+UseRecord _useRecordFromJson(JsonMap json) => UseRecord(
+  id: json['id'] as int,
+  storeName: json['store_name'] as String,
+  visitNumber: json['visit_number'] as int,
+  method: UseMethod.fromName(json['method'] as String),
+  amount: json['amount'] as int,
+  chargeAmount: json['charge_amount'] as int,
+  sharedAmount: json['shared_amount'] as int,
+  serviceAmount: json['service_amount'] as int,
+  usedAt: DateTime.parse(json['used_at'] as String),
+);
+
+ServiceRecord _serviceRecordFromJson(JsonMap json) => ServiceRecord(
+  id: json['id'] as int,
+  storeName: json['store_name'] as String,
+  amount: json['amount'] as int,
+  // 서버 이름은 snake_case(used_up)
+  status: switch (json['status']) {
+    'used_up' => ServiceStatus.usedUp,
+    'expired' => ServiceStatus.expired,
+    _ => ServiceStatus.usable,
+  },
+  daysLeft: json['days_left'] as int?,
+  receivedAt: DateTime.parse(json['received_at'] as String),
 );
