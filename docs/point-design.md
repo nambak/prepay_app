@@ -114,6 +114,27 @@ point_uses (쓰기 1건)                     point_use_lots (쓰기 1건에서 �
   - 05-06 완료. 서버 응답으로 쓴 포인트, 서비스포인트·충전포인트로 나눈 금액, 남은 포인트, 방문 횟수를 보여 줘요. 확인을 누르면 내 가게로 돌아가 포인트를 새로 불러와요. 리뷰 쓰기와 이용 내역 보기는 그 화면을 만들 때 달아요.
   - 05-03의 '메뉴를 골라서 금액 계산하기'는 메뉴를 만들 때 달아요.
 
+### `GET /api/history/*` (포인트 내역 07-01·07-02·07-07)
+
+고객이 충전하고 쓴 기록을 기간별로 보여 줘요. 세 API 모두 같은 규칙을 따라요.
+
+- **기간**: `year`(필수, 네 자리 정수)와 `month`(선택, 1~12). `month`를 빼면 그해 전체예요. 값이 틀리거나 비어 있으면(`month=`) 422예요. 각 기록의 `created_at`이 그 기간의 첫날 00:00:00부터 마지막 날 23:59:59 사이인 것만 줘요(서버 시간대 `Asia/Seoul`).
+- **순서**: 최신 순(`created_at` 내림차순, 같으면 `id` 내림차순)이에요. 가게 이름으로 찾기와 오래된 순 정렬은 앱이 받아 온 목록 안에서 해요. 기록이 많아져서 나눠 불러와야 하면 그때 서버로 옮겨요.
+- **응답**: `{"balance", "items": [...]}`. `balance`는 그 탭의 쓸 수 있는 포인트로, `/api/wallet`의 같은 종류 값과 같아요. 일시는 `charged_at`처럼 서버 시간대로 줘요.
+
+| API | 화면 | `balance` | `items`의 한 줄 |
+|---|---|---|---|
+| `GET /api/history/charges` | 결제 내역 07-01 | 충전포인트 | 충전 묶음 1개: `id`, `store_id`, `store_name`, `amount`(충전한 포인트), `paid_won`(낸 돈), `charged_at` |
+| `GET /api/history/uses` | 가게 이용 내역 07-02 | 충전포인트(07-02도 충전포인트 탭 안이라서) | 쓰기 1건: `id`, `store_id`, `store_name`, `visit_number`, `method`, `amount`, `charge_amount`, `shared_amount`, `service_amount`, `used_at` |
+| `GET /api/history/service` | 서비스포인트 07-07 | 서비스포인트 | 서비스포인트 묶음 1개: `id`, `store_id`, `store_name`, `amount`(받은 포인트), `status`, `days_left`, `received_at` |
+
+- **`visit_number`**: 그 가게에서 몇 번째로 쓴 것인지예요. 기간과 상관없이 그 가게에서 쓴 기록 중 이 기록까지 세요. `/api/wallet`의 `visit_count`와 같은 기준이에요.
+- **`method`**: 지금은 `customer`(고객차감)만 생겨요. 가게차감은 가게용 앱을 만들 때예요([#42](https://github.com/nambak/prepay_app/issues/42)).
+- **`shared_amount`**: 공유 기능이 없어서 0이에요.
+- **`status`**: 다 썼으면(`balance` 0) `used_up`, 남았는데 기한이 지났으면 `expired`, 그 밖은 `usable`이에요. 다 쓰고 기한도 지났으면 `used_up`이에요.
+- **`days_left`**: 기한이 있고 지나지 않았으면 남은 날수(마지막 날은 0), 아니면 `null`이에요. 다 쓴 묶음도 기한이 남았으면 줘요. 시안 07-07처럼 'D-12'와 '모두 씀'을 함께 보여 주려고요.
+- 결제 내역의 주문번호, 결제 취소·환불 상태는 아직 없어요([#38](https://github.com/nambak/prepay_app/issues/38)). 공유포인트 탭에는 API가 없어요([#39](https://github.com/nambak/prepay_app/issues/39)).
+
 ## 5. 관리자 웹
 
 - **가게**: 추가·수정만 해요. 포인트 기록이 있는 가게는 DB가 지우지 못하게 막아서 삭제 버튼은 두지 않아요. 주소·전화와 충전 상품도 가게 추가·수정 창에서 넣어요.

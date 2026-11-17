@@ -2,11 +2,11 @@
 
 namespace Database\Seeders;
 
+use App\Enums\StoreKind;
 use App\Models\Admin;
 use App\Models\PointLot;
 use App\Models\Store;
 use App\Models\User;
-use App\StoreKind;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 

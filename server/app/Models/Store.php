@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-use App\StoreKind;
+use App\Enums\StoreKind;
 use Database\Factories\StoreFactory;
 use Illuminate\Database\Eloquent\Attributes\Fillable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;

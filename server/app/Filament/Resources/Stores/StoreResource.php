@@ -2,9 +2,9 @@
 
 namespace App\Filament\Resources\Stores;
 
+use App\Enums\StoreKind;
 use App\Filament\Resources\Stores\Pages\ManageStores;
 use App\Models\Store;
-use App\StoreKind;
 use BackedEnum;
 use Filament\Actions\EditAction;
 use Filament\Forms\Components\Repeater;

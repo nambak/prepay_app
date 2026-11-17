@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Enums\PointType;
 use App\Models\PointLot;
 use App\Models\User;
-use App\PointType;
 use Illuminate\Http\Request;
 use Illuminate\Support\Collection;
 

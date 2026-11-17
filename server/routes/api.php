@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ChargeController;
+use App\Http\Controllers\PointHistoryController;
 use App\Http\Controllers\PointUseController;
 use App\Http\Controllers\StoreController;
 use App\Http\Controllers\WalletController;
@@ -27,4 +28,9 @@ Route::middleware('auth:sanctum')->group(function () {
 
     // 고객차감: 고객이 입력한 금액만큼 바로 차감한다.
     Route::post('/stores/{store}/uses', PointUseController::class);
+
+    // 포인트 내역: 기간(year, month)로 조회한 기록
+    Route::get('/history/charges', [PointHistoryController::class, 'charges']);
+    Route::get('/history/uses', [PointHistoryController::class, 'uses']);
+    Route::get('/history/service', [PointHistoryController::class, 'service']);
 });

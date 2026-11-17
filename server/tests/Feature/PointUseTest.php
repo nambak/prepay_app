@@ -1,10 +1,10 @@
 <?php
 
+use App\Enums\PointUseMethod;
 use App\Models\PointLot;
 use App\Models\PointUse;
 use App\Models\Store;
 use App\Models\User;
-use App\PointUseMethod;
 use Laravel\Sanctum\Sanctum;
 
 beforeEach(function () {
