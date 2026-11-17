@@ -2,7 +2,8 @@
 
 namespace App\Models;
 
-use App\PointType;
+use App\Enums\PointLotStatus;
+use App\Enums\PointType;
 use Database\Factories\PointLotFactory;
 use Illuminate\Database\Eloquent\Attributes\Fillable;
 use Illuminate\Database\Eloquent\Attributes\Scope;
@@ -70,10 +71,32 @@ class PointLot extends Model
     }
 
     /**
-     * 유효기간까지 남은 날. 마지막 날이면 0. 기한이 없으면 null
+     * 기한이 지났는지. 마지막 날짜까지는 쓸 수 있다(usable 스코프와 같은 기준)
+     */
+    public function isExpired(): bool
+    {
+        return $this->expires_on !== null && $this->expires_on->lt(today());
+    }
+
+    /**
+     * 남은 포인트가 0이면 기한은 보지 않고 UsedUp이다
+     */
+    public function status(): PointLotStatus
+    {
+        return match (true) {
+            $this->balance === 0 => PointLotStatus::UsedUp,
+            $this->isExpired() => PointLotStatus::Expired,
+            default => PointLotStatus::Usable,
+        };
+    }
+
+    /**
+     * 유효기간까지 남은 날. 마지막 날이면 0. 기한이 없거나 지났으면 null
      */
     public function daysLeft(): ?int
     {
-        return $this->expires_on === null ? null : (int) today()->diffInDays($this->expires_on);
+        return $this->expires_on === null || $this->isExpired()
+            ? null
+            : (int) today()->diffInDays($this->expires_on);
     }
 }

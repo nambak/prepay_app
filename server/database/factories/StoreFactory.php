@@ -2,8 +2,8 @@
 
 namespace Database\Factories;
 
+use App\Enums\StoreKind;
 use App\Models\Store;
-use App\StoreKind;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**

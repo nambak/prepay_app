@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Enums\PointType;
 use App\Models\Store;
 use App\Models\User;
-use App\PointType;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 

@@ -2,9 +2,9 @@
 
 namespace App\Filament\Resources\PointLots;
 
+use App\Enums\PointType;
 use App\Filament\Resources\PointLots\Pages\ManagePointLots;
 use App\Models\PointLot;
-use App\PointType;
 use BackedEnum;
 use Filament\Resources\Resource;
 use Filament\Support\Icons\Heroicon;

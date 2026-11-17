@@ -61,7 +61,7 @@ it('결제 내역은 고른 달의 내 충전만 최신 순으로 돌려준다',
     expect($this->getJson('/api/wallet')->json('charge'))->toBe(350000);
 });
 
-it('month를 빼면 그 해 전채를 돌려준다', function () {
+it('month를 빼면 그 해 전체를 돌려준다', function () {
     $charges = PointLot::factory()->for($this->user)->for($this->store);
 
     $charges->create(['created_at' => '2025-12-31 23:59:59']);
@@ -157,12 +157,98 @@ it('쓰기 기록이 많아도 쿼리 수는 같다', function () {
         ->and($countQueries())->toBe($withOne);
 });
 
-it('기간이 틀리면 4222를 돌려준다', function (string $kind, string $query) {
+it('서비스포인트는 받은 포인트와 상태, 남은 날을 돌려준다', function () {
+    $services = PointLot::factory()->for($this->user)->for($this->store)->service();
+
+    $usable = $services->create([
+        'amount' => 10000,
+        'balance' => 10000,
+        'expires_on' => today()->addDays(100),
+        'created_at' => '2026-12-01 16:30:00',
+    ]);
+    $usedUp = $services->create([
+        'amount' => 5000,
+        'balance' => 0,
+        'expires_on' => today()->addDays(12),
+        'created_at' => '2026-12-02 16:30:00',
+    ]);
+    $expired = $services->create([
+        'amount' => 3000,
+        'balance' => 3000,
+        'expires_on' => today()->subday(),
+        'created_at' => '2026-12-03 16:30:00',
+    ]);
+    $usedUpAndExpired = $services->create([
+        'amount' => 2000,
+        'balance' => 0,
+        'expires_on' => today()->subday(),
+        'created_at' => '2026-12-04 16:30:00',
+    ]);
+    $noExpiry = $services->create([
+        'amount' => 1000,
+        'balance' => 1000,
+        'expires_on' => null,
+        'created_at' => '2026-12-05 16:30:00',
+    ]);
+
+    // 11월에 받은 서비스포인트, 12월 충전, 다른 회원의 서비스포인트는 목록에서 뺀다.
+    $services->create([
+        'amount' => 10000,
+        'balance' => 10000,
+        'created_at' => '2026-11-30 16:30:00',
+    ]);
+    PointLot::factory()->for($this->user)->for($this->store)->create(['created_at' => '2026-12-01 16:30:00']);
+    PointLot::factory()->for($this->store)->service()->create(['created_at' => '2026-12-01 16:30:00']);
+
+    Sanctum::actingAs($this->user);
+
+    $item = fn (PointLot $lot, int $amount, string $status, ?int $daysLeft, string $receivedAt) => [
+        'id' => $lot->id,
+        'store_id' => $this->store->id,
+        'store_name' => '행복식당 1',
+        'amount' => $amount,
+        'status' => $status,
+        'days_left' => $daysLeft,
+        'received_at' => $receivedAt,
+    ];
+
+    $this->getJson('/api/history/service?year=2026&month=12')
+        ->assertOk()
+        ->assertExactJson([
+            // 11월에 받은 것도 아직 쓸 수 있어서 잔액에 들어간다
+            'balance' => 21000,
+            'items' => [
+                $item($noExpiry, 1000, 'usable', null, '2026-12-05T16:30:00+09:00'),
+                $item($usedUpAndExpired, 2000, 'used_up', null, '2026-12-04T16:30:00+09:00'),
+                $item($expired, 3000, 'expired', null, '2026-12-03T16:30:00+09:00'),
+                $item($usedUp, 5000, 'used_up', 12, '2026-12-02T16:30:00+09:00'),
+                $item($usable, 10000, 'usable', 100, '2026-12-01T16:30:00+09:00'),
+            ],
+        ]);
+
+    // 잔액은 지갑의 서비스포인트와 같다
+    expect($this->getJson('/api/wallet')->json('service'))->toBe(21000);
+});
+
+it('기한 마지막 날인 서비스포인트는 아직 쓸 수 있다', function () {
+    PointLot::factory()->for($this->user)->for($this->store)->service()
+        ->create(['balance' => 10000, 'expires_on' => today(), 'created_at' => '2026-12-01 16:30:00']);
+
+    Sanctum::actingAs($this->user);
+
+    $this->getJson('/api/history/service?year=2026&month=12')
+        ->assertJsonPath('balance', 10000)
+        ->assertJsonPath('items.0.status', 'usable')
+        ->assertJsonPath('items.0.days_left', 0);
+});
+
+it('기간이 틀리면 422를 돌려준다', function (string $kind, string $query) {
     Sanctum::actingAs($this->user);
 
     $this->getJson("/api/history/{$kind}?{$query}")->assertUnprocessable();
-})->with(['charges', 'uses'])->with(['', 'year=26', 'year=abcd', 'year=2026&month=0', 'year=2026&month=13']);
+})->with(['charges', 'uses', 'service'])
+    ->with(['', 'year=26', 'year=abcd', 'year=2026&month=0', 'year=2026&month=13']);
 
 it('로그인하지 않으면 401을 돌려준다', function (string $kind) {
     $this->getJson("/api/history/{$kind}?year=2026&month=11")->assertUnauthorized();
-})->with(['charges', 'uses']);
+})->with(['charges', 'uses', 'service']);

@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Enums\PointType;
 use App\Models\PointLot;
 use App\Models\PointUse;
 use App\Models\User;
-use App\PointType;
-use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 
@@ -26,26 +28,18 @@ class PointHistoryController extends Controller
         /** @var User $user */
         $user = $request->user();
 
-        $items = $user->pointLots()
-            ->where('type', PointType::Charge)
-            ->whereBetween('created_at', $this->period($request))
-            ->with('store')
-            ->orderByDesc('created_at')
-            ->orderByDesc('id')
-            ->get()
-            ->map(fn (PointLot $lot) => [
+        $lots = $this->latestIn($user->pointLots()->where('type', PointType::Charge), $request);
+
+        return [
+            'balance' => $this->balanceOf($user, PointType::Charge),
+            'items' => $lots->map(fn (PointLot $lot) => [
                 'id' => $lot->id,
                 'store_id' => $lot->store_id,
                 'store_name' => $lot->store->name,
                 'amount' => $lot->amount,
                 'paid_won' => $lot->paid_won,
                 'charged_at' => $lot->created_at->toIso8601String(),
-            ])
-            ->all();
-
-        return [
-            'balance' => $this->chargeBalance($user),
-            'items' => $items,
+            ])->all(),
         ];
     }
 
@@ -59,26 +53,12 @@ class PointHistoryController extends Controller
         /** @var User $user */
         $user = $request->user();
 
-        // 차감 1건에서 그 종류의 묶음으로 뺀 포인트 합
-        $usedOf = fn (PointType $type) => fn (Builder $query) => $query->where('point_lots.type', $type);
+        $uses = $this->latestIn($user->pointUses()->withAmountsByType()->withVisitNumber(), $request);
 
-        $items = $user->pointUses()
-            ->whereBetween('created_at', $this->period($request))
-            ->with('store')
-            ->withSum(['lots as charge_amount' => $usedOf(PointType::Charge)], 'point_use_lots.amount')
-            ->withSum(['lots as service_amount' => $usedOf(PointType::Service)], 'point_use_lots.amount')
-            // 그 가게에서 몇 번째로 차감한 것인지. 기간과 상관없이 이 기록까지 센다
-            ->addSelect(['visit_number' => PointUse::from('point_uses as earlier')
-                ->selectRaw('count(*)')
-                ->whereColumn('earlier.user_id', 'point_uses.user_id')
-                ->whereColumn('earlier.store_id', 'point_uses.store_id')
-                ->whereColumn('earlier.id', '<=', 'point_uses.id'),
-            ])
-            ->orderByDesc('created_at')
-            ->orderByDesc('id')
-            ->get()
-            // 위에서 select로 더한 값이라 모델 속성이 아니어서 getAttribute로 읽는다
-            ->map(fn (PointUse $use) => [
+        return [
+            'balance' => $this->balanceOf($user, PointType::Charge),
+            // 스코프가 select로 더한 값은 모델 속성이 아니어서 getAttribute로 읽는다
+            'items' => $uses->map(fn (PointUse $use) => [
                 'id' => $use->id,
                 'store_id' => $use->store_id,
                 'store_name' => $use->store->name,
@@ -89,13 +69,52 @@ class PointHistoryController extends Controller
                 'shared_amount' => 0,   // 공유 기능을 만들 때 채운다
                 'service_amount' => (int) $use->getAttribute('service_amount'),
                 'used_at' => $use->created_at->toIso8601String(),
-            ])
-            ->all();
+            ])->all(),
+        ];
+    }
+
+    /**
+     * 서비스포인트: 받은 서비스포인트 1건이 묶음 1개
+     *
+     * @return array{balance: int, items: array<int, array<string, mixed>>}
+     */
+    public function service(Request $request): array
+    {
+        /** @var User $user */
+        $user = $request->user();
+
+        $lots = $this->latestIn($user->pointLots()->where('type', PointType::Service), $request);
 
         return [
-            'balance' => $this->chargeBalance($user),
-            'items' => $items,
+            'balance' => $this->balanceOf($user, PointType::Service),
+            'items' => $lots->map(fn (PointLot $lot) => [
+                'id' => $lot->id,
+                'store_id' => $lot->store_id,
+                'store_name' => $lot->store->name,
+                'amount' => $lot->amount,   // 받은 포인트. 남은 포인트가 아니다
+                'status' => $lot->status(),
+                // 다 썼어도 기한이 남았으면 준다
+                'days_left' => $lot->daysLeft(),
+                'received_at' => $lot->created_at->toIso8601String(),
+            ])->all(),
         ];
+    }
+
+    /**
+     * 고른 기간의 기록을 가게와 함께 최신 순으로 불러온다
+     *
+     * @template TModel of Model
+     *
+     * @param  HasMany<TModel, User>  $query
+     * @return Collection<int, TModel>
+     */
+    private function latestIn(HasMany $query, Request $request): Collection
+    {
+        return $query->whereBetween('created_at', $this->period($request))
+            ->with('store')
+            ->orderByDesc('created_at')
+            ->orderByDesc('id')
+            ->get();
     }
 
     /**
@@ -116,11 +135,11 @@ class PointHistoryController extends Controller
         return [$from, $month === null ? $from->copy()->endOfYear() : $from->copy()->endOfMonth()];
     }
 
-    // 쓸 수 있는 충전포인트. 지갑(/api/wallet)의 charge와 같은 값이다
-    private function chargeBalance(User $user): int
+    // 그 종류의 쓸 수 있는 포인트. 지갑(/api/wallet)의 charge·service와 같은 값이다
+    private function balanceOf(User $user, PointType $type): int
     {
         return (int) $user->pointLots()
-            ->where('type', PointType::Charge)
+            ->where('type', $type)
             ->usable()
             ->sum('balance');
     }

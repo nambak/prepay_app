@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Enums;
 
 /**
  * 포인트 차감을 누가 했는지. 가게용 앱의 오늘의 차감 내역에 고객차감·가게차감으로 나뉘어 보인다.

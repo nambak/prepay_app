@@ -1,9 +1,9 @@
 <?php
 
+use App\Enums\StoreKind;
 use App\Models\PointLot;
 use App\Models\Store;
 use App\Models\User;
-use App\StoreKind;
 use Illuminate\Database\QueryException;
 use Laravel\Sanctum\Sanctum;
 

@@ -1,8 +1,8 @@
 <?php
 
+use App\Enums\StoreKind;
 use App\Models\Store;
 use App\Models\User;
-use App\StoreKind;
 use Laravel\Sanctum\Sanctum;
 
 it('가게 목록은 가게마다 가장 큰 할인율을 함께 준다', function () {

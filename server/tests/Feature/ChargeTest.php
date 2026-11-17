@@ -1,9 +1,9 @@
 <?php
 
+use App\Enums\PointType;
 use App\Models\PointLot;
 use App\Models\Store;
 use App\Models\User;
-use App\PointType;
 use Laravel\Sanctum\Sanctum;
 
 beforeEach(function () {
