@@ -1,11 +1,19 @@
 import 'dart:convert';
 
 import 'package:flutter_test/flutter_test.dart';
+import 'package:go_router/go_router.dart';
 import 'package:http/http.dart' as http;
 import 'package:http/testing.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:prepay_app/data/repositories/point_repository.dart';
 import 'package:prepay_app/data/services/api_client.dart';
 import 'package:prepay_app/domain/models/point_history.dart';
+import 'package:prepay_app/routing/routes.dart';
+import 'package:prepay_app/ui/core/theme.dart';
+import 'package:prepay_app/ui/core/widgets/load_error.dart';
+import 'package:prepay_app/ui/core/widgets/view_model_scope.dart';
+import 'package:prepay_app/ui/point_history/view_models/point_history_view_model.dart';
+import 'package:prepay_app/ui/point_history/widgets/point_history_screen.dart';
 
 // 서버 PointHistoryController와 같은 모양의 응답
 const _chargesJson = {
@@ -84,6 +92,67 @@ PointRepository _repository(Object json, List<http.Request> requests) =>
         }),
       ),
     );
+
+// 한글이 들어 있어서 utf8 바이트로 응답을 만든다
+http.Response _json(Object json, [int status = 200]) =>
+    http.Response.bytes(utf8.encode(jsonEncode(json)), status);
+
+// 요청 경로에 맞는 내역 응답
+Future<http.Response> _history(http.Request request) async =>
+    _json(switch (request.url.pathSegments.last) {
+      'charges' => _chargesJson,
+      'uses' => _usesJson,
+      _ => _serviceJson,
+    });
+
+// 시안과 같은 390x844 화면에 포인트 내역을 띄운다. 이번 달은 2026년 11월
+// /wallet은 들어온 곳을 확인하려고 둔 빈 화면이다
+Future<GoRouter> _pumpHistory(
+  WidgetTester tester,
+  Future<http.Response> Function(http.Request) handler, {
+  String location = '/wallet',
+}) async {
+  tester.view.physicalSize = Size(390, 844);
+  tester.view.devicePixelRatio = 1;
+  addTearDown(tester.view.reset);
+
+  final pointRepository = PointRepository(
+    apiClient: ApiClient(baseUrl: 'http://test', client: MockClient(handler)),
+  );
+  final router = GoRouter(
+    initialLocation: location,
+    routes: [
+      GoRoute(
+        path: '/wallet',
+        builder: (context, state) => Scaffold(body: Text('내 가게')),
+        routes: [
+          GoRoute(
+            path: 'history/:tab',
+            builder: (context, state) => ViewModelScope(
+              key: ValueKey(state.uri),
+              create: () => PointHistoryViewModel(
+                pointRepository: pointRepository,
+                tab: HistoryTab.fromName(state.pathParameters['tab']),
+                period: HistoryPeriod.fromQuery(
+                  state.uri.queryParameters,
+                  fallback: HistoryPeriod(2026, 11),
+                ),
+              )..load(),
+              builder: (viewModel) => PointHistoryScreen(viewModel: viewModel),
+            ),
+          ),
+        ],
+      ),
+    ],
+  );
+  addTearDown(router.dispose);
+
+  await tester.pumpWidget(
+    MaterialApp.router(theme: appTheme, routerConfig: router),
+  );
+  await tester.pumpAndSettle();
+  return router;
+}
 
 void main() {
   test('결제 내역 응답을 앱 모델로 바꾸고 기간을 쿼리로 보낸다', () async {
@@ -173,5 +242,107 @@ void main() {
     expect(HistoryTab.fromName('service'), HistoryTab.service);
     expect(HistoryTab.fromName('nope'), HistoryTab.charges);
     expect(HistoryTab.fromName(null), HistoryTab.charges);
+  });
+
+  testWidgets('경로의 탭으로 열고 결제 내역을 보여 준다', (tester) async {
+    await _pumpHistory(
+      tester,
+      _history,
+      location: '/wallet/history/charges?year=2026&month=11',
+    );
+
+    expect(find.text('포인트 내역'), findsOneWidget);
+    expect(find.text('충전포인트'), findsOneWidget);
+    expect(find.text('공유포인트'), findsOneWidget);
+    expect(find.text('서비스포인트'), findsOneWidget);
+    expect(
+      tester.getSemantics(find.text('충전포인트')),
+      isSemantics(isSelected: true),
+    );
+    expect(
+      tester.getSemantics(find.text('결제 내역')),
+      isSemantics(isSelected: true),
+    );
+
+    expect(find.text('쓸 수 있는 충전포인트'), findsOneWidget);
+    expect(find.text('280,000'), findsOneWidget);
+
+    expect(find.text('행복식당 1'), findsOneWidget);
+    expect(find.text('결제 완료'), findsOneWidget);
+    expect(find.text('충전 포인트'), findsOneWidget);
+    expect(find.text('50,000P'), findsOneWidget);
+    expect(find.text('결제 금액'), findsOneWidget);
+    expect(find.text('47,500원'), findsOneWidget);
+    expect(find.text('결제 일시'), findsOneWidget);
+    expect(find.text('2026.11.13 12:00'), findsOneWidget);
+    // 결제 내역은 날짜로 묶지 않는다.
+    expect(find.textContaining('11월 13일'), findsNothing);
+  });
+
+  testWidgets('탭을 바꾸면 기간을 그대로 남기고, 뒤로 한 번이면 들어온 곳이다', (tester) async {
+    final requests = <http.Request>[];
+    final router = await _pumpHistory(tester, (request) {
+      requests.add(request);
+      return _history(request);
+    });
+
+    router.push(Routes.history(HistoryTab.charges, HistoryPeriod(2026, 10)));
+    await tester.pumpAndSettle();
+    await tester.tap(find.text('가게 이용 내역'));
+    await tester.pumpAndSettle();
+    expect(requests.last.url.path, '/api/history/uses');
+    expect(requests.last.url.queryParameters, {'year': '2026', 'month': '10'});
+
+    await tester.tap(find.text('서비스포인트'));
+    await tester.pumpAndSettle();
+    expect(requests.last.url.path, '/api/history/service');
+    expect(requests.last.url.queryParameters, {'year': '2026', 'month': '10'});
+    expect(find.text('쓸 수 있는 서비스포인트'), findsOneWidget);
+
+    router.pop();
+    await tester.pumpAndSettle();
+    expect(find.text('내 가게'), findsOneWidget);
+  });
+
+  testWidgets('결제 내역이 없으면 빈 화면을 보여 준다', (tester) async {
+    await _pumpHistory(
+      tester,
+      (_) async => _json({'balance': 0, 'items': []}),
+      location: '/wallet/history/charges',
+    );
+
+    expect(find.text('이 기간에 결제한 내역이 없어요'), findsOneWidget);
+    expect(find.text('기간을 바꿔 보세요'), findsOneWidget);
+  });
+
+  testWidgets('불러오지 못하면 다시 불러올 수 있다', (tester) async {
+    var calls = 0;
+    await _pumpHistory(
+      tester,
+      (request) async => ++calls == 1 ? _json({}, 500) : _history(request),
+      location: '/wallet/history/charges',
+    );
+    expect(find.byType(LoadError), findsOneWidget);
+
+    await tester.tap(find.text('다시 불러오기'));
+    await tester.pumpAndSettle();
+    expect(find.byType(LoadError), findsNothing);
+    expect(find.text('행복식당 1'), findsOneWidget);
+  });
+
+  testWidgets('공유포인트 탭은 서버를 부르지 않고 빈 화면이다', (tester) async {
+    final requests = <http.Request>[];
+    await _pumpHistory(tester, (request) {
+      requests.add(request);
+      return _history(request);
+    }, location: '/wallet/history/shared');
+
+    expect(find.text('쓸 수 있는 공유포인트'), findsOneWidget);
+    expect(find.text('0'), findsOneWidget);
+    expect(find.text('아직 공유포인트가 없어요'), findsOneWidget);
+    expect(find.text('공유 기능을 준비하고 있어요'), findsOneWidget);
+    // 결제 내역 | 가게 이용 내역은 충전포인트 탭에만 있다
+    expect(find.text('결제 내역'), findsNothing);
+    expect(requests, isEmpty);
   });
 }

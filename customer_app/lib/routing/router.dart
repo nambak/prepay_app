@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:go_router/go_router.dart';
 
 import '../data/repositories/auth_repository.dart';
@@ -5,11 +6,13 @@ import '../data/repositories/point_repository.dart';
 import '../data/repositories/store_repository.dart';
 import '../data/services/api_client.dart';
 import '../domain/models/charge.dart';
+import '../domain/models/point_history.dart';
 import '../domain/models/point_use.dart';
 import '../ui/account/view_models/login_view_model.dart';
 import '../ui/account/widgets/login_screen.dart';
 import '../ui/charge/view_models/charge_view_model.dart';
 import '../ui/charge/widgets/charge_screen.dart';
+import '../ui/core/format.dart';
 import '../ui/core/widgets/app_tab_bar.dart';
 import '../ui/core/widgets/coming_soon_screen.dart';
 import '../ui/core/widgets/view_model_scope.dart';
@@ -17,6 +20,8 @@ import '../ui/my/view_models/withdraw_view_model.dart';
 import '../ui/my/widgets/my_screen.dart';
 import '../ui/my/widgets/settings_screen.dart';
 import '../ui/my/widgets/withdraw_screen.dart';
+import '../ui/point_history/view_models/point_history_view_model.dart';
+import '../ui/point_history/widgets/point_history_screen.dart';
 import '../ui/shop/view_models/shop_view_model.dart';
 import '../ui/shop/view_models/store_view_model.dart';
 import '../ui/shop/widgets/shop_screen.dart';
@@ -78,6 +83,23 @@ final router = GoRouter(
               state.extra is PointUseReceipt ? null : Routes.wallet,
           builder: (context, state) =>
               PointUseDoneScreen(state.extra! as PointUseReceipt),
+        ),
+        // 포인트 내역. 탭을 바꾸면 경로를 바꿔치기하는데, 같은 GoRoute라서
+        // 경로로 key를 줘야 view model을 새로 만든다
+        GoRoute(
+          path: 'history/:tab',
+          builder: (context, state) => ViewModelScope(
+            key: ValueKey(state.uri),
+            create: () => PointHistoryViewModel(
+              pointRepository: _pointRepository,
+              tab: HistoryTab.fromName(state.pathParameters['tab']),
+              period: HistoryPeriod.fromQuery(
+                state.uri.queryParameters,
+                fallback: HistoryPeriod.monthOf(seoulTime(DateTime.now())),
+              ),
+            )..load(),
+            builder: (viewModel) => PointHistoryScreen(viewModel: viewModel),
+          ),
         ),
       ],
     ),
