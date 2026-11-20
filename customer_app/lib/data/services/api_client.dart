@@ -31,9 +31,12 @@ class ApiClient {
   void Function()? onUnauthorized;
 
   // 요청 공통
-  Future<JsonMap> _get(String path) async => _decode(
-    await _client.get(_uri(path), headers: _headers()).timeout(_timeout),
-  );
+  Future<JsonMap> _get(String path, [Map<String, String>? query]) async =>
+      _decode(
+        await _client
+            .get(_uri(path, query), headers: _headers())
+            .timeout(_timeout),
+      );
 
   Future<JsonMap> _post(String path, [Map<String, Object?>? body]) async =>
       _decode(
@@ -46,7 +49,8 @@ class ApiClient {
     await _client.delete(_uri(path), headers: _headers()).timeout(_timeout),
   );
 
-  Uri _uri(String path) => Uri.parse('$_baseUrl$path');
+  Uri _uri(String path, [Map<String, String>? query]) =>
+      Uri.parse('$_baseUrl$path').replace(queryParameters: query);
 
   Map<String, String> _headers() => {
     'Accept': 'application/json',
@@ -90,6 +94,15 @@ class ApiClient {
   // ── 포인트 ──
 
   Future<JsonMap> getWallet() => _get('/api/wallet');
+
+  // ── 포인트 내역 ──
+
+  // kind는 charges, uses, service. month를 빼면 그 해 전체
+  Future<JsonMap> getHistory(String kind, {required int year, int? month}) =>
+      _get('/api/history/$kind', {
+        'year': '$year',
+        if (month != null) 'month': '$month',
+      });
 
   // ── 가게 ──
 
