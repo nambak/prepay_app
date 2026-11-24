@@ -8,8 +8,10 @@ import '../../core/widgets/empty_state.dart';
 import '../../core/widgets/load_error.dart';
 import '../view_models/point_history_view_model.dart';
 import 'charge_record_card.dart';
+import 'day_header.dart';
 import 'history_balance_card.dart';
 import 'history_tabs.dart';
+import 'use_record_card.dart';
 
 class PointHistoryScreen extends StatelessWidget {
   const new({super.key, required this.viewModel});
@@ -61,14 +63,20 @@ class PointHistoryScreen extends StatelessWidget {
                       EmptyState(title, message)
                     else
                       Column(
+                        crossAxisAlignment: CrossAxisAlignment.stretch,
                         spacing: 8,
                         children: [
-                          for (final record in page.items)
-                            switch (record) {
-                              ChargeRecord() => ChargeRecordCard(record),
-                              // 나중에 카드를 넣는다
-                              UseRecord() || ServiceRecord() => SizedBox(),
-                            },
+                          for (final (header, records)
+                              in viewModel.sections) ...[
+                            if (header != null) DayHeader(header),
+                            for (final record in records)
+                              switch (record) {
+                                ChargeRecord() => ChargeRecordCard(record),
+                                UseRecord() => UseRecordCard(record),
+                                // 나중에 카드를 넣는다
+                                ServiceRecord() => SizedBox(),
+                              },
+                          ],
                         ],
                       ),
                   ],
