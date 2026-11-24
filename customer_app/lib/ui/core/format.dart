@@ -18,3 +18,9 @@ String formatDateTime(DateTime time) {
 
 // 숫자 폭을 고르게 맞춰서 금액 자리수가 흔들리지 않게함.
 const tabularFigures = [FontFeature.tabularFigures()];
+
+// 11월 3일 (화) (서울 날짜)
+String formatDayHeader(DateTime time) {
+  final t = seoulTime(time);
+  return '${t.month}월 ${t.day}일 (${'월화수목금토일'[t.weekday - 1]})';
+}

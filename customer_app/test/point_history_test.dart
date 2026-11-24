@@ -9,11 +9,13 @@ import 'package:prepay_app/data/repositories/point_repository.dart';
 import 'package:prepay_app/data/services/api_client.dart';
 import 'package:prepay_app/domain/models/point_history.dart';
 import 'package:prepay_app/routing/routes.dart';
+import 'package:prepay_app/ui/core/format.dart';
 import 'package:prepay_app/ui/core/theme.dart';
 import 'package:prepay_app/ui/core/widgets/load_error.dart';
 import 'package:prepay_app/ui/core/widgets/view_model_scope.dart';
 import 'package:prepay_app/ui/point_history/view_models/point_history_view_model.dart';
 import 'package:prepay_app/ui/point_history/widgets/point_history_screen.dart';
+import 'package:prepay_app/ui/point_history/widgets/use_record_card.dart';
 
 // 서버 PointHistoryController와 같은 모양의 응답
 const _chargesJson = {
@@ -241,6 +243,17 @@ void main() {
     expect(HistoryPeriod(2026, 11).toQuery(), {'year': '2026', 'month': '11'});
   });
 
+  test('날짜와 머리글은 서울 날짜와 요일이다', () {
+    expect(
+      formatDayHeader(DateTime.parse('2026-11-02T15:30:00Z')),
+      '11월 3일 (화)',
+    );
+    expect(
+      formatDayHeader(DateTime.parse('2026-11-01T12:00:00+09:00')),
+      '11월 1일 (일)',
+    );
+  });
+
   test('탭 이름을 잘 못 입력하면 결제 내역 탭으로 이동', () {
     expect(HistoryTab.fromName('service'), HistoryTab.service);
     expect(HistoryTab.fromName('nope'), HistoryTab.charges);
@@ -296,7 +309,7 @@ void main() {
     expect(requests.last.url.path, '/api/history/uses');
     expect(requests.last.url.queryParameters, {'year': '2026', 'month': '10'});
 
-    await tester.tap(find.text('서비스포인트'));
+    await tester.tap(find.text('서비스포인트').first);
     await tester.pumpAndSettle();
     expect(requests.last.url.path, '/api/history/service');
     expect(requests.last.url.queryParameters, {'year': '2026', 'month': '10'});
@@ -347,6 +360,65 @@ void main() {
     // 결제 내역 | 가게 이용 내역은 충전포인트 탭에만 있다
     expect(find.text('결제 내역'), findsNothing);
     expect(requests, isEmpty);
+  });
+
+  testWidgets('가게 이용 내역을 서울 날짜로 묶어 보여 준다', (tester) async {
+    Map<String, Object> use(int visit, String method, String usedAt) => {
+      'id': visit,
+      'store_id': 1,
+      'store_name': '행복식당 1',
+      'visit_number': visit,
+      'method': method,
+      'amount': 30000,
+      'charge_amount': 20000,
+      'shared_amount': 0,
+      'service_amount': 10000,
+      'used_at': usedAt,
+    };
+    await _pumpHistory(
+      tester,
+      (_) async => _json({
+        'balance': 280000,
+        'items': [
+          use(13, 'customer', '2026-11-03T23:00:00+09:00'),
+          // UTC로는 11월 2일 이지만 서울로는 11월 3일이다
+          use(12, 'store', '2026-11-03T00:30:00+09:00'),
+          use(11, 'customer', '2026-11-01T12:00:00+09:00'),
+        ],
+      }),
+      location: '/wallet/history/uses',
+    );
+
+    expect(find.text('11월 3일 (화)'), findsOneWidget);
+    expect(find.text('11월 1일 (일)'), findsOneWidget);
+    double top(String text) => tester.getTopLeft(find.text(text)).dy;
+    expect(top('11월 3일 (화)'), lessThan(top('2026.11.03 00:30')));
+    expect(top('2026.11.03 00:30'), lessThan(top('11월 1일 (일)')));
+    expect(top('11월 1일 (일)'), lessThan(top('2026.11.01 12:00')));
+
+    final card = find.byType(UseRecordCard).first;
+    Finder inCard(String text) =>
+        find.descendant(of: card, matching: find.text(text));
+    expect(inCard('행복식당 1'), findsOneWidget);
+    expect(inCard('13번째 이용'), findsOneWidget);
+    expect(inCard('고객 차감'), findsOneWidget);
+    expect(inCard('쓴 포인트'), findsOneWidget);
+    expect(inCard('30,000P'), findsOneWidget);
+    expect(inCard('충전포인트'), findsOneWidget);
+    expect(inCard('20,000'), findsOneWidget);
+    expect(inCard('공유포인트'), findsOneWidget);
+    expect(inCard('0'), findsOneWidget);
+    expect(inCard('서비스포인트'), findsOneWidget);
+    expect(inCard('10,000'), findsOneWidget);
+    expect(inCard('이용 일시'), findsOneWidget);
+    expect(inCard('2026.11.03 23:00'), findsOneWidget);
+
+    // 가게 차감은 QR 차감과 나누기 전이라 배지를 그리지 않는다
+    expect(find.text('고객 차감'), findsNWidgets(2));
+    expect(find.text('가게 차감'), findsNothing);
+    // 이용 메뉴와 리뷰는 아직 없다
+    expect(find.text('이용 메뉴 보기'), findsNothing);
+    expect(find.text('리뷰 쓰기'), findsNothing);
   });
 
   testWidgets('글자를 크게 해도 위쪽 탭을 모두 누를 수 있다', (tester) async {
