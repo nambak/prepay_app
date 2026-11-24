@@ -19,45 +19,49 @@ class HistoryTabs extends StatelessWidget {
       decoration: BoxDecoration(
         border: Border(bottom: BorderSide(color: AppColors.border)),
       ),
-      child: Row(
-        spacing: 20,
-        children: [
-          for (final type in PointType.values)
-            if (type == current)
-              Semantics(
-                container: true,
-                selected: true,
-                child: Container(
-                  height: AppSize.touchTarget,
-                  decoration: BoxDecoration(
-                    border: Border(
-                      bottom: BorderSide(
-                        color: AppColors.textPrimary,
-                        width: 2,
-                      ),
-                    ),
-                  ),
-                  child: _TabLabel(type, style: AppText.inputBold),
-                ),
-              )
-            else
-              Semantics(
-                container: true,
-                button: true,
-                child: InkWell(
-                  onTap: () => onSelect(HistoryTab.of(type)),
-                  child: SizedBox(
+      // 글자를 키우면 한 줄에 다 들어가지 않아서 밀어 본다
+      child: SingleChildScrollView(
+        scrollDirection: Axis.horizontal,
+        child: Row(
+          spacing: 20,
+          children: [
+            for (final type in PointType.values)
+              if (type == current)
+                Semantics(
+                  container: true,
+                  selected: true,
+                  child: Container(
                     height: AppSize.touchTarget,
-                    child: _TabLabel(
-                      type,
-                      style: AppText.inputMedium.copyWith(
-                        color: AppColors.textMuted,
+                    decoration: BoxDecoration(
+                      border: Border(
+                        bottom: BorderSide(
+                          color: AppColors.textPrimary,
+                          width: 2,
+                        ),
+                      ),
+                    ),
+                    child: _TabLabel(type, style: AppText.inputBold),
+                  ),
+                )
+              else
+                Semantics(
+                  container: true,
+                  button: true,
+                  child: InkWell(
+                    onTap: () => onSelect(HistoryTab.of(type)),
+                    child: SizedBox(
+                      height: AppSize.touchTarget,
+                      child: _TabLabel(
+                        type,
+                        style: AppText.inputMedium.copyWith(
+                          color: AppColors.textMuted,
+                        ),
                       ),
                     ),
                   ),
                 ),
-              ),
-        ],
+          ],
+        ),
       ),
     );
   }

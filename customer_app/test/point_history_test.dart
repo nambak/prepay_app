@@ -232,6 +232,9 @@ void main() {
     expect(read({'year': 'x'}), thisMonth);
     expect(read({'year': '2025', 'month': '3'}), HistoryPeriod(2025, 3));
     expect(read({'year': '2025'}), HistoryPeriod(2025));
+    // 서버는 네 자리 연도만 받는다
+    expect(read({'year': '26', 'month': '11'}), thisMonth);
+    expect(read({'year': '20260'}), thisMonth);
 
     expect(HistoryPeriod(2025).label, '2025년');
     expect(HistoryPeriod(2026, 11).label, '2026년 11월');
@@ -344,5 +347,22 @@ void main() {
     // 결제 내역 | 가게 이용 내역은 충전포인트 탭에만 있다
     expect(find.text('결제 내역'), findsNothing);
     expect(requests, isEmpty);
+  });
+
+  testWidgets('글자를 크게 해도 위쪽 탭을 모두 누를 수 있다', (tester) async {
+    // 1.2배면 세 탭이 한 줄에 들어가지 않는다
+    tester.platformDispatcher.textScaleFactorTestValue = 1.2;
+    addTearDown(tester.platformDispatcher.clearTextScaleFactorTestValue);
+    final requests = <http.Request>[];
+    await _pumpHistory(tester, (request) {
+      requests.add(request);
+      return _history(request);
+    }, location: '/wallet/history/charges');
+
+    await tester.ensureVisible(find.text('서비스포인트'));
+    await tester.pumpAndSettle();
+    await tester.tap(find.text('서비스포인트'));
+    await tester.pumpAndSettle();
+    expect(requests.last.url.path, '/api/history/service');
   });
 }

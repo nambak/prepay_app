@@ -35,7 +35,8 @@ class HistoryPeriod {
     required HistoryPeriod fallback,
   }) {
     final year = int.tryParse(query['year'] ?? '');
-    if (year == null) return fallback;
+    // 서버는 네 자리 연도만 받는다
+    if (year == null || year < 1000 || year > 9999) return fallback;
 
     final month = query['month'];
     if (month == null) return HistoryPeriod(year);
