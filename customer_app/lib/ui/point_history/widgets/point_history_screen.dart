@@ -11,6 +11,7 @@ import 'charge_record_card.dart';
 import 'day_header.dart';
 import 'history_balance_card.dart';
 import 'history_tabs.dart';
+import 'service_record_card.dart';
 import 'use_record_card.dart';
 
 class PointHistoryScreen extends StatelessWidget {
@@ -59,6 +60,22 @@ class PointHistoryScreen extends StatelessWidget {
                       onSelect: (tab) => _select(context, tab),
                     ),
                     SizedBox(height: 12),
+                    if (viewModel.tab == HistoryTab.service)
+                      Padding(
+                        padding: EdgeInsets.fromLTRB(
+                          AppSpace.gutter,
+                          0,
+                          AppSpace.gutter,
+                          4,
+                        ),
+                        child: Text(
+                          '서비스포인트는 가게가 감사의 뜻으로 드리는 포인트예요. 기한 안에 써 주세요.',
+                          style: AppText.secondary.copyWith(
+                            color: AppColors.textMuted,
+                            height: 1.55,
+                          ),
+                        ),
+                      ),
                     if (page.items.isEmpty)
                       EmptyState(title, message)
                     else
@@ -73,8 +90,7 @@ class PointHistoryScreen extends StatelessWidget {
                               switch (record) {
                                 ChargeRecord() => ChargeRecordCard(record),
                                 UseRecord() => UseRecordCard(record),
-                                // 나중에 카드를 넣는다
-                                ServiceRecord() => SizedBox(),
+                                ServiceRecord() => ServiceRecordCard(record),
                               },
                           ],
                         ],

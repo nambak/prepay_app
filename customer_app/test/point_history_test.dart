@@ -14,7 +14,10 @@ import 'package:prepay_app/ui/core/theme.dart';
 import 'package:prepay_app/ui/core/widgets/load_error.dart';
 import 'package:prepay_app/ui/core/widgets/view_model_scope.dart';
 import 'package:prepay_app/ui/point_history/view_models/point_history_view_model.dart';
+import 'package:prepay_app/ui/point_history/widgets/history_tabs.dart';
 import 'package:prepay_app/ui/point_history/widgets/point_history_screen.dart';
+import 'package:prepay_app/ui/point_history/widgets/record_badge.dart';
+import 'package:prepay_app/ui/point_history/widgets/service_record_card.dart';
 import 'package:prepay_app/ui/point_history/widgets/use_record_card.dart';
 
 // 서버 PointHistoryController와 같은 모양의 응답
@@ -279,6 +282,8 @@ void main() {
       tester.getSemantics(find.text('결제 내역')),
       isSemantics(isSelected: true),
     );
+    // 탭 줄의 밑줄은 화면 폭을 채운다
+    expect(tester.getSize(find.byType(HistoryTabs)).width, 390);
 
     expect(find.text('쓸 수 있는 충전포인트'), findsOneWidget);
     expect(find.text('280,000'), findsOneWidget);
@@ -419,6 +424,66 @@ void main() {
     // 이용 메뉴와 리뷰는 아직 없다
     expect(find.text('이용 메뉴 보기'), findsNothing);
     expect(find.text('리뷰 쓰기'), findsNothing);
+  });
+
+  testWidgets('서비스포인트 배지는 남은 날, 모두 씀, 기한 지남이다', (tester) async {
+    Map<String, Object?> lot(int id, String status, int? daysLeft) => {
+      'id': id,
+      'store_id': 1,
+      'store_name': '행복식당 1',
+      'amount': 10000,
+      'status': status,
+      'days_left': daysLeft,
+      'received_at': '2026-11-15T16:30:00+09:00',
+    };
+    await _pumpHistory(
+      tester,
+      (_) async => _json({
+        'balance': 20000,
+        'items': [
+          lot(5, 'usable', 100),
+          lot(4, 'used_up', 12),
+          lot(3, 'expired', null),
+          // 다 쓰고 기한도 지났다
+          lot(2, 'used_up', null),
+          lot(1, 'usable', null),
+        ],
+      }),
+      location: '/wallet/history/service',
+    );
+
+    expect(find.text('쓸 수 있는 서비스포인트'), findsOneWidget);
+    expect(find.text('20,000'), findsOneWidget);
+    expect(
+      find.text('서비스포인트는 가게가 감사의 뜻으로 드리는 포인트예요. 기한 안에 써 주세요.'),
+      findsOneWidget,
+    );
+
+    final cards = find.byType(ServiceRecordCard);
+    List<String> badges(int index) => tester
+        .widgetList<RecordBadge>(
+          find.descendant(
+            of: cards.at(index),
+            matching: find.byType(RecordBadge),
+          ),
+        )
+        .map((badge) => badge.text)
+        .toList();
+    expect(cards, findsNWidgets(5));
+    expect(badges(0), ['D-100']);
+    expect(badges(1), ['D-12', '모두 씀']);
+    expect(badges(2), ['기한 지남']);
+    expect(badges(3), ['모두 씀']);
+    expect(badges(4), isEmpty);
+
+    Finder inCard(String text) =>
+        find.descendant(of: cards.first, matching: find.text(text));
+    expect(inCard('행복식당 1'), findsOneWidget);
+    expect(inCard('받은 포인트'), findsOneWidget);
+    expect(inCard('10,000P'), findsOneWidget);
+    expect(inCard('받은 날 2026.11.15 16:30'), findsOneWidget);
+    // 서비스포인트는 날짜로 묶지 않는다.
+    expect(find.textContaining('11월 15일'), findsNothing);
   });
 
   testWidgets('글자를 크게 해도 위쪽 탭을 모두 누를 수 있다', (tester) async {

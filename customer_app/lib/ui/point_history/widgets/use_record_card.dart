@@ -50,26 +50,11 @@ class UseRecordCard extends StatelessWidget {
                 ),
             ],
           ),
-          Row(
-            crossAxisAlignment: CrossAxisAlignment.baseline,
-            textBaseline: TextBaseline.alphabetic,
-            spacing: 12,
-            children: [
-              Text(
-                '쓴 포인트',
-                style: AppText.label.copyWith(color: AppColors.textMuted),
-              ),
-              Expanded(
-                child: Text.rich(
-                  TextSpan(
-                    text: formatNumber(record.amount),
-                    children: [TextSpan(text: 'P', style: AppText.bodyBold)],
-                  ),
-                  textAlign: TextAlign.right,
-                  style: AppText.section.copyWith(fontFeatures: tabularFigures),
-                ),
-              ),
-            ],
+          RecordLine(
+            '쓴 포인트',
+            formatNumber(record.amount),
+            unit: 'P',
+            style: AppText.section,
           ),
           // 쓴 포인트가 어느 포인트에서 나갔는지
           Container(
