@@ -15,6 +15,8 @@ class HistoryTabs extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      // 가로 스크롤 안에서도 밑줄이 화면 폭을 채우게
+      width: double.infinity,
       margin: EdgeInsets.symmetric(horizontal: AppSpace.gutter),
       decoration: BoxDecoration(
         border: Border(bottom: BorderSide(color: AppColors.border)),
