@@ -56,7 +56,7 @@ void main() {
     expect(formatNumber(999), '999');
   });
 
-  test('일시는 기기 시간대와 상관없이 서울 시간으로 보여 준다', () {
+  test('일시는 기기 시간대와 상관없이 한국 시간으로 보여 준다', () {
     // 서버는 +09:00으로 주지만 DateTime.parse는 UTC로 바꿔 둔다
     expect(
       formatDateTime(DateTime.parse('2026-10-27T12:00:00+09:00')),

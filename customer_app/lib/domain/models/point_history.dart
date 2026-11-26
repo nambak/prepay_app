@@ -23,7 +23,7 @@ enum HistoryTab {
 class HistoryPeriod {
   const new(this.year, [this.month]);
 
-  // 그 시각이 있는 달. 서울 시각을 넘긴다
+  // 그 시각이 있는 달. 한국 시각을 넘긴다
   new monthOf(DateTime time) : year = time.year, month = time.month;
 
   final int year;

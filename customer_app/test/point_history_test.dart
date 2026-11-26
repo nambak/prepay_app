@@ -267,7 +267,7 @@ void main() {
     expect(HistoryPeriod(2026, 11).toQuery(), {'year': '2026', 'month': '11'});
   });
 
-  test('날짜와 머리글은 서울 날짜와 요일이다', () {
+  test('날짜와 머리글은 한국 날짜와 요일이다', () {
     expect(
       formatDayHeader(DateTime.parse('2026-11-02T15:30:00Z')),
       '11월 3일 (화)',
@@ -388,7 +388,7 @@ void main() {
     expect(requests, isEmpty);
   });
 
-  testWidgets('가게 이용 내역을 서울 날짜로 묶어 보여 준다', (tester) async {
+  testWidgets('가게 이용 내역을 한국 날짜로 묶어 보여 준다', (tester) async {
     Map<String, Object> use(int visit, String method, String usedAt) => {
       'id': visit,
       'store_id': 1,
@@ -407,7 +407,7 @@ void main() {
         'balance': 280000,
         'items': [
           use(13, 'customer', '2026-11-03T23:00:00+09:00'),
-          // UTC로는 11월 2일 이지만 서울로는 11월 3일이다
+          // UTC로는 11월 2일 이지만 한국 시각으로는 11월 3일이다
           use(12, 'store', '2026-11-03T00:30:00+09:00'),
           use(11, 'customer', '2026-11-01T12:00:00+09:00'),
         ],

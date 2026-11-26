@@ -92,7 +92,7 @@ final router = GoRouter(
             key: ValueKey(state.uri),
             create: () {
               final thisMonth = HistoryPeriod.monthOf(
-                seoulTime(DateTime.now()),
+                koreaTime(DateTime.now()),
               );
               return PointHistoryViewModel(
                 pointRepository: _pointRepository,

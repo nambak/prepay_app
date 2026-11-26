@@ -16,7 +16,7 @@ class PointHistoryViewModel extends LoadViewModel<HistoryPage<HistoryRecord>> {
   final PointRepository _pointRepository;
   final HistoryTab tab;
 
-  // 기간 시트에서 고를 수 있는 마지막 달. 서울 날짜로 이번 달
+  // 기간 시트에서 고를 수 있는 마지막 달. 한국 날짜로 이번 달
   final HistoryPeriod thisMonth;
 
   // 기간은 이 화면이 들고 있다. 탭을 바꿀 때 경로 쿼리로 넘긴다
@@ -50,7 +50,7 @@ class PointHistoryViewModel extends LoadViewModel<HistoryPage<HistoryRecord>> {
     return _newestFirst ? found : found.reversed.toList();
   }
 
-  // 화면에 그릴 묶음. 가게 이용 내역만 서울 날짜로 묶어 머리글을 단다
+  // 화면에 그릴 묶음. 가게 이용 내역만 한국 날짜로 묶어 머리글을 단다
   // 받은 순서를 지키고, 기간이 한 해 안이라 '11월 3일 (화)'만으로 날이 겹치지 않는다
   List<(String?, List<HistoryRecord>)> get sections {
     if (tab != HistoryTab.uses) return [(null, records)];
