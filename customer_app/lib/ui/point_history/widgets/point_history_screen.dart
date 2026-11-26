@@ -10,6 +10,7 @@ import '../view_models/point_history_view_model.dart';
 import 'charge_record_card.dart';
 import 'day_header.dart';
 import 'history_balance_card.dart';
+import 'history_filter_bar.dart';
 import 'history_tabs.dart';
 import 'service_record_card.dart';
 import 'use_record_card.dart';
@@ -48,60 +49,82 @@ class PointHistoryScreen extends StatelessWidget {
                       ? LoadError('포인트 내역을 불러오지 못했어요.', onRetry: viewModel.load)
                       : Center(child: CircularProgressIndicator());
                 }
-                final (title, message) = _emptyText(viewModel.tab);
 
-                return ListView(
-                  padding: EdgeInsets.only(top: 12, bottom: 24),
-                  children: [
-                    HistoryBalanceCard(
-                      viewModel.pointType,
-                      viewModel.tab,
-                      page.balance,
-                      onSelect: (tab) => _select(context, tab),
-                    ),
-                    SizedBox(height: 12),
-                    if (viewModel.tab == HistoryTab.service)
-                      Padding(
-                        padding: EdgeInsets.fromLTRB(
-                          AppSpace.gutter,
-                          0,
-                          AppSpace.gutter,
-                          4,
-                        ),
-                        child: Text(
-                          '서비스포인트는 가게가 감사의 뜻으로 드리는 포인트예요. 기한 안에 써 주세요.',
-                          style: AppText.secondary.copyWith(
-                            color: AppColors.textMuted,
-                            height: 1.55,
-                          ),
-                        ),
-                      ),
-                    if (page.items.isEmpty)
-                      EmptyState(title, message)
-                    else
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.stretch,
-                        spacing: 8,
-                        children: [
-                          for (final (header, records)
-                              in viewModel.sections) ...[
-                            if (header != null) DayHeader(header),
-                            for (final record in records)
-                              switch (record) {
-                                ChargeRecord() => ChargeRecordCard(record),
-                                UseRecord() => UseRecordCard(record),
-                                ServiceRecord() => ServiceRecordCard(record),
-                              },
-                          ],
-                        ],
-                      ),
-                  ],
+                return _HistoryList(
+                  viewModel,
+                  page,
+                  onSelect: (tab) => _select(context, tab),
                 );
               },
             ),
           ),
         ],
       ),
+    );
+  }
+}
+
+// 불러온 한 탭: 잔액 카드, 거르기 줄, 기록 목록
+class _HistoryList extends StatelessWidget {
+  const new(this.viewModel, this.page, {required this.onSelect});
+
+  final PointHistoryViewModel viewModel;
+  final HistoryPage<HistoryRecord> page;
+  final ValueChanged<HistoryTab> onSelect;
+
+  @override
+  Widget build(BuildContext context) {
+    final (title, message) = page.items.isEmpty
+        ? _emptyText(viewModel.tab)
+        : ("'${viewModel.query}' 검색 결과가 없어요", '다른 가게 이름으로 찾아보세요');
+
+    return ListView(
+      padding: EdgeInsets.only(top: 12, bottom: 24),
+      children: [
+        HistoryBalanceCard(
+          viewModel.pointType,
+          viewModel.tab,
+          page.balance,
+          onSelect: onSelect,
+        ),
+        SizedBox(height: 12),
+        if (viewModel.tab == HistoryTab.service)
+          Padding(
+            padding: EdgeInsets.fromLTRB(
+              AppSpace.gutter,
+              0,
+              AppSpace.gutter,
+              4,
+            ),
+            child: Text(
+              '서비스포인트는 가게가 감사의 뜻으로 드리는 포인트예요. 기한 안에 써 주세요.',
+              style: AppText.secondary.copyWith(
+                color: AppColors.textMuted,
+                height: 1.55,
+              ),
+            ),
+          ),
+        // 공유포인트는 기록이 없어서 거를 것도 없다
+        if (viewModel.tab != HistoryTab.shared) HistoryFilterBar(viewModel),
+        if (viewModel.records.isEmpty)
+          EmptyState(title, message)
+        else
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            spacing: 8,
+            children: [
+              for (final (header, records) in viewModel.sections) ...[
+                if (header != null) DayHeader(header),
+                for (final record in records)
+                  switch (record) {
+                    ChargeRecord() => ChargeRecordCard(record),
+                    UseRecord() => UseRecordCard(record),
+                    ServiceRecord() => ServiceRecordCard(record),
+                  },
+              ],
+            ],
+          ),
+      ],
     );
   }
 }

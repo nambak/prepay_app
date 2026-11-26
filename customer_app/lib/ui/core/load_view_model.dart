@@ -19,7 +19,10 @@ abstract class LoadViewModel<T> extends ViewModel {
   @protected
   Future<T> fetch();
 
-  Future<void> load() async {
+  // clear면 불러오기 전에 이전 데이터를 비운다. 기간을 바꿀 때 이전 목록이 남아 보이지 않게 한다
+  Future<void> load({bool clear = false}) async {
+    if (clear) _data = null;
+
     _failed = false;
     notifyListeners();
 
