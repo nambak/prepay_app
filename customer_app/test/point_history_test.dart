@@ -681,4 +681,53 @@ void main() {
     expect(find.text('시월식당'), findsOneWidget);
     expect(find.text('2026년 10월'), findsOneWidget);
   });
+
+  testWidgets('가게 찾기 칸은 목록을 내렸다 올려도 입력한 글자와 함께 남아 있다', (tester) async {
+    await _pumpHistory(
+      tester,
+      (_) async => _json({
+        'balance': 280000,
+        'items': [
+          for (var id = 20; id > 0; id--)
+            _charge(
+              id,
+              '하루카페2',
+              '2026-11-${id.toString().padLeft(2, '0')}T12:00:00+09:00',
+            ),
+        ],
+      }),
+      location: '/wallet/history/charges',
+    );
+
+    await tester.tap(find.byTooltip('가게 이름으로 찾기'));
+    await tester.pumpAndSettle();
+    await tester.enterText(find.byType(TextField), '하루');
+    await tester.pump();
+    // 입력칸에 포커스가 있으면 목록이 거르기 줄을 남겨 두므로 포커스를 뺀다
+    FocusManager.instance.primaryFocus?.unfocus();
+    await tester.pump();
+
+    await tester.drag(find.byType(ListView), Offset(0, -3000));
+    await tester.pumpAndSettle();
+    await tester.drag(find.byType(ListView), Offset(0, 3000));
+    await tester.pumpAndSettle();
+
+    expect(find.widgetWithText(TextField, '하루'), findsOneWidget);
+  });
+
+  testWidgets('경로의 기간이 이번 달보다 뒤면 기간 시트는 이번 해로 열린다', (tester) async {
+    final requests = <http.Request>[];
+    await _pumpHistory(tester, (request) {
+      requests.add(request);
+      return _history(request);
+    }, location: '/wallet/history/charges?year=2027&month=2');
+
+    await openPeriodSheet(tester, '2027년 2월');
+    expect(find.text('2026년'), findsOneWidget);
+
+    // 이번 해라서 이번 달 뒤의 달은 그대로 고를 수 없다
+    await tester.tap(find.text('12월'));
+    await tester.pumpAndSettle();
+    expect(requests, hasLength(1));
+  });
 }

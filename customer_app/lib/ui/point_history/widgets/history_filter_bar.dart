@@ -15,9 +15,15 @@ class HistoryFilterBar extends StatefulWidget {
   State<HistoryFilterBar> createState() => _HistoryFilterBarState();
 }
 
-class _HistoryFilterBarState extends State<HistoryFilterBar> {
+class _HistoryFilterBarState extends State<HistoryFilterBar>
+    with AutomaticKeepAliveClientMixin {
   // 입력칸이 열려 있는지. 찾는 글자는 view model이 들고 있다
   bool _searching = false;
+
+  // 목록을 내려 거르기 줄이 화면 밖으로 나가도 이 상태를 버리지 않는다
+  // 버리면 입력칸은 닫히는데 view model에는 찾던 글자가 남아 목록만 걸러진다
+  @override
+  bool get wantKeepAlive => true;
 
   PointHistoryViewModel get _viewModel => widget.viewModel;
 
@@ -38,6 +44,8 @@ class _HistoryFilterBarState extends State<HistoryFilterBar> {
 
   @override
   Widget build(BuildContext context) {
+    super.build(context);
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [

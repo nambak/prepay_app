@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:material_ui/material_ui.dart';
 
 import '../../../domain/models/point_history.dart';
@@ -33,7 +35,8 @@ class PeriodSheet extends StatefulWidget {
 class _PeriodSheetState extends State<PeriodSheet> {
   // 시트를 여는 동안만 쓰는 값. 지금 고른 기간에서 시작한다
   late bool _yearly = widget.selected.month == null;
-  late int _year = widget.selected.year;
+  // 경로로 latest보다 뒤의 해가 들어와도 latest의 해에서 연다
+  late int _year = min(widget.selected.year, widget.latest.year);
 
   bool get _isLatestYear => _year >= widget.latest.year;
 
