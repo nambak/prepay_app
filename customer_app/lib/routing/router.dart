@@ -90,14 +90,20 @@ final router = GoRouter(
           path: 'history/:tab',
           builder: (context, state) => ViewModelScope(
             key: ValueKey(state.uri),
-            create: () => PointHistoryViewModel(
-              pointRepository: _pointRepository,
-              tab: HistoryTab.fromName(state.pathParameters['tab']),
-              period: HistoryPeriod.fromQuery(
-                state.uri.queryParameters,
-                fallback: HistoryPeriod.monthOf(seoulTime(DateTime.now())),
-              ),
-            )..load(),
+            create: () {
+              final thisMonth = HistoryPeriod.monthOf(
+                koreaTime(DateTime.now()),
+              );
+              return PointHistoryViewModel(
+                pointRepository: _pointRepository,
+                tab: HistoryTab.fromName(state.pathParameters['tab']),
+                period: HistoryPeriod.fromQuery(
+                  state.uri.queryParameters,
+                  fallback: thisMonth,
+                ),
+                thisMonth: thisMonth,
+              )..load();
+            },
             builder: (viewModel) => PointHistoryScreen(viewModel: viewModel),
           ),
         ),

@@ -34,6 +34,10 @@ abstract final class AppIcons {
   static const check = '<path d="M5 12.5l4.5 4.5L19 7.5"/>';
   static const receipt =
       '<path d="M6 3h12v18l-3-2-3 2-3-2-3 2z"/><path d="M9 8h6M9 12h6M9 16h3"/>';
+  static const calendar =
+      '<rect x="4" y="5" width="16" height="15" rx="2"/><path d="M4 10h16M9 3v4M15 3v4"/>';
+  static const search =
+      '<circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/>';
   static const settings =
       '<circle cx="12" cy="12" r="3"/><path d="M12 3v2.5M12 18.5V21M3 12h2.5M18.5 12H21M5.6 5.6l1.8 1.8M16.6 16.6l1.8 1.8M5.6 18.4l1.8-1.8M16.6 7.4l1.8-1.8"/>';
 
