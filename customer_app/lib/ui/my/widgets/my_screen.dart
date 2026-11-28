@@ -1,6 +1,7 @@
 import 'package:go_router/go_router.dart';
 import 'package:material_ui/material_ui.dart';
 
+import '../../../domain/models/point_history.dart';
 import '../../../routing/routes.dart';
 import '../../core/icons.dart';
 import '../../core/tokens.dart';
@@ -40,53 +41,78 @@ class MyScreen extends StatelessWidget {
                 ),
               ),
             ),
-            Padding(
-              padding: EdgeInsets.fromLTRB(
-                AppSpace.gutter,
-                20,
-                AppSpace.gutter,
-                8,
-              ),
-              child: Semantics(
-                header: true,
-                child: Text(
-                  '계정',
-                  style: AppText.secondaryMedium.copyWith(
-                    color: AppColors.textMuted,
-                  ),
-                ),
-              ),
-            ),
+            _GroupTitle('나의 포인트'),
             AppCard(
               radius: AppRadius.card,
               padding: EdgeInsets.symmetric(vertical: 4),
-              child: Semantics(
-                button: true,
-                child: InkWell(
-                  onTap: openSettings,
-                  child: SizedBox(
-                    height: AppSize.button,
-                    child: Padding(
-                      padding: EdgeInsets.symmetric(
-                        horizontal: AppSpace.gutter,
-                      ),
-                      child: Row(
-                        children: [
-                          Expanded(child: Text('환경설정', style: AppText.input)),
-                          SvgIcon(
-                            AppIcons.chevronRight,
-                            size: 18,
-                            color: AppColors.iconMuted,
-                            strokeWidth: 2,
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                ),
+              child: _MenuRow(
+                '가게 이용내역',
+                onTap: () => context.push(Routes.history(HistoryTab.uses)),
               ),
             ),
+            _GroupTitle('계정'),
+            AppCard(
+              radius: AppRadius.card,
+              padding: EdgeInsets.symmetric(vertical: 4),
+              child: _MenuRow('환경설정', onTap: openSettings),
+            ),
           ],
+        ),
+      ),
+    );
+  }
+}
+
+// 메뉴 묶음의 이름
+class _GroupTitle extends StatelessWidget {
+  const new(this.text);
+
+  final String text;
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: EdgeInsets.fromLTRB(AppSpace.gutter, 20, AppSpace.gutter, 8),
+      child: Semantics(
+        header: true,
+        child: Text(
+          text,
+          style: AppText.secondaryMedium.copyWith(color: AppColors.textMuted),
+        ),
+      ),
+    );
+  }
+}
+
+// 메뉴 한 줄. 누르면 그 화면으로
+class _MenuRow extends StatelessWidget {
+  const new(this.label, {required this.onTap});
+
+  final String label;
+  final VoidCallback onTap;
+
+  @override
+  Widget build(BuildContext context) {
+    return Semantics(
+      button: true,
+      child: InkWell(
+        onTap: onTap,
+        child: SizedBox(
+          height: AppSize.button,
+          child: Padding(
+            padding: EdgeInsets.symmetric(horizontal: AppSpace.gutter),
+            child: Row(
+              children: [
+                Expanded(child: Text(label, style: AppText.input)),
+                SvgIcon(
+                  AppIcons.chevronRight,
+                  size: 18,
+                  color: AppColors.iconMuted,
+                  strokeWidth: 2,
+                ),
+              ],
+            ),
+          ),
         ),
       ),
     );

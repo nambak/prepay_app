@@ -1,13 +1,16 @@
-// 전체 포인트 합계, 종류별 비율 막대, 종류별 금액
+import 'package:go_router/go_router.dart';
 import 'package:material_ui/material_ui.dart';
 
 import '../../../domain/models/point.dart';
+import '../../../domain/models/point_history.dart';
+import '../../../routing/routes.dart';
 import '../../core/format.dart';
 import '../../core/icons.dart';
 import '../../core/tokens.dart';
 import '../../core/widgets/app_card.dart';
 import '../../core/widgets/point_dot.dart';
 
+// 전체 포인트 합계, 종류별 비율 막대, 종류별 금액. 종류를 누르면 그 포인트 내역
 class BalanceCard extends StatelessWidget {
   const new(this.wallet, {super.key});
 
@@ -95,36 +98,39 @@ class BalanceCard extends StatelessWidget {
             ),
           ),
           for (final (i, (type, amount)) in parts.indexed)
-            InkWell(
-              onTap: () {}, // TODO: 포인트 내역
-              child: Container(
-                height: 48,
-                decoration: i == 0
-                    ? null
-                    : BoxDecoration(
-                        border: Border(
-                          top: BorderSide(color: AppColors.borderInner),
+            Semantics(
+              button: true,
+              child: InkWell(
+                onTap: () => context.push(Routes.history(HistoryTab.of(type))),
+                child: Container(
+                  height: 48,
+                  decoration: i == 0
+                      ? null
+                      : BoxDecoration(
+                          border: Border(
+                            top: BorderSide(color: AppColors.borderInner),
+                          ),
+                        ),
+                  child: Row(
+                    spacing: 10,
+                    children: [
+                      PointDot(type),
+                      Expanded(child: Text(type.label)),
+                      Text(
+                        formatNumber(amount),
+                        style: TextStyle(
+                          fontWeight: FontWeight.w700,
+                          fontFeatures: tabularFigures,
                         ),
                       ),
-                child: Row(
-                  spacing: 10,
-                  children: [
-                    PointDot(type),
-                    Expanded(child: Text(type.label)),
-                    Text(
-                      formatNumber(amount),
-                      style: TextStyle(
-                        fontWeight: FontWeight.w700,
-                        fontFeatures: tabularFigures,
+                      SvgIcon(
+                        AppIcons.chevronRight,
+                        size: 18,
+                        color: AppColors.iconMuted,
+                        strokeWidth: 2,
                       ),
-                    ),
-                    SvgIcon(
-                      AppIcons.chevronRight,
-                      size: 18,
-                      color: AppColors.iconMuted,
-                      strokeWidth: 2,
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
               ),
             ),

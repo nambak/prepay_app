@@ -9,10 +9,12 @@ import 'package:material_ui/material_ui.dart';
 import 'package:prepay_app/data/repositories/point_repository.dart';
 import 'package:prepay_app/data/services/api_client.dart';
 import 'package:prepay_app/domain/models/point_use.dart';
+import 'package:prepay_app/routing/routes.dart';
 import 'package:prepay_app/ui/core/theme.dart';
 import 'package:prepay_app/ui/core/widgets/view_model_scope.dart';
 import 'package:prepay_app/ui/wallet_pay/view_models/point_use_view_model.dart';
 import 'package:prepay_app/ui/wallet_pay/view_models/wallet_view_model.dart';
+import 'package:prepay_app/ui/wallet_pay/widgets/balance_card.dart';
 import 'package:prepay_app/ui/wallet_pay/widgets/point_use_done_screen.dart';
 import 'package:prepay_app/ui/wallet_pay/widgets/point_use_sheet.dart';
 import 'package:prepay_app/ui/wallet_pay/widgets/wallet_screen.dart';
@@ -58,7 +60,8 @@ http.Response _json(Object json, [int status = 200]) =>
     http.Response.bytes(utf8.encode(jsonEncode(json)), status);
 
 // 시안과 같은 390x844 화면에 내 가게를 띄운다. 서버 응답은 handler가 정한다
-Future<void> _pumpWallet(
+// 포인트 내역은 들어간 경로만 확인하려고 둔 빈 화면이다
+Future<GoRouter> _pumpWallet(
   WidgetTester tester,
   Future<http.Response> Function(http.Request) handler,
 ) async {
@@ -89,6 +92,10 @@ Future<void> _pumpWallet(
             builder: (context, state) =>
                 PointUseDoneScreen(state.extra! as PointUseReceipt),
           ),
+          GoRoute(
+            path: 'history/:tab',
+            builder: (context, state) => Scaffold(body: Text('포인트 내역')),
+          ),
         ],
       ),
     ],
@@ -99,6 +106,8 @@ Future<void> _pumpWallet(
     MaterialApp.router(theme: appTheme, routerConfig: router),
   );
   await tester.pumpAndSettle();
+
+  return router;
 }
 
 // 카드의 차감 → 금액 입력 → 시트의 차감을 눌러 확인 다이얼로그를 띄운다
@@ -294,4 +303,47 @@ void main() {
       expect(_inDialog('행복식당 1에서\n18,800P를 쓸까요?'), findsOneWidget);
     });
   }
+
+  testWidgets('내 가게의 포인트 줄을 누르면 그 탭의 포인트 내역이 열린다', (tester) async {
+    final router = await _pumpWallet(tester, (_) async => _json(_walletJson));
+
+    await tester.tap(
+      find.descendant(
+        of: find.byType(BalanceCard),
+        matching: find.text('서비스포인트'),
+      ),
+    );
+    await tester.pumpAndSettle();
+    expect(router.state.uri.toString(), '/wallet/history/service');
+
+    router.pop();
+    await tester.pumpAndSettle();
+    expect(router.state.uri.toString(), '/wallet');
+  });
+
+  testWidgets('사용 완료의 이용 내역 보기는 이용 내역을 열고 뒤로 가면 내 가게다', (tester) async {
+    final router = await _pumpWallet(tester, (_) async => _json(_walletJson));
+    router.go(
+      Routes.pointUseDone,
+      extra: PointUseReceipt(
+        storeName: '행복식당 1',
+        amount: 18800,
+        serviceAmount: 10000,
+        chargeAmount: 8800,
+        balance: 261200,
+        visitCount: 12,
+        usedAt: DateTime.parse('2026-10-27T12:00:00+09:00'),
+      ),
+    );
+    await tester.pumpAndSettle();
+
+    await tester.tap(find.text('이용 내역 보기'));
+    await tester.pumpAndSettle();
+    expect(router.state.uri.toString(), '/wallet/history/uses');
+
+    // 사용 완료를 쌓지 않아서 뒤로 한 번이면 내 가게다
+    router.pop();
+    await tester.pumpAndSettle();
+    expect(router.state.uri.toString(), '/wallet');
+  });
 }
