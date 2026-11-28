@@ -2,6 +2,7 @@ import 'package:go_router/go_router.dart';
 import 'package:material_ui/material_ui.dart';
 
 import '../../../domain/models/point.dart';
+import '../../../domain/models/point_history.dart';
 import '../../../domain/models/point_use.dart';
 import '../../../routing/routes.dart';
 import '../../core/format.dart';
@@ -13,7 +14,7 @@ import '../../core/widgets/receipt_row.dart';
 import '../../core/widgets/secondary_button.dart';
 
 // 사용 완료
-// 리뷰 쓰기와 이용 내역 보기는 그 화면을 만들 때 단다
+// 리뷰 쓰기는 리뷰 기능을 만들 때 단다(#41)
 class PointUseDoneScreen extends StatelessWidget {
   const new(this.receipt, {super.key});
 
@@ -107,6 +108,31 @@ class PointUseDoneScreen extends StatelessWidget {
                           ),
                         ),
                       ],
+                    ),
+                  ),
+                  SizedBox(height: 16),
+                  Center(
+                    child: TextButton(
+                      // 사용 완료를 쌓지 않아서 뒤로 가면 내 가게다
+                      onPressed: () =>
+                          context.go(Routes.history(HistoryTab.uses)),
+                      style: TextButton.styleFrom(
+                        minimumSize: Size(0, AppSize.touchTarget),
+                        foregroundColor: AppColors.textSecondary,
+                      ),
+                      child: Row(
+                        mainAxisSize: MainAxisSize.min,
+                        spacing: 2,
+                        children: [
+                          Text('이용 내역 보기', style: AppText.label),
+                          SvgIcon(
+                            AppIcons.chevronRight,
+                            size: 16,
+                            color: AppColors.iconMuted,
+                            strokeWidth: 2,
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                 ],

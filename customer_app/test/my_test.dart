@@ -43,4 +43,25 @@ void main() {
     expect(backIcon, findsOneWidget);
     expect(tester.widget<SvgIcon>(backIcon).paths, AppIcons.back);
   });
+
+  testWidgets('내 정보의 가게 이용내역은 이용 내역을 열고 뒤로 가면 내 정보다', (tester) async {
+    FlutterSecureStorage.setMockInitialValues({'auth_token': '1|abc'});
+    await authRepository.load();
+    router.go(Routes.my);
+
+    await tester.pumpWidget(
+      MaterialApp.router(theme: appTheme, routerConfig: router),
+    );
+    expect(
+      tester.getSemantics(find.text('나의 포인트')),
+      isSemantics(isHeader: true),
+    );
+    await tester.tap(find.text('가게 이용내역'));
+    await tester.pumpAndSettle();
+    expect(router.state.uri.toString(), '/wallet/history/uses');
+
+    await tester.tap(find.byType(BackButton));
+    await tester.pumpAndSettle();
+    expect(router.state.uri.toString(), Routes.my);
+  });
 }
